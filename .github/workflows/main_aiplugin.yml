@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: '18.x'
 
+      - name: Change working directory
+        run: cd aiplugin
+
       - name: npm install, build, and test
         run: |
           npm install --production
