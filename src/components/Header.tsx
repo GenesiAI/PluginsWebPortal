@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: theme.palette.background.default,
+  },
+  title: {
+    flexGrow: 1,
+    color: theme.palette.primary.main,
+    textDecoration: 'none',
   },
   toolbar: {
     display: 'flex',
@@ -20,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   link: {
+    color: theme.palette.text.primary,
     textDecoration: 'none',
   },
 }));
@@ -30,7 +36,7 @@ const Header: React.FC = () => {
   return (
     <AppBar position="sticky" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
-        <Typography variant="h6">aiPlugin.app</Typography>
+        <Typography variant="h6" className={classes.title}>AI PLUGIN 🧩</Typography>
         <nav className={classes.navLinks}>
           <Link to="/" className={classes.link}>
             <Button color="primary">Home</Button>
