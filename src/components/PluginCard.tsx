@@ -10,29 +10,37 @@ const useStyles = makeStyles({
     fontSize: 14,
   },
 });
-
 interface PluginCardProps {
-  title: string;
-  category: string;
-  description: string;
-  onClick: () => void;
-}
-
-const PluginCard: React.FC<PluginCardProps> = ({ title, category, description, onClick }) => {
+    plugin: {
+      iconUrl: string;
+      category: string;
+      categoryLink: string;
+      title: string;
+      description: string;
+      link: string;
+    };
+  }
+  
+  const PluginCard: React.FC<PluginCardProps> = ({ plugin }) => {
     const classes = useStyles();
   
+    const handleClick = () => {
+      window.open(plugin.link, '_blank');
+    };
+  
     return (
-      <Card className={classes.card} onClick={onClick}>
+      <Card className={classes.card} onClick={handleClick}>
         <CardActionArea>
           <CardContent>
+            <img src={plugin.iconUrl} alt={`${plugin.title} icon`} />
             <Typography className={classes.title} color="textSecondary" gutterBottom>
-              {category}
+              {plugin.category}
             </Typography>
             <Typography variant="h5" component="h2">
-              {title}
+              {plugin.title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {description}
+              {plugin.description}
             </Typography>
           </CardContent>
         </CardActionArea>
