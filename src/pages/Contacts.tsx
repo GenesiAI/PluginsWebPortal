@@ -1,7 +1,6 @@
 import React from 'react';
 import ContactForm from '../components/ContactForm';
 import { Box, Container, Typography, makeStyles } from '@material-ui/core';
-import { Facebook, Twitter, LinkedIn, Instagram } from '@material-ui/icons';
 import SocialsBox from '../components/SocialsBox';
 
 const useStyles = makeStyles((theme) => ({

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Typography, Button, Grid, makeStyles, Box } from '@material-ui/core';
-import { Facebook, Twitter, LinkedIn, Instagram } from '@material-ui/icons';
+import { Typography, Button, Grid, makeStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import PluginCard from '../components/PluginCard';
 import SocialsBox from '../components/SocialsBox';

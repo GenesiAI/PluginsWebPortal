@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, Box } from '@material-ui/core';
-import { Twitter, Email, Instagram, Language } from '@material-ui/icons';
+import { Twitter } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
