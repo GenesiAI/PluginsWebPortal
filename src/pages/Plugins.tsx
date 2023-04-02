@@ -48,6 +48,37 @@ const Plugins: React.FC = () => {
       title: 'Sample Plugin',
       description: 'This is a sample plugin.',
       link: 'https://example.com',
+    },{
+      iconUrl: 'https://via.placeholder.com/50',
+      category: 'Top Plugins',
+      categoryLink: '#',
+      title: 'Sample Plugin',
+      description: 'This is a sample plugin.',
+      link: 'https://example.com',
+    },
+    {
+      iconUrl: 'https://via.placeholder.com/50',
+      category: 'Top Plugins',
+      categoryLink: '#',
+      title: 'Sample Plugin',
+      description: 'This is a sample plugin.',
+      link: 'https://example.com',
+    }, 
+    {
+      iconUrl: 'https://via.placeholder.com/50',
+      category: 'Top Plugins',
+      categoryLink: '#',
+      title: 'Sample Plugin',
+      description: 'This is a sample plugin.',
+      link: 'https://example.com',
+    },
+    {
+      iconUrl: 'https://via.placeholder.com/50',
+      category: 'Top Plugins',
+      categoryLink: '#',
+      title: 'Sample Plugin',
+      description: 'This is a sample plugin.',
+      link: 'https://example.com',
     },
     // Add more plugin objects here.
   ];

@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     color: theme.palette.primary.main,
     textDecoration: 'none',
+    whiteSpace: 'nowrap',
   },
   toolbar: {
     display: 'flex',
@@ -18,16 +19,23 @@ const useStyles = makeStyles((theme) => ({
   navLinks: {
     display: 'flex',
     justifyContent: 'space-around',
+    flexWrap: 'nowrap',
+    overflowX: 'auto',
     width: '60%',
     [theme.breakpoints.down('sm')]: {
-      overflowX: 'auto',
       width: '100%',
-    },
+    }
   },
   link: {
+    minWidth: '20px',
     color: theme.palette.text.primary,
     textDecoration: 'none',
   },
+  homeLink: {
+    color: theme.palette.text.primary,
+    width: '40%',
+    textDecoration: 'none',
+  } 
 }));
 
 const Header: React.FC = () => {
@@ -36,19 +44,22 @@ const Header: React.FC = () => {
   return (
     <AppBar position="sticky" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
-        <Typography variant="h6" className={classes.title}>AI PLUGIN 🧩</Typography>
+        <Link to="/" className={classes.homeLink}>
+          <Typography variant="h4" className={classes.title}>AI PLUGIN 🧩</Typography>
+        </Link>
         <nav className={classes.navLinks}>
-          <Link to="/" className={classes.link}>
-            <Button color="primary">Home</Button>
-          </Link>
           <Link to="/plugins" className={classes.link}>
             <Button color="primary">Plugins</Button>
           </Link>
           <Link to="/build-plugin" className={classes.link}>
-            <Button color="primary">Build a Plugin</Button>
+            <Button color="primary">
+              Build a plugin
+            </Button>
           </Link>
           <Link to="/hire-dev" className={classes.link}>
-            <Button color="primary">Hire a Dev</Button>
+            <Button color="primary">
+              hire a dev
+            </Button>
           </Link>
           <Link to="/contacts" className={classes.link}>
             <Button color="primary">Contacts</Button>
