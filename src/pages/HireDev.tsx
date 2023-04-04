@@ -1,9 +1,11 @@
 import React from 'react';
-import { Container, Typography, makeStyles, Card, CardContent, CardMedia, IconButton, Button } from '@material-ui/core';
-import { Twitter, Email, Instagram, Language } from '@material-ui/icons';
+import { Container, Typography, Card, CardContent, CardMedia, IconButton, Button } from '@mui/material';
+import { Twitter, Email, Instagram, Language } from '@mui/icons-material-material';
 import { Link } from 'react-router-dom';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   container: {
     paddingTop: theme.spacing(4),
   },

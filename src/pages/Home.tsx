@@ -1,9 +1,12 @@
 import React from 'react';
-import { Typography, Button, Grid, makeStyles } from '@material-ui/core';
+import { Typography, Button, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 import PluginCard from '../components/PluginCard';
 import SocialsBox from '../components/SocialsBox';
-const useStyles = makeStyles((theme) => ({
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
+
+const useStyles = makeStyles((theme: Theme) => ({
   hero: {
     padding: theme.spacing(8, 0),
     textAlign: 'center',

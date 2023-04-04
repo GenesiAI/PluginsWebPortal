@@ -5,11 +5,12 @@ import {
   Container,
   Grid,
   TextField,
-  makeStyles
-} from '@material-ui/core';
+} from '@mui/material';
 import axios from 'axios';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   container: {
     padding: theme.spacing(3),
   },

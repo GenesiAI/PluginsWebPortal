@@ -1,9 +1,11 @@
 import React from 'react';
-import { makeStyles, Box } from '@material-ui/core';
-import { Twitter } from '@material-ui/icons';
+import { Box } from '@mui/material';
+import { Twitter } from '@mui/icons-material-material';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
     socialIcons: {
         display: 'flex',
         justifyContent: 'center',

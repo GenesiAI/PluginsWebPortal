@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import AppRouter from './AppRouter';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 
 const App: React.FC = () => {
