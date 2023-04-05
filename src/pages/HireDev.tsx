@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Typography, Card, CardContent, CardMedia, IconButton, Button } from '@mui/material';
-import { Twitter, Email, Instagram, Language } from '@mui/icons-material-material';
+import { Twitter, Email, Instagram, Language } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import { Theme } from '@mui/material/styles';

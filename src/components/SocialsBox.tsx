@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { Twitter } from '@mui/icons-material-material';
+import { Twitter } from '@mui/icons-material';
 import { makeStyles } from '@mui/styles';
 import { Theme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
