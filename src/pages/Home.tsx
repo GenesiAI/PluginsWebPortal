@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Button, Grid } from '@mui/material';
+import { Typography, Button, Grid, Container } from '@mui/material';
 import { Link } from 'react-router-dom';
 import PluginCard from '../components/PluginCard';
 import SocialsBox from '../components/SocialsBox';
@@ -100,7 +100,7 @@ const HomePage: React.FC = () => {
   const categories = ['top', 'new', 'featured'];
 
   return (
-    <div>
+    <Container>
       <div className={classes.hero}>
         <Typography variant="h3">Welcome to AI Plugin</Typography>
         <Typography variant="subtitle1">
@@ -179,7 +179,7 @@ const HomePage: React.FC = () => {
 
         <SocialsBox/>
       </div>
-    </div>
+    </Container>
   );
 };
 

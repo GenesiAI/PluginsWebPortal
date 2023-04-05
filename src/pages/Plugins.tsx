@@ -3,7 +3,7 @@ import { Container, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import PluginCard from '../components/PluginCard';
 
-const Root = styled('div')(({ theme }) => ({
+const Root = styled(Container)(({ theme }) => ({
   flexGrow: 1,
 }));
 
