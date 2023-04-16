@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import HomePage from './pages/Home';
-import PluginsPage from './pages/Plugins';
-import BuildPluginPage from './pages/BuildPlugin';
-import HireDevPage from './pages/HireDev';
+// import HomePage from './pages/Home';
+// import PluginsPage from './pages/Plugins';
+// import BuildPluginPage from './pages/BuildPlugin';
+// import HireDevPage from './pages/HireDev';
 import ContactsPage from './pages/Contacts';
 import Header from './components/Header';
 import TextToPlugin from './pages/TextToPlugin';
