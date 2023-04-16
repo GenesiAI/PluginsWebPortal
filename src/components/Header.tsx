@@ -21,7 +21,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 const StyledNavLinks = styled('nav')(({ theme }) => ({
   display: 'flex',
-  justifyContent: 'space-around',
+  justifyContent: 'flex-end',
   flexWrap: 'nowrap',
   overflowX: 'auto',
   width: '60%',
@@ -50,7 +50,7 @@ const Header: React.FC = () => {
           <StyledTitle variant="h4">AI PLUGIN 🧩</StyledTitle>
         </StyledHomeLink>
         <StyledNavLinks>
-          <StyledLink to="/plugins">
+          {/* <StyledLink to="/plugins">
             <Button color="primary">Plugins</Button>
           </StyledLink>
           <StyledLink to="/build-plugin">
@@ -58,7 +58,7 @@ const Header: React.FC = () => {
           </StyledLink>
           <StyledLink to="/hire-dev">
             <Button color="primary">Hire a dev</Button>
-          </StyledLink>
+          </StyledLink> */}
           <StyledLink to="/contacts">
             <Button color="primary">Contacts</Button>
           </StyledLink>

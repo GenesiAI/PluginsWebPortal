@@ -6,7 +6,7 @@ const theme = createTheme({
       main: '#FF8800', // Reddit orange
     },
     background: {
-      default: '#ffffff', // White background
+      default: '#000000', // White background
     },
   },
   shape: {
