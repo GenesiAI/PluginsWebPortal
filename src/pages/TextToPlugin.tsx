@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { Box, Button, TextField, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const colors = [
     '#df66da',
@@ -52,6 +54,24 @@ const TextToPlugin: React.FC = () => {
         };
     }, []);
 
+    const navigate = useNavigate();
+
+    const handleButtonClick = async () => {
+        const userId = uuidv4();
+        navigate('/generating-plugin');
+
+        const response = await fetch(`https://aiplugin-api.azurewebsites.net/Plugin/${userId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: '"Lorem ipsum placeholder"',
+        });
+        //manage fallback 
+        const result = await response.json();
+        navigate('/your-plugins', { state: { result } });
+    };
+
     return (
         <Box
             sx={{
@@ -87,7 +107,7 @@ const TextToPlugin: React.FC = () => {
                     borderRadius: 1,
                     '& .MuiOutlinedInput-root': {
                         borderRadius: 1,
-                        
+
                     },
                 }}
             />
@@ -101,8 +121,9 @@ const TextToPlugin: React.FC = () => {
                     '&:hover': {
                         backgroundColor: colors[(colorIndex + 1) % colors.length],
                     },
-                    fontSize: '1.2rem', 
+                    fontSize: '1.2rem',
                 }}
+                onClick={handleButtonClick}
             >
                 Create 🧩
             </Button>
@@ -112,3 +133,21 @@ const TextToPlugin: React.FC = () => {
 };
 
 export default TextToPlugin;
+
+
+
+
+// curl "https://aiplugin-api.azurewebsites.net/Plugin/e0853e8e-58b7-4715-9034-bb237d427ded" ^
+//   -H "sec-ch-ua: ^\^"Not.A/Brand^\^";v=^\^"8^\^", ^\^"Chromium^\^";v=^\^"114^\^", ^\^"Microsoft Edge^\^";v=^\^"114^\^"" ^
+//   -H "sec-ch-ua-platform: ^\^"Android^\^"" ^
+//   -H "Referer: http://localhost:3000/" ^
+//   -H "sec-ch-ua-mobile: ?1" ^
+//   -H "User-Agent: Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36 Edg/114.0.0.0" ^
+//   -H "Content-Type: application/json" ^
+//   --data-raw "^{^\^"text^\^":^\^"Lorem ipsum placeholder^\^"^}" ^
+//   --compressed
+
+//   curl --location 'https://aiplugin-api.azurewebsites.net/Plugin/79720a56-fbc1-46b9-a0f9-afe00de175dc' \
+// --header 'Content-Type: application/json' \
+// --header 'Accept: text/plain' \
+// --data '"Test"'
