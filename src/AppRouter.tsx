@@ -15,11 +15,13 @@ const AppRouter: React.FC = () => {
             <Routes>
                 {/* <Route path="/" element={<HomePage/>} /> */}
                 <Route path="/" element={<Navigate to="/text-to-plugin" />} />
-                <Route path="/text-to-plugin" element={<TextToPlugin/>} />
+                <Route path="/text-to-plugin" element={<TextToPlugin />} />
                 {/* <Route path="/plugins" element={<PluginsPage/>} />
                 <Route path="/build-plugin" element={<BuildPluginPage/>} />
                 <Route path="/hire-dev" element={<HireDevPage/>} /> */}
-                <Route path="/contacts" element={<ContactsPage/>} />
+                {/* <Route path="/generating-plugin" element={<GeneratingPlugin />} />
+                <Route path="/your-plugins"  element={<YourPlugins {YourPluginsProps}/>} /> */}
+                <Route path="/contacts" element={<ContactsPage />} />
             </Routes>
         </Router>
     );
