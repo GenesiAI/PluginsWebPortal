@@ -1,0 +1,42 @@
+.title {
+  font-size: 2rem;
+  color: #a068d9;
+  text-shadow: 1px 1px 3px #3c1a5c;
+}
+
+.plugin-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plugin-item {
+  display: flex;
+  align-items: center;
+  background-color: #2f114a;
+  color: #a068d9;
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px #1c0831;
+  width: 100%;
+  max-width: 600px;
+}
+
+.icon {
+  margin-right: 8px;
+}
+
+.action-icons {
+  margin-left: auto;
+}
+
+.action-icon {
+  font-size: 0.9rem;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.action-icon:not(.fas-solid) {
+  font-weight: 100;
+}

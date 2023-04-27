@@ -46,7 +46,7 @@ const colors = [
 const TextToPlugin: React.FC = () => {
     const [colorIndex, setColorIndex] = useState(0);
     const [view, setView] = useState<'input' | 'generating' | 'result'>('input');
-    const [result, setResult] = useState<Plugin | null>(null);
+    const [result, setResult] = useState<Plugin[] | null>(null);
 
     React.useEffect(() => {
         const interval = setInterval(() => {
@@ -62,18 +62,43 @@ const TextToPlugin: React.FC = () => {
         const userId = uuidv4();
         setView('generating');
 
-        const response = await fetch(`https://aiplugin-api.azurewebsites.net/Plugin/${userId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: '"Lorem ipsum placeholder"',
-        });
+        // const response = await fetch(`https://aiplugin-api.azurewebsites.net/Plugin/${userId}`, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: '"Lorem ipsum placeholder"',
+        // });
 
-        // const pluginResult = await response.json();
-        const result: Plugin = await response.json();
+
+        // const result: Plugin[] = await response.json();
         // console.log(pluginResult);
-        setResult(result);
+
+        const mockedPlugins: Plugin[] = [
+            {
+                aiPlugin: 'Plugin 1',
+                name: 'Awesome Plugin 1',
+                url: 'https://www.example.com/plugin1',
+                iconUrl: 'https://thumbs.dreamstime.com/t/hi-tech-circuit-style-round-yggdrasil-tree-cyberpunk-futuristic-design-progress-symbol-styled-frame-elements-borders-blue-deep-115165758.jpg',
+                userId: 'user1',
+            },
+            {
+                aiPlugin: 'Plugin 2',
+                name: 'Awesome Plugin 2',
+                url: 'https://www.example.com/plugin2',
+                iconUrl: 'https://cyberpunk2077.wiki.fextralife.com/file/Cyberpunk-2077/arasaka-corpo-logo-cyberpunk-2077-wiki-guide.png',
+                userId: 'user1',
+            },
+            {
+                aiPlugin: 'Plugin 3',
+                name: 'Awesome Plugin 3',
+                url: 'https://www.example.com/plugin3',
+                iconUrl: 'https://img.rankedboost.com/wp-content/plugins/cyberpunk-2077/assets/icons/Intelligence.png',
+                userId: 'user1',
+            },
+        ];
+
+        setResult(mockedPlugins);
         setView('result');
     };
 
@@ -82,6 +107,7 @@ const TextToPlugin: React.FC = () => {
         return (
             <Box
                 sx={{
+                    padding: 2,
                     minHeight: '100vh',
                     display: 'flex',
                     flexDirection: 'column',
@@ -103,14 +129,14 @@ const TextToPlugin: React.FC = () => {
                 </Typography>
                 <Box sx={{ flexGrow: 0.5 }} />
                 <TextField
-                    label="Input your text (500-5000 characters)"
+                    label="Input your text (More is better)"
                     variant="filled"
                     multiline
                     minRows={4}
                     maxRows={6}
                     sx={{
                         width: '70%',
-                        backgroundColor: 'white',
+                        backgroundColor: '#1f1f1f',
                         borderRadius: 1,
                         '& .MuiOutlinedInput-root': {
                             borderRadius: 1,
@@ -140,7 +166,19 @@ const TextToPlugin: React.FC = () => {
     } else if (view === 'generating') {
         return <GeneratingPlugin />;
     } else if (view === 'result' && result) {
-        return <YourPlugins {...result} />;
+        return <Box
+            sx={{
+                padding: 4,
+                minHeight: '100vh',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: 'black',
+                color: 'white',
+                
+            }}
+        ><YourPlugins plugins={result} /></Box>;
     } else {
         return null;
     }
