@@ -7,17 +7,23 @@ const theme = createTheme({
     },
     background: {
       default: '#000000',
-      paper: '#000000',
     },
     text: {
-      primary: '#ffffff', // Set the primary text color to white
-      secondary: '#cccccc', // Set the secondary text color to light gray
+      primary: '#ffffff',
+      secondary: '#cccccc',
     },
   },
   shape: {
     borderRadius: 8,
   },
+  typography: {
+    h2: {
+      fontSize: '2rem',
+      '@media (min-width:600px)': {
+        fontSize: '3rem',
+      },
+    },
+  },
 });
-
 
 export default theme;

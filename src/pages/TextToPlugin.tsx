@@ -103,7 +103,6 @@ const TextToPlugin: React.FC = () => {
     };
 
     if (view === 'input') {
-
         return (
             <Box
                 sx={{
@@ -135,12 +134,15 @@ const TextToPlugin: React.FC = () => {
                     minRows={4}
                     maxRows={6}
                     sx={{
-                        width: '70%',
+                        width: '90%', // Updated width for mobile devices
+                        maxWidth: '70%', // Set max width for larger screens
                         backgroundColor: '#1f1f1f',
                         borderRadius: 1,
                         '& .MuiOutlinedInput-root': {
                             borderRadius: 1,
-
+                        },
+                        '@media (min-width:600px)': {
+                            width: '70%', // Width for larger screens
                         },
                     }}
                 />
@@ -154,34 +156,37 @@ const TextToPlugin: React.FC = () => {
                         '&:hover': {
                             backgroundColor: colors[(colorIndex + 1) % colors.length],
                         },
-                        fontSize: '1.2rem',
+                        fontSize: '1rem', // Updated font size for mobile devices
+                        '@media (min-width:600px)': {
+                            fontSize: '1.2rem', // Font size for larger screens
+                        },
                     }}
                     onClick={handleButtonClick}
                 >
                     Create 🧩
                 </Button>
                 <Box sx={{ flexGrow: 1 }} />
-            </Box>
+            </Box>  
         );
     } else if (view === 'generating') {
-        return <GeneratingPlugin />;
-    } else if (view === 'result' && result) {
-        return <Box
-            sx={{
-                padding: 4,
-                minHeight: '100vh',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'black',
-                color: 'white',
-                
-            }}
-        ><YourPlugins plugins={result} /></Box>;
-    } else {
-        return null;
-    }
+    return <GeneratingPlugin />;
+} else if (view === 'result' && result) {
+    return <Box
+        sx={{
+            padding: 4,
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'black',
+            color: 'white',
+
+        }}
+    ><YourPlugins plugins={result} /></Box>;
+} else {
+    return null;
+}
 };
 
 export default TextToPlugin;
