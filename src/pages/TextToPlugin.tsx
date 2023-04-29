@@ -107,16 +107,15 @@ const TextToPlugin: React.FC = () => {
             <Box
                 sx={{
                     padding: 2,
-                    minHeight: '100vh',
+                    minHeight: '150vh',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    backgroundColor: 'black',
-                    color: 'white',
+                    backgroundColor: 'background.default',
+                    color: 'text.primary',
                 }}
             >
-                <Box sx={{ flexGrow: 1 }} />
                 <Typography variant="h2" align="center">
                     Build{' '}
                     <span style={{ color: colors[colorIndex] }}>your</span>
@@ -126,7 +125,7 @@ const TextToPlugin: React.FC = () => {
                     <br />
                     less than <span style={{ color: colors[colorIndex] }}>2 minutes</span>
                 </Typography>
-                <Box sx={{ flexGrow: 0.5 }} />
+                <Box sx={{ flexGrow: 1 }} />
                 <TextField
                     label="Input your text (More is better)"
                     variant="filled"
@@ -166,27 +165,114 @@ const TextToPlugin: React.FC = () => {
                     Create 🧩
                 </Button>
                 <Box sx={{ flexGrow: 1 }} />
-            </Box>  
+                {/* Waitlist Section */}
+                <Typography variant="subtitle1">
+                    Join our exclusive waitlist to unlock AI-powered plugin creation
+                </Typography>
+                <TextField
+                    label="Your email"
+                    variant="filled"
+                    sx={{
+                        marginTop: 1,
+                        backgroundColor: 'background.paper',
+                        borderRadius: 1,
+                        '& .MuiOutlinedInput-root': {
+                            borderRadius: 1,
+                        },
+                    }}
+                />
+                <Button
+                    variant="contained"
+                    sx={{
+                        marginTop: 1,
+                        borderRadius: 1,
+                        backgroundColor: 'primary.main',
+                        color: 'white',
+                        '&:hover': {
+                            backgroundColor: colors[(colorIndex + 1)]
+                        }
+                    }}
+                    onClick={handleButtonClick}>
+                    Join the waitlist
+                </Button>
+                {/* End of Waitlist Section */}
+                <Box sx={{ flexGrow: 1 }} />
+                {/* How It Works Section */}
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        width: '100%',
+                        maxWidth: 800,
+                        marginBottom: 4,
+                    }}
+                >
+                    {[
+                        {
+                            step: 1,
+                            title: 'Put Your Text',
+                            icon: '📝',
+                            description: 'Input your text and let the magic begin',
+                        },
+                        {
+                            step: 2,
+                            title: 'AI Builds the Plugin',
+                            icon: '🧠',
+                            description: 'AI works its magic in just a few seconds',
+                        },
+                        {
+                            step: 3,
+                            title: 'Get the URL',
+                            icon: '🔗',
+                            description: 'Instantly receive the plugin URL for ChatGPT',
+                        },
+                        {
+                            step: 4,
+                            title: 'Edit the Plugin',
+                            icon: '✏️',
+                            description: 'Alpha feature: Customize your plugin as desired',
+                        },
+                    ].map(({ step, title, icon, description }) => (
+                        <Box
+                            key={step}
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <Typography variant="h3">{step}</Typography>
+                            <Typography variant="subtitle1">{title}</Typography>
+                            <Typography>{icon}</Typography>
+                            <Typography variant="body2">{description}</Typography>
+                        </Box>
+                    ))}
+                </Box>
+                {/* End of How It Works Section */}
+                <Box sx={{ flexGrow: 1 }} />
+            </Box >
         );
     } else if (view === 'generating') {
-    return <GeneratingPlugin />;
-} else if (view === 'result' && result) {
-    return <Box
-        sx={{
-            padding: 4,
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'black',
-            color: 'white',
+        return <GeneratingPlugin />;
+    } else if (view === 'result' && result) {
+        return <Box
+            sx={{
+                padding: 4,
+                minHeight: '100vh',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: 'black',
+                color: 'white',
 
-        }}
-    ><YourPlugins plugins={result} /></Box>;
-} else {
-    return null;
-}
+            }}
+        ><YourPlugins plugins={result} /></Box>;
+    } else {
+        return null;
+    }
 };
 
 export default TextToPlugin;
