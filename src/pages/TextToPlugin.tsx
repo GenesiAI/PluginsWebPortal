@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { Box, Button, TextField, Typography } from '@mui/material';
+// import { v4 as uuidv4 } from 'uuid';
+import { Button, Typography } from '@mui/material';
 import { Plugin } from '../models/Plugin';
 import GeneratingPlugin from './GeneratingPlugin';
 import YourPlugins from './YourPlugins';
@@ -58,7 +58,7 @@ const TextToPlugin: React.FC = () => {
   }, []);
 
   const handleButtonClick = async () => {
-    const userId = uuidv4();
+    // const userId = uuidv4();
     setView('generating');
 
     // const response = await fetch(`https://aiplugin-api.azurewebsites.net/Plugin/${userId}`, {
