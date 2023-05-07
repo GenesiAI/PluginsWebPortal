@@ -3,8 +3,18 @@ import { Plugin } from '../models/Plugin';
 import { List, ListItem, ListItemText, ListItemSecondaryAction, ListItemAvatar, Avatar, IconButton, Typography, Box } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const YourPlugins: React.FC<{}> = () => {
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (!localStorage.getItem('X')) {
+      // console.log('got it')
+      navigate("/")
+    }
+  });
+  // console.log('all good, x is' + localStorage.getItem('X'))
 
   const plugins: Plugin[] = [
     {
@@ -29,7 +39,7 @@ const YourPlugins: React.FC<{}> = () => {
       userId: 'user1',
     },
   ];
- 
+
 
   return (
     <Box
