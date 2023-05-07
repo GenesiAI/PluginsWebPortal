@@ -4,7 +4,33 @@ import { List, ListItem, ListItemText, ListItemSecondaryAction, ListItemAvatar, 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-const YourPlugins: React.FC<{ plugins: Plugin[] }> = (props) => {
+const YourPlugins: React.FC<{}> = () => {
+
+  const plugins: Plugin[] = [
+    {
+      aiPlugin: 'Plugin 1',
+      name: 'Awesome Plugin 1',
+      url: 'https://www.example.com/plugin1',
+      iconUrl: 'https://thumbs.dreamstime.com/t/hi-tech-circuit-style-round-yggdrasil-tree-cyberpunk-futuristic-design-progress-symbol-styled-frame-elements-borders-blue-deep-115165758.jpg',
+      userId: 'user1',
+    },
+    {
+      aiPlugin: 'Plugin 2',
+      name: 'Awesome Plugin 2',
+      url: 'https://www.example.com/plugin2',
+      iconUrl: 'https://cyberpunk2077.wiki.fextralife.com/file/Cyberpunk-2077/arasaka-corpo-logo-cyberpunk-2077-wiki-guide.png',
+      userId: 'user1',
+    },
+    {
+      aiPlugin: 'Plugin 3',
+      name: 'Awesome Plugin 3',
+      url: 'https://www.example.com/plugin3',
+      iconUrl: 'https://img.rankedboost.com/wp-content/plugins/cyberpunk-2077/assets/icons/Intelligence.png',
+      userId: 'user1',
+    },
+  ];
+ 
+
   return (
     <Box
       sx={{
@@ -33,7 +59,7 @@ const YourPlugins: React.FC<{ plugins: Plugin[] }> = (props) => {
         >
           Your Plugins
         </Typography>
-        {props.plugins.map((plugin) => (
+        {plugins.map((plugin) => (
           <ListItem
             key={plugin.aiPlugin}
             sx={{

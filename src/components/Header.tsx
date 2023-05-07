@@ -59,6 +59,9 @@ const Header: React.FC = () => {
           <StyledLink to="/hire-dev">
             <Button color="primary">Hire a dev</Button>
           </StyledLink> */}
+          <StyledLink to="/login">
+            <Button color="primary">Login</Button>
+          </StyledLink>
           <StyledLink to="/contacts">
             <Button color="primary">Contacts</Button>
           </StyledLink>

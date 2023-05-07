@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Button, Typography } from '@mui/material';
 import { Plugin } from '../models/Plugin';
 import GeneratingPlugin from './GeneratingPlugin';
-import YourPlugins from './YourPlugins';
 
 const colors = [
   '#df66da',
@@ -191,12 +190,12 @@ const TextToPlugin: React.FC = () => {
     );
   } else if (view === 'generating') {
     return <GeneratingPlugin />;
-  } else if (view === 'result' && result) {
-    return (
-      <div className="min-h-screen flex flex-col justify-center items-center px-4 bg-black text-white">
-        <YourPlugins plugins={result} />
-      </div>
-    );
+  // } else if (view === 'result' && result) {
+  //   return (
+  //     <div className="min-h-screen flex flex-col justify-center items-center px-4 bg-black text-white">
+  //       <YourPlugins plugins={result} />
+  //     </div>
+  //   );
   } else {
     return null;
   }
