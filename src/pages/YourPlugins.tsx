@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Plugin } from '../models/Plugin';
-import { List, ListItem, ListItemText, ListItemSecondaryAction, ListItemAvatar, Avatar, IconButton, Typography, Box } from '@mui/material';
+import { List, ListItem, ListItemText, ListItemSecondaryAction, ListItemAvatar, Avatar, IconButton, Typography, Box, Tooltip } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +8,13 @@ import { useNavigate } from 'react-router-dom';
 const YourPlugins: React.FC<{}> = () => {
   const navigate = useNavigate();
 
+  const [tooltipOpenIndex, setTooltipOpenIndex] = useState(-1);
+
+  const handleCopyClick = async (url: string, index: number) => {
+    await navigator.clipboard.writeText(url);
+    setTooltipOpenIndex(index);
+    setTimeout(() => setTooltipOpenIndex(-1), 2000);
+  };
   React.useEffect(() => {
     if (!localStorage.getItem('X')) {
       navigate("/")
@@ -38,23 +45,16 @@ const YourPlugins: React.FC<{}> = () => {
     },
   ];
 
-
   return (
-    <Box
-      sx={{
-        width: '100%',
-        maxWidth: 800,
-        backgroundColor: 'background.default',
-        margin: 'auto',
-        marginTop: (theme) => theme.spacing(4),
-      }}
-    >
-
+    <div className="min-h-screen flex flex-col items-grow items-center px-4 bg-black text-white">
       <List
         sx={{
-          backgroundColor: '#111111', // Updated backgroundColor
+
+          // backgroundColor: '#111111', // Updated backgroundColor
           borderRadius: 0.5,
-          padding: 1
+          padding: 1,
+          width: '100%',
+          maxWidth: 800,
         }}>
         <Typography
           sx={{
@@ -67,8 +67,9 @@ const YourPlugins: React.FC<{}> = () => {
         >
           Your Plugins
         </Typography>
-        {plugins.map((plugin) => (
+        {plugins.map((plugin, index) => (
           <ListItem
+            onClick={() => navigate(`/plugin/${plugin.aiPlugin}`)}
             key={plugin.aiPlugin}
             sx={{
               backgroundColor: '#1f1f1f', // Updated backgroundColor
@@ -82,20 +83,31 @@ const YourPlugins: React.FC<{}> = () => {
             </ListItemAvatar>
             <ListItemText primary={plugin.name} secondary={plugin.url} sx={{ color: 'text.primary', secondary: 'text.secondary' }} />
             <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="copy" >
-                <FontAwesomeIcon icon={faCopy} color='white' />
-              </IconButton>
-              <IconButton edge="end" aria-label="modify">
+              <Tooltip
+                open={tooltipOpenIndex === index}
+                title="URL copied to clipboard"
+                arrow
+                placement="top">
+                <IconButton
+                  onClick={() => handleCopyClick(plugin.url, index)}
+                  edge="end"
+                  aria-label="copy">
+                  <FontAwesomeIcon icon={faCopy} color="white" />
+                </IconButton>
+              </Tooltip>
+              <IconButton
+                onClick={() => navigate(`/plugin/${plugin.aiPlugin}`)}
+                edge="end" aria-label="modify">
                 <FontAwesomeIcon icon={faPencilAlt} color='white' />
               </IconButton>
-              <IconButton edge="end" aria-label="delete">
+              {/* <IconButton disabled edge="end" aria-label="delete">
                 <FontAwesomeIcon icon={faTrashAlt} color='white' />
-              </IconButton>
+              </IconButton> */}
             </ListItemSecondaryAction>
           </ListItem>
         ))}
       </List>
-    </Box>
+    </div>
   );
 };
 
