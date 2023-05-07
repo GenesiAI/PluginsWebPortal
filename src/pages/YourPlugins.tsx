@@ -10,11 +10,9 @@ const YourPlugins: React.FC<{}> = () => {
 
   React.useEffect(() => {
     if (!localStorage.getItem('X')) {
-      // console.log('got it')
       navigate("/")
     }
   });
-  // console.log('all good, x is' + localStorage.getItem('X'))
 
   const plugins: Plugin[] = [
     {

@@ -59,9 +59,7 @@ const Header: React.FC = () => {
           <StyledLink to="/hire-dev">
             <Button color="primary">Hire a dev</Button>
           </StyledLink> */}
-          <StyledLink to="/login">
-            <Button color="primary">Login</Button>
-          </StyledLink>
+          {GetLoggedHeaders()}
           <StyledLink to="/contacts">
             <Button color="primary">Contacts</Button>
           </StyledLink>
@@ -70,5 +68,28 @@ const Header: React.FC = () => {
     </StyledAppBar>
   );
 };
+
+const GetLoggedHeaders = () => {
+  const loggedIn = localStorage.getItem('X') === 'loggedIn';
+  if (loggedIn) {
+    return (
+      <>
+        <StyledLink to="/your-plugins">
+          <Button color="primary">Your Plugins</Button>
+        </StyledLink>
+        <StyledLink to="/logout">
+          <Button color="primary">Logout</Button>
+        </StyledLink>
+      </>
+    );
+  }
+  else {
+    return (
+      <StyledLink to="/login">
+        <Button color="primary">Login</Button>
+      </StyledLink>
+    );
+  }
+}
 
 export default Header;

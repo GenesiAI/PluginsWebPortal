@@ -8,6 +8,7 @@ import ContactsPage from './pages/Contacts';
 import Header from './components/Header';
 import LoginPage from './pages/Account/Login';
 import YourPlugins from './pages/YourPlugins';
+import LogOut from './pages/Account/LogOut';
 
 const AppRouter: React.FC = () => {
     return (
@@ -17,6 +18,7 @@ const AppRouter: React.FC = () => {
                 {/* <Route path="/" element={<HomePage/>} /> */}
                 <Route path="/" element={<HomePage2 />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/logout" element={<LogOut />} />
                 {/* <Route path="/text-to-plugin" element={<TextToPlugin />} /> */}
                 {/* <Route path="/builder" element={<Plu />} /> */}
                 {/* <Route path="/plugins" element={<PluginsPage/>} />
