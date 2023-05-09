@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 // import { v4 as uuidv4 } from 'uuid';
 import { Button, Typography } from '@mui/material';
-import { Plugin } from '../models/Plugin';
 import GeneratingPlugin from './GeneratingPlugin';
 
 const colors = [
@@ -73,27 +72,27 @@ const TextToPlugin: React.FC = () => {
     // console.log(pluginResult);
 
     const mockedPlugins: Plugin[] = [
-      {
-        aiPlugin: 'Plugin 1',
-        name: 'Awesome Plugin 1',
-        url: 'https://www.example.com/plugin1',
-        iconUrl: 'https://thumbs.dreamstime.com/t/hi-tech-circuit-style-round-yggdrasil-tree-cyberpunk-futuristic-design-progress-symbol-styled-frame-elements-borders-blue-deep-115165758.jpg',
-        userId: 'user1',
-      },
-      {
-        aiPlugin: 'Plugin 2',
-        name: 'Awesome Plugin 2',
-        url: 'https://www.example.com/plugin2',
-        iconUrl: 'https://cyberpunk2077.wiki.fextralife.com/file/Cyberpunk-2077/arasaka-corpo-logo-cyberpunk-2077-wiki-guide.png',
-        userId: 'user1',
-      },
-      {
-        aiPlugin: 'Plugin 3',
-        name: 'Awesome Plugin 3',
-        url: 'https://www.example.com/plugin3',
-        iconUrl: 'https://img.rankedboost.com/wp-content/plugins/cyberpunk-2077/assets/icons/Intelligence.png',
-        userId: 'user1',
-      },
+    //   {
+    //     aiPlugin: 'Plugin 1',
+    //     name: 'Awesome Plugin 1',
+    //     url: 'https://www.example.com/plugin1',
+    //     iconUrl: 'https://thumbs.dreamstime.com/t/hi-tech-circuit-style-round-yggdrasil-tree-cyberpunk-futuristic-design-progress-symbol-styled-frame-elements-borders-blue-deep-115165758.jpg',
+    //     userId: 'user1',
+    //   },
+    //   {
+    //     aiPlugin: 'Plugin 2',
+    //     name: 'Awesome Plugin 2',
+    //     url: 'https://www.example.com/plugin2',
+    //     iconUrl: 'https://cyberpunk2077.wiki.fextralife.com/file/Cyberpunk-2077/arasaka-corpo-logo-cyberpunk-2077-wiki-guide.png',
+    //     userId: 'user1',
+    //   },
+    //   {
+    //     aiPlugin: 'Plugin 3',
+    //     name: 'Awesome Plugin 3',
+    //     url: 'https://www.example.com/plugin3',
+    //     iconUrl: 'https://img.rankedboost.com/wp-content/plugins/cyberpunk-2077/assets/icons/Intelligence.png',
+    //     userId: 'user1',
+    //   },
     ];
 
     setResult(mockedPlugins);

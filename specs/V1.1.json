@@ -1,0 +1,2229 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "AiPlugin API",
+    "version": "1.1"
+  },
+  "paths": {
+    "/Plugin/{userId}/{pluginId}/.well-known/ai-plugin.json": {
+      "get": {
+        "tags": [
+          "Plugin"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pluginId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AiPluginManifest"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AiPluginManifest"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AiPluginManifest"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Plugin/{userId}/{pluginId}/openapi.json": {
+      "get": {
+        "tags": [
+          "Plugin"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pluginId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenApiDocument"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenApiDocument"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenApiDocument"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Plugin/{userId}/plugin": {
+      "post": {
+        "tags": [
+          "Plugin"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PluginCreateRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PluginCreateRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PluginCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plugin"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plugin"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plugin"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Plugin/{userId}/{pluginId}/section": {
+      "post": {
+        "tags": [
+          "Plugin"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pluginId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SectionCreateRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SectionCreateRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SectionCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Section"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Section"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Section"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Plugin/{userId}/plugins": {
+      "get": {
+        "tags": [
+          "Plugin"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Plugin"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Plugin"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Plugin"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Plugin/{userId}/{pluginId}": {
+      "get": {
+        "tags": [
+          "Plugin"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pluginId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plugin"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plugin"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plugin"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Plugin"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pluginId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PluginUpdateRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PluginUpdateRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PluginUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Plugin"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pluginId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Plugin/{userId}/{pluginId}/{sectionId}": {
+      "get": {
+        "tags": [
+          "Plugin"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pluginId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "sectionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Section"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Section"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Section"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Plugin"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pluginId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "sectionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SectionUpdateRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SectionUpdateRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SectionUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Plugin"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pluginId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "sectionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AiPluginManifest": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "nullable": true
+          },
+          "name_for_human": {
+            "type": "string",
+            "nullable": true
+          },
+          "name_for_model": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_for_human": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_for_model": {
+            "type": "string",
+            "nullable": true
+          },
+          "auth": {
+            "$ref": "#/components/schemas/Auth"
+          },
+          "api": {
+            "$ref": "#/components/schemas/Api"
+          },
+          "logo_url": {
+            "type": "string",
+            "nullable": true
+          },
+          "contact_email": {
+            "type": "string",
+            "nullable": true
+          },
+          "legal_info_url": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AnyType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Api": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "is_user_authenticated": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Auth": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "IOpenApiAny": {
+        "type": "object",
+        "properties": {
+          "anyType": {
+            "$ref": "#/components/schemas/AnyType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IOpenApiElement": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "IOpenApiExtension": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "OpenApiCallback": {
+        "type": "object",
+        "properties": {
+          "pathItems": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiPathItem"
+            },
+            "nullable": true
+          },
+          "unresolvedReference": {
+            "type": "boolean"
+          },
+          "reference": {
+            "$ref": "#/components/schemas/OpenApiReference"
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiComponents": {
+        "type": "object",
+        "properties": {
+          "schemas": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiSchema"
+            },
+            "nullable": true
+          },
+          "responses": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiResponse"
+            },
+            "nullable": true
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiParameter"
+            },
+            "nullable": true
+          },
+          "examples": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiExample"
+            },
+            "nullable": true
+          },
+          "requestBodies": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiRequestBody"
+            },
+            "nullable": true
+          },
+          "headers": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiHeader"
+            },
+            "nullable": true
+          },
+          "securitySchemes": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiSecurityScheme"
+            },
+            "nullable": true
+          },
+          "links": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiLink"
+            },
+            "nullable": true
+          },
+          "callbacks": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiCallback"
+            },
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiContact": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiDiscriminator": {
+        "type": "object",
+        "properties": {
+          "propertyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "mapping": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiDocument": {
+        "type": "object",
+        "properties": {
+          "workspace": {
+            "$ref": "#/components/schemas/OpenApiWorkspace"
+          },
+          "info": {
+            "$ref": "#/components/schemas/OpenApiInfo"
+          },
+          "servers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OpenApiServer"
+            },
+            "nullable": true
+          },
+          "paths": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiPathItem"
+            },
+            "nullable": true
+          },
+          "components": {
+            "$ref": "#/components/schemas/OpenApiComponents"
+          },
+          "securityRequirements": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OpenApiTag"
+            },
+            "nullable": true
+          },
+          "externalDocs": {
+            "$ref": "#/components/schemas/OpenApiExternalDocs"
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          },
+          "hashCode": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiEncoding": {
+        "type": "object",
+        "properties": {
+          "contentType": {
+            "type": "string",
+            "nullable": true
+          },
+          "headers": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiHeader"
+            },
+            "nullable": true
+          },
+          "style": {
+            "$ref": "#/components/schemas/ParameterStyle"
+          },
+          "explode": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "allowReserved": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiExample": {
+        "type": "object",
+        "properties": {
+          "summary": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "$ref": "#/components/schemas/IOpenApiAny"
+          },
+          "externalValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          },
+          "reference": {
+            "$ref": "#/components/schemas/OpenApiReference"
+          },
+          "unresolvedReference": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiExternalDocs": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiHeader": {
+        "type": "object",
+        "properties": {
+          "unresolvedReference": {
+            "type": "boolean"
+          },
+          "reference": {
+            "$ref": "#/components/schemas/OpenApiReference"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "deprecated": {
+            "type": "boolean"
+          },
+          "allowEmptyValue": {
+            "type": "boolean"
+          },
+          "style": {
+            "$ref": "#/components/schemas/ParameterStyle"
+          },
+          "explode": {
+            "type": "boolean"
+          },
+          "allowReserved": {
+            "type": "boolean"
+          },
+          "schema": {
+            "$ref": "#/components/schemas/OpenApiSchema"
+          },
+          "example": {
+            "$ref": "#/components/schemas/IOpenApiAny"
+          },
+          "examples": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiExample"
+            },
+            "nullable": true
+          },
+          "content": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiMediaType"
+            },
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiInfo": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "version": {
+            "type": "string",
+            "nullable": true
+          },
+          "termsOfService": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "contact": {
+            "$ref": "#/components/schemas/OpenApiContact"
+          },
+          "license": {
+            "$ref": "#/components/schemas/OpenApiLicense"
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiLicense": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiLink": {
+        "type": "object",
+        "properties": {
+          "operationRef": {
+            "type": "string",
+            "nullable": true
+          },
+          "operationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/RuntimeExpressionAnyWrapper"
+            },
+            "nullable": true
+          },
+          "requestBody": {
+            "$ref": "#/components/schemas/RuntimeExpressionAnyWrapper"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "server": {
+            "$ref": "#/components/schemas/OpenApiServer"
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          },
+          "unresolvedReference": {
+            "type": "boolean"
+          },
+          "reference": {
+            "$ref": "#/components/schemas/OpenApiReference"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiMediaType": {
+        "type": "object",
+        "properties": {
+          "schema": {
+            "$ref": "#/components/schemas/OpenApiSchema"
+          },
+          "example": {
+            "$ref": "#/components/schemas/IOpenApiAny"
+          },
+          "examples": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiExample"
+            },
+            "nullable": true
+          },
+          "encoding": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiEncoding"
+            },
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiOAuthFlow": {
+        "type": "object",
+        "properties": {
+          "authorizationUrl": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "tokenUrl": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "refreshUrl": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "scopes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiOAuthFlows": {
+        "type": "object",
+        "properties": {
+          "implicit": {
+            "$ref": "#/components/schemas/OpenApiOAuthFlow"
+          },
+          "password": {
+            "$ref": "#/components/schemas/OpenApiOAuthFlow"
+          },
+          "clientCredentials": {
+            "$ref": "#/components/schemas/OpenApiOAuthFlow"
+          },
+          "authorizationCode": {
+            "$ref": "#/components/schemas/OpenApiOAuthFlow"
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiOperation": {
+        "type": "object",
+        "properties": {
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OpenApiTag"
+            },
+            "nullable": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalDocs": {
+            "$ref": "#/components/schemas/OpenApiExternalDocs"
+          },
+          "operationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OpenApiParameter"
+            },
+            "nullable": true
+          },
+          "requestBody": {
+            "$ref": "#/components/schemas/OpenApiRequestBody"
+          },
+          "responses": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiResponse"
+            },
+            "nullable": true
+          },
+          "callbacks": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiCallback"
+            },
+            "nullable": true
+          },
+          "deprecated": {
+            "type": "boolean"
+          },
+          "security": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "nullable": true
+          },
+          "servers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OpenApiServer"
+            },
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiParameter": {
+        "type": "object",
+        "properties": {
+          "unresolvedReference": {
+            "type": "boolean"
+          },
+          "reference": {
+            "$ref": "#/components/schemas/OpenApiReference"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "in": {
+            "$ref": "#/components/schemas/ParameterLocation"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "deprecated": {
+            "type": "boolean"
+          },
+          "allowEmptyValue": {
+            "type": "boolean"
+          },
+          "style": {
+            "$ref": "#/components/schemas/ParameterStyle"
+          },
+          "explode": {
+            "type": "boolean"
+          },
+          "allowReserved": {
+            "type": "boolean"
+          },
+          "schema": {
+            "$ref": "#/components/schemas/OpenApiSchema"
+          },
+          "examples": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiExample"
+            },
+            "nullable": true
+          },
+          "example": {
+            "$ref": "#/components/schemas/IOpenApiAny"
+          },
+          "content": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiMediaType"
+            },
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiPathItem": {
+        "type": "object",
+        "properties": {
+          "summary": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "operations": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiOperation"
+            },
+            "nullable": true
+          },
+          "servers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OpenApiServer"
+            },
+            "nullable": true
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OpenApiParameter"
+            },
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          },
+          "unresolvedReference": {
+            "type": "boolean"
+          },
+          "reference": {
+            "$ref": "#/components/schemas/OpenApiReference"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiReference": {
+        "type": "object",
+        "properties": {
+          "externalResource": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/ReferenceType"
+          },
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "isExternal": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isLocal": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "hostDocument": {
+            "$ref": "#/components/schemas/OpenApiDocument"
+          },
+          "referenceV3": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "referenceV2": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiRequestBody": {
+        "type": "object",
+        "properties": {
+          "unresolvedReference": {
+            "type": "boolean"
+          },
+          "reference": {
+            "$ref": "#/components/schemas/OpenApiReference"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "content": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiMediaType"
+            },
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiResponse": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "headers": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiHeader"
+            },
+            "nullable": true
+          },
+          "content": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiMediaType"
+            },
+            "nullable": true
+          },
+          "links": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiLink"
+            },
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          },
+          "unresolvedReference": {
+            "type": "boolean"
+          },
+          "reference": {
+            "$ref": "#/components/schemas/OpenApiReference"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiSchema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "format": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "maximum": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "exclusiveMaximum": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "minimum": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "exclusiveMinimum": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "maxLength": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "minLength": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pattern": {
+            "type": "string",
+            "nullable": true
+          },
+          "multipleOf": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "default": {
+            "$ref": "#/components/schemas/IOpenApiAny"
+          },
+          "readOnly": {
+            "type": "boolean"
+          },
+          "writeOnly": {
+            "type": "boolean"
+          },
+          "allOf": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OpenApiSchema"
+            },
+            "nullable": true
+          },
+          "oneOf": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OpenApiSchema"
+            },
+            "nullable": true
+          },
+          "anyOf": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OpenApiSchema"
+            },
+            "nullable": true
+          },
+          "not": {
+            "$ref": "#/components/schemas/OpenApiSchema"
+          },
+          "required": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "items": {
+            "$ref": "#/components/schemas/OpenApiSchema"
+          },
+          "maxItems": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "minItems": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "uniqueItems": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiSchema"
+            },
+            "nullable": true
+          },
+          "maxProperties": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "minProperties": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "additionalPropertiesAllowed": {
+            "type": "boolean"
+          },
+          "additionalProperties": {
+            "$ref": "#/components/schemas/OpenApiSchema"
+          },
+          "discriminator": {
+            "$ref": "#/components/schemas/OpenApiDiscriminator"
+          },
+          "example": {
+            "$ref": "#/components/schemas/IOpenApiAny"
+          },
+          "enum": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IOpenApiAny"
+            },
+            "nullable": true
+          },
+          "nullable": {
+            "type": "boolean"
+          },
+          "externalDocs": {
+            "$ref": "#/components/schemas/OpenApiExternalDocs"
+          },
+          "deprecated": {
+            "type": "boolean"
+          },
+          "xml": {
+            "$ref": "#/components/schemas/OpenApiXml"
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          },
+          "unresolvedReference": {
+            "type": "boolean"
+          },
+          "reference": {
+            "$ref": "#/components/schemas/OpenApiReference"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiSecurityScheme": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/SecuritySchemeType"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "in": {
+            "$ref": "#/components/schemas/ParameterLocation"
+          },
+          "scheme": {
+            "type": "string",
+            "nullable": true
+          },
+          "bearerFormat": {
+            "type": "string",
+            "nullable": true
+          },
+          "flows": {
+            "$ref": "#/components/schemas/OpenApiOAuthFlows"
+          },
+          "openIdConnectUrl": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          },
+          "unresolvedReference": {
+            "type": "boolean"
+          },
+          "reference": {
+            "$ref": "#/components/schemas/OpenApiReference"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiServer": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "variables": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/OpenApiServerVariable"
+            },
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiServerVariable": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "default": {
+            "type": "string",
+            "nullable": true
+          },
+          "enum": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiTag": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalDocs": {
+            "$ref": "#/components/schemas/OpenApiExternalDocs"
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          },
+          "unresolvedReference": {
+            "type": "boolean"
+          },
+          "reference": {
+            "$ref": "#/components/schemas/OpenApiReference"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiWorkspace": {
+        "type": "object",
+        "properties": {
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OpenApiDocument"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "fragments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IOpenApiElement"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "baseUrl": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true,
+            "readOnly": true
+          },
+          "artifacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Stream"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenApiXml": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "namespace": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "prefix": {
+            "type": "string",
+            "nullable": true
+          },
+          "attribute": {
+            "type": "boolean"
+          },
+          "wrapped": {
+            "type": "boolean"
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/IOpenApiExtension"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParameterLocation": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ParameterStyle": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Plugin": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Section"
+            },
+            "nullable": true
+          },
+          "nameForHuman": {
+            "type": "string",
+            "nullable": true
+          },
+          "nameForModel": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionForHuman": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionForModel": {
+            "type": "string",
+            "nullable": true
+          },
+          "logoUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "legalInfoUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PluginCreateRequest": {
+        "type": "object",
+        "properties": {
+          "originalText": {
+            "type": "string",
+            "nullable": true
+          },
+          "nameForHuman": {
+            "type": "string",
+            "nullable": true
+          },
+          "nameForModel": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionForHuman": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionForModel": {
+            "type": "string",
+            "nullable": true
+          },
+          "logoUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "legalInfoUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SectionCreateRequest"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PluginUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "originalText": {
+            "type": "string",
+            "nullable": true
+          },
+          "nameForHuman": {
+            "type": "string",
+            "nullable": true
+          },
+          "nameForModel": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionForHuman": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionForModel": {
+            "type": "string",
+            "nullable": true
+          },
+          "logoUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "legalInfoUrl": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReferenceType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "RuntimeExpression": {
+        "type": "object",
+        "properties": {
+          "expression": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RuntimeExpressionAnyWrapper": {
+        "type": "object",
+        "properties": {
+          "any": {
+            "$ref": "#/components/schemas/IOpenApiAny"
+          },
+          "expression": {
+            "$ref": "#/components/schemas/RuntimeExpression"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Section": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "pluginId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SectionCreateRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SectionUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SecuritySchemeType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Stream": {
+        "type": "object",
+        "properties": {
+          "canRead": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "canWrite": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "canSeek": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "canTimeout": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "length": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "position": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "readTimeout": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "writeTimeout": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
