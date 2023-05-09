@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { Plugin, PluginApi } from '../apis/api';
-import { Configuration } from '../apis/configuration';
 
 const YourPlugins: React.FC<{}> = () => {
   const navigate = useNavigate();
@@ -20,9 +19,8 @@ const YourPlugins: React.FC<{}> = () => {
     if (!localStorage.getItem('X')) {
       navigate("/")
     }
-    const fetchUsers = async () => {
-
-      const pluginApi = new PluginApi(new Configuration({ basePath: "https://aiplugin-api.azurewebsites.net/Plugin/3fa85f64-5717-4562-b3fc-2c963f66afa6" }));
+    const fetchPlugins = async () => {
+      const pluginApi = new PluginApi();
       try {
         const response = await pluginApi.pluginUserIdPluginsGet(mockedUserId); // Replace 'getUsers' with the appropriate method name for your API
         setPlugin(response.data);
@@ -31,7 +29,7 @@ const YourPlugins: React.FC<{}> = () => {
       }
     };
 
-    fetchUsers();
+    fetchPlugins();
   });
 
   // const plugins: Plugin[] = [
