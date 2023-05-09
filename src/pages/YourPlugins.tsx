@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { Plugin, PluginApi } from '../apis/api';
+import plugin from 'tailwindcss';
 
 const YourPlugins: React.FC<{}> = () => {
   const navigate = useNavigate();
@@ -23,13 +24,14 @@ const YourPlugins: React.FC<{}> = () => {
       const pluginApi = new PluginApi();
       try {
         const response = await pluginApi.pluginUserIdPluginsGet(mockedUserId); // Replace 'getUsers' with the appropriate method name for your API
+        // console.log(response.data);
         setPlugin(response.data);
       } catch (error) {
         console.error('Error fetching users:', error);
       }
     };
-
-    fetchPlugins();
+    if (!plugins)
+      fetchPlugins();
   });
 
   // const plugins: Plugin[] = [
