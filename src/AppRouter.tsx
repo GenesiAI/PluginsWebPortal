@@ -9,6 +9,7 @@ import Header from './components/Header';
 import LoginPage from './pages/Account/Login';
 import YourPlugins from './pages/YourPlugins';
 import LogOut from './pages/Account/LogOut';
+import PluginEditor from './pages/PluginEditor';
 
 const AppRouter: React.FC = () => {
     return (
@@ -27,6 +28,7 @@ const AppRouter: React.FC = () => {
                 {/* <Route path="/generating-plugin" element={<GeneratingPlugin />} />*/}
                 <Route path="/your-plugins" element={<YourPlugins />} />
                 <Route path="/contacts" element={<ContactsPage />} />
+                <Route path="/plugin/:guid" element={<PluginEditor />} />
             </Routes>
         </Router>
     );

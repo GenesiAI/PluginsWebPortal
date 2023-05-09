@@ -19,7 +19,7 @@ import type { Configuration } from './configuration';
 import type { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 
-export const BASE_PATH = "https://aiplugin-api.azurewebsites.net/Plugin/3fa85f64-5717-4562-b3fc-2c963f66afa6";
+export const BASE_PATH = "https://aiplugin-api.azurewebsites.net/";
 
 /**
  *
