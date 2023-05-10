@@ -1,186 +1,149 @@
-import React from 'react';
-import { Typography, Button, Grid, Container } from '@mui/material';
-import { Link } from 'react-router-dom';
-import PluginCard from '../components/PluginCard';
-import SocialsBox from '../components/SocialsBox';
-import { makeStyles } from '@mui/styles';
-import { Theme } from '@mui/material/styles';
+import React, { useState } from 'react';
+// import { v4 as uuidv4 } from 'uuid';
+import { Button, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
-const useStyles = makeStyles((theme: Theme) => ({
-  hero: {
-    padding: theme.spacing(8, 0),
-    textAlign: 'center',
-  },
-  sectionTitle: {
-    padding: theme.spacing(4, 0),
-  },
-  button: {
-    margin: theme.spacing(2),
-  },
-  footer:
-  {
-    marginTop: theme.spacing(2),
-  },
-  icon: {
-    margin: theme.spacing(1),
-  },
-}));
-
-
-// You can replace this with data from your data.json file.
-const samplePluginData = [
-  {
-    iconUrl: 'https://via.placeholder.com/50',
-    category: 'Top Plugins',
-    categoryLink: '#',
-    title: 'Sample Plugin',
-    description: 'This is a sample plugin.',
-    link: 'https://example.com',
-  },
-  {
-    iconUrl: 'https://via.placeholder.com/50',
-    category: 'Top Plugins',
-    categoryLink: '#',
-    title: 'Sample Plugin',
-    description: 'This is a sample plugin.',
-    link: 'https://example.com',
-  },
-  {
-    iconUrl: 'https://via.placeholder.com/50',
-    category: 'Top Plugins',
-    categoryLink: '#',
-    title: 'Sample Plugin',
-    description: 'This is a sample plugin.',
-    link: 'https://example.com',
-  },
-  {
-    iconUrl: 'https://via.placeholder.com/50',
-    category: 'Top Plugins',
-    categoryLink: '#',
-    title: 'Sample Plugin',
-    description: 'This is a sample plugin.',
-    link: 'https://example.com',
-  }, {
-    iconUrl: 'https://via.placeholder.com/50',
-    category: 'Top Plugins',
-    categoryLink: '#',
-    title: 'Sample Plugin',
-    description: 'This is a sample plugin.',
-    link: 'https://example.com',
-  },
-  {
-    iconUrl: 'https://via.placeholder.com/50',
-    category: 'Top Plugins',
-    categoryLink: '#',
-    title: 'Sample Plugin',
-    description: 'This is a sample plugin.',
-    link: 'https://example.com',
-  },
-  {
-    iconUrl: 'https://via.placeholder.com/50',
-    category: 'Top Plugins',
-    categoryLink: '#',
-    title: 'Sample Plugin',
-    description: 'This is a sample plugin.',
-    link: 'https://example.com',
-  },
-  {
-    iconUrl: 'https://via.placeholder.com/50',
-    category: 'Top Plugins',
-    categoryLink: '#',
-    title: 'Sample Plugin',
-    description: 'This is a sample plugin.',
-    link: 'https://example.com',
-  },
-  // Add more plugin objects here.
+const colors = [
+  '#df66da',
+  '#d773ec',
+  '#cf81fe',
+  '#c48fff',
+  '#b99ef0',
+  '#aeade1',
+  '#a3bcd2',
+  '#98cbc3',
+  '#8ddab4',
+  '#82e9a5',
+  '#77f896',
+  '#6cff87',
+  '#62f678',
+  '#58ed69',
+  '#67ea7a',
+  '#76e78b',
+  '#85e49c',
+  '#94e1ad',
+  '#a3debe',
+  '#b2dbcf',
+  '#c1d8e0',
+  '#d0d5f1',
+  '#dfcffc',
+  '#eec8fd',
+  '#eebaef',
+  '#eeacdf',
+  '#ee9ece',
+  '#ee90bd',
+  '#ee82ac',
+  '#ee749b',
+  '#ee668a',
+  '#f73da4',
+  '#ef4bb6',
+  '#e758c8',
 ];
 
-const HomePage: React.FC = () => {
-  const classes = useStyles();
-  const categories = ['top', 'new', 'featured'];
+const Home: React.FC = () => {
+  const [colorIndex, setColorIndex] = useState(0);
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setColorIndex((prevIndex) => (prevIndex + 1) % colors.length);
+    }, 150);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  const GoToLogin = async () => {
+    navigate('/login');
+  };
+
 
   return (
-    <Container>
-      <div className={classes.hero}>
-        <Typography variant="h3">Welcome to AI Plugin</Typography>
-        <Typography variant="subtitle1">
-          Discover, create and enhance AI chatbot plugins
+    <div className="min-h-screen flex flex-col justify-center items-center px-4 bg-black text-white">
+      <div className='m-8'>
+        <Typography variant="h2" align="center">
+          Build{' '}
+          <span style={{ color: colors[colorIndex] }}>your</span>
+          <br />
+          ChatGPT{' '}
+          <span style={{ color: colors[colorIndex] }}>plugin in</span>
+          <br />
+          less than <span style={{ color: colors[colorIndex] }}>2 minutes</span>
         </Typography>
-        <Button
-          component={Link}
-          to="/plugins"
-          variant="contained"
-          color="primary"
-          className={classes.button}
-        >
-          Explore Plugins
-        </Button>
       </div>
 
-      {categories.map((category) => (
-        <div key={category}>
-          <Typography variant="h4" align="center" className={classes.sectionTitle}>
-            {category.charAt(0).toUpperCase() + category.slice(1)} Plugins
-          </Typography>
-          <Grid container spacing={4}>
-            {samplePluginData.map((plugin) => (
-              <Grid item xs={12} sm={6} md={4} key={plugin.title}>
-                <PluginCard plugin={plugin} />
-              </Grid>
-            ))}
-          </Grid>
-          <div style={{ textAlign: 'center' }}>
-            <Button component={Link} to="/plugins" className={classes.button}>
-              View more {category} plugins
-            </Button>
+      {/* Waitlist Section */}
+      {/* <div className="m-6">
+        <h3 className="text-xl mb-2">Join our waitlist</h3>
+        <input
+          className="block w-full md:w-1/2 bg-gray-200 text-black p-2 rounded mb-2"
+          type="email"
+          placeholder="Your email"
+        />
+        <button
+          className={`py-2 px-6 rounded bg-${colors[colorIndex].replace('#', '')} hover:bg-${colors[(colorIndex + 1) % colors.length].replace('#', '')} text-white`}
+          onClick={handleButtonClick}
+        >
+          Join the waitlist
+        </button>
+      </div> */}
+      {/* End of Waitlist Section */}
+
+      <Button
+        variant="contained"
+        sx={{
+          backgroundColor: colors[colorIndex],
+          color: 'white',
+          '&:hover': {
+            backgroundColor: colors[(colorIndex + 1) % colors.length],
+          },
+        }}
+        onClick={GoToLogin}
+      >
+        START TO CREATE 🧩
+      </Button>
+      {/* How It Works Section */}
+      <div className="m-4 grid grid-cols-1 md:grid-cols-4 gap-4 max-w-7xl mb-8">
+        {[
+          {
+            step: 1,
+            title: 'Put Your Text',
+            icon: '📝',
+            description: 'Input your text and let the magic begin',
+          },
+          {
+            step: 2,
+            title: 'AI Builds the Plugin',
+            icon: '🧠',
+            description: 'AI works its magic in just a few seconds',
+          },
+          {
+            step: 3,
+            title: 'Get the URL',
+            icon: '🔗',
+            description: 'Instantly receive the plugin URL for ChatGPT',
+          },
+          {
+            step: 4,
+            title: 'Edit the Plugin',
+            icon: '✏️',
+            description: 'Alpha feature: Customize yourplugin as desired',
+          },
+        ].map(({ step, title, icon, description }) => (
+          <div key={step} className="m-6 flex flex-col items-center">
+            <h3 className="text-3xl mb-2">{step}</h3>
+            <h4 className="text-xl mb-2">{title}</h4>
+            <div className="text-2xl mb-2">{icon}</div>
+            <h6 className="text-sm text-gray-300 text-center">{description}</h6>
           </div>
-        </div>
-      ))}
-
-      <div className={classes.hero}>
-        <Typography variant="h4">Build Your Own Plugin</Typography>
-        <Typography variant="subtitle1">
-          Get started with our comprehensive documentation and create your custom AI chatbot plugins
-        </Typography>
-        <Button
-          component={Link}
-          to="/build-plugin"
-          variant="contained"
-          color="primary"
-          className={classes.button}
-        >
-          Learn to build plugins
-        </Button> or
-        <Button
-          component={Link}
-          to="/build-plugin"
-          variant="contained"
-          color="primary"
-          className={classes.button}
-        >
-          Hire a developer
-        </Button>
+        ))}
       </div>
-
-      <div className={classes.hero}>
-        <Typography variant="h4">Get in Touch</Typography>
-        <Typography variant="subtitle1">
-          At AI Plugin, we are passionate about creating a community-driven platform for AI-powered chatbot plugins. We appreciate your thoughts, feedback, and innovative ideas to help us grow and improve. Whether you have a plugin suggestion, need assistance, want to collaborate as a developer, or have any other inquiries, feel free to reach out. Together, let's make AI Plugin the go-to destination
-        </Typography>
-        <Button
-          component={Link}
-          to="/contacts"
-          variant="contained"
-          color="primary"
-          className={classes.button}
-        >
-          Contact Us
-        </Button>
-
-        <SocialsBox/>
-      </div>
-    </Container>
+      {/* End of How It Works Section */}
+    </div>
   );
+  // <YourPlugins plugins={result} />
+
 };
 
-export default HomePage;
+export default Home;

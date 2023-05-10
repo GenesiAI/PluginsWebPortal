@@ -1,9 +1,9 @@
 import React from 'react';
 import ContactForm from '../components/ContactForm';
 import { Box, Container, Typography } from '@mui/material';
-import SocialsBox from '../components/SocialsBox';
 import { makeStyles } from '@mui/styles';
 import { Theme } from '@mui/material/styles';
+import SocialsBox from '../components/SocialsBox';
 
 const useStyles = makeStyles((theme: Theme) => ({
   header: {
