@@ -1,0 +1,2 @@
+# Template
+I am using react 17.0.2, tailwindcss 3.3.2, mui 5.11.16, typescript 4.9.5, font-awesome 4.7.0 and axios 1.4.0. I use MUI themes, customize Mui components when necessary or use a .css. The apis are generated using openAPI generator for axios
