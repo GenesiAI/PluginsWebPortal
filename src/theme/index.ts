@@ -6,11 +6,11 @@ const theme = createTheme({
       main: '#FF8800',
     },
     background: {
-      default: '#000000',
+      default: '#ffffff',
     },
     text: {
-      primary: '#ffffff',
-      secondary: '#cccccc',
+      primary: '#000000',
+      secondary: '#111111',
     },
   },
   shape: {
