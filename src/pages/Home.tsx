@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { Button, Typography } from '@mui/material';
+import {
+  Button,
+  Typography,
+  Box,
+  Container,
+  Grid,
+  Paper,
+  useTheme,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const colors = [
@@ -42,6 +50,7 @@ const colors = [
 const Home: React.FC = () => {
   const [colorIndex, setColorIndex] = useState(0);
   const navigate = useNavigate();
+  const theme = useTheme();
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -57,69 +66,78 @@ const Home: React.FC = () => {
     navigate('/login');
   };
 
+  const steps = [
+    {
+      step: 1,
+      title: 'Enter Your Data',
+      icon: '📝',
+      description:
+        'Provide the necessary data to create your custom ChatGPT plugin.',
+    },
+    {
+      step: 2,
+      title: 'Edit the Plugin',
+      icon: '✏️',
+      description:
+        'With our intuitive interface, customize your plugin to meet your unique requirements.',
+    },
+    {
+      step: 3,
+      title: 'Get the URL',
+      icon: '🔗',
+      description:
+        'Receive the generated URL for your tailored ChatGPT plugin.',
+    },
+    {
+      step: 4,
+      title: 'Paste the URL',
+      icon: '📎',
+      description:
+        'Simply paste the URL into ChatGPT and watch your custom plugin come to life.',
+    },
+  ];
+
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center px-4">
-      <div className='m-8'>
-        <Typography variant="h2" align="center">
-          Build{' '}
-          <span style={{ color: colors[colorIndex] }}>your</span>
-          <br />
-          ChatGPT{' '}
-          <span style={{ color: colors[colorIndex] }}>plugin in</span>
-          <br />
-          less than <span style={{ color: colors[colorIndex] }}>2 minutes</span>
+    <>
+      <Box margin={6}>
+        <Typography variant="h2" align="center" gutterBottom>
+          Build your ChatGPT plugin in less than{' '}
+          <span style={{ color: colors[colorIndex] }}>2 minutes</span>
         </Typography>
-      </div>
-      <Button
-        variant="contained"
-        sx={{
-          backgroundColor: colors[colorIndex],
-          color: 'white',
-          '&:hover': {
-            backgroundColor: colors[(colorIndex + 1) % colors.length],
-          },
-        }}
-        onClick={GoToLogin}
-      >
-        START TO CREATE 🧩
-      </Button>
-      <div className="m-4 grid grid-cols-1 md:grid-cols-4 gap-4 max-w-7xl mb-8">
-        {[
-          {
-            step: 1,
-            title: 'Put Your Text',
-            icon: '📝',
-            description: 'Input your text and let the magic begin',
-          },
-          {
-            step: 2,
-            title: 'AI Builds the Plugin',
-            icon: '🧠',
-            description: 'AI works its magic in just a few seconds',
-          },
-          {
-            step: 3,
-            title: 'Get the URL',
-            icon: '🔗',
-            description: 'Instantly receive the plugin URL for ChatGPT',
-          },
-          {
-            step: 4,
-            title: 'Edit the Plugin',
-            icon: '✏️',
-            description: 'Alpha feature: Customize yourplugin as desired',
-          },
-        ].map(({ step, title, icon, description }) => (
-          <div key={step} className="m-6 flex flex-col items-center">
-            <h3 className="text-3xl mb-2">{step}</h3>
-            <h4 className="text-xl mb-2">{title}</h4>
-            <div className="text-2xl mb-2">{icon}</div>
-            <h6 className="text-sm text-gray-300 text-center">{description}</h6>
-          </div>
+      </Box>
+      <Box my={4} textAlign="center">
+        <Button
+          variant="contained"
+          sx={{
+            backgroundColor: colors[colorIndex],
+            color: 'white',
+            '&:hover': {
+              backgroundColor: colors[(colorIndex + 1) % colors.length],
+            },
+          }}
+          onClick={GoToLogin}
+        >
+          START 🧩
+        </Button>
+      </Box>
+      <Grid container spacing={4}>
+        {steps.map(({ step, title, icon, description }) => (
+          <Grid item key={step} xs={12} sm={6} md={3}>
+            <Paper elevation={3} sx={{ padding: 2, minHeight: '100%' }}>
+              <Box textAlign="center">
+                <Typography variant="h4">{step}</Typography>
+                <Typography variant="h6">{title}</Typography>
+                <Box my={2}>
+                  <Typography variant="h3">{icon}</Typography>
+                </Box>
+                <Typography>{description}</Typography>
+              </Box>
+            </Paper>
+          </Grid>
         ))}
-      </div>
-    </div>
+      </Grid>
+    </>
   );
 };
 
