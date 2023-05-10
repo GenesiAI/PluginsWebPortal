@@ -1,17 +1,23 @@
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plugin, PluginApi } from '../apis/api';
+import { Plugin, PluginApi, PluginUpdateRequest } from '../apis/api';
 import React from 'react';
 import { TextField, Button, Grid, Box } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
+import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
-
+import PluginSections from '../components/PluginSections';
+import { CircularProgress } from '@mui/material';
+import AlertDialog from '../components/AlertDialog';
 const PluginEditor: React.FC<{}> = () => {
     const navigate = useNavigate();
     const { guid } = useParams();
     const [plugin, setPlugin] = useState<Plugin | null>(null);
     const [error, seterror] = useState<string | null>(null);
+    const [saveInProgress, setSaveInProgress] = useState(false);
+    const [deleteInProgress, setDeleteInProgress] = useState(false);
+    const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
     var mockedUserId = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
 
@@ -36,36 +42,53 @@ const PluginEditor: React.FC<{}> = () => {
                 seterror('Something went wrong.');
             }
         };
-    
+
         console.log("plugin: " + plugin);
         if (!plugin)
             fetchPlugin();
     }, [guid, navigate, setPlugin, seterror, plugin, mockedUserId]);
 
 
+    const savePlugin = async () => {
+        setSaveInProgress(true);
+        const pluginApi = new PluginApi();
+        try {
+            var pluginupdate: PluginUpdateRequest = {
+                nameForHuman: plugin?.nameForHuman,
+                nameForModel: plugin?.nameForModel,
+                descriptionForHuman: plugin?.descriptionForHuman,
+                descriptionForModel: plugin?.descriptionForModel,
+                logoUrl: plugin?.logoUrl,
+                contactEmail: plugin?.contactEmail,
+                legalInfoUrl: plugin?.legalInfoUrl,
+                sections: plugin?.sections,
+            } 
 
-    // const DeletePlugin = async () => {
-    //     const pluginApi = new PluginApi();
-    //     try {
-    //         const response = await pluginApi.pluginUserIdPluginIdDelete(mockedUserId, guid!);
-    //         if (!response.data) {
-    //             seterror('Something went wrong.');
-    //         }
-    //         console.log("response: " + response?.data);
-    //         setPlugin(response?.data);
-    //     } catch (error) {
-    //         seterror('Something went wrong.');
-    //     }
-    // };
+            await pluginApi.pluginUserIdPluginIdPut(mockedUserId, guid!, pluginupdate);
+        } catch (error) {
+            // Error: you can show an error message or perform any other action here
+        } finally {
+            setSaveInProgress(false);
+        }
+    };
+
+    const deletePlugin = async () => {
+        setShowDeleteDialog(false);
+        setDeleteInProgress(true);
+        const pluginApi = new PluginApi();
+        try {
+            await pluginApi.pluginUserIdPluginIdDelete(mockedUserId, guid!);
+            navigate('/your-plugins');
+        } catch (error) {
+            // Error: you can show an error message or perform any other action here
+        } finally {
+            setDeleteInProgress(false);
+        }
+    };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, property: keyof Plugin) => {
         setPlugin({ ...plugin!, [property]: e.target.value });
     };
-
-    // const DeletePlugin = (property: keyof Plugin) => {
-    //     //todo add a confirmation dialog
-    //     DeletePlugin({});
-    // }
 
     return (
         <div>
@@ -140,64 +163,7 @@ const PluginEditor: React.FC<{}> = () => {
                                 onChange={(e) => handleInputChange(e, 'legalInfoUrl')}
                             />
                         </Grid>
-                        {plugin.sections?.map((section, index) => (
-                            <React.Fragment key={index}>
-                                <Box margin={2}>
-                                    <Grid container spacing={2}>
-                                        <Grid item xs={12} sm={6} >
-                                            <TextField
-                                                variant="standard"
-                                                fullWidth
-                                                label="Section Name"
-                                                value={section.name || ''}
-                                                onChange={(e) =>
-                                                    setPlugin({
-                                                        ...plugin,
-                                                        sections: plugin.sections!.map((s, i) => (i === index ? { ...s, name: e.target.value } : s)),
-                                                    })
-                                                }
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} sm={12}>
-                                            <TextField
-                                                variant="outlined"
-                                                fullWidth
-                                                multiline
-                                                rows={2}
-                                                label="Section Description"
-                                                value={section.description || ''}
-                                                onChange={(e) =>
-                                                    setPlugin({
-                                                        ...plugin,
-                                                        sections: plugin.sections!.map((s, i) =>
-                                                            i === index ? { ...s, description: e.target.value } : s,
-                                                        ),
-                                                    })
-                                                }
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} sm={12}>
-                                            <TextField
-                                                variant="outlined"
-                                                fullWidth
-                                                label="Section Content"
-                                                multiline
-                                                rows={4}
-                                                value={section.content || ''}
-                                                onChange={(e) =>
-                                                    setPlugin({
-                                                        ...plugin,
-                                                        sections: plugin.sections!.map((s, i) =>
-                                                            i === index ? { ...s, content: e.target.value } : s,
-                                                        ),
-                                                    })
-                                                }
-                                            />
-                                        </Grid>
-                                    </Grid>
-                                </Box>
-                            </React.Fragment>
-                        ))}
+                        <PluginSections plugin={plugin!} setPlugin={setPlugin} />
                         <Grid item xs={12} container justifyContent="center">
                             <Button
                                 variant="text"
@@ -214,22 +180,18 @@ const PluginEditor: React.FC<{}> = () => {
                             </Button>
                         </Grid>
                         <Grid item xs={12} container justifyContent="space-between">
-                            {/* <Button
-                                variant="contained"
-                                color="error"
-                                startIcon={<DeleteIcon />}
-                                onclick={() => DeletePlugin(...plugin)}
-                            >
-                                Delete
-                            </Button> */}
-                            <Button variant="contained" color="success" startIcon={<SaveIcon />}>
-                                Save
+                            <Button variant="contained" color="error" startIcon={<DeleteIcon />} onClick={() => setShowDeleteDialog(true)}>
+                                {deleteInProgress ? <CircularProgress size={24} /> : 'Delete'}
+                            </Button>
+                            <Button variant="contained" color="primary" startIcon={<SaveIcon />} onClick={savePlugin}>
+                                {saveInProgress ? <CircularProgress size={24} /> : 'Save'}
                             </Button>
                         </Grid>
                     </Grid>
                 </Box>
             ) : null
             }
+            <AlertDialog open={showDeleteDialog} setOpen={setShowDeleteDialog} onConfirm={deletePlugin} />
         </div >
     );
 };
