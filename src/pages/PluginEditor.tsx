@@ -62,7 +62,7 @@ const PluginEditor: React.FC<{}> = () => {
                 contactEmail: plugin?.contactEmail,
                 legalInfoUrl: plugin?.legalInfoUrl,
                 sections: plugin?.sections,
-            } 
+            }
 
             await pluginApi.pluginUserIdPluginIdPut(mockedUserId, guid!, pluginupdate);
         } catch (error) {
@@ -164,7 +164,7 @@ const PluginEditor: React.FC<{}> = () => {
                             />
                         </Grid>
                         <PluginSections plugin={plugin!} setPlugin={setPlugin} />
-                        <Grid item xs={12} container justifyContent="center">
+                        <Grid item xs={12} sm={12} container justifyContent="center">
                             <Button
                                 variant="text"
                                 color="primary"
@@ -179,12 +179,12 @@ const PluginEditor: React.FC<{}> = () => {
                                 Add Section
                             </Button>
                         </Grid>
-                        <Grid item xs={12} container justifyContent="space-between">
+                        <Grid item xs={12} sm={12} container justifyContent="space-between">
                             <Button variant="contained" color="error" startIcon={<DeleteIcon />} onClick={() => setShowDeleteDialog(true)}>
-                                {deleteInProgress ? <CircularProgress size={24} /> : 'Delete'}
+                                {deleteInProgress ? <CircularProgress size={24} sx={{ color: (theme) => theme.palette.error.contrastText }} /> : 'Delete'}
                             </Button>
-                            <Button variant="contained" color="primary" startIcon={<SaveIcon />} onClick={savePlugin}>
-                                {saveInProgress ? <CircularProgress size={24} /> : 'Save'}
+                            <Button variant="contained" color="success" startIcon={<SaveIcon />} onClick={savePlugin}>
+                                {saveInProgress ? <CircularProgress size={24} sx={{ color: (theme) => theme.palette.success.contrastText}} /> : 'Save'}
                             </Button>
                         </Grid>
                     </Grid>
