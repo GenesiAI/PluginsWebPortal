@@ -10,6 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import PluginSections from '../components/PluginSections';
 import { CircularProgress } from '@mui/material';
 import AlertDialog from '../components/AlertDialog';
+
 const PluginEditor: React.FC<{}> = () => {
     const navigate = useNavigate();
     const { guid } = useParams();

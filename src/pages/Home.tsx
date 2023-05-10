@@ -3,10 +3,8 @@ import {
   Button,
   Typography,
   Box,
-  Container,
   Grid,
   Paper,
-  useTheme,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
@@ -50,7 +48,6 @@ const colors = [
 const Home: React.FC = () => {
   const [colorIndex, setColorIndex] = useState(0);
   const navigate = useNavigate();
-  const theme = useTheme();
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -121,7 +118,7 @@ const Home: React.FC = () => {
           START 🧩
         </Button>
       </Box>
-      <Grid container spacing={4}>
+      <Grid container spacing={4} padding={4}>
         {steps.map(({ step, title, icon, description }) => (
           <Grid item key={step} xs={12} sm={6} md={3}>
             <Paper elevation={3} sx={{ padding: 2, minHeight: '100%' }}>

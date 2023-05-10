@@ -1,6 +1,6 @@
 // PluginSections.tsx
 import React from 'react';
-import { Plugin, Section } from '../apis/api';
+import { Plugin } from '../apis/api';
 import { Box, Grid, TextField } from '@mui/material';
 
 interface PluginSectionsProps {
