@@ -5,7 +5,6 @@ import { Plugin, PluginApi } from '../apis/api';
 import React from 'react';
 import { TextField, Button, Grid, Box } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
-import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 
 const PluginEditor: React.FC<{}> = () => {
@@ -31,21 +30,42 @@ const PluginEditor: React.FC<{}> = () => {
                 if (!response.data) {
                     seterror('Something went wrong.');
                 }
-                console.log("response: " +response?.data);
+                console.log("response: " + response?.data);
                 setPlugin(response?.data);
             } catch (error) {
                 seterror('Something went wrong.');
             }
         };
-
+    
         console.log("plugin: " + plugin);
         if (!plugin)
             fetchPlugin();
     }, [guid, navigate, setPlugin, seterror, plugin, mockedUserId]);
 
+
+
+    // const DeletePlugin = async () => {
+    //     const pluginApi = new PluginApi();
+    //     try {
+    //         const response = await pluginApi.pluginUserIdPluginIdDelete(mockedUserId, guid!);
+    //         if (!response.data) {
+    //             seterror('Something went wrong.');
+    //         }
+    //         console.log("response: " + response?.data);
+    //         setPlugin(response?.data);
+    //     } catch (error) {
+    //         seterror('Something went wrong.');
+    //     }
+    // };
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, property: keyof Plugin) => {
         setPlugin({ ...plugin!, [property]: e.target.value });
     };
+
+    // const DeletePlugin = (property: keyof Plugin) => {
+    //     //todo add a confirmation dialog
+    //     DeletePlugin({});
+    // }
 
     return (
         <div>
@@ -55,6 +75,7 @@ const PluginEditor: React.FC<{}> = () => {
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField
+                                variant="standard"
                                 fullWidth
                                 label="Name for Human"
                                 value={plugin.nameForHuman || ''}
@@ -63,30 +84,38 @@ const PluginEditor: React.FC<{}> = () => {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
+                                variant="standard"
                                 fullWidth
                                 label="Name for Model"
                                 value={plugin.nameForModel || ''}
                                 onChange={(e) => handleInputChange(e, 'nameForModel')}
                             />
                         </Grid>
-                        <Grid item xs={12} sm={6}>
+                        <Grid item xs={12} sm={12}>
                             <TextField
+                                variant="outlined"
                                 fullWidth
+                                multiline
+                                rows={2}
                                 label="Description for Human"
                                 value={plugin.descriptionForHuman || ''}
                                 onChange={(e) => handleInputChange(e, 'descriptionForHuman')}
                             />
                         </Grid>
-                        <Grid item xs={12} sm={6}>
+                        <Grid item xs={12} sm={12}>
                             <TextField
+                                variant="outlined"
                                 fullWidth
+                                multiline
+                                rows={2}
                                 label="Description for Model"
                                 value={plugin.descriptionForModel || ''}
                                 onChange={(e) => handleInputChange(e, 'descriptionForModel')}
                             />
                         </Grid>
-                        <Grid item xs={12} sm={6}>
+                        <Grid item xs={12} sm={12}>
                             <TextField
+                                variant="standard"
                                 fullWidth
                                 label="Logo URL"
                                 value={plugin.logoUrl || ''}
@@ -95,6 +124,7 @@ const PluginEditor: React.FC<{}> = () => {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
+                                variant="standard"
                                 fullWidth
                                 label="Contact Email"
                                 value={plugin.contactEmail || ''}
@@ -103,84 +133,104 @@ const PluginEditor: React.FC<{}> = () => {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
+                                variant="standard"
                                 fullWidth
                                 label="Legal Info URL"
                                 value={plugin.legalInfoUrl || ''}
                                 onChange={(e) => handleInputChange(e, 'legalInfoUrl')}
                             />
                         </Grid>
-                        {/* Section editing */}
                         {plugin.sections?.map((section, index) => (
                             <React.Fragment key={index}>
-                                <Grid item xs={12} sm={4}>
-                                    <TextField
-                                        fullWidth
-                                        label="Section Name"
-                                        value={section.name || ''}
-                                        onChange={(e) =>
-                                            setPlugin({
-                                                ...plugin,
-                                                sections: plugin.sections!.map((s, i) => (i === index ? { ...s, name: e.target.value } : s)),
-                                            })
-                                        }
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm={4}>
-                                    <TextField
-                                        fullWidth
-                                        label="Section Description"
-                                        value={section.description || ''}
-                                        onChange={(e) =>
-                                            setPlugin({
-                                                ...plugin,
-                                                sections: plugin.sections!.map((s, i) =>
-                                                    i === index ? { ...s, description: e.target.value } : s,
-                                                ),
-                                            })
-                                        }
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm={4}>
-                                    <TextField
-                                        fullWidth
-                                        label="Section Content"
-                                        multiline
-                                        rows={4}
-                                        value={section.content || ''}
-                                        onChange={(e) =>
-                                            setPlugin({
-                                                ...plugin,
-                                                sections: plugin.sections!.map((s, i) =>
-                                                    i === index ? { ...s, content: e.target.value } : s,
-                                                ),
-                                            })
-                                        }
-                                    />
-                                </Grid>
+                                <Box margin={2}>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={12} sm={6} >
+                                            <TextField
+                                                variant="standard"
+                                                fullWidth
+                                                label="Section Name"
+                                                value={section.name || ''}
+                                                onChange={(e) =>
+                                                    setPlugin({
+                                                        ...plugin,
+                                                        sections: plugin.sections!.map((s, i) => (i === index ? { ...s, name: e.target.value } : s)),
+                                                    })
+                                                }
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} sm={12}>
+                                            <TextField
+                                                variant="outlined"
+                                                fullWidth
+                                                multiline
+                                                rows={2}
+                                                label="Section Description"
+                                                value={section.description || ''}
+                                                onChange={(e) =>
+                                                    setPlugin({
+                                                        ...plugin,
+                                                        sections: plugin.sections!.map((s, i) =>
+                                                            i === index ? { ...s, description: e.target.value } : s,
+                                                        ),
+                                                    })
+                                                }
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} sm={12}>
+                                            <TextField
+                                                variant="outlined"
+                                                fullWidth
+                                                label="Section Content"
+                                                multiline
+                                                rows={4}
+                                                value={section.content || ''}
+                                                onChange={(e) =>
+                                                    setPlugin({
+                                                        ...plugin,
+                                                        sections: plugin.sections!.map((s, i) =>
+                                                            i === index ? { ...s, content: e.target.value } : s,
+                                                        ),
+                                                    })
+                                                }
+                                            />
+                                        </Grid>
+                                    </Grid>
+                                </Box>
                             </React.Fragment>
                         ))}
                         <Grid item xs={12} container justifyContent="center">
                             <Button
-                                variant="contained"
+                                variant="text"
                                 color="primary"
                                 startIcon={<AddIcon />}
-                                onClick={() => setPlugin({ ...plugin, sections: [...(plugin.sections || []), { name: '', description: '', content: '' }] })}
+                                onClick={() =>
+                                    setPlugin({
+                                        ...plugin,
+                                        sections: [...(plugin.sections || []), { name: '', description: '', content: '' }],
+                                    })
+                                }
                             >
                                 Add Section
                             </Button>
                         </Grid>
                         <Grid item xs={12} container justifyContent="space-between">
-                            <Button variant="contained" color="secondary" startIcon={<DeleteIcon />}>
+                            {/* <Button
+                                variant="contained"
+                                color="error"
+                                startIcon={<DeleteIcon />}
+                                onclick={() => DeletePlugin(...plugin)}
+                            >
                                 Delete
-                            </Button>
-                            <Button variant="contained" color="primary" startIcon={<SaveIcon />}>
+                            </Button> */}
+                            <Button variant="contained" color="success" startIcon={<SaveIcon />}>
                                 Save
                             </Button>
                         </Grid>
                     </Grid>
                 </Box>
-            ) : null}
-        </div>
+            ) : null
+            }
+        </div >
     );
 };
 

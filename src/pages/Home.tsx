@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { v4 as uuidv4 } from 'uuid';
 import { Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
@@ -60,7 +59,7 @@ const Home: React.FC = () => {
 
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center px-4 bg-black text-white">
+    <div className="min-h-screen flex flex-col justify-center items-center px-4">
       <div className='m-8'>
         <Typography variant="h2" align="center">
           Build{' '}
@@ -72,24 +71,6 @@ const Home: React.FC = () => {
           less than <span style={{ color: colors[colorIndex] }}>2 minutes</span>
         </Typography>
       </div>
-
-      {/* Waitlist Section */}
-      {/* <div className="m-6">
-        <h3 className="text-xl mb-2">Join our waitlist</h3>
-        <input
-          className="block w-full md:w-1/2 bg-gray-200 text-black p-2 rounded mb-2"
-          type="email"
-          placeholder="Your email"
-        />
-        <button
-          className={`py-2 px-6 rounded bg-${colors[colorIndex].replace('#', '')} hover:bg-${colors[(colorIndex + 1) % colors.length].replace('#', '')} text-white`}
-          onClick={handleButtonClick}
-        >
-          Join the waitlist
-        </button>
-      </div> */}
-      {/* End of Waitlist Section */}
-
       <Button
         variant="contained"
         sx={{
@@ -103,7 +84,6 @@ const Home: React.FC = () => {
       >
         START TO CREATE 🧩
       </Button>
-      {/* How It Works Section */}
       <div className="m-4 grid grid-cols-1 md:grid-cols-4 gap-4 max-w-7xl mb-8">
         {[
           {
@@ -139,11 +119,8 @@ const Home: React.FC = () => {
           </div>
         ))}
       </div>
-      {/* End of How It Works Section */}
     </div>
   );
-  // <YourPlugins plugins={result} />
-
 };
 
 export default Home;

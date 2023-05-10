@@ -23,7 +23,6 @@ const YourPlugins: React.FC<{}> = () => {
       const pluginApi = new PluginApi();
       try {
         const response = await pluginApi.pluginUserIdPluginsGet(mockedUserId); // Replace 'getUsers' with the appropriate method name for your API
-        // console.log(response.data);
         setPlugin(response.data);
       } catch (error) {
         console.error('Error fetching users:', error);
@@ -33,47 +32,22 @@ const YourPlugins: React.FC<{}> = () => {
       fetchPlugins();
   });
 
-  // const plugins: Plugin[] = [
-  //   {
-  //     aiPlugin: 'Plugin 1',
-  //     name: 'Awesome Plugin 1',
-  //     url: 'https://www.example.com/plugin1',
-  //     iconUrl: 'https://thumbs.dreamstime.com/t/hi-tech-circuit-style-round-yggdrasil-tree-cyberpunk-futuristic-design-progress-symbol-styled-frame-elements-borders-blue-deep-115165758.jpg',
-  //     userId: 'user1',
-  //   },
-  //   {
-  //     aiPlugin: 'Plugin 2',
-  //     name: 'Awesome Plugin 2',
-  //     url: 'https://www.example.com/plugin2',
-  //     iconUrl: 'https://cyberpunk2077.wiki.fextralife.com/file/Cyberpunk-2077/arasaka-corpo-logo-cyberpunk-2077-wiki-guide.png',
-  //     userId: 'user1',
-  //   },
-  //   {
-  //     aiPlugin: 'Plugin 3',
-  //     name: 'Awesome Plugin 3',
-  //     url: 'https://www.example.com/plugin3',
-  //     iconUrl: 'https://img.rankedboost.com/wp-content/plugins/cyberpunk-2077/assets/icons/Intelligence.png',
-  //     userId: 'user1',
-  //   },
-  // ];
-
   return (
-    <div className="min-h-screen flex flex-col items-grow items-center px-4 bg-black text-white">
+    <div className="min-h-screen flex flex-col items-grow items-center px-4">
       <List
         sx={{
-
-          // backgroundColor: '#111111', // Updated backgroundColor
           borderRadius: 0.5,
           padding: 1,
           width: '100%',
           maxWidth: 800,
-        }}>
+        }}
+      >
         <Typography
           sx={{
             textAlign: 'center',
             fontSize: 24,
             fontWeight: 'bold',
-            color: '#df66da',
+            color: (theme) => theme.palette.primary.main,
             marginBottom: (theme) => theme.spacing(2),
           }}
         >
@@ -84,7 +58,7 @@ const YourPlugins: React.FC<{}> = () => {
             onClick={() => navigate(`/plugin/${plugin.id}`)}
             key={plugin.id}
             sx={{
-              backgroundColor: '#1f1f1f', // Updated backgroundColor
+              backgroundColor: (theme) => theme.palette.background.paper,
               borderRadius: 2,
               marginBottom: (theme) => theme.spacing(1),
               boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
@@ -106,13 +80,13 @@ const YourPlugins: React.FC<{}> = () => {
                   onClick={() => handleCopyClick("https://aiplugin-api.azurewebsites.net/Plugin/" + mockedUserId + "/" + plugin.id, index)}
                   edge="end"
                   aria-label="copy">
-                  <FontAwesomeIcon icon={faCopy} color="white" />
+                  <FontAwesomeIcon icon={faCopy} />
                 </IconButton>
               </Tooltip>
               <IconButton
                 onClick={() => navigate("Plugin/" + plugin.id)}
                 edge="end" aria-label="modify">
-                <FontAwesomeIcon icon={faPencilAlt} color='white' />
+                <FontAwesomeIcon icon={faPencilAlt} />
               </IconButton>
               {/* <IconButton disabled edge="end" aria-label="delete">
                 <FontAwesomeIcon icon={faTrashAlt} color='white' />
@@ -124,6 +98,5 @@ const YourPlugins: React.FC<{}> = () => {
     </div>
   );
 };
-
 
 export default YourPlugins;
