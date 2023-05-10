@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Plugin, PluginApi } from '../apis/api';
 import React from 'react';
@@ -12,16 +12,16 @@ const PluginEditor: React.FC<{}> = () => {
     const navigate = useNavigate();
     const { guid } = useParams();
     const [plugin, setPlugin] = useState<Plugin | null>(null);
+    const [error, seterror] = useState<string | null>(null);
 
     var mockedUserId = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
-    var error: string | undefined;
 
     React.useEffect(() => {
         if (!localStorage.getItem('X')) {
             navigate('/');
         }
         if (!guid) {
-            error = 'Something went wrong.';
+            seterror('Something went wrong.');
         }
 
         const fetchPlugin = async () => {
@@ -29,19 +29,19 @@ const PluginEditor: React.FC<{}> = () => {
             try {
                 const response = await pluginApi.pluginUserIdPluginIdGet(mockedUserId, guid!);
                 if (!response.data) {
-                    error = 'Something went wrong.';
+                    seterror('Something went wrong.');
                 }
-                console.log(response?.data);
+                console.log("response: " +response?.data);
                 setPlugin(response?.data);
             } catch (error) {
-                error = 'Something went wrong.';
+                seterror('Something went wrong.');
             }
         };
-        
-        console.log(plugin);
+
+        console.log("plugin: " + plugin);
         if (!plugin)
             fetchPlugin();
-    });
+    }, [guid, navigate, setPlugin, seterror, plugin, mockedUserId]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, property: keyof Plugin) => {
         setPlugin({ ...plugin!, [property]: e.target.value });
@@ -49,7 +49,8 @@ const PluginEditor: React.FC<{}> = () => {
 
     return (
         <div>
-            {plugin && (
+            <h1>{error}</h1>
+            {plugin ? (
                 <Box sx={{ margin: '16px' }}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
@@ -178,7 +179,7 @@ const PluginEditor: React.FC<{}> = () => {
                         </Grid>
                     </Grid>
                 </Box>
-            )}
+            ) : null}
         </div>
     );
 };
