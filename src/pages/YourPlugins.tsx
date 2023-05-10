@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { List, ListItem, ListItemText, ListItemSecondaryAction, ListItemAvatar, Avatar, IconButton, Typography, Box, Tooltip } from '@mui/material';
+import { List, ListItem, ListItemText, ListItemSecondaryAction, ListItemAvatar, Avatar, IconButton, Typography, Tooltip } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCopy, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { Plugin, PluginApi } from '../apis/api';
-import plugin from 'tailwindcss';
 
 const YourPlugins: React.FC<{}> = () => {
   const navigate = useNavigate();
