@@ -22,7 +22,7 @@ const YourPlugins: React.FC<{}> = () => {
     const fetchPlugins = async () => {
       const pluginApi = new PluginApi();
       try {
-        const response = await pluginApi.pluginUserIdPluginsGet(mockedUserId); // Replace 'getUsers' with the appropriate method name for your API
+        const response = await pluginApi.pluginPluginsGet();
         setPlugin(response.data);
       } catch (error) {
         console.error('Error fetching users:', error);

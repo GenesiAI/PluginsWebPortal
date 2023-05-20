@@ -20,8 +20,6 @@ const PluginEditor: React.FC<{}> = () => {
     const [deleteInProgress, setDeleteInProgress] = useState(false);
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
-    var mockedUserId = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
-
     React.useEffect(() => {
         if (!localStorage.getItem('X')) {
             navigate('/');
@@ -33,7 +31,7 @@ const PluginEditor: React.FC<{}> = () => {
         const fetchPlugin = async () => {
             const pluginApi = new PluginApi();
             try {
-                const response = await pluginApi.pluginUserIdPluginIdGet(mockedUserId, guid!);
+                const response = await pluginApi.pluginPluginIdGet(guid!);
                 if (!response.data) {
                     seterror('Something went wrong.');
                 }
@@ -47,7 +45,7 @@ const PluginEditor: React.FC<{}> = () => {
         console.log("plugin: " + plugin);
         if (!plugin)
             fetchPlugin();
-    }, [guid, navigate, setPlugin, seterror, plugin, mockedUserId]);
+    }, [guid, navigate, setPlugin, seterror, plugin]);
 
 
     const savePlugin = async () => {
@@ -65,7 +63,7 @@ const PluginEditor: React.FC<{}> = () => {
                 sections: plugin?.sections,
             }
 
-            await pluginApi.pluginUserIdPluginIdPut(mockedUserId, guid!, pluginupdate);
+            await pluginApi.pluginPluginIdPut(guid!, pluginupdate);
         } catch (error) {
             // Error: you can show an error message or perform any other action here
         } finally {
@@ -78,7 +76,7 @@ const PluginEditor: React.FC<{}> = () => {
         setDeleteInProgress(true);
         const pluginApi = new PluginApi();
         try {
-            await pluginApi.pluginUserIdPluginIdDelete(mockedUserId, guid!);
+            await pluginApi.pluginPluginIdDelete(guid!);
             navigate('/your-plugins');
         } catch (error) {
             // Error: you can show an error message or perform any other action here
