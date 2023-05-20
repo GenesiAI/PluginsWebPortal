@@ -7,4 +7,5 @@ openapi-generator-cli generate -i .\specs\V{YOURVERSION}.json -g typescript-axio
 ```
 than move api, base and configuration to the apis folder than delete the generated-client folder
 
-in configuration update the base path to export const BASE_PATH = "3fa85f64-5717-4562-b3fc-2c963f66afa6.genesi.ai"; 
+in configuration update the base path to `export const BASE_PATH = "https://3fa85f64-5717-4562-b3fc-2c963f66afa6.genesi.ai";`
+
