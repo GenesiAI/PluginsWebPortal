@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,13 +9,17 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, User } from "firebase/auth";
+import axios from 'axios';
+import { auth } from '../security/firebase';
 
 const loggedInPages = ['Your Plugins', 'contacts', 'Logout'];
 const loggedOutPages = ['contacts', 'Login'];
 
 const ResponsiveAppBar: React.FC = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -25,9 +29,42 @@ const ResponsiveAppBar: React.FC = () => {
     setAnchorElNav(null);
   };
 
-  const loggedIn = localStorage.getItem('X') === 'loggedIn';
+  const provider = new GoogleAuthProvider();
 
-  const links = loggedIn ? loggedInPages : loggedOutPages;
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      setUser(user);
+    });
+    return unsubscribe;
+  }, []);
+
+  const handleLogin = async () => {
+    const auth = getAuth();
+    const result = await signInWithPopup(auth, provider);
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    // const token = credential?.idToken;
+    auth?.currentUser?.getIdToken(/* forceRefresh */ true)
+      .then(function (idToken: string) {
+        console.info("token\n" + idToken);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
+      });
+    navigate("your-plugins")
+  }
+
+  const handleLogout = async () => {
+    const auth = getAuth();
+    await signOut(auth);
+    setUser(null);
+    delete axios.defaults.headers.common["Authorization"];
+    navigate("/")
+  };
+
+  auth?.currentUser?.getIdToken(/* forceRefresh */ true).then(function (idToken) {
+    console.log("tokex: " + idToken);
+  });
+  const links = user ? loggedInPages : loggedOutPages;
 
   return (
     <AppBar position="sticky" color="default">
@@ -83,11 +120,28 @@ const ResponsiveAppBar: React.FC = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {links.map((link) => (
-                <MenuItem key={link} onClick={handleCloseNavMenu} component={Link} to={`/${link.toLowerCase().replace(' ', '-')}`}>
-                  <Typography textAlign="center">{link}</Typography>
-                </MenuItem>
-              ))}
+              {links.map((link) => {
+                if (link.toLowerCase() === 'login' || link.toLowerCase() === 'logout') {
+                  return (
+                    <MenuItem
+                      key={link}
+                      onClick={link.toLowerCase() === 'login' ? handleLogin : handleLogout}
+                    >
+                      <Typography textAlign="center">{link}</Typography>
+                    </MenuItem>
+                  );
+                }
+                return (
+                  <MenuItem
+                    key={link}
+                    onClick={handleCloseNavMenu}
+                    component={Link}
+                    to={`/${link.toLowerCase().replace(' ', '-')}`}
+                  >
+                    <Typography textAlign="center">{link}</Typography>
+                  </MenuItem>
+                );
+              })}
             </Menu>
           </Box>
           <Typography
@@ -109,17 +163,30 @@ const ResponsiveAppBar: React.FC = () => {
             Genesi AI
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {links.map((link) => (
-              <Button
-                key={link}
-                onClick={handleCloseNavMenu}
-                component={Link}
-                to={`/${link.toLowerCase().replace(' ', '-')}`}
-                sx={{ my: 2, color: 'black', display: 'block' }}
-              >
-                {link}
-              </Button>
-            ))}
+            {links.map((link) => {
+              if (link.toLowerCase() === 'login' || link.toLowerCase() === 'logout') {
+                return (
+                  <Button
+                    key={link}
+                    onClick={link.toLowerCase() === 'login' ? handleLogin : handleLogout}
+                    sx={{ my: 2, color: 'black', display: 'block' }}
+                  >
+                    {link}
+                  </Button>
+                );
+              }
+              return (
+                <Button
+                  key={link}
+                  onClick={handleCloseNavMenu}
+                  component={Link}
+                  to={`/${link.toLowerCase().replace(' ', '-')}`}
+                  sx={{ my: 2, color: 'black', display: 'block' }}
+                >
+                  {link}
+                </Button>
+              );
+            })}
           </Box>
         </Toolbar>
       </Container>

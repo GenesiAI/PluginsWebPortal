@@ -21,9 +21,9 @@ const PluginEditor: React.FC<{}> = () => {
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
     React.useEffect(() => {
-        if (!localStorage.getItem('X')) {
-            navigate('/');
-        }
+        // if (!localStorage.getItem('X')) {
+        //     navigate('/');
+        // }
         if (!guid) {
             seterror('Something went wrong.');
         }
@@ -31,7 +31,7 @@ const PluginEditor: React.FC<{}> = () => {
         const fetchPlugin = async () => {
             const pluginApi = new PluginApi();
             try {
-                const response = await pluginApi.pluginPluginIdGet(guid!);
+                const response = await pluginApi.apiPluginsPluginIdGet(guid!);
                 if (!response.data) {
                     seterror('Something went wrong.');
                 }
@@ -63,7 +63,7 @@ const PluginEditor: React.FC<{}> = () => {
                 sections: plugin?.sections,
             }
 
-            await pluginApi.pluginPluginIdPut(guid!, pluginupdate);
+            await pluginApi.apiPluginsPluginIdPut(guid!, pluginupdate);
         } catch (error) {
             // Error: you can show an error message or perform any other action here
         } finally {
@@ -76,7 +76,7 @@ const PluginEditor: React.FC<{}> = () => {
         setDeleteInProgress(true);
         const pluginApi = new PluginApi();
         try {
-            await pluginApi.pluginPluginIdDelete(guid!);
+            await pluginApi.apiPluginsPluginIdDelete(guid!);
             navigate('/your-plugins');
         } catch (error) {
             // Error: you can show an error message or perform any other action here

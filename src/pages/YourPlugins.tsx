@@ -14,15 +14,11 @@ const YourPlugins: React.FC<{}> = () => {
     setTimeout(() => setTooltipOpenIndex(-1), 2000);
   };
   const [plugins, setPlugin] = useState<Plugin[] | null>(null);
-  var mockedUserId = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
   React.useEffect(() => {
-    if (!localStorage.getItem('X')) {
-      navigate("/")
-    }
     const fetchPlugins = async () => {
       const pluginApi = new PluginApi();
       try {
-        const response = await pluginApi.pluginPluginsGet();
+        const response = await pluginApi.apiPluginsGet();
         setPlugin(response.data);
       } catch (error) {
         console.error('Error fetching users:', error);
@@ -77,7 +73,7 @@ const YourPlugins: React.FC<{}> = () => {
                 arrow
                 placement="top">
                 <IconButton
-                  onClick={() => handleCopyClick("https://aiplugin-api.azurewebsites.net/Plugin/" + mockedUserId + "/" + plugin.id, index)}
+                  // onClick={() => handleCopyClick("https://aiplugin-api.azurewebsites.net/Plugin/" + mockedUserId + "/" + plugin.id, index)}
                   edge="end"
                   aria-label="copy">
                   <FontAwesomeIcon icon={faCopy} />
@@ -94,7 +90,28 @@ const YourPlugins: React.FC<{}> = () => {
             </ListItemSecondaryAction>
           </ListItem>
         ))}
+        <Tooltip title="Create new plugin" arrow placement="top">
+          <IconButton
+            onClick={() => navigate("/plugin/new")}
+            sx={{
+              position: 'fixed',
+
+
+
+              // bottom: (theme) => theme.spacing(2),
+              right: (theme) => theme.spacing(2),
+              backgroundColor: (theme) => theme.palette.primary.main,
+              color: (theme) => theme.palette.primary.contrastText,
+              '&:hover': {
+                backgroundColor: (theme) => theme.palette.primary.dark,
+              },
+            }}
+          >
+            <FontAwesomeIcon icon={faPencilAlt} />
+          </IconButton>
+        </Tooltip>
       </List>
+      {/* create new plugin */}
     </div>
   );
 };
