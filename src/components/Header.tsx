@@ -42,8 +42,8 @@ const ResponsiveAppBar: React.FC = () => {
 
   const handleLogin = async () => {
     const auth = getAuth();
-    const result = await signInWithPopup(auth, provider);
-    const credential = GoogleAuthProvider.credentialFromResult(result);
+    await signInWithPopup(auth, provider);
+    // const credential = GoogleAuthProvider.credentialFromResult(result);
     // const token = credential?.idToken;
     // auth?.currentUser?.getIdToken()
     //   .then(function (idToken: string) {

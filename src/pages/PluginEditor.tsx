@@ -35,7 +35,7 @@ const PluginEditor: React.FC<{}> = () => {
             }
         };
 
-        if (guid == 'new') {
+        if (guid ==='new') {
             if (!plugin)
                 setPlugin({});
             return;

@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { List, ListItem, ListItemText, ListItemSecondaryAction, ListItemAvatar, Avatar, IconButton, Typography, Tooltip } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { /*faCopy,*/ faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { Plugin, PluginApi } from '../apis/api';
 
 const YourPlugins: React.FC<{}> = () => {
   const navigate = useNavigate();
-  const [tooltipOpenIndex, setTooltipOpenIndex] = useState(-1);
-  const handleCopyClick = async (url: string, index: number) => {
-    await navigator.clipboard.writeText(url);
-    setTooltipOpenIndex(index);
-    setTimeout(() => setTooltipOpenIndex(-1), 2000);
-  };
+  // const [tooltipOpenIndex, setTooltipOpenIndex] = useState(-1);
+  // const handleCopyClick = async (url: string, index: number) => {
+  //   await navigator.clipboard.writeText(url);
+  //   setTooltipOpenIndex(index);
+  //   setTimeout(() => setTooltipOpenIndex(-1), 2000);
+  // };
   const [plugins, setPlugin] = useState<Plugin[] | null>(null);
   React.useEffect(() => {
     const fetchPlugins = async () => {
@@ -67,7 +67,7 @@ const YourPlugins: React.FC<{}> = () => {
               secondary={"Plugin/" + plugin.id}
               sx={{ color: 'text.primary', secondary: 'text.secondary' }} />
             <ListItemSecondaryAction>
-              <Tooltip
+              {/* <Tooltip
                 open={tooltipOpenIndex === index}
                 title="URL copied to clipboard"
                 arrow
@@ -78,7 +78,7 @@ const YourPlugins: React.FC<{}> = () => {
                   aria-label="copy">
                   <FontAwesomeIcon icon={faCopy} />
                 </IconButton>
-              </Tooltip>
+              </Tooltip> */}
               <IconButton
                 onClick={() => navigate("Plugin/" + plugin.id)}
                 edge="end" aria-label="modify">
