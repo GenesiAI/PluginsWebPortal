@@ -21,13 +21,6 @@ const PluginEditor: React.FC<{}> = () => {
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
     React.useEffect(() => {
-        // if (!localStorage.getItem('X')) {
-        //     navigate('/');
-        // }
-        if (!guid) {
-            seterror('Something went wrong.');
-        }
-
         const fetchPlugin = async () => {
             const pluginApi = new PluginApi();
             try {
@@ -35,16 +28,28 @@ const PluginEditor: React.FC<{}> = () => {
                 if (!response.data) {
                     seterror('Something went wrong.');
                 }
-                console.log("response: " + response?.data);
+                console.info("response: " + response?.data);
                 setPlugin(response?.data);
             } catch (error) {
                 seterror('Something went wrong.');
             }
         };
 
-        console.log("plugin: " + plugin);
+        if (guid == 'new') {
+            if (!plugin)
+                setPlugin({});
+            return;
+        }
+
+        //get it back if the guid is not a valid Guid except if the value is 'new'
+        if (guid && !guid.match(/^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$/)) {
+            seterror('What are you doing here? 👀, getting you back to your plugins.');
+            navigate('/your-plugins');
+            return;
+        }
         if (!plugin)
             fetchPlugin();
+
     }, [guid, navigate, setPlugin, seterror, plugin]);
 
 
@@ -183,7 +188,7 @@ const PluginEditor: React.FC<{}> = () => {
                                 {deleteInProgress ? <CircularProgress size={24} sx={{ color: (theme) => theme.palette.error.contrastText }} /> : 'Delete'}
                             </Button>
                             <Button variant="contained" color="success" startIcon={<SaveIcon />} onClick={savePlugin}>
-                                {saveInProgress ? <CircularProgress size={24} sx={{ color: (theme) => theme.palette.success.contrastText}} /> : 'Save'}
+                                {saveInProgress ? <CircularProgress size={24} sx={{ color: (theme) => theme.palette.success.contrastText }} /> : 'Save'}
                             </Button>
                         </Grid>
                     </Grid>

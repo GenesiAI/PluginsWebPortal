@@ -45,13 +45,24 @@ const ResponsiveAppBar: React.FC = () => {
     const result = await signInWithPopup(auth, provider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
     // const token = credential?.idToken;
-    auth?.currentUser?.getIdToken(/* forceRefresh */ true)
-      .then(function (idToken: string) {
-        console.info("token\n" + idToken);
-        axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
-      });
+    // auth?.currentUser?.getIdToken()
+    //   .then(function (idToken: string) {
+    //     console.info("token\n" + idToken);
+    //     axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
+    //   });
     navigate("your-plugins")
   }
+
+  axios.interceptors.request.use(async config => {
+    const auth = getAuth();
+    if(auth?.currentUser){
+      const token = await auth.currentUser.getIdToken();
+      config.headers.Authorization =  `Bearer ${token}`;
+    }
+    return config;
+  }, error => {
+    return Promise.reject(error);
+  });  
 
   const handleLogout = async () => {
     const auth = getAuth();
@@ -61,9 +72,9 @@ const ResponsiveAppBar: React.FC = () => {
     navigate("/")
   };
 
-  auth?.currentUser?.getIdToken(/* forceRefresh */ true).then(function (idToken) {
-    console.log("tokex: " + idToken);
-  });
+  // auth?.currentUser?.getIdToken(/* forceRefresh */ true).then(function (idToken) {
+  //   console.log("tokex: " + idToken);
+  // });
   const links = user ? loggedInPages : loggedOutPages;
 
   return (
