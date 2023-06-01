@@ -55,20 +55,21 @@ const ResponsiveAppBar: React.FC = () => {
 
   axios.interceptors.request.use(async config => {
     const auth = getAuth();
-    if(auth?.currentUser){
+    if (auth?.currentUser) {
       const token = await auth.currentUser.getIdToken();
-      config.headers.Authorization =  `Bearer ${token}`;
+      config.headers.Authorization = `Bearer ${token}`;
+    } else {
+      await handleLogin();
     }
     return config;
   }, error => {
     return Promise.reject(error);
-  });  
+  });
 
   const handleLogout = async () => {
     const auth = getAuth();
     await signOut(auth);
     setUser(null);
-    delete axios.defaults.headers.common["Authorization"];
     navigate("/")
   };
 

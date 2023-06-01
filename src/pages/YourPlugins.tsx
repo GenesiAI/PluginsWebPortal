@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { List, ListItem, ListItemText, ListItemSecondaryAction, ListItemAvatar, Avatar, IconButton, Typography, Tooltip } from '@mui/material';
+import { List, ListItem, ListItemText, ListItemSecondaryAction, ListItemAvatar, Avatar, IconButton, Typography, Tooltip, Box } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { /*faCopy,*/ faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { /*faCopy,*/ faPencilAlt, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { Plugin, PluginApi } from '../apis/api';
 
@@ -29,15 +29,8 @@ const YourPlugins: React.FC<{}> = () => {
   });
 
   return (
-    <div className="min-h-screen flex flex-col items-grow items-center px-4">
-      <List
-        sx={{
-          borderRadius: 0.5,
-          padding: 1,
-          width: '100%',
-          maxWidth: 800,
-        }}
-      >
+    <>
+      <List>
         <Typography
           sx={{
             textAlign: 'center',
@@ -90,16 +83,15 @@ const YourPlugins: React.FC<{}> = () => {
             </ListItemSecondaryAction>
           </ListItem>
         ))}
-        <Tooltip title="Create new plugin" arrow placement="top">
-          <IconButton
+      </List>
+      <Box sx={{
+        display: 'flex', justifyContent: 'flex-end'
+      }}>
+        < Tooltip title="Create new plugin" arrow placement="top" >
+          {/* put this on the righ, using float it goes out of the div */}
+          < IconButton
             onClick={() => navigate("/plugin/new")}
             sx={{
-              position: 'fixed',
-
-
-
-              // bottom: (theme) => theme.spacing(2),
-              right: (theme) => theme.spacing(2),
               backgroundColor: (theme) => theme.palette.primary.main,
               color: (theme) => theme.palette.primary.contrastText,
               '&:hover': {
@@ -107,12 +99,11 @@ const YourPlugins: React.FC<{}> = () => {
               },
             }}
           >
-            <FontAwesomeIcon icon={faPencilAlt} />
-          </IconButton>
-        </Tooltip>
-      </List>
-      {/* create new plugin */}
-    </div>
+            <FontAwesomeIcon icon={faPlus} />
+          </IconButton >
+        </Tooltip >
+      </Box >
+    </>
   );
 };
 

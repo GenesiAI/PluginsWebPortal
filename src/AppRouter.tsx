@@ -7,8 +7,13 @@ import YourPlugins from './pages/YourPlugins';
 // import LogOut from './pages/Account/LogOut';
 import PluginEditor from './pages/PluginEditor';
 import Home from './pages/Home';
+import { Container } from '@mui/material';
 
 const AppRouter: React.FC = () => {
+
+    const someBasicStyle: any = {
+        backgroundColor: (theme: any) => theme.palette.background.paper,
+    };
     return (
         <Router>
             <Header />
@@ -21,9 +26,9 @@ const AppRouter: React.FC = () => {
                 {/* <Route path="/build-plugin" element={<BuildPluginPage/>} />
                 <Route path="/hire-dev" element={<HireDevPage/>} /> */}
                 {/* <Route path="/generating-plugin" element={<GeneratingPlugin />} />*/}
-                <Route path="/your-plugins" element={<YourPlugins />} />
-                <Route path="/contacts" element={<ContactsPage />} />
-                <Route path="/plugin/:guid" element={<PluginEditor />} />
+                <Route path="/your-plugins" element={<Container maxWidth="md" sx={someBasicStyle} ><YourPlugins /></Container>} />
+                <Route path="/contacts" element={<Container maxWidth="md"><ContactsPage /></Container>} />
+                <Route path="/plugin/:guid" element={<Container maxWidth="md"><PluginEditor /></Container>} />
             </Routes>
         </Router>
     );
