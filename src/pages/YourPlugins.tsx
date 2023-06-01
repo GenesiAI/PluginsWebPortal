@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { List, ListItem, ListItemText, ListItemSecondaryAction, ListItemAvatar, Avatar, IconButton, Typography, Tooltip, Box } from '@mui/material';
+import { List, ListItem, ListItemText, ListItemSecondaryAction, ListItemAvatar, Avatar, IconButton, Typography, Tooltip, Box, Skeleton } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { /*faCopy,*/ faPencilAlt, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
@@ -42,7 +42,23 @@ const YourPlugins: React.FC<{}> = () => {
         >
           Your Plugins
         </Typography>
-        {plugins == null ? <></> : plugins.map((plugin, index) => (
+        {plugins == null ? (
+          <div>
+            {[...Array(2)].map((_, index) => (
+              <ListItem key={index}>
+                <ListItemAvatar>
+                  <Skeleton variant="circular">
+                    <Avatar />
+                  </Skeleton>
+                </ListItemAvatar>
+                <ListItemText>
+                  <Skeleton />
+                  <Skeleton width="60%" />
+                </ListItemText>
+              </ListItem>
+            ))}
+          </div>
+        ) : plugins.map((plugin, index) => (
           <ListItem
             onClick={() => navigate(`/plugin/${plugin.id}`)}
             key={plugin.id}
