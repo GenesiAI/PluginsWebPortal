@@ -35,7 +35,7 @@ const PluginEditor: React.FC<{}> = () => {
             }
         };
 
-        if (guid ==='new') {
+        if (guid === 'new') {
             if (!plugin)
                 setPlugin({});
             return;
@@ -67,138 +67,141 @@ const PluginEditor: React.FC<{}> = () => {
                 legalInfoUrl: plugin?.legalInfoUrl,
                 sections: plugin?.sections,
             }
-
-            await pluginApi.apiPluginsPluginIdPut(guid!, pluginupdate);
-        } catch (error) {
-            // Error: you can show an error message or perform any other action here
-        } finally {
-            setSaveInProgress(false);
-        }
-    };
-
-    const deletePlugin = async () => {
-        setShowDeleteDialog(false);
-        setDeleteInProgress(true);
-        const pluginApi = new PluginApi();
-        try {
-            await pluginApi.apiPluginsPluginIdDelete(guid!);
-            navigate('/your-plugins');
-        } catch (error) {
-            // Error: you can show an error message or perform any other action here
-        } finally {
-            setDeleteInProgress(false);
-        }
-    };
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, property: keyof Plugin) => {
-        setPlugin({ ...plugin!, [property]: e.target.value });
-    };
-
-    return (
-        <div>
-            <h1>{error}</h1>
-            {plugin ? (
-                <Box sx={{ margin: '16px' }}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                variant="standard"
-                                fullWidth
-                                label="Name for Human"
-                                value={plugin.nameForHuman || ''}
-                                onChange={(e) => handleInputChange(e, 'nameForHuman')}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                variant="standard"
-                                fullWidth
-                                label="Name for Model"
-                                value={plugin.nameForModel || ''}
-                                onChange={(e) => handleInputChange(e, 'nameForModel')}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={12}>
-                            <TextField
-                                variant="outlined"
-                                fullWidth
-                                multiline
-                                rows={2}
-                                label="Description for Human"
-                                value={plugin.descriptionForHuman || ''}
-                                onChange={(e) => handleInputChange(e, 'descriptionForHuman')}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={12}>
-                            <TextField
-                                variant="outlined"
-                                fullWidth
-                                multiline
-                                rows={2}
-                                label="Description for Model"
-                                value={plugin.descriptionForModel || ''}
-                                onChange={(e) => handleInputChange(e, 'descriptionForModel')}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={12}>
-                            <TextField
-                                variant="standard"
-                                fullWidth
-                                label="Logo URL"
-                                value={plugin.logoUrl || ''}
-                                onChange={(e) => handleInputChange(e, 'logoUrl')}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                variant="standard"
-                                fullWidth
-                                label="Contact Email"
-                                value={plugin.contactEmail || ''}
-                                onChange={(e) => handleInputChange(e, 'contactEmail')}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                variant="standard"
-                                fullWidth
-                                label="Legal Info URL"
-                                value={plugin.legalInfoUrl || ''}
-                                onChange={(e) => handleInputChange(e, 'legalInfoUrl')}
-                            />
-                        </Grid>
-                        <PluginSections plugin={plugin!} setPlugin={setPlugin} />
-                        <Grid item xs={12} sm={12} container justifyContent="center">
-                            <Button
-                                variant="text"
-                                color="primary"
-                                startIcon={<AddIcon />}
-                                onClick={() =>
-                                    setPlugin({
-                                        ...plugin,
-                                        sections: [...(plugin.sections || []), { name: '', description: '', content: '' }],
-                                    })
-                                }
-                            >
-                                Add Section
-                            </Button>
-                        </Grid>
-                        <Grid item xs={12} sm={12} container justifyContent="space-between">
-                            <Button variant="contained" color="error" startIcon={<DeleteIcon />} onClick={() => setShowDeleteDialog(true)}>
-                                {deleteInProgress ? <CircularProgress size={24} sx={{ color: (theme) => theme.palette.error.contrastText }} /> : 'Delete'}
-                            </Button>
-                            <Button variant="contained" color="success" startIcon={<SaveIcon />} onClick={savePlugin}>
-                                {saveInProgress ? <CircularProgress size={24} sx={{ color: (theme) => theme.palette.success.contrastText }} /> : 'Save'}
-                            </Button>
-                        </Grid>
-                    </Grid>
-                </Box>
-            ) : null
+            if (guid === 'new') {
+                await pluginApi.apiPluginsPost(pluginupdate);
             }
-            <AlertDialog open={showDeleteDialog} setOpen={setShowDeleteDialog} onConfirm={deletePlugin} />
-        </div >
-    );
-};
 
-export default PluginEditor;
+                await pluginApi.apiPluginsPluginIdPut(guid!, pluginupdate);
+            } catch (error) {
+                // Error: you can show an error message or perform any other action here
+            } finally {
+                setSaveInProgress(false);
+            }
+        };
+
+        const deletePlugin = async () => {
+            setShowDeleteDialog(false);
+            setDeleteInProgress(true);
+            const pluginApi = new PluginApi();
+            try {
+                await pluginApi.apiPluginsPluginIdDelete(guid!);
+                navigate('/your-plugins');
+            } catch (error) {
+                // Error: you can show an error message or perform any other action here
+            } finally {
+                setDeleteInProgress(false);
+            }
+        };
+
+        const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, property: keyof Plugin) => {
+            setPlugin({ ...plugin!, [property]: e.target.value });
+        };
+
+        return (
+            <div>
+                <h1>{error}</h1>
+                {plugin ? (
+                    <Box sx={{ margin: '16px' }}>
+                        <Grid container spacing={2}>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    variant="standard"
+                                    fullWidth
+                                    label="Name for Human"
+                                    value={plugin.nameForHuman || ''}
+                                    onChange={(e) => handleInputChange(e, 'nameForHuman')}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    variant="standard"
+                                    fullWidth
+                                    label="Name for Model"
+                                    value={plugin.nameForModel || ''}
+                                    onChange={(e) => handleInputChange(e, 'nameForModel')}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={12}>
+                                <TextField
+                                    variant="outlined"
+                                    fullWidth
+                                    multiline
+                                    rows={2}
+                                    label="Description for Human"
+                                    value={plugin.descriptionForHuman || ''}
+                                    onChange={(e) => handleInputChange(e, 'descriptionForHuman')}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={12}>
+                                <TextField
+                                    variant="outlined"
+                                    fullWidth
+                                    multiline
+                                    rows={2}
+                                    label="Description for Model"
+                                    value={plugin.descriptionForModel || ''}
+                                    onChange={(e) => handleInputChange(e, 'descriptionForModel')}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={12}>
+                                <TextField
+                                    variant="standard"
+                                    fullWidth
+                                    label="Logo URL"
+                                    value={plugin.logoUrl || ''}
+                                    onChange={(e) => handleInputChange(e, 'logoUrl')}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    variant="standard"
+                                    fullWidth
+                                    label="Contact Email"
+                                    value={plugin.contactEmail || ''}
+                                    onChange={(e) => handleInputChange(e, 'contactEmail')}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    variant="standard"
+                                    fullWidth
+                                    label="Legal Info URL"
+                                    value={plugin.legalInfoUrl || ''}
+                                    onChange={(e) => handleInputChange(e, 'legalInfoUrl')}
+                                />
+                            </Grid>
+                            <PluginSections plugin={plugin!} setPlugin={setPlugin} />
+                            <Grid item xs={12} sm={12} container justifyContent="center">
+                                <Button
+                                    variant="text"
+                                    color="primary"
+                                    startIcon={<AddIcon />}
+                                    onClick={() =>
+                                        setPlugin({
+                                            ...plugin,
+                                            sections: [...(plugin.sections || []), { name: '', description: '', content: '' }],
+                                        })
+                                    }
+                                >
+                                    Add Section
+                                </Button>
+                            </Grid>
+                            <Grid item xs={12} sm={12} container justifyContent="space-between">
+                                <Button variant="contained" color="error" startIcon={<DeleteIcon />} onClick={() => setShowDeleteDialog(true)}>
+                                    {deleteInProgress ? <CircularProgress size={24} sx={{ color: (theme) => theme.palette.error.contrastText }} /> : 'Delete'}
+                                </Button>
+                                <Button variant="contained" color="success" startIcon={<SaveIcon />} onClick={savePlugin}>
+                                    {saveInProgress ? <CircularProgress size={24} sx={{ color: (theme) => theme.palette.success.contrastText }} /> : 'Save'}
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </Box>
+                ) : null
+                }
+                <AlertDialog open={showDeleteDialog} setOpen={setShowDeleteDialog} onConfirm={deletePlugin} />
+            </div >
+        );
+    };
+
+    export default PluginEditor;
 

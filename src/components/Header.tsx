@@ -59,6 +59,7 @@ const ResponsiveAppBar: React.FC = () => {
       const token = await auth.currentUser.getIdToken();
       config.headers.Authorization = `Bearer ${token}`;
     } else {
+      console.info("no user"+ auth?.currentUser);
       await handleLogin();
     }
     return config;
