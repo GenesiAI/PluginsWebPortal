@@ -4,7 +4,7 @@ import {
   Typography,
   Box,
   Grid,
-  Paper,
+  // Paper,
   Accordion,
   AccordionDetails,
   AccordionSummary,
@@ -12,87 +12,87 @@ import {
 import { useNavigate } from "react-router-dom";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import step1 from "../img/Screen.png";
-import step2 from "../img/Screen4.png";
+// import step2 from "../img/Screen4.png";
 import step3 from "../img/Screen2.png";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+// import { useTheme } from "@mui/material/styles";
+// import useMediaQuery from "@mui/material/useMediaQuery";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import { Link as RouterLink } from "react-router-dom";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import HeroSection from "../components/HeroSection";
 
-const sliderSettings = {
-  dots: false,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 1000,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: false,
-      },
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 1,
-      },
-    },
-  ],
-  // Add height property to make the slider and images smaller in height
-  // Add css property to reduce the margin between the slides
-  cssEase: "linear",
-  variableWidth: true,
-  centerMode: true,
-  centerPadding: "100px",
-  slideMargin: "100px",
-  arrows: false, // remove next and previous buttons
-};
+// const sliderSettings = {
+//   dots: false,
+//   infinite: true,
+//   speed: 500,
+//   slidesToShow: 3,
+//   slidesToScroll: 1,
+//   autoplay: true,
+//   autoplaySpeed: 1000,
+//   responsive: [
+//     {
+//       breakpoint: 1024,
+//       settings: {
+//         slidesToShow: 2,
+//         slidesToScroll: 1,
+//         infinite: true,
+//         dots: false,
+//       },
+//     },
+//     {
+//       breakpoint: 600,
+//       settings: {
+//         slidesToShow: 1,
+//         slidesToScroll: 1,
+//         initialSlide: 1,
+//       },
+//     },
+//   ],
+//   // Add height property to make the slider and images smaller in height
+//   // Add css property to reduce the margin between the slides
+//   cssEase: "linear",
+//   variableWidth: true,
+//   centerMode: true,
+//   centerPadding: "100px",
+//   slideMargin: "100px",
+//   arrows: false, // remove next and previous buttons
+// };
 
-const logos = [
-  {
-    src: step2,
-    alt: "Logo 1",
-  },
-  {
-    src: step2,
-    alt: "Logo 2",
-  },
-  {
-    src: step2,
-    alt: "Logo 3",
-  },
-  {
-    src: step2,
-    alt: "Logo 3",
-  },
-  {
-    src: step2,
-    alt: "Logo 3",
-  },
-  {
-    src: step2,
-    alt: "Logo 3",
-  },
-  {
-    src: step2,
-    alt: "Logo 3",
-  },
-  {
-    src: step2,
-    alt: "Logo 3",
-  },
-];
+// const logos = [
+//   {
+//     src: step2,
+//     alt: "Logo 1",
+//   },
+//   {
+//     src: step2,
+//     alt: "Logo 2",
+//   },
+//   {
+//     src: step2,
+//     alt: "Logo 3",
+//   },
+//   {
+//     src: step2,
+//     alt: "Logo 3",
+//   },
+//   {
+//     src: step2,
+//     alt: "Logo 3",
+//   },
+//   {
+//     src: step2,
+//     alt: "Logo 3",
+//   },
+//   {
+//     src: step2,
+//     alt: "Logo 3",
+//   },
+//   {
+//     src: step2,
+//     alt: "Logo 3",
+//   },
+// ];
 const sliderSettings2 = {
   dots: false,
   infinite: true,
@@ -211,27 +211,27 @@ const colors = [
 const Home: React.FC = () => {
   const [colorIndex, setColorIndex] = useState(0);
   const navigate = useNavigate();
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const [autoPlay, setAutoPlay] = useState(true);
+  // const theme = useTheme();
+  // const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  // const [autoPlay, setAutoPlay] = useState(true);
 
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 5,
-      slidesToSlide: 5,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 3,
-      slidesToSlide: 3,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      slidesToSlide: 1,
-    },
-  };
+  // const responsive = {
+  //   desktop: {
+  //     breakpoint: { max: 3000, min: 1024 },
+  //     items: 5,
+  //     slidesToSlide: 5,
+  //   },
+  //   tablet: {
+  //     breakpoint: { max: 1024, min: 464 },
+  //     items: 3,
+  //     slidesToSlide: 3,
+  //   },
+  //   mobile: {
+  //     breakpoint: { max: 464, min: 0 },
+  //     items: 1,
+  //     slidesToSlide: 1,
+  //   },
+  // };
 
   React.useEffect(() => {
     const interval = setInterval(() => {

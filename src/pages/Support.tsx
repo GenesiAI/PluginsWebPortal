@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 import { Button, Typography, Box, Grid, Paper, Container } from "@mui/material";
 import { useMediaQuery } from "@mui/material";
 import EditorPic from "../img/Editor.png";
