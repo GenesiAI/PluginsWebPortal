@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  font-family: -apple-system, blinkmacsystemfont, Segoe UI, roboto, helvetica,
+    arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Neucha", cursive, "Nunito", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+}
