@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Typography, Box } from "@mui/material";
 
 const HeroSection: React.FC = () => {
-  // const [colorIndex, setColorIndex] = useState(0);
+  const [, setColorIndex] = useState(0);
   const navigate = useNavigate();
 
   React.useEffect(() => {
