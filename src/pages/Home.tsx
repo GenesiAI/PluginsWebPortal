@@ -1038,7 +1038,7 @@ const Home: React.FC = () => {
           sx={{
             color: "black",
             fontWeight: "bold",
-            fontSize: { xs: "1.2rem", sm: "3rem", md: "3rem" },
+            fontSize: { xs: "1.3rem", sm: "1.5rem", md: "3rem" },
             margin: { xs: "0rem 0", sm: "2rem 0", md: "4rem 5rem" },
           }}
         >
@@ -1101,7 +1101,12 @@ const Home: React.FC = () => {
                 },
               }}
             >
-              <Typography sx={{ fontWeight: "bold", fontSize: 25 }}>
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: { xs: "1rem", sm: "1.5rem", md: "1.5rem" },
+                }}
+              >
                 {faq.question}
               </Typography>
             </AccordionSummary>
@@ -1112,7 +1117,11 @@ const Home: React.FC = () => {
                 borderRadius: "0.5rem",
               }}
             >
-              <Typography sx={{ fontSize: 18 }}>{faq.answer}</Typography>
+              <Typography
+                sx={{ fontSize: { xs: "0.8rem", sm: "1.2rem", md: "1.2rem" } }}
+              >
+                {faq.answer}
+              </Typography>
             </AccordionDetails>
           </Accordion>
         ))}
