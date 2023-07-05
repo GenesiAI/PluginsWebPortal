@@ -55,11 +55,11 @@ const ResponsiveAppBar: React.FC = () => {
 
   axios.interceptors.request.use(async config => {
     const auth = getAuth();
+    console.info("auth:", JSON.stringify(auth));
     if (auth?.currentUser) {
       const token = await auth.currentUser.getIdToken();
       config.headers.Authorization = `Bearer ${token}`;
     } else {
-      console.info("no user"+ auth?.currentUser);
       await handleLogin();
     }
     return config;

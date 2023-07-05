@@ -90,9 +90,9 @@ const Login: React.FC = () => {
     delete axios.defaults.headers.common["Authorization"];
   };
 
-  auth?.currentUser?.getIdToken(/* forceRefresh */ true).then(function (idToken) {
-    console.log("tokex: "+ idToken);
-  });
+  // auth?.currentUser?.getIdToken(/* forceRefresh */ true).then(function (idToken) {
+  //   console.log("tokex: "+ idToken);
+  // });
 
   return (
     <div>
