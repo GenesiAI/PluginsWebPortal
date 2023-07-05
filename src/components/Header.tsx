@@ -1,24 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, User } from "firebase/auth";
-import axios from 'axios';
-import { auth } from '../security/firebase';
+import React, { useState, useEffect } from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signOut,
+  User,
+} from "firebase/auth";
+import axios from "axios";
+import { auth } from "../security/firebase";
 
-const loggedInPages = ['Your Plugins', 'contacts', 'Logout'];
-const loggedOutPages = ['contacts', 'Login'];
+const loggedInPages = ["Your Plugins", "Support", "contacts", "Logout"];
+const loggedOutPages = ["contacts", "Support", "Login"];
 
 const ResponsiveAppBar: React.FC = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null
+  );
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -34,7 +43,7 @@ const ResponsiveAppBar: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, user => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
     return unsubscribe;
@@ -50,28 +59,31 @@ const ResponsiveAppBar: React.FC = () => {
     //     console.info("token\n" + idToken);
     //     axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
     //   });
-    navigate("your-plugins")
-  }
+    navigate("your-plugins");
+  };
 
-  axios.interceptors.request.use(async config => {
-    const auth = getAuth();
-    if (auth?.currentUser) {
-      const token = await auth.currentUser.getIdToken();
-      config.headers.Authorization = `Bearer ${token}`;
-    } else {
-      console.info("no user"+ auth?.currentUser);
-      await handleLogin();
+  axios.interceptors.request.use(
+    async (config) => {
+      const auth = getAuth();
+      if (auth?.currentUser) {
+        const token = await auth.currentUser.getIdToken();
+        config.headers.Authorization = `Bearer ${token}`;
+      } else {
+        console.info("no user" + auth?.currentUser);
+        await handleLogin();
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
     }
-    return config;
-  }, error => {
-    return Promise.reject(error);
-  });
+  );
 
   const handleLogout = async () => {
     const auth = getAuth();
     await signOut(auth);
     setUser(null);
-    navigate("/")
+    navigate("/");
   };
 
   // auth?.currentUser?.getIdToken(/* forceRefresh */ true).then(function (idToken) {
@@ -82,29 +94,32 @@ const ResponsiveAppBar: React.FC = () => {
   return (
     <AppBar position="sticky" color="default">
       <Container maxWidth="xl">
-        <Toolbar disableGutters
+        <Toolbar
+          disableGutters
           sx={{
             color: (theme) => theme.palette.primary.main,
-          }}>
+          }}
+        >
           <Typography
             variant="h5"
             noWrap
             component={Link}
             to="/"
             sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.4rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              mr: 4,
+              ml: 3,
+              display: { xs: "none", md: "flex" },
+              fontWeight: "bold",
+              letterSpacing: ".1rem",
+              color: "inherit",
+              textDecoration: "none",
+              fontSize: "2rem",
             }}
           >
             Genesi AI
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="open drawer"
@@ -119,26 +134,31 @@ const ResponsiveAppBar: React.FC = () => {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
+              sx={{ display: { xs: "block", md: "flex" } }}
             >
               {links.map((link) => {
-                if (link.toLowerCase() === 'login' || link.toLowerCase() === 'logout') {
+                if (
+                  link.toLowerCase() === "login" ||
+                  link.toLowerCase() === "logout"
+                ) {
                   return (
                     <MenuItem
                       key={link}
-                      onClick={link.toLowerCase() === 'login' ? handleLogin : handleLogout}
+                      onClick={
+                        link.toLowerCase() === "login"
+                          ? handleLogin
+                          : handleLogout
+                      }
                     >
                       <Typography textAlign="center">{link}</Typography>
                     </MenuItem>
@@ -149,7 +169,7 @@ const ResponsiveAppBar: React.FC = () => {
                     key={link}
                     onClick={handleCloseNavMenu}
                     component={Link}
-                    to={`/${link.toLowerCase().replace(' ', '-')}`}
+                    to={`/${link.toLowerCase().replace(" ", "-")}`}
                   >
                     <Typography textAlign="center">{link}</Typography>
                   </MenuItem>
@@ -164,25 +184,37 @@ const ResponsiveAppBar: React.FC = () => {
             to="/"
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              fontWeight: "bold",
+              letterSpacing: ".1rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             Genesi AI
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {links.map((link) => {
-              if (link.toLowerCase() === 'login' || link.toLowerCase() === 'logout') {
+              if (
+                link.toLowerCase() === "login" ||
+                link.toLowerCase() === "logout"
+              ) {
                 return (
                   <Button
                     key={link}
-                    onClick={link.toLowerCase() === 'login' ? handleLogin : handleLogout}
-                    sx={{ my: 2, color: 'black', display: 'block' }}
+                    onClick={
+                      link.toLowerCase() === "login"
+                        ? handleLogin
+                        : handleLogout
+                    }
+                    sx={{
+                      my: 2,
+                      color: "white",
+                      display: "block",
+                      textWeight: "bold",
+                      backgroundColor: "#6360FF",
+                    }}
                   >
                     {link}
                   </Button>
@@ -193,8 +225,8 @@ const ResponsiveAppBar: React.FC = () => {
                   key={link}
                   onClick={handleCloseNavMenu}
                   component={Link}
-                  to={`/${link.toLowerCase().replace(' ', '-')}`}
-                  sx={{ my: 2, color: 'black', display: 'block' }}
+                  to={`/${link.toLowerCase().replace(" ", "-")}`}
+                  sx={{ my: 2, color: "black", display: "block" }}
                 >
                   {link}
                 </Button>
@@ -203,8 +235,8 @@ const ResponsiveAppBar: React.FC = () => {
           </Box>
         </Toolbar>
       </Container>
-    </AppBar >
+    </AppBar>
   );
-}
+};
 
 export default ResponsiveAppBar;
