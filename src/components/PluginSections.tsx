@@ -27,6 +27,18 @@ const PluginSections: React.FC<PluginSectionsProps> = ({ plugin, setPlugin }) =>
                                             sections: plugin.sections!.map((s, i) => (i === index ? { ...s, name: e.target.value } : s)),
                                         })
                                     }
+                                    error={
+                                        section.name &&
+                                            (section.name.length > 50 || !/^[a-zA-Z0-9]+$/.test(section.name))
+                                            ? true
+                                            : false
+                                    }
+                                    helperText={
+                                        section.name &&
+                                            (section.name.length > 50 || !/^[a-zA-Z0-9]+$/.test(section.name))
+                                            ? "Please enter a valid name (up to 50 characters with no spaces and only letters and numbers)"
+                                            : ""
+                                    }
                                 />
                             </Grid>
                             <Grid item xs={12} sm={12}>
@@ -45,6 +57,18 @@ const PluginSections: React.FC<PluginSectionsProps> = ({ plugin, setPlugin }) =>
                                             ),
                                         })
                                     }
+                                    error={
+                                        section.description &&
+                                            (section.description.length > 200 || !/^[a-zA-Z0-9]+$/.test(section.description))
+                                            ? true
+                                            : false
+                                    }
+                                    helperText={
+                                        section.description &&
+                                            (section.description.length > 200 || !/^[a-zA-Z0-9]+$/.test(section.description))
+                                            ? "Please enter a valid description (up to 200 characters)"
+                                            : ""
+                                    }
                                 />
                             </Grid>
                             <Grid item xs={12} sm={12}>
@@ -62,6 +86,14 @@ const PluginSections: React.FC<PluginSectionsProps> = ({ plugin, setPlugin }) =>
                                                 i === index ? { ...s, content: e.target.value } : s,
                                             ),
                                         })
+                                    }
+                                    error={
+                                        section.content && section.content.length > 100000 ? true : false
+                                    }
+                                    helperText={
+                                        section.content && section.content.length > 100000
+                                            ? "Please shorten the description (up to 100.000 characters)"
+                                            : "Up to 100.000 characters of data, the more the better!"
                                     }
                                 />
                             </Grid>
