@@ -1,29 +1,26 @@
-import React, { useState } from "react";
-import {
-  List,
-  ListItem,
-  ListItemText,
-  ListItemSecondaryAction,
-  ListItemAvatar,
-  Avatar,
-  IconButton,
-  Typography,
-  Tooltip,
-  Box,
-  Skeleton,
-} from "@mui/material";
+import { faPencilAlt, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  /*faCopy,*/ faPencilAlt,
-  faPlus,
-} from "@fortawesome/free-solid-svg-icons";
+  Avatar,
+  Box,
+  IconButton,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemSecondaryAction,
+  ListItemText,
+  Skeleton,
+  Tooltip,
+  Typography
+} from "@mui/material";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Plugin, PluginApi } from "../apis/api";
 
 const YourPlugins: React.FC<{}> = () => {
   const navigate = useNavigate();
   // const [tooltipOpenIndex, setTooltipOpenIndex] = useState(-1);
-  // const handleCopyClick = async (url: string, index: number) => {
+  // const handleCopyClick = async (url: string, index: number) => {p
   //   await navigator.clipboard.writeText(url);
   //   setTooltipOpenIndex(index);
   //   setTimeout(() => setTooltipOpenIndex(-1), 2000);
@@ -49,7 +46,7 @@ const YourPlugins: React.FC<{}> = () => {
           backgroundColor: "#f7f7f7",
           marginTop: 4,
           borderRadius: 3,
-          padding: 3,
+          padding: 3
         }}
       >
         <Typography
@@ -59,7 +56,7 @@ const YourPlugins: React.FC<{}> = () => {
             fontWeight: "bold",
             color: (theme) => theme.palette.primary.main,
             marginBottom: (theme) => theme.spacing(2),
-            marginTop: (theme) => theme.spacing(2),
+            marginTop: (theme) => theme.spacing(2)
           }}
         >
           Your Plugins
@@ -89,7 +86,7 @@ const YourPlugins: React.FC<{}> = () => {
                 backgroundColor: (theme) => theme.palette.background.paper,
                 borderRadius: 2,
                 marginBottom: (theme) => theme.spacing(1),
-                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)"
               }}
             >
               <ListItemAvatar>
@@ -135,7 +132,7 @@ const YourPlugins: React.FC<{}> = () => {
         <Box
           sx={{
             display: "flex",
-            justifyContent: "flex-end",
+            justifyContent: "flex-end"
           }}
         >
           <Tooltip title="Create new plugin" arrow placement="top">
@@ -146,8 +143,8 @@ const YourPlugins: React.FC<{}> = () => {
                 backgroundColor: (theme) => theme.palette.primary.main,
                 color: (theme) => theme.palette.primary.contrastText,
                 "&:hover": {
-                  backgroundColor: (theme) => theme.palette.primary.dark,
-                },
+                  backgroundColor: (theme) => theme.palette.primary.dark
+                }
               }}
             >
               <FontAwesomeIcon icon={faPlus} />
