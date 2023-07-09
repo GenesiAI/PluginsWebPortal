@@ -17,6 +17,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Plugin, PluginApi } from "../apis/api";
 
+type PluginsState = {
+  loading: boolean;
+  pluginList: Plugin[];
+};
+const initialData: PluginsState = {
+  loading: true,
+  pluginList: []
+};
 const YourPlugins: React.FC<{}> = () => {
   const navigate = useNavigate();
   // const [tooltipOpenIndex, setTooltipOpenIndex] = useState(-1);
@@ -25,19 +33,21 @@ const YourPlugins: React.FC<{}> = () => {
   //   setTooltipOpenIndex(index);
   //   setTimeout(() => setTooltipOpenIndex(-1), 2000);
   // };
-  const [plugins, setPlugin] = useState<Plugin[] | null>(null);
+  const [{ pluginList, loading }, setPlugin] =
+    useState<PluginsState>(initialData);
   React.useEffect(() => {
     const fetchPlugins = async () => {
       const pluginApi = new PluginApi();
       try {
         const response = await pluginApi.apiPluginsGet();
-        setPlugin(response.data);
+        setPlugin({ loading: false, pluginList: response.data });
       } catch (error) {
         console.error("Error fetching users:", error);
       }
     };
-    if (!plugins) fetchPlugins();
-  });
+
+    fetchPlugins();
+  }, []);
 
   return (
     <>
@@ -61,8 +71,8 @@ const YourPlugins: React.FC<{}> = () => {
         >
           Your Plugins
         </Typography>
-        {plugins == null ? (
-          <div>
+        {loading ? (
+          <>
             {[...Array(2)].map((_, index) => (
               <ListItem key={index}>
                 <ListItemAvatar>
@@ -76,9 +86,11 @@ const YourPlugins: React.FC<{}> = () => {
                 </ListItemText>
               </ListItem>
             ))}
-          </div>
+          </>
+        ) : pluginList.length <= 0 ? (
+          <>Nothing to see here 👀</>
         ) : (
-          plugins.map((plugin, index) => (
+          pluginList.map((plugin, index) => (
             <ListItem
               onClick={() => navigate(`/plugin/${plugin.id}`)}
               key={plugin.id}
@@ -132,9 +144,11 @@ const YourPlugins: React.FC<{}> = () => {
         <Box
           sx={{
             display: "flex",
-            justifyContent: "flex-end"
+            justifyContent: "flex-end",
+            alignContent: "center"
           }}
         >
+          Create your plugin here
           <Tooltip title="Create new plugin" arrow placement="top">
             {/* put this on the righ, using float it goes out of the div */}
             <IconButton
