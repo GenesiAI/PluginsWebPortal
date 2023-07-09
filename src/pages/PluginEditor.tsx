@@ -15,7 +15,8 @@ import Stack from "@mui/material/Stack";
 
 const PluginEditor: React.FC<{}> = () => {
   const navigate = useNavigate();
-  const { guid } = useParams();
+  const { guid: initialGuid } = useParams<{ guid: string }>();
+  const [guid, setGuid] = useState<string>(initialGuid!);
   const [plugin, setPlugin] = useState<Plugin | null>(null);
   const [error, seterror] = useState<string | null>(null);
   const [saveInProgress, setSaveInProgress] = useState(false);
@@ -71,7 +72,9 @@ const PluginEditor: React.FC<{}> = () => {
         sections: plugin?.sections,
       };
       if (guid === "new") {
-        await pluginApi.apiPluginsPost(pluginupdate);
+        var newPlugin = await pluginApi.apiPluginsPost(pluginupdate);
+        setGuid(newPlugin.data.id!);
+        return;
       }
 
       await pluginApi.apiPluginsPluginIdPut(guid!, pluginupdate);
@@ -144,15 +147,15 @@ const PluginEditor: React.FC<{}> = () => {
                 onChange={(e) => handleInputChange(e, "nameForHuman")}
                 error={
                   plugin.nameForHuman &&
-                  (plugin.nameForHuman.length > 20 ||
-                    !/^[a-zA-Z ]+$/.test(plugin.nameForHuman))
+                    (plugin.nameForHuman.length > 20 ||
+                      !/^[a-zA-Z ]+$/.test(plugin.nameForHuman))
                     ? true
                     : false
                 }
                 helperText={
                   plugin.nameForHuman &&
-                  (plugin.nameForHuman.length > 20 ||
-                    !/^[a-zA-Z ]+$/.test(plugin.nameForHuman))
+                    (plugin.nameForHuman.length > 20 ||
+                      !/^[a-zA-Z ]+$/.test(plugin.nameForHuman))
                     ? "Please enter a valid name (up to 20 letters and no numbers or special characters)"
                     : ""
                 }
@@ -167,15 +170,15 @@ const PluginEditor: React.FC<{}> = () => {
                 onChange={(e) => handleInputChange(e, "nameForModel")}
                 error={
                   plugin.nameForModel &&
-                  (plugin.nameForModel.length > 50 ||
-                    !/^[a-zA-Z0-9]+$/.test(plugin.nameForModel))
+                    (plugin.nameForModel.length > 50 ||
+                      !/^[a-zA-Z0-9]+$/.test(plugin.nameForModel))
                     ? true
                     : false
                 }
                 helperText={
                   plugin.nameForModel &&
-                  (plugin.nameForModel.length > 50 ||
-                    !/^[a-zA-Z0-9]+$/.test(plugin.nameForModel))
+                    (plugin.nameForModel.length > 50 ||
+                      !/^[a-zA-Z0-9]+$/.test(plugin.nameForModel))
                     ? "Please enter a valid name (up to 50 characters with no spaces and only letters and numbers)"
                     : ""
                 }
@@ -192,13 +195,13 @@ const PluginEditor: React.FC<{}> = () => {
                 onChange={(e) => handleInputChange(e, "descriptionForHuman")}
                 error={
                   plugin.descriptionForHuman &&
-                  plugin.descriptionForHuman.length > 100
+                    plugin.descriptionForHuman.length > 100
                     ? true
                     : undefined
                 }
                 helperText={
                   plugin.descriptionForHuman &&
-                  plugin.descriptionForHuman.length > 100
+                    plugin.descriptionForHuman.length > 100
                     ? "Please enter a shorter description (up to 100 characters)"
                     : ""
                 }
@@ -215,13 +218,13 @@ const PluginEditor: React.FC<{}> = () => {
                 onChange={(e) => handleInputChange(e, "descriptionForModel")}
                 error={
                   plugin.descriptionForModel &&
-                  plugin.descriptionForModel.length > 8000
+                    plugin.descriptionForModel.length > 8000
                     ? true
                     : false
                 }
                 helperText={
                   plugin.descriptionForModel &&
-                  plugin.descriptionForModel.length > 8000
+                    plugin.descriptionForModel.length > 8000
                     ? "Please shorten the description (up to 8000 characters)"
                     : "Include keywords and relevant details to improve plugin prompting"
                 }
@@ -237,7 +240,7 @@ const PluginEditor: React.FC<{}> = () => {
                 error={
                   (plugin.logoUrl &&
                     !/\.(gif|jpe?g|png)$/i.test(plugin.logoUrl)) ||
-                  (plugin.logoUrl && plugin.logoUrl.length > 2083)
+                    (plugin.logoUrl && plugin.logoUrl.length > 2083)
                     ? true
                     : undefined
                 }
@@ -245,8 +248,8 @@ const PluginEditor: React.FC<{}> = () => {
                   plugin.logoUrl && !/\.(gif|jpe?g|png)$/i.test(plugin.logoUrl)
                     ? "Please provide a valid image URL (PNG, JPEG or GIF)"
                     : plugin.logoUrl && plugin.logoUrl.length > 2083
-                    ? "Please shorten the URL (up to 2083 characters)"
-                    : "URL used to fetch the logo. Suggested size: 512 x 512. Transparent backgrounds are supported."
+                      ? "Please shorten the URL (up to 2083 characters)"
+                      : "URL used to fetch the logo. Suggested size: 512 x 512. Transparent backgrounds are supported."
                 }
               />
             </Grid>
@@ -259,13 +262,13 @@ const PluginEditor: React.FC<{}> = () => {
                 onChange={(e) => handleInputChange(e, "contactEmail")}
                 error={
                   plugin.contactEmail &&
-                  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(plugin.contactEmail)
+                    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(plugin.contactEmail)
                     ? true
                     : undefined
                 }
                 helperText={
                   plugin.contactEmail &&
-                  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(plugin.contactEmail)
+                    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(plugin.contactEmail)
                     ? "Please provide a valid email address"
                     : "Email address for safety/moderation, support, and deactivation purposes."
                 }
@@ -280,13 +283,13 @@ const PluginEditor: React.FC<{}> = () => {
                 onChange={(e) => handleInputChange(e, "legalInfoUrl")}
                 error={
                   plugin.legalInfoUrl &&
-                  !/^https?:\/\/.+/.test(plugin.legalInfoUrl)
+                    !/^https?:\/\/.+/.test(plugin.legalInfoUrl)
                     ? true
                     : undefined
                 }
                 helperText={
                   plugin.legalInfoUrl &&
-                  !/^https?:\/\/.+/.test(plugin.legalInfoUrl)
+                    !/^https?:\/\/.+/.test(plugin.legalInfoUrl)
                     ? "Please provide a valid URL starting with http:// or https://"
                     : "Redirect URL for users to view plugin information."
                 }
