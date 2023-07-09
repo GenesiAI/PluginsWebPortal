@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "msedge",
+            "request": "launch",
+            "name": "Launch Edge against localhost",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}",
+            "runtimeExecutable": "C:/Program Files (x86)/Microsoft/Edge Dev/Application/msedge.exe",
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ]
+        },
+        {
+            "type": "msedge",
+            "request": "attach",
+            "name": "Attach to Edge",
+            "port": 9222,
+            "webRoot": "${workspaceFolder}",
+        }
+    ]
+}
