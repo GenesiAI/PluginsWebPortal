@@ -82,7 +82,10 @@ const Plugins = () => {
               </Typography>
             </ListItemText>
             <ListItemIcon className="justify-end me-1">
-              <IconButton sx={IconButtonTheme}>
+              <IconButton
+                sx={IconButtonTheme}
+                className="animate-bounce delay-1000"
+              >
                 <FontAwesomeIcon icon={faShare} rotation={90} size="xs" />
               </IconButton>
             </ListItemIcon>
