@@ -67,7 +67,7 @@ const HeroSection: React.FC = () => {
             fontSize: { xs: "2rem", sm: "5rem" },
             margin: { xs: "1rem 0", sm: "2rem 0" },
             fontFamily: "Paytone One",
-            fontWeight: "soft",
+            fontWeight: "soft"
           }}
         >
           Think <span style={{ fontWeight: "soft" }}>Innovative</span>.<br /> Be
@@ -81,7 +81,7 @@ const HeroSection: React.FC = () => {
           flexDirection: "column",
           alignItems: "center",
           textAlign: "center",
-          padding: { xs: "1rem", sm: "2rem" },
+          padding: { xs: "1rem", sm: "2rem" }
         }}
       >
         <Typography
@@ -93,7 +93,7 @@ const HeroSection: React.FC = () => {
             lineHeight: { xs: "1.5", sm: "1", lg: "1.5" },
             marginBottom: "1rem",
             fontWeight: "bold",
-            fontFamily: "Neucha",
+            fontFamily: "Neucha"
           }}
         >
           Build your ChatGPT custom plugin without code, in less than 2 minutes.
@@ -106,10 +106,10 @@ const HeroSection: React.FC = () => {
             backgroundColor: "#6360FF",
             color: "white",
             "&:hover": {
-              backgroundColor: "#6360FF",
+              backgroundColor: "#6360FF"
             },
             fontSize: "1.0rem",
-            padding: "1rem 1rem",
+            padding: "1rem 1rem"
           }}
           onClick={GoToLogin}
         >
@@ -124,14 +124,14 @@ const HeroSection: React.FC = () => {
           sx={{
             width: "100%",
             maxWidth: { xs: "100%", sm: "80%", md: "1000px", lg: "1200px" },
-            margin: "auto",
+            margin: "auto"
           }}
         >
           <video
             style={{
               width: "90%", // Set the width to 100% for mobile devices
               display: "block",
-              margin: "auto",
+              margin: "auto"
             }}
             controls
           >

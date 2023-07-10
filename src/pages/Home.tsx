@@ -7,7 +7,7 @@ import {
   // Paper,
   Accordion,
   AccordionDetails,
-  AccordionSummary,
+  AccordionSummary
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
@@ -108,24 +108,24 @@ const sliderSettings2 = {
         slidesToShow: 1,
         slidesToScroll: 1,
         infinite: true,
-        dots: false,
-      },
+        dots: false
+      }
     },
     {
       breakpoint: 600,
       settings: {
         slidesToShow: 1, // update to show only 1 slide on mobile
         slidesToScroll: 1,
-        initialSlide: 1,
-      },
+        initialSlide: 1
+      }
     },
     {
       breakpoint: 280,
       settings: {
         slidesToShow: 1, // show only 1 slide on mobile
-        slidesToScroll: 1,
-      },
-    },
+        slidesToScroll: 1
+      }
+    }
   ],
   // Add height property to make the slider and images smaller in height
   // Add css property to reduce the margin between the slides
@@ -134,41 +134,41 @@ const sliderSettings2 = {
   centerMode: true,
   centerPadding: "100px",
   slideMargin: "100px",
-  arrows: false, // remove next and previous buttons
+  arrows: false // remove next and previous buttons
 };
 const logos2 = [
   {
     src: step3,
-    alt: "Logo 1",
+    alt: "Logo 1"
   },
   {
     src: step3,
-    alt: "Logo 2",
+    alt: "Logo 2"
   },
   {
     src: step3,
-    alt: "Logo 3",
+    alt: "Logo 3"
   },
   {
     src: step3,
-    alt: "Logo 3",
+    alt: "Logo 3"
   },
   {
     src: step3,
-    alt: "Logo 3",
+    alt: "Logo 3"
   },
   {
     src: step3,
-    alt: "Logo 3",
+    alt: "Logo 3"
   },
   {
     src: step3,
-    alt: "Logo 3",
+    alt: "Logo 3"
   },
   {
     src: step3,
-    alt: "Logo 3",
-  },
+    alt: "Logo 3"
+  }
 ];
 
 const colors = [
@@ -205,7 +205,7 @@ const colors = [
   "#ee668a",
   "#f73da4",
   "#ef4bb6",
-  "#e758c8",
+  "#e758c8"
 ];
 
 const Home: React.FC = () => {
@@ -257,70 +257,70 @@ const Home: React.FC = () => {
     {
       question: "Who can use Genesi AI?      ",
       answer:
-        " Everyone's invited to the party! Whether you're a tech whiz or a total newbie, GenesiAI is designed to be user-friendly for anyone. It doesn't matter if you're a coding guru or a business owner looking to level up – our intuitive interface makes plugin building a breeze.",
+        " Everyone's invited to the party! Whether you're a tech whiz or a total newbie, GenesiAI is designed to be user-friendly for anyone. It doesn't matter if you're a coding guru or a business owner looking to level up – our intuitive interface makes plugin building a breeze."
     },
     {
       question: "Do I need to write code to create a plugin on Genesi AI?",
       answer:
-        "No way! With GenesiAI, you don't need to write a single line of code. Just enter your data section by section, tell us what they're about, and boom! You'll have a professional plugin ready to go. Our editor is super easy to use, quick, and intuitive. In just a few simple steps, you can use your plugin directly in ChatGPT. ",
+        "No way! With GenesiAI, you don't need to write a single line of code. Just enter your data section by section, tell us what they're about, and boom! You'll have a professional plugin ready to go. Our editor is super easy to use, quick, and intuitive. In just a few simple steps, you can use your plugin directly in ChatGPT. "
     },
     {
       question:
         "Do I have to deal with all the hosting stuff for my ChatGPT plugins?",
       answer:
-        "Easy-peasy lemon squeezy! Once you follow the instructions and complete the four steps, we'll generate a link that fits ChatGPT's requirements. Just copy and paste that bad boy into the Plugin Store, and voila! It'll go through OpenAI's approval process. But hey, even if it's not verified yet, you can start using it right away!",
+        "Easy-peasy lemon squeezy! Once you follow the instructions and complete the four steps, we'll generate a link that fits ChatGPT's requirements. Just copy and paste that bad boy into the Plugin Store, and voila! It'll go through OpenAI's approval process. But hey, even if it's not verified yet, you can start using it right away!"
     },
     {
       question: "How much does it cost to create a plugin?",
       answer:
-        " Nope! We've got you covered. You don't need to worry about hosting or managing any technical infrastructure for your ChatGPT plugins. We take care of all that behind the scenes, so you can focus on creating awesome plugins. ",
+        " Nope! We've got you covered. You don't need to worry about hosting or managing any technical infrastructure for your ChatGPT plugins. We take care of all that behind the scenes, so you can focus on creating awesome plugins. "
     },
     {
       question: "How many plugins can I create with my profile?",
-      answer: "",
+      answer: ""
     },
     {
       question: "Can GenesiAI support my business as it grows?  ",
       answer:
-        "Absolutely! GenesiAI is here to grow with you. Whether you're just starting out as a small business or you're a big shot enterprise, our platform is built to scale and handle your growing needs. You focus on your business, and we'll handle the tech side of things!",
+        "Absolutely! GenesiAI is here to grow with you. Whether you're just starting out as a small business or you're a big shot enterprise, our platform is built to scale and handle your growing needs. You focus on your business, and we'll handle the tech side of things!"
     },
     {
       question:
         "How do I install my plugin in the ChatGPT Plugin Store?        ",
       answer:
-        "Easy-peasy lemon squeezy! Once you follow the instructions and complete the four steps, we'll generate a link that fits ChatGPT's requirements. Just copy and paste that bad boy into the Plugin Store, and voila! It'll go through OpenAI's approval process. But hey, even if it's not verified yet, you can start using it right away!",
+        "Easy-peasy lemon squeezy! Once you follow the instructions and complete the four steps, we'll generate a link that fits ChatGPT's requirements. Just copy and paste that bad boy into the Plugin Store, and voila! It'll go through OpenAI's approval process. But hey, even if it's not verified yet, you can start using it right away!"
     },
     {
       question: "How much does it cost to create a plugin?",
       answer:
-        "We've got different plans to suit your needs. You can find all the juicy details right here. Oh, and by the way, if you want to try creating a test plugin, it's totally free! Just give it a whirl and let us know how it goes 😄",
+        "We've got different plans to suit your needs. You can find all the juicy details right here. Oh, and by the way, if you want to try creating a test plugin, it's totally free! Just give it a whirl and let us know how it goes 😄"
     },
     {
       question: "Can I invite people to try my plugin?",
       answer:
-        "Absolutely! While your plugin is waiting to be verified, you can share it with up to 100 lucky users who have plugin access. Once it's available in the Plugin Store, all ChatGPT Plus customers will be able to get their hands on it. ",
+        "Absolutely! While your plugin is waiting to be verified, you can share it with up to 100 lucky users who have plugin access. Once it's available in the Plugin Store, all ChatGPT Plus customers will be able to get their hands on it. "
     },
     {
       question: "Can I charge people for my plugin?",
       answer:
-        "Not at the moment, but fear not! Charging for plugins is a feature that ChatGPT will roll out soon. So stay tuned for that! ",
+        "Not at the moment, but fear not! Charging for plugins is a feature that ChatGPT will roll out soon. So stay tuned for that! "
     },
     {
       question: "Can I make updates to my plugin after it's live?",
       answer:
-        "Absolutely! You're the boss of your plugin. You can make updates and changes anytime you want using our plugin builder. Any modifications you make in the OpenAI builder will be reflected in the deployed plugin endpoint.Just keep in mind that OpenAI may remove your plugin from the store if there are certain configuration changes. For example, if you change the name from 'Billy Joe' to 'Adidas', OpenAI might have to pull the plug on your plugin (brand violation alert!).  ",
+        "Absolutely! You're the boss of your plugin. You can make updates and changes anytime you want using our plugin builder. Any modifications you make in the OpenAI builder will be reflected in the deployed plugin endpoint.Just keep in mind that OpenAI may remove your plugin from the store if there are certain configuration changes. For example, if you change the name from 'Billy Joe' to 'Adidas', OpenAI might have to pull the plug on your plugin (brand violation alert!).  "
     },
     {
       question: "Is my data safe with GenesiAI?",
       answer:
-        "Absolutely! We've got your back when it comes to data security and privacy. Our platform is built with rock-solid security measures to ensure your data stays locked up tight.  ",
+        "Absolutely! We've got your back when it comes to data security and privacy. Our platform is built with rock-solid security measures to ensure your data stays locked up tight.  "
     },
     {
       question:
         " What if I run into issues while building or deploying my plugin?",
       answer:
-        "We hope you won't run into any snags, but if you do, don't fret! You can check out our documentation for some guidance or shoot us an email at info@genesi.ai. Our awesome team will be ready to lend you a hand. Just a heads up, though: We can't assist with getting your plugin tested and approved by OpenAI. The review process for the Plugin Store is in your hands. Make sure to follow OpenAI's review process listed here: https://platform.openai.com/docs/plugins/review ",
-    },
+        "We hope you won't run into any snags, but if you do, don't fret! You can check out our documentation for some guidance or shoot us an email at info@genesi.ai. Our awesome team will be ready to lend you a hand. Just a heads up, though: We can't assist with getting your plugin tested and approved by OpenAI. The review process for the Plugin Store is in your hands. Make sure to follow OpenAI's review process listed here: https://platform.openai.com/docs/plugins/review "
+    }
   ];
 
   return (
@@ -334,7 +334,7 @@ const Home: React.FC = () => {
           padding: { xs: "1rem", sm: "1rem", md: "2rem" },
           // maxWidth: { xs: "100%", sm: "80%", md: "1300px", lg: "1400px" },
           justifyContent: "center",
-          fontSize: { xs: "1.5rem", sm: "2rem" },
+          fontSize: { xs: "1.5rem", sm: "2rem" }
 
           // margin: {
           //   xs: "0.5rem",
@@ -352,7 +352,7 @@ const Home: React.FC = () => {
             color: "#6360FF",
             fontWeight: "bold",
             fontSize: { xs: "1.2rem", sm: "3rem", md: "4rem" },
-            margin: { xs: "1rem 0", sm: "2rem 0", md: "2rem" }, // adjust the margin here
+            margin: { xs: "1rem 0", sm: "2rem 0", md: "2rem" } // adjust the margin here
           }}
         >
           <span style={{ fontWeight: "bold" }}>What is Genesi AI?</span>
@@ -366,7 +366,7 @@ const Home: React.FC = () => {
             fontSize: { xs: "1.2rem", sm: "1.5rem", md: "1.4rem" },
             lineHeight: { xs: "1.5", sm: "1.2", md: "1.4" },
             maxWidth: { xs: "90%", sm: "80%", md: "76%" },
-            margin: "auto",
+            margin: "auto"
           }}
         >
           GenesiAI is a tool that allows you to create your ChatGPT custom
@@ -391,7 +391,7 @@ const Home: React.FC = () => {
             textAlign: "center",
             border: "3px solid #ccc",
             borderColor: "#6360FF",
-            borderRadius: "6px",
+            borderRadius: "6px"
           }}
         >
           <Grid container spacing={1}>
@@ -402,7 +402,7 @@ const Home: React.FC = () => {
               sx={{
                 borderRight: { xs: "none", md: "2px solid #6360FF" },
                 padding: { xs: "0.5rem", md: "1rem" },
-                borderBottom: { xs: "2px solid #6360FF", md: "none" },
+                borderBottom: { xs: "2px solid #6360FF", md: "none" }
               }}
             >
               <Typography
@@ -411,7 +411,7 @@ const Home: React.FC = () => {
                   fontWeight: "soft",
                   // borderBottom: { xs: "none", md: "2px solid #6360FF" },
                   fontSize: { xs: "1.5rem", sm: "2rem", md: "1.5rem" },
-                  fontFamily: "Paytone One",
+                  fontFamily: "Paytone One"
                 }}
               >
                 Genesi AI Is Easy
@@ -423,7 +423,7 @@ const Home: React.FC = () => {
                   display: "flex-wrap", // add this line
                   padding: { xs: "0.5rem", md: "1rem" },
                   fontSize: { xs: "1rem", sm: "1.2rem", md: "1rem" },
-                  fontWeight: "bold",
+                  fontWeight: "bold"
                 }}
               >
                 <CheckCircleOutlineIcon
@@ -447,7 +447,7 @@ const Home: React.FC = () => {
               sx={{
                 borderRight: { md: "2px solid #6360FF " },
                 padding: { xs: "0.5rem", md: "1rem" },
-                borderBottom: { xs: "2px solid #6360FF", md: "none" },
+                borderBottom: { xs: "2px solid #6360FF", md: "none" }
               }}
             >
               <Typography
@@ -456,7 +456,7 @@ const Home: React.FC = () => {
                   fontWeight: "soft",
                   // borderBottom: { xs: "none", md: "2px solid #6360FF " },
                   fontSize: { xs: "1.5rem", sm: "2rem", md: "1.5rem" },
-                  fontFamily: "Paytone One",
+                  fontFamily: "Paytone One"
                 }}
               >
                 Make Work Life Simple
@@ -466,7 +466,7 @@ const Home: React.FC = () => {
                 sx={{
                   padding: { xs: "0.5rem", md: "1rem" },
                   fontSize: { xs: "1rem", sm: "1.2rem", md: "1rem" },
-                  fontWeight: "bold",
+                  fontWeight: "bold"
                 }}
               >
                 <CheckCircleOutlineIcon
@@ -485,7 +485,7 @@ const Home: React.FC = () => {
               xs={12}
               md={4}
               sx={{
-                padding: { xs: "0.5rem", md: "1rem" },
+                padding: { xs: "0.5rem", md: "1rem" }
               }}
             >
               <Typography
@@ -494,7 +494,7 @@ const Home: React.FC = () => {
                   fontWeight: "soft",
                   // borderBottom: { xs: "none", md: "2px solid #6360FF" },
                   fontSize: { xs: "1.5rem", sm: "2rem", md: "1.5rem" },
-                  fontFamily: "Paytone One",
+                  fontFamily: "Paytone One"
                 }}
               >
                 Genesi AI Is Fast
@@ -504,7 +504,7 @@ const Home: React.FC = () => {
                 sx={{
                   padding: { xs: "0.5rem", md: "1rem" },
                   fontSize: { xs: "1rem", sm: "1.2rem", md: "1rem" },
-                  fontWeight: "bold",
+                  fontWeight: "bold"
                 }}
               >
                 <CheckCircleOutlineIcon
@@ -551,7 +551,7 @@ const Home: React.FC = () => {
           maxWidth: { xs: "100%", sm: "80%", md: "1200px", lg: "1300px" },
           justifyContent: "center",
           fontSize: { xs: "1.5rem", sm: "2rem" },
-          margin: { xs: "0.5rem", sm: "0rem", md: "6rem 7rem", lg: "auto" },
+          margin: { xs: "0.5rem", sm: "0rem", md: "6rem 7rem", lg: "auto" }
         }}
       >
         <Typography
@@ -562,7 +562,7 @@ const Home: React.FC = () => {
             color: "white",
             fontWeight: "bold",
             fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
-            margin: { xs: "1rem 0", sm: "2rem 0", md: "3rem 0" },
+            margin: { xs: "1rem 0", sm: "2rem 0", md: "3rem 0" }
           }}
         >
           How Genesi Works
@@ -576,7 +576,7 @@ const Home: React.FC = () => {
             fontSize: { xs: "1.2rem", sm: "1.5rem", md: "1.5rem" },
             lineHeight: { xs: "1.5", sm: "1.2", md: "1.5" },
             maxWidth: { xs: "90%", sm: "80%", md: "70%" },
-            margin: "auto",
+            margin: "auto"
           }}
         >
           Make the most of the potential of AI by creating your own custom
@@ -591,13 +591,13 @@ const Home: React.FC = () => {
               backgroundColor: "white",
               color: "white",
               "&:hover": {
-                backgroundColor: colors[(colorIndex + 1) % colors.length],
+                backgroundColor: colors[(colorIndex + 1) % colors.length]
               },
               fontSize: { xs: "rem", sm: "1.5rem", md: "1.3rem" },
               fontColor: "black",
               textColor: "black",
               padding: { xs: "0.8rem 1rem", sm: "1rem 1rem" },
-              minWidth: { xs: "80%", sm: "auto" },
+              minWidth: { xs: "80%", sm: "auto" }
             }}
             onClick={GoToLogin}
           >
@@ -613,7 +613,7 @@ const Home: React.FC = () => {
             alignItems: "center",
             flexDirection: { xs: "column", md: "row" },
             justifyContent: "center",
-            py: { xs: 4, md: 8 },
+            py: { xs: 4, md: 8 }
           }}
         >
           <Box
@@ -622,7 +622,7 @@ const Home: React.FC = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              mb: { xs: 4, md: 0 },
+              mb: { xs: 4, md: 0 }
             }}
           >
             <img src={step1} alt="step1" />
@@ -631,7 +631,7 @@ const Home: React.FC = () => {
             sx={{
               flex: 1,
               ml: { xs: 0, md: 20 },
-              textAlign: { xs: "center", md: "left" },
+              textAlign: { xs: "center", md: "left" }
             }}
           >
             <Typography variant="subtitle1" align="left" gutterBottom>
@@ -656,7 +656,7 @@ const Home: React.FC = () => {
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    flexDirection: "column",
+                    flexDirection: "column"
                   }}
                 >
                   <Box sx={{ display: "flex", alignItems: "left", mb: 2 }}>
@@ -665,7 +665,7 @@ const Home: React.FC = () => {
                       variant="h5"
                       sx={{
                         ml: 1,
-                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" },
+                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" }
                       }}
                     >
                       Provide the data to GenesiAI in order to create your
@@ -680,7 +680,7 @@ const Home: React.FC = () => {
                       variant="h5"
                       sx={{
                         ml: 1,
-                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" },
+                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" }
                       }}
                     >
                       Follow the steps and fill all the required fields
@@ -694,7 +694,7 @@ const Home: React.FC = () => {
                       variant="h5"
                       sx={{
                         ml: 1,
-                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" },
+                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" }
                       }}
                     >
                       The more accurate you are at this stage, the more
@@ -711,13 +711,13 @@ const Home: React.FC = () => {
                   backgroundColor: "white",
                   color: "black",
                   "&:hover": {
-                    backgroundColor: colors[(colorIndex + 1) % colors.length],
+                    backgroundColor: colors[(colorIndex + 1) % colors.length]
                   },
                   fontSize: { xs: "1rem", md: "1.2rem" },
                   textColor: "black",
                   textWeight: "strong",
 
-                  padding: { xs: "1rem 2rem", md: "1rem 1.5rem" },
+                  padding: { xs: "1rem 2rem", md: "1rem 1.5rem" }
                 }}
                 onClick={GoToLogin}
               >
@@ -734,7 +734,7 @@ const Home: React.FC = () => {
             alignItems: "center",
             flexDirection: { xs: "column", md: "row-reverse" },
             justifyContent: "center",
-            py: { xs: 4, md: 8 },
+            py: { xs: 4, md: 8 }
           }}
         >
           <Box
@@ -744,7 +744,7 @@ const Home: React.FC = () => {
               alignItems: "center",
               justifyContent: "center",
               mb: { xs: 4, md: 0 },
-              flexDirection: { xs: "column", md: "row" },
+              flexDirection: { xs: "column", md: "row" }
             }}
           >
             <img src={step1} alt="step1" />
@@ -755,7 +755,7 @@ const Home: React.FC = () => {
               ml: { xs: 0, md: 10 },
               textAlign: { xs: "center", md: "left" },
               m: { xs: 0, md: 9 }, // adds margin around the box
-              p: { xs: 0, md: 4 }, // adds padding inside the box
+              p: { xs: 0, md: 4 } // adds padding inside the box
             }}
           >
             <Typography variant="subtitle1" align="left" gutterBottom>
@@ -782,7 +782,7 @@ const Home: React.FC = () => {
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    flexDirection: "column",
+                    flexDirection: "column"
                   }}
                 >
                   <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
@@ -791,7 +791,7 @@ const Home: React.FC = () => {
                       variant="h5"
                       sx={{
                         ml: 1,
-                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" },
+                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" }
                       }}
                     >
                       Receive the generated URL for your custom plugin
@@ -805,7 +805,7 @@ const Home: React.FC = () => {
                       variant="h5"
                       sx={{
                         ml: 1,
-                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" },
+                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" }
                       }}
                     >
                       Paste the URL into the Plugin Store
@@ -819,7 +819,7 @@ const Home: React.FC = () => {
                       variant="h5"
                       sx={{
                         ml: 1,
-                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" },
+                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" }
                       }}
                     >
                       Simply click on the "Deploy" button, follow the
@@ -831,7 +831,7 @@ const Home: React.FC = () => {
                       display: "flex",
                       alignItems: "center",
                       ml: -7,
-                      mt: 2,
+                      mt: 2
                     }}
                   >
                     <CheckCircleOutlineIcon
@@ -841,7 +841,7 @@ const Home: React.FC = () => {
                       variant="h5"
                       sx={{
                         ml: 1,
-                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" },
+                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" }
                       }}
                     >
                       Go live and start using you new plugin
@@ -856,10 +856,10 @@ const Home: React.FC = () => {
                 sx={{
                   color: "white",
                   "&:hover": {
-                    backgroundColor: colors[(colorIndex + 1) % colors.length],
+                    backgroundColor: colors[(colorIndex + 1) % colors.length]
                   },
                   fontSize: { xs: "1rem", md: "1.2rem" },
-                  padding: { xs: "1rem 2rem", md: "1rem 1.5rem" },
+                  padding: { xs: "1rem 2rem", md: "1rem 1.5rem" }
                 }}
                 onClick={GoToLogin}
               >
@@ -876,7 +876,7 @@ const Home: React.FC = () => {
             alignItems: "center",
             flexDirection: { xs: "column", md: "row" },
             justifyContent: "center",
-            py: { xs: 4, md: 8 },
+            py: { xs: 4, md: 8 }
           }}
         >
           <Box
@@ -885,7 +885,7 @@ const Home: React.FC = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              mb: { xs: 4, md: 0 },
+              mb: { xs: 4, md: 0 }
             }}
           >
             <img src={step1} alt="step1" />
@@ -894,7 +894,7 @@ const Home: React.FC = () => {
             sx={{
               flex: 1,
               ml: { xs: 0, md: 20 },
-              textAlign: { xs: "center", md: "left" },
+              textAlign: { xs: "center", md: "left" }
             }}
           >
             <Typography variant="subtitle1" align="left" gutterBottom>
@@ -921,7 +921,7 @@ const Home: React.FC = () => {
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    flexDirection: "column",
+                    flexDirection: "column"
                   }}
                 >
                   <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
@@ -930,7 +930,7 @@ const Home: React.FC = () => {
                       variant="h5"
                       sx={{
                         ml: 1,
-                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" },
+                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" }
                       }}
                     >
                       With our intuitive interface, customize your plugin to
@@ -943,7 +943,7 @@ const Home: React.FC = () => {
                       variant="h5"
                       sx={{
                         ml: 1,
-                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" },
+                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" }
                       }}
                     >
                       Add sections and new informations whenever you want
@@ -954,7 +954,7 @@ const Home: React.FC = () => {
                       display: "flex",
                       alignItems: "center",
                       mb: 2,
-                      ml: -16,
+                      ml: -16
                     }}
                   >
                     <CheckCircleOutlineIcon sx={{ color: "white" }} />
@@ -962,7 +962,7 @@ const Home: React.FC = () => {
                       variant="h5"
                       sx={{
                         ml: 1,
-                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" },
+                        fontSize: { xs: "1rem", sm: "1.5rem", md: "1.4rem" }
                       }}
                     >
                       Save and update in just one click
@@ -977,10 +977,10 @@ const Home: React.FC = () => {
                 sx={{
                   color: "white",
                   "&:hover": {
-                    backgroundColor: colors[(colorIndex + 1) % colors.length],
+                    backgroundColor: colors[(colorIndex + 1) % colors.length]
                   },
                   fontSize: { xs: "1rem", md: "1.2rem" },
-                  padding: { xs: "1rem 2rem", md: "1rem 1.5rem" },
+                  padding: { xs: "1rem 2rem", md: "1rem 1.5rem" }
                 }}
                 onClick={GoToLogin}
               >
@@ -1002,7 +1002,7 @@ const Home: React.FC = () => {
             color: "black",
             fontWeight: "bold",
             fontSize: { xs: "1.2rem", sm: "3rem", md: "3rem" },
-            margin: { xs: "0rem 0", sm: "2rem 0", md: "6rem 9rem" },
+            margin: { xs: "0rem 0", sm: "2rem 0", md: "6rem 9rem" }
           }}
         >
           <span style={{ fontWeight: "bold" }}>
@@ -1016,7 +1016,7 @@ const Home: React.FC = () => {
         sx={{
           margin: "0 auto", // center horizontally
           textAlign: "center", // center vertically
-          paddingBottom: "4rem",
+          paddingBottom: "4rem"
         }}
       >
         <Slider {...sliderSettings2}>
@@ -1039,7 +1039,7 @@ const Home: React.FC = () => {
             color: "black",
             fontWeight: "bold",
             fontSize: { xs: "1.3rem", sm: "1.5rem", md: "3rem" },
-            margin: { xs: "0rem 0", sm: "2rem 0", md: "4rem 5rem" },
+            margin: { xs: "0rem 0", sm: "2rem 0", md: "4rem 5rem" }
           }}
         >
           <span style={{ fontWeight: "bold" }}>Frequently Asked Questions</span>
@@ -1056,16 +1056,16 @@ const Home: React.FC = () => {
           width: "100%",
           "@media (min-width: 600px)": {
             paddingLeft: "2rem",
-            paddingRight: "2rem",
+            paddingRight: "2rem"
           },
           "@media (min-width: 960px)": {
             paddingLeft: "4rem",
-            paddingRight: "4rem",
+            paddingRight: "4rem"
           },
           "@media (min-width: 1280px)": {
             paddingLeft: "6rem",
-            paddingRight: "6rem",
-          },
+            paddingRight: "6rem"
+          }
         }}
       >
         {faqs.map((faq, index) => (
@@ -1079,11 +1079,11 @@ const Home: React.FC = () => {
               border: "1px solid #e0e0e0",
               borderRadius: "0.5rem",
               "&:before": {
-                display: "none",
+                display: "none"
               },
               "&.Mui-expanded": {
-                margin: "0",
-              },
+                margin: "0"
+              }
             }}
           >
             <AccordionSummary
@@ -1097,14 +1097,14 @@ const Home: React.FC = () => {
                 borderRadius: "0.5rem",
                 marginBottom: "0.5rem",
                 "& .MuiAccordionSummary-content": {
-                  margin: "0",
-                },
+                  margin: "0"
+                }
               }}
             >
               <Typography
                 sx={{
                   fontWeight: "bold",
-                  fontSize: { xs: "1rem", sm: "1.5rem", md: "1.5rem" },
+                  fontSize: { xs: "1rem", sm: "1.5rem", md: "1.5rem" }
                 }}
               >
                 {faq.question}
@@ -1114,7 +1114,7 @@ const Home: React.FC = () => {
               sx={{
                 backgroundColor: "#f9f9f9",
                 padding: "1rem",
-                borderRadius: "0.5rem",
+                borderRadius: "0.5rem"
               }}
             >
               <Typography
@@ -1133,7 +1133,7 @@ const Home: React.FC = () => {
           backgroundColor: "#f5f5f5",
           padding: "2rem",
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "center"
         }}
       >
         <RouterLink to="/">
@@ -1143,7 +1143,7 @@ const Home: React.FC = () => {
               fontWeight: "bold",
               fontSize: "1.2rem",
               paddingLeft: "1rem",
-              paddingRight: "1rem",
+              paddingRight: "1rem"
             }}
           >
             Home
@@ -1155,7 +1155,7 @@ const Home: React.FC = () => {
               fontWeight: "bold",
               fontSize: "1.2rem",
               paddingLeft: "1rem",
-              paddingRight: "1rem",
+              paddingRight: "1rem"
             }}
           >
             Support
@@ -1167,7 +1167,7 @@ const Home: React.FC = () => {
               fontWeight: "bold",
               fontSize: "1.2rem",
               paddingLeft: "1rem",
-              paddingRight: "1rem",
+              paddingRight: "1rem"
             }}
           >
             Contact{" "}

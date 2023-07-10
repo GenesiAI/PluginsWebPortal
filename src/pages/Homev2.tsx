@@ -40,7 +40,7 @@ const colors = [
   "#ee668a",
   "#f73da4",
   "#ef4bb6",
-  "#e758c8",
+  "#e758c8"
 ];
 
 const Home: React.FC = () => {
@@ -67,29 +67,28 @@ const Home: React.FC = () => {
       title: "Enter Your Data",
       icon: "📝",
       description:
-        "Provide the necessary data to create your custom ChatGPT plugin.",
+        "Provide the necessary data to create your custom ChatGPT plugin."
     },
     {
       step: 2,
       title: "Edit the Plugin",
       icon: "✏️",
       description:
-        "With our intuitive interface, customize your plugin to meet your unique requirements.",
+        "With our intuitive interface, customize your plugin to meet your unique requirements."
     },
     {
       step: 3,
       title: "Get the URL",
       icon: "🔗",
-      description:
-        "Receive the generated URL for your tailored ChatGPT plugin.",
+      description: "Receive the generated URL for your tailored ChatGPT plugin."
     },
     {
       step: 4,
       title: "Paste the URL",
       icon: "📎",
       description:
-        "Simply paste the URL into ChatGPT and watch your custom plugin come to life.",
-    },
+        "Simply paste the URL into ChatGPT and watch your custom plugin come to life."
+    }
   ];
 
   return (
@@ -126,10 +125,10 @@ const Home: React.FC = () => {
             backgroundColor: colors[colorIndex],
             color: "white",
             "&:hover": {
-              backgroundColor: colors[(colorIndex + 1) % colors.length],
+              backgroundColor: colors[(colorIndex + 1) % colors.length]
             },
             fontSize: "1.0rem",
-            padding: "1rem 1rem",
+            padding: "1rem 1rem"
           }}
           onClick={GoToLogin}
         >
@@ -144,7 +143,7 @@ const Home: React.FC = () => {
           style={{
             width: "60%", // Change the width as per your preference
             display: "block",
-            margin: "auto",
+            margin: "auto"
           }}
           controls
         >
@@ -184,7 +183,7 @@ const Home: React.FC = () => {
           maxWidth: 1400,
           justifyContent: "center",
           borderRadius: 1.75,
-          margin: "auto",
+          margin: "auto"
         }}
       >
         <Typography variant="h3" align="center" gutterBottom>
@@ -197,7 +196,7 @@ const Home: React.FC = () => {
             maxWidth: 1000,
             justifyContent: "center",
             margin: "auto",
-            padding: "1rem",
+            padding: "1rem"
           }}
         >
           <Typography variant="h6" align="center" gutterBottom>
@@ -215,12 +214,12 @@ const Home: React.FC = () => {
                 backgroundColor: "white",
                 color: "white",
                 "&:hover": {
-                  backgroundColor: colors[(colorIndex + 1) % colors.length],
+                  backgroundColor: colors[(colorIndex + 1) % colors.length]
                 },
                 fontSize: "1.0rem",
                 fontColor: "black",
                 textColor: "black",
-                padding: "1rem 1rem",
+                padding: "1rem 1rem"
               }}
               onClick={GoToLogin}
             >
@@ -236,7 +235,7 @@ const Home: React.FC = () => {
             alignItems: "center",
             maxWidth: 1200,
             justifyContent: "center",
-            margin: "auto",
+            margin: "auto"
           }}
         >
           <Box sx={{ flex: 1 }}>
@@ -279,10 +278,10 @@ const Home: React.FC = () => {
                 sx={{
                   color: "white",
                   "&:hover": {
-                    backgroundColor: colors[(colorIndex + 1) % colors.length],
+                    backgroundColor: colors[(colorIndex + 1) % colors.length]
                   },
                   fontSize: "1.0rem",
-                  padding: "1rem 1rem",
+                  padding: "1rem 1rem"
                 }}
                 onClick={GoToLogin}
               >
@@ -298,7 +297,7 @@ const Home: React.FC = () => {
             alignItems: "center",
             maxWidth: 1200,
             justifyContent: "center",
-            margin: "auto",
+            margin: "auto"
           }}
         >
           <Box sx={{ flex: 1, ml: 20 }}>
@@ -338,10 +337,10 @@ const Home: React.FC = () => {
                   backgroundColor: "white",
                   color: "white",
                   "&:hover": {
-                    backgroundColor: colors[(colorIndex + 1) % colors.length],
+                    backgroundColor: colors[(colorIndex + 1) % colors.length]
                   },
                   fontSize: "1.0rem",
-                  padding: "1rem 1rem",
+                  padding: "1rem 1rem"
                 }}
                 onClick={GoToLogin}
               >
@@ -361,7 +360,7 @@ const Home: React.FC = () => {
             alignItems: "center",
             maxWidth: 1200,
             justifyContent: "center",
-            margin: "auto",
+            margin: "auto"
           }}
         >
           <Box sx={{ flex: 1 }}>
@@ -399,10 +398,10 @@ const Home: React.FC = () => {
                   backgroundColor: colors[colorIndex],
                   color: "white",
                   "&:hover": {
-                    backgroundColor: colors[(colorIndex + 1) % colors.length],
+                    backgroundColor: colors[(colorIndex + 1) % colors.length]
                   },
                   fontSize: "1.0rem",
-                  padding: "1rem 1rem",
+                  padding: "1rem 1rem"
                 }}
                 onClick={GoToLogin}
               >
@@ -417,7 +416,7 @@ const Home: React.FC = () => {
             alignItems: "center",
             maxWidth: 1200,
             justifyContent: "center",
-            margin: "auto",
+            margin: "auto"
           }}
         >
           <Box sx={{ flex: 1, ml: 20 }}>
@@ -457,10 +456,10 @@ const Home: React.FC = () => {
                 sx={{
                   color: "white",
                   "&:hover": {
-                    backgroundColor: colors[(colorIndex + 1) % colors.length],
+                    backgroundColor: colors[(colorIndex + 1) % colors.length]
                   },
                   fontSize: "1.0rem",
-                  padding: "1rem 1rem",
+                  padding: "1rem 1rem"
                 }}
                 onClick={GoToLogin}
               >
@@ -478,7 +477,7 @@ const Home: React.FC = () => {
             alignItems: "center",
             maxWidth: 1200,
             justifyContent: "center",
-            margin: "auto",
+            margin: "auto"
           }}
         ></Box>
       </Box>

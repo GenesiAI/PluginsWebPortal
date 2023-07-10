@@ -16,7 +16,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signOut,
-  User,
+  User
 } from "firebase/auth";
 import axios from "axios";
 import { auth } from "../security/firebase";
@@ -65,11 +65,11 @@ const ResponsiveAppBar: React.FC = () => {
   axios.interceptors.request.use(
     async (config) => {
       const auth = getAuth();
+      console.info("auth:", JSON.stringify(auth));
       if (auth?.currentUser) {
         const token = await auth.currentUser.getIdToken();
         config.headers.Authorization = `Bearer ${token}`;
       } else {
-        console.info("no user" + auth?.currentUser);
         await handleLogin();
       }
       return config;
@@ -97,7 +97,7 @@ const ResponsiveAppBar: React.FC = () => {
         <Toolbar
           disableGutters
           sx={{
-            color: (theme) => theme.palette.primary.main,
+            color: (theme) => theme.palette.primary.main
           }}
         >
           <Typography
@@ -113,7 +113,7 @@ const ResponsiveAppBar: React.FC = () => {
               letterSpacing: ".1rem",
               color: "inherit",
               textDecoration: "none",
-              fontSize: "2rem",
+              fontSize: "2rem"
             }}
           >
             Genesi AI
@@ -135,12 +135,12 @@ const ResponsiveAppBar: React.FC = () => {
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: "bottom",
-                horizontal: "left",
+                horizontal: "left"
               }}
               keepMounted
               transformOrigin={{
                 vertical: "top",
-                horizontal: "left",
+                horizontal: "left"
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
@@ -189,7 +189,7 @@ const ResponsiveAppBar: React.FC = () => {
               fontWeight: "bold",
               letterSpacing: ".1rem",
               color: "inherit",
-              textDecoration: "none",
+              textDecoration: "none"
             }}
           >
             Genesi AI
@@ -213,7 +213,7 @@ const ResponsiveAppBar: React.FC = () => {
                       color: "white",
                       display: "block",
                       textWeight: "bold",
-                      backgroundColor: "#6360FF",
+                      backgroundColor: "#6360FF"
                     }}
                   >
                     {link}

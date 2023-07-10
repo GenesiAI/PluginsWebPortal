@@ -10,9 +10,14 @@ Install dependencies
 npm install
 ```
 
-Start the development server
+Start the development server (you must have the backend running)
 ```
 npm start
+```
+
+Start the staging development (you will be connected with the staging backend)
+```
+npm run staging
 ```
 
 ## APIs

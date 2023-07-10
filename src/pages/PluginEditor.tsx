@@ -68,7 +68,7 @@ const PluginEditor: React.FC<{}> = () => {
         logoUrl: plugin?.logoUrl,
         contactEmail: plugin?.contactEmail,
         legalInfoUrl: plugin?.legalInfoUrl,
-        sections: plugin?.sections,
+        sections: plugin?.sections
       };
       if (guid === "new") {
         await pluginApi.apiPluginsPost(pluginupdate);
@@ -119,7 +119,7 @@ const PluginEditor: React.FC<{}> = () => {
             backgroundColor: "#f7f7f7",
             padding: 3,
             borderRadius: 4,
-            marginTop: 3,
+            marginTop: 3
           }}
         >
           <Typography
@@ -129,7 +129,7 @@ const PluginEditor: React.FC<{}> = () => {
               fontWeight: "bold",
               color: (theme) => theme.palette.primary.main,
               marginBottom: (theme) => theme.spacing(2),
-              marginTop: (theme) => theme.spacing(2),
+              marginTop: (theme) => theme.spacing(2)
             }}
           >
             Create A Plugin
@@ -303,8 +303,8 @@ const PluginEditor: React.FC<{}> = () => {
                     ...plugin,
                     sections: [
                       ...(plugin.sections || []),
-                      { name: "", description: "", content: "" },
-                    ],
+                      { name: "", description: "", content: "" }
+                    ]
                   })
                 }
               >
@@ -337,7 +337,7 @@ const PluginEditor: React.FC<{}> = () => {
                   <CircularProgress
                     size={24}
                     sx={{
-                      color: (theme) => theme.palette.success.contrastText,
+                      color: (theme) => theme.palette.success.contrastText
                     }}
                   />
                 ) : (
