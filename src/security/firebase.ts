@@ -1,5 +1,12 @@
+import axios from "axios";
 import { initializeApp } from "firebase/app";
-import { browserLocalPersistence, getAuth } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  browserLocalPersistence,
+  getAuth,
+  signInWithPopup,
+  signOut
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD_Uz75Yuy5fYfpnP9Y74gltpLneFrdAqg",
@@ -13,4 +20,40 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 auth.setPersistence(browserLocalPersistence);
-export { auth };
+
+axios.interceptors.request.use(
+  async (config) => {
+    const auth = getAuth();
+    console.info("auth:", JSON.stringify(auth));
+    if (auth?.currentUser) {
+      const token = await auth.currentUser.getIdToken();
+      config.headers.Authorization = `Bearer ${token}`;
+    } else {
+      await login();
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+const login = async () => {
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
+  await signInWithPopup(auth, provider);
+  // const credential = GoogleAuthProvider.credentialFromResult(result);
+  // const token = credential?.idToken;
+  // auth?.currentUser?.getIdToken()
+  //   .then(function (idToken: string) {
+  //     console.info("token\n" + idToken);
+  //     axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
+  //   });
+};
+
+const logout = async () => {
+  const auth = getAuth();
+  await signOut(auth);
+};
+
+export { auth, login, logout };
