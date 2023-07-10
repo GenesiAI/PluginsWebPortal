@@ -84,7 +84,7 @@ const Plugins = () => {
             <ListItemIcon className="justify-end me-1">
               <IconButton
                 sx={IconButtonTheme}
-                className="animate-bounce delay-1000"
+                className="motion-safe:animate-bounce delay-1000"
               >
                 <FontAwesomeIcon icon={faShare} rotation={90} size="xs" />
               </IconButton>

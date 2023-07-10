@@ -20,7 +20,10 @@ const PluginFooter = () => {
           onClick={() => navigate("/plugin/new")}
           sx={IconButtonTheme}
         >
-          <FontAwesomeIcon icon={faPlus} />
+          <FontAwesomeIcon
+            icon={faPlus}
+            className="motion-safe:active:animate-ping"
+          />
         </IconButton>
       </Tooltip>
     </Box>
