@@ -1,8 +1,24 @@
+import { faShare } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  IconButton,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Typography
+} from "@mui/material";
 import { Plugin, PluginApi } from "apis/api";
-import React, { memo, useMemo, useState } from "react";
+import React, { ComponentProps, memo, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IconButtonTheme } from "theme";
 import PluginItem from "./PluginItem";
 import PluginSkeleton from "./PluginSkeleton";
+
+// Do that for avoid recreate object and static function in case of rerender
+const sxTypography: ComponentProps<typeof Typography>["sx"] = {
+  fontWeight: "bold",
+  color: (theme) => theme.palette.primary.main
+};
 
 type PluginsState = {
   loading: boolean;
@@ -51,7 +67,27 @@ const Plugins = () => {
           <PluginSkeleton />
         </>
       ) : pluginList.length <= 0 ? (
-        <>Nothing to see here 👀</>
+        <>
+          <ListItem>
+            <ListItemText>
+              <Typography className="text-center" sx={sxTypography}>
+                Nothing to see here 👀
+              </Typography>
+            </ListItemText>
+          </ListItem>
+          <ListItem className="!pr-0">
+            <ListItemText className="justify-end">
+              <Typography className="text-end" sx={sxTypography}>
+                Create your plugin here
+              </Typography>
+            </ListItemText>
+            <ListItemIcon className="justify-end me-1">
+              <IconButton sx={IconButtonTheme}>
+                <FontAwesomeIcon icon={faShare} rotation={90} size="xs" />
+              </IconButton>
+            </ListItemIcon>
+          </ListItem>
+        </>
       ) : (
         plugins
       )}
