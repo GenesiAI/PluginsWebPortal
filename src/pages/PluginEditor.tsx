@@ -1,23 +1,27 @@
-import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Plugin, PluginApi, PluginUpdateRequest } from "../apis/api";
-import React from "react";
-import { TextField, Button, Grid, Box, Typography } from "@mui/material";
-import SaveIcon from "@mui/icons-material/Save";
-import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
-import PluginSections from "../components/PluginSections";
-import { CircularProgress } from "@mui/material";
-import AlertDialog from "../components/AlertDialog";
+import DeleteIcon from "@mui/icons-material/Delete";
+import SaveIcon from "@mui/icons-material/Save";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Grid,
+  TextField,
+  Typography
+} from "@mui/material";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
+import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { Plugin, PluginApi, PluginUpdateRequest } from "../apis/api";
+import AlertDialog from "../components/AlertDialog";
+import PluginSections from "../components/PluginSections";
 
 const PluginEditor: React.FC<{}> = () => {
   const navigate = useNavigate();
   const { guid } = useParams();
   const [plugin, setPlugin] = useState<Plugin | null>(null);
-  const [error, seterror] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [saveInProgress, setSaveInProgress] = useState(false);
   const [deleteInProgress, setDeleteInProgress] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
@@ -28,17 +32,17 @@ const PluginEditor: React.FC<{}> = () => {
       try {
         const response = await pluginApi.apiPluginsPluginIdGet(guid!);
         if (!response.data) {
-          seterror("Something went wrong.");
+          setError("Something went wrong.");
         }
         console.info("response: " + response?.data);
         setPlugin(response?.data);
       } catch (error) {
-        seterror("Something went wrong.");
+        setError("Something went wrong.");
       }
     };
 
     if (guid === "new") {
-      if (!plugin) setPlugin({});
+      setPlugin({});
       return;
     }
 
@@ -47,20 +51,20 @@ const PluginEditor: React.FC<{}> = () => {
       guid &&
       !guid.match(/^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$/)
     ) {
-      seterror(
+      setError(
         "What are you doing here? 👀, getting you back to your plugins."
       );
       navigate("/your-plugins");
       return;
     }
-    if (!plugin) fetchPlugin();
-  }, [guid, navigate, setPlugin, seterror, plugin]);
+    fetchPlugin();
+  }, [guid, navigate, setPlugin, setError]);
 
   const savePlugin = async () => {
     setSaveInProgress(true);
     const pluginApi = new PluginApi();
     try {
-      var pluginupdate: PluginUpdateRequest = {
+      var pluginUpdate: PluginUpdateRequest = {
         nameForHuman: plugin?.nameForHuman,
         nameForModel: plugin?.nameForModel,
         descriptionForHuman: plugin?.descriptionForHuman,
@@ -71,10 +75,10 @@ const PluginEditor: React.FC<{}> = () => {
         sections: plugin?.sections
       };
       if (guid === "new") {
-        await pluginApi.apiPluginsPost(pluginupdate);
+        await pluginApi.apiPluginsPost(pluginUpdate);
       }
 
-      await pluginApi.apiPluginsPluginIdPut(guid!, pluginupdate);
+      await pluginApi.apiPluginsPluginIdPut(guid!, pluginUpdate);
     } catch (error) {
       <Stack sx={{ width: "100%" }} spacing={2}>
         <Alert severity="error">This is an error alert — check it out!</Alert>

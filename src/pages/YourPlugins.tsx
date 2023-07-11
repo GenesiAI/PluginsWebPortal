@@ -36,8 +36,8 @@ const YourPlugins: React.FC<{}> = () => {
         console.error("Error fetching users:", error);
       }
     };
-    if (!plugins) fetchPlugins();
-  });
+    fetchPlugins();
+  }, []);
 
   return (
     <>
