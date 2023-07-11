@@ -75,7 +75,13 @@ const PluginEditor: React.FC<{}> = () => {
         sections: plugin?.sections
       };
       if (guid === "new") {
-        await pluginApi.apiPluginsPost(pluginUpdate);
+        // In case of new plugin, take the id and update the param
+        await pluginApi
+          .apiPluginsPost(pluginUpdate)
+          .then(({ data: { id } }) => {
+            navigate(`/plugin/${id}`);
+          });
+        return;
       }
 
       await pluginApi.apiPluginsPluginIdPut(guid!, pluginUpdate);
