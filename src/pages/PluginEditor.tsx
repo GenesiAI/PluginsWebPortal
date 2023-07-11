@@ -25,6 +25,7 @@ const PluginEditor: React.FC<{}> = () => {
   const [saveInProgress, setSaveInProgress] = useState(false);
   const [deleteInProgress, setDeleteInProgress] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const isNewPlugin = guid === "new";
 
   React.useEffect(() => {
     const fetchPlugin = async () => {
@@ -41,7 +42,7 @@ const PluginEditor: React.FC<{}> = () => {
       }
     };
 
-    if (guid === "new") {
+    if (isNewPlugin) {
       setPlugin({});
       return;
     }
@@ -58,7 +59,7 @@ const PluginEditor: React.FC<{}> = () => {
       return;
     }
     fetchPlugin();
-  }, [guid, navigate, setPlugin, setError]);
+  }, [isNewPlugin, navigate, setPlugin, setError, guid]);
 
   const savePlugin = async () => {
     setSaveInProgress(true);
@@ -74,7 +75,7 @@ const PluginEditor: React.FC<{}> = () => {
         legalInfoUrl: plugin?.legalInfoUrl,
         sections: plugin?.sections
       };
-      if (guid === "new") {
+      if (isNewPlugin) {
         // In case of new plugin, take the id and update the param
         await pluginApi
           .apiPluginsPost(pluginUpdate)
@@ -326,6 +327,7 @@ const PluginEditor: React.FC<{}> = () => {
                 variant="contained"
                 color="error"
                 startIcon={<DeleteIcon />}
+                disabled={isNewPlugin}
                 onClick={() => setShowDeleteDialog(true)}
               >
                 {deleteInProgress ? (
