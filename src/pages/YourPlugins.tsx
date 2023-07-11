@@ -116,7 +116,7 @@ const YourPlugins: React.FC<{}> = () => {
                 </IconButton>
               </Tooltip> */}
                 <IconButton
-                  onClick={() => navigate("Plugin/" + plugin.id)}
+                  onClick={() => navigate(`/plugin/${plugin.id}`)}
                   edge="end"
                   aria-label="modify"
                 >
