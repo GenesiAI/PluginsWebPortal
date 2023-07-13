@@ -54,7 +54,7 @@ const Plugins = () => {
 
   const plugins = useMemo(() => {
     return pluginList.map((plugin) => {
-      const onClick = () => navigate("plugin/" + plugin.id);
+      const onClick = () => navigate("/plugin/" + plugin.id);
       return <PluginItem key={plugin.id} onClick={onClick} plugin={plugin} />;
     });
   }, [pluginList, navigate]);
