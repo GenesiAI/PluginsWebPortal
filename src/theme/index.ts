@@ -22,4 +22,5 @@ const theme = createTheme({
   }
 });
 
+export * from "./utils";
 export default theme;
