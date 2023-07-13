@@ -1,31 +1,25 @@
-import React, { useState } from 'react';
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  TextField,
-} from '@mui/material';
-import axios from 'axios';
-import { makeStyles } from '@mui/styles';
-import { Theme } from '@mui/material/styles';
+import React, { useState } from "react";
+import { Box, Button, Container, Grid, TextField } from "@mui/material";
+import axios from "axios";
+import { makeStyles } from "@mui/styles";
+import { Theme } from "@mui/material/styles";
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
-    padding: theme.spacing(3),
+    padding: theme.spacing(3)
   },
   form: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  }
 }));
 
 const ContactForm: React.FC = () => {
   const classes = useStyles();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -33,16 +27,19 @@ const ContactForm: React.FC = () => {
     const data = {
       name: name,
       email: email,
-      message: message,
+      message: message
     };
 
     try {
-      await axios.post('https://prod-250.westeurope.logic.azure.com:443/workflows/884b292e648b4b26beeed8d79e2341cc/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=i52jkLECCaL88AZOQ5lRYd-VQPgLqRr8_1BMw9QrDiQ', data);
+      await axios.post(
+        "https://prod-250.westeurope.logic.azure.com:443/workflows/884b292e648b4b26beeed8d79e2341cc/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=i52jkLECCaL88AZOQ5lRYd-VQPgLqRr8_1BMw9QrDiQ",
+        data
+      );
       // Handle success, e.g., show a success message.
-      console.log('Message sent successfully.');
+      console.log("Message sent successfully.");
     } catch (error) {
       // Handle error, e.g., show an error message.
-      console.error('Error sending message:', error);
+      console.error("Error sending message:", error);
     }
   };
 

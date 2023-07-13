@@ -33,7 +33,7 @@ function Support() {
               top: "80px",
               marginLeft: isDesktop ? "-220px" : 0,
               marginRight: isDesktop ? "80px" : 0,
-              backgroundColor: "#f7f7f7",
+              backgroundColor: "#f7f7f7"
             }}
           >
             <Typography variant="h4" justifyContent="left"></Typography>
@@ -77,7 +77,7 @@ function Support() {
                       style={{
                         textTransform: "none",
                         textAlign: "left",
-                        color: "black",
+                        color: "black"
                       }}
                     >
                       Provide the required information{" "}
@@ -180,7 +180,7 @@ function Support() {
                       style={{
                         textTransform: "none",
                         textAlign: "left",
-                        color: "black",
+                        color: "black"
                       }}
                     >
                       {" "}
@@ -228,7 +228,7 @@ function Support() {
               position: "sticky",
               top: "0px",
               marginRight: isDesktop ? "-180px" : 0,
-              marginLeft: isDesktop ? "-83px" : 0,
+              marginLeft: isDesktop ? "-83px" : 0
             }}
           >
             <Box
@@ -254,7 +254,7 @@ function Support() {
                   paddingTop: "4rem",
                   textAlign: "center",
                   maxWidth: "90%",
-                  margin: "auto",
+                  margin: "auto"
                 }}
               >
                 If you're here, it must means that you're about to embark on a
@@ -266,7 +266,7 @@ function Support() {
                 sx={{
                   marginTop: "2rem",
                   fontWeight: "bold",
-                  color: "#6c47ff",
+                  color: "#6c47ff"
                 }}
               >
                 Introduction
@@ -327,7 +327,7 @@ function Support() {
                 sx={{
                   maxWidth: "90%",
                   marginBottom: "0.5rem",
-                  fontWeight: "bold",
+                  fontWeight: "bold"
                 }}
               >
                 Create Your Account
@@ -365,7 +365,7 @@ function Support() {
                 sx={{
                   maxWidth: "90%",
                   marginBottom: "0.5rem",
-                  fontWeight: "bold",
+                  fontWeight: "bold"
                 }}
               >
                 Provide The Required Information
@@ -430,7 +430,7 @@ function Support() {
                 sx={{
                   maxWidth: "90%",
                   marginBottom: "0.5rem",
-                  fontWeight: "bold",
+                  fontWeight: "bold"
                 }}
               >
                 Enter Your Own Data{" "}
@@ -461,7 +461,7 @@ function Support() {
                 sx={{
                   maxWidth: "90%",
                   marginBottom: "0.5rem",
-                  fontWeight: "bold",
+                  fontWeight: "bold"
                 }}
               >
                 Add Sections{" "}
@@ -485,7 +485,7 @@ function Support() {
                 sx={{
                   maxWidth: "90%",
                   marginBottom: "0.5rem",
-                  fontWeight: "bold",
+                  fontWeight: "bold"
                 }}
               >
                 Edit Your Plugin (if needed){" "}
@@ -516,7 +516,7 @@ function Support() {
                 sx={{
                   maxWidth: "90%",
                   marginBottom: "0.5rem",
-                  fontWeight: "bold",
+                  fontWeight: "bold"
                 }}
               >
                 Get The Generated Link{" "}
@@ -553,7 +553,7 @@ function Support() {
                 sx={{
                   marginTop: "2rem",
                   fontWeight: "bold",
-                  color: "#6c47ff",
+                  color: "#6c47ff"
                 }}
               >
                 Next steps (and suggestions)
@@ -569,7 +569,7 @@ function Support() {
                 sx={{
                   maxWidth: "90%",
                   marginBottom: "0.5rem",
-                  fontWeight: "bold",
+                  fontWeight: "bold"
                 }}
               >
                 Running A Plugin{" "}
@@ -582,7 +582,7 @@ function Support() {
                 style={{
                   marginTop: "2rem",
                   marginBottom: "2rem",
-                  marginLeft: "2rem",
+                  marginLeft: "2rem"
                 }}
               />
               To connect the plugin with ChatGPT, navigate to the plugin store
@@ -600,7 +600,7 @@ function Support() {
                 sx={{
                   maxWidth: "90%",
                   marginBottom: "0.5rem",
-                  fontWeight: "bold",
+                  fontWeight: "bold"
                 }}
               >
                 Writing Descriptions{" "}
@@ -646,7 +646,7 @@ function Support() {
                 sx={{
                   maxWidth: "90%",
                   marginBottom: "0.5rem",
-                  fontWeight: "bold",
+                  fontWeight: "bold"
                 }}
               >
                 Best Practices{" "}
@@ -660,7 +660,7 @@ function Support() {
                   display: "flex",
                   alignItems: "flex-start",
                   marginLeft: "2rem",
-                  maxWidth: "90%",
+                  maxWidth: "90%"
                 }}
               >
                 <span style={{ paddingRight: "0.5em" }}> 1 </span>
@@ -676,7 +676,7 @@ function Support() {
                   display: "flex",
                   alignItems: "flex-start",
                   marginLeft: "2rem",
-                  maxWidth: "90%",
+                  maxWidth: "90%"
                 }}
               >
                 When the user asks to see their todo list, always respond with
@@ -691,7 +691,7 @@ function Support() {
                   display: "flex",
                   alignItems: "flex-start",
                   marginLeft: "2rem",
-                  maxWidth: "90%",
+                  maxWidth: "90%"
                 }}
               >
                 <span style={{ paddingRight: "0.5em" }}> 2 </span>
@@ -707,7 +707,7 @@ function Support() {
                   display: "flex",
                   alignItems: "flex-start",
                   marginLeft: "2rem",
-                  maxWidth: "90%",
+                  maxWidth: "90%"
                 }}
               >
                 Whenever the user mentions any type of task or plan, ask if they
@@ -722,7 +722,7 @@ function Support() {
                   display: "flex",
                   alignItems: "flex-start",
                   marginLeft: "2rem",
-                  maxWidth: "90%",
+                  maxWidth: "90%"
                 }}
               >
                 The TODO list can add, remove and view the user's TODOs.
@@ -733,7 +733,7 @@ function Support() {
                   display: "flex",
                   alignItems: "flex-start",
                   marginLeft: "2rem",
-                  maxWidth: "90%",
+                  maxWidth: "90%"
                 }}
               >
                 <span style={{ paddingRight: "0.5em" }}> 3 </span>
@@ -749,7 +749,7 @@ function Support() {
                   display: "flex",
                   alignItems: "flex-start",
                   marginLeft: "2rem",
-                  maxWidth: "90%",
+                  maxWidth: "90%"
                 }}
               >
                 When the user mentions a task, respond with "Would you like me
@@ -772,7 +772,7 @@ function Support() {
                 sx={{
                   maxWidth: "90%",
                   marginBottom: "0.5rem",
-                  fontWeight: "bold",
+                  fontWeight: "bold"
                 }}
               >
                 Submit a plugin for review{" "}
@@ -799,7 +799,7 @@ function Support() {
                 sx={{
                   maxWidth: "90%",
                   marginBottom: "0.5rem",
-                  fontWeight: "bold",
+                  fontWeight: "bold"
                 }}
               >
                 Guidelines{" "}
@@ -818,7 +818,7 @@ function Support() {
                   display: "flex",
                   alignItems: "flex-start",
                   marginLeft: "2rem",
-                  maxWidth: "90%",
+                  maxWidth: "90%"
                 }}
               >
                 <span style={{ paddingRight: "0.5em" }}> ● </span>
@@ -830,7 +830,7 @@ function Support() {
                   display: "flex",
                   alignItems: "flex-start",
                   marginLeft: "2rem",
-                  maxWidth: "90%",
+                  maxWidth: "90%"
                 }}
               >
                 <span style={{ paddingRight: "0.5em" }}> ● </span>
@@ -841,7 +841,7 @@ function Support() {
                   display: "flex",
                   alignItems: "flex-start",
                   marginLeft: "2rem",
-                  maxWidth: "90%",
+                  maxWidth: "90%"
                 }}
               >
                 <span style={{ paddingRight: "0.5em" }}> ● </span>
@@ -853,7 +853,7 @@ function Support() {
                   display: "flex",
                   alignItems: "flex-start",
                   marginLeft: "2rem",
-                  maxWidth: "90%",
+                  maxWidth: "90%"
                 }}
               >
                 <span style={{ paddingRight: "0.5em" }}> ● </span>
@@ -874,7 +874,7 @@ function Support() {
                 sx={{
                   maxWidth: "90%",
                   marginBottom: "0.5rem",
-                  fontWeight: "bold",
+                  fontWeight: "bold"
                 }}
               >
                 Plugin terms
