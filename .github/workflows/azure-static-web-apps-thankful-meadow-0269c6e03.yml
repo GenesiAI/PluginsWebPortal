@@ -20,11 +20,6 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Load environment variables from .env.staging
-        id: load_env
-        uses: c-py/action-dotenv-to-setenv@v2
-        with:
-          env-file: .env.staging
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
