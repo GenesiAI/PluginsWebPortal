@@ -257,7 +257,7 @@ function Support() {
                   margin: "auto"
                 }}
               >
-                If you're here, it must means that you're about to embark on a
+                If you're here, it must mean that you're about to embark on a
                 journey where you'll start creating your new plugin.
                 <br /> Let us guide you during this new adventure.
               </Typography>
@@ -275,7 +275,7 @@ function Support() {
                 Plugins connect ChatGPT to third-party applications. These
                 plugins enable ChatGPT to interact with private data enhancing
                 ChatGPT's capabilities and allowing it to perform a wide range
-                of actions. <br /> Plugins enable ChatGPT to do things like:{" "}
+                of actions. <br /> Plugins enable ChatGPT to perform tasks such as:{" "}
                 <br /> <br />
                 <Typography sx={{ marginLeft: "2rem" }}>
                   <li>
@@ -371,7 +371,7 @@ function Support() {
                 Provide The Required Information
               </Typography>
               In order to create your custom plugin, ChatGPT requires some
-              mandatory information. Here the info that you have to feel (very
+              mandatory information. Here the info that you have to fill (very
               easy, we follow you step by step):
               <Typography
                 variant="body1"
@@ -414,7 +414,7 @@ function Support() {
                 <li style={{ display: "flex", alignItems: "flex-start" }}>
                   <span style={{ paddingRight: "0.5em" }}> ●</span>
                   Contact Email <br />
-                  Provide a contact email address in case of need by the users
+                  Provide your contact email address in case of need by the users
                 </li>
                 <img src={EditorPic} alt="" style={{ marginTop: "2rem" }} />
               </Typography>
@@ -435,7 +435,7 @@ function Support() {
               >
                 Enter Your Own Data{" "}
               </Typography>
-              First things first, let's get to the fun part: provide all your
+              First things first, let's get to the fun part: providing all your
               data to GenesiAI to create your custom plugin. Give us all the
               necessary information to make your plugin working well!
               <br />
@@ -470,8 +470,8 @@ function Support() {
               it in different sections providing the Name, the Description and
               the Content.
               <br />
-              To simplify things, think of your data as a book, and the
-              different topics it covers as chapters. So you can organize your
+              To simplify things, think of your data as a book with
+              different topics as chapters. So you can organize your
               work much better!
               <img src={AddSection} alt="" style={{ marginTop: "2rem" }} />
             </Box>
@@ -497,7 +497,7 @@ function Support() {
               <br />
               Add sections and new information to your plugin whenever the
               inspiration strikes. It's like adding new chapters to your
-              plugin's story whenever you want. Saving and updating made it
+              plugin's story whenever you want. Saving and updating makes it
               easy! With just one click, you can save your progress and update
               your plugin without any hassle. It's as simple as that!
               <br />
@@ -575,7 +575,7 @@ function Support() {
                 Running A Plugin{" "}
               </Typography>
               Once you have created your plugin and the URL link has been
-              generated, you are now ready to upload it in the plugin store.
+              generated, you are now ready to submit it to the plugin store.
               <img
                 src={Plugin}
                 alt=""
@@ -778,7 +778,7 @@ function Support() {
                 Submit a plugin for review{" "}
               </Typography>
               Congrats on getting your plugin in shape! <br /> <br />
-              Now it's time to upload your plugin to ChatGPT and start having
+              Now it's time to submit your plugin to ChatGPT and start having
               fun! Simply click on the "Deploy" button, follow the instructions,
               and you are all set! <br /> <br />
               OpenAI is currently reviewing new plugins on a rolling basis. You
