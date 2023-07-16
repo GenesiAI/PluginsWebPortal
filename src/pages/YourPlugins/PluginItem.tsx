@@ -24,7 +24,9 @@ const PluginItem = ({ plugin, onClick }: InputProps) => {
   const handleCopy = async (event: React.MouseEvent) => {
     event.stopPropagation(); // Stop event propagation
     try {
-      await navigator.clipboard.writeText(plugin.id + ".Genesi.AI");
+      await navigator.clipboard.writeText(
+        plugin.id + "." + process.env.REACT_APP_BACKEND_URL?.slice(15)
+      );
       setTooltipTitle("Copied 🚀");
       setTooltipOpen(true);
     } catch (err) {
@@ -71,7 +73,10 @@ const PluginItem = ({ plugin, onClick }: InputProps) => {
       >
         <ListItemText
           primary={plugin.nameForHuman}
-          secondary={plugin.id + ".Genesi.AI"}
+          secondary={
+            plugin.id + "." + process.env.REACT_APP_BACKEND_URL?.slice(15)
+          }
+          // todo handle copy only on MuiListItemText-secondary
           onClick={handleCopy}
           sx={{
             color: "text.primary",
