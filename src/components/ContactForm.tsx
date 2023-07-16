@@ -1,22 +1,20 @@
-import React, { useState } from "react";
-import { Box, Button, Container, Grid, TextField } from "@mui/material";
-import axios from "axios";
-import { makeStyles } from "@mui/styles";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  SxProps,
+  TextField
+} from "@mui/material";
 import { Theme } from "@mui/material/styles";
+import axios from "axios";
+import React, { useState } from "react";
 
-const useStyles = makeStyles((theme: Theme) => ({
-  container: {
-    padding: theme.spacing(3)
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
-  }
-}));
+const container: SxProps<Theme> = {
+  padding: (theme) => theme.spacing(2)
+};
 
 const ContactForm: React.FC = () => {
-  const classes = useStyles();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -44,8 +42,8 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="md" className={classes.container}>
-      <form className={classes.form} onSubmit={handleSubmit}>
+    <Container maxWidth="md" sx={container}>
+      <form className="flex flex-col items-center" onSubmit={handleSubmit}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
             <TextField
