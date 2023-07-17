@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["Genesi", "fortawesome", "fontawesome"],
+  "cSpell.words": ["Genesi", "fortawesome", "fontawesome", "tailwindcss"],
   "typescript.preferences.importModuleSpecifierEnding": "minimal",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,

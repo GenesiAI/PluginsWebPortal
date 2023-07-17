@@ -3,11 +3,17 @@ import {
   Button,
   Container,
   Grid,
-  TextField,
-  Tooltip
+  SxProps,
+  TextField
 } from "@mui/material";
+import { Theme } from "@mui/material/styles";
 import axios from "axios";
 import React, { useState } from "react";
+
+const container: SxProps<Theme> = {
+  padding: (theme) => theme.spacing(2)
+};
+
 
 const ContactForm: React.FC = () => {
   const [name, setName] = useState("");
@@ -40,8 +46,8 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="md">
-      <form onSubmit={handleSubmit}>
+    <Container maxWidth="md" sx={container}>
+      <form className="flex flex-col items-center" onSubmit={handleSubmit}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
             <TextField
