@@ -1,7 +1,7 @@
 // PluginSections.tsx
+import { Box, Grid, TextField } from "@mui/material";
 import React from "react";
 import { Plugin } from "../apis/api";
-import { Box, Grid, TextField } from "@mui/material";
 
 interface PluginSectionsProps {
   plugin: Plugin;
@@ -16,11 +16,11 @@ const PluginSections: React.FC<PluginSectionsProps> = ({
     <>
       {plugin.sections?.map((section, index) => (
         <React.Fragment key={index}>
-          <Box margin={2}>
-            <Grid container spacing={2}>
+          <Box margin={4}>
+            <Grid container spacing={4}>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  variant="standard"
+                  variant="filled"
                   fullWidth
                   label="Section Name"
                   value={section.name || ""}
@@ -50,7 +50,7 @@ const PluginSections: React.FC<PluginSectionsProps> = ({
               </Grid>
               <Grid item xs={12} sm={12}>
                 <TextField
-                  variant="outlined"
+                  variant="filled"
                   fullWidth
                   multiline
                   rows={2}
@@ -82,7 +82,7 @@ const PluginSections: React.FC<PluginSectionsProps> = ({
               </Grid>
               <Grid item xs={12} sm={12}>
                 <TextField
-                  variant="outlined"
+                  variant="filled"
                   fullWidth
                   label="Section Content"
                   multiline
