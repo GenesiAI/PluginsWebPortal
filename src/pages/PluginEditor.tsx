@@ -127,7 +127,7 @@ const PluginEditor: React.FC<{}> = () => {
         <Box
           sx={{
             margin: "16px",
-            backgroundColor: "#f7f7f7",
+            // backgroundColor: "#f7f7f7",
             padding: 3,
             borderRadius: 4,
             marginTop: 3
@@ -143,27 +143,27 @@ const PluginEditor: React.FC<{}> = () => {
               marginTop: (theme) => theme.spacing(2)
             }}
           >
-            Create A Plugin
+            Create your plugin
           </Typography>
-          <Grid container spacing={2}>
+          <Grid container spacing={4} marginTop={4}>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="standard"
+                variant="filled"
                 fullWidth
                 label="Name for Human"
                 value={plugin.nameForHuman || ""}
                 onChange={(e) => handleInputChange(e, "nameForHuman")}
                 error={
                   plugin.nameForHuman &&
-                    (plugin.nameForHuman.length > 20 ||
-                      !/^[a-zA-Z ]+$/.test(plugin.nameForHuman))
+                  (plugin.nameForHuman.length > 20 ||
+                    !/^[a-zA-Z ]+$/.test(plugin.nameForHuman))
                     ? true
                     : false
                 }
                 helperText={
                   plugin.nameForHuman &&
-                    (plugin.nameForHuman.length > 20 ||
-                      !/^[a-zA-Z ]+$/.test(plugin.nameForHuman))
+                  (plugin.nameForHuman.length > 20 ||
+                    !/^[a-zA-Z ]+$/.test(plugin.nameForHuman))
                     ? "Please enter a valid name (up to 20 letters and no numbers or special characters)"
                     : ""
                 }
@@ -171,22 +171,22 @@ const PluginEditor: React.FC<{}> = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="standard"
+                variant="filled"
                 fullWidth
                 label="Name for Model"
                 value={plugin.nameForModel || ""}
                 onChange={(e) => handleInputChange(e, "nameForModel")}
                 error={
                   plugin.nameForModel &&
-                    (plugin.nameForModel.length > 50 ||
-                      !/^[a-zA-Z0-9]+$/.test(plugin.nameForModel))
+                  (plugin.nameForModel.length > 50 ||
+                    !/^[a-zA-Z0-9]+$/.test(plugin.nameForModel))
                     ? true
                     : false
                 }
                 helperText={
                   plugin.nameForModel &&
-                    (plugin.nameForModel.length > 50 ||
-                      !/^[a-zA-Z0-9]+$/.test(plugin.nameForModel))
+                  (plugin.nameForModel.length > 50 ||
+                    !/^[a-zA-Z0-9]+$/.test(plugin.nameForModel))
                     ? "Please enter a valid name (up to 50 characters with no spaces and only letters and numbers)"
                     : ""
                 }
@@ -194,7 +194,7 @@ const PluginEditor: React.FC<{}> = () => {
             </Grid>
             <Grid item xs={12} sm={12}>
               <TextField
-                variant="outlined"
+                variant="filled"
                 fullWidth
                 multiline
                 rows={2}
@@ -203,13 +203,13 @@ const PluginEditor: React.FC<{}> = () => {
                 onChange={(e) => handleInputChange(e, "descriptionForHuman")}
                 error={
                   plugin.descriptionForHuman &&
-                    plugin.descriptionForHuman.length > 100
+                  plugin.descriptionForHuman.length > 100
                     ? true
                     : undefined
                 }
                 helperText={
                   plugin.descriptionForHuman &&
-                    plugin.descriptionForHuman.length > 100
+                  plugin.descriptionForHuman.length > 100
                     ? "Please enter a shorter description (up to 100 characters)"
                     : ""
                 }
@@ -217,7 +217,7 @@ const PluginEditor: React.FC<{}> = () => {
             </Grid>
             <Grid item xs={12} sm={12}>
               <TextField
-                variant="outlined"
+                variant="filled"
                 fullWidth
                 multiline
                 rows={2}
@@ -226,13 +226,13 @@ const PluginEditor: React.FC<{}> = () => {
                 onChange={(e) => handleInputChange(e, "descriptionForModel")}
                 error={
                   plugin.descriptionForModel &&
-                    plugin.descriptionForModel.length > 8000
+                  plugin.descriptionForModel.length > 8000
                     ? true
                     : false
                 }
                 helperText={
                   plugin.descriptionForModel &&
-                    plugin.descriptionForModel.length > 8000
+                  plugin.descriptionForModel.length > 8000
                     ? "Please shorten the description (up to 8000 characters)"
                     : "Include keywords and relevant details to improve plugin prompting"
                 }
@@ -240,7 +240,7 @@ const PluginEditor: React.FC<{}> = () => {
             </Grid>
             <Grid item xs={12} sm={12}>
               <TextField
-                variant="standard"
+                variant="filled"
                 fullWidth
                 label="Logo URL"
                 value={plugin.logoUrl ? plugin.logoUrl : ""}
@@ -248,7 +248,7 @@ const PluginEditor: React.FC<{}> = () => {
                 error={
                   (plugin.logoUrl &&
                     !/\.(gif|jpe?g|png)$/i.test(plugin.logoUrl)) ||
-                    (plugin.logoUrl && plugin.logoUrl.length > 2083)
+                  (plugin.logoUrl && plugin.logoUrl.length > 2083)
                     ? true
                     : undefined
                 }
@@ -256,27 +256,27 @@ const PluginEditor: React.FC<{}> = () => {
                   plugin.logoUrl && !/\.(gif|jpe?g|png)$/i.test(plugin.logoUrl)
                     ? "Please provide a valid image URL (PNG, JPEG or GIF)"
                     : plugin.logoUrl && plugin.logoUrl.length > 2083
-                      ? "Please shorten the URL (up to 2083 characters)"
-                      : "URL used to fetch the logo. Suggested size: 512 x 512. Transparent backgrounds are supported."
+                    ? "Please shorten the URL (up to 2083 characters)"
+                    : "URL used to fetch the logo. Suggested size: 512 x 512. Transparent backgrounds are supported."
                 }
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="standard"
+                variant="filled"
                 fullWidth
                 label="Contact Email"
                 value={plugin.contactEmail || ""}
                 onChange={(e) => handleInputChange(e, "contactEmail")}
                 error={
                   plugin.contactEmail &&
-                    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(plugin.contactEmail)
+                  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(plugin.contactEmail)
                     ? true
                     : undefined
                 }
                 helperText={
                   plugin.contactEmail &&
-                    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(plugin.contactEmail)
+                  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(plugin.contactEmail)
                     ? "Please provide a valid email address"
                     : "Email address for safety/moderation, support, and deactivation purposes."
                 }
@@ -284,20 +284,20 @@ const PluginEditor: React.FC<{}> = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="standard"
+                variant="filled"
                 fullWidth
                 label="Legal Info URL"
                 value={plugin.legalInfoUrl || ""}
                 onChange={(e) => handleInputChange(e, "legalInfoUrl")}
                 error={
                   plugin.legalInfoUrl &&
-                    !/^https?:\/\/.+/.test(plugin.legalInfoUrl)
+                  !/^https?:\/\/.+/.test(plugin.legalInfoUrl)
                     ? true
                     : undefined
                 }
                 helperText={
                   plugin.legalInfoUrl &&
-                    !/^https?:\/\/.+/.test(plugin.legalInfoUrl)
+                  !/^https?:\/\/.+/.test(plugin.legalInfoUrl)
                     ? "Please provide a valid URL starting with http:// or https://"
                     : "Redirect URL for users to view plugin information."
                 }

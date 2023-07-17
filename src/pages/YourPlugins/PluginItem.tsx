@@ -1,65 +1,98 @@
-import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { faCopy, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Avatar,
+  Box,
   IconButton,
   ListItem,
   ListItemAvatar,
   ListItemSecondaryAction,
-  ListItemText
+  ListItemText,
+  Tooltip
 } from "@mui/material";
 import { Plugin } from "apis/api";
+import { useState } from "react";
 
 type InputProps = {
   plugin: Plugin;
   onClick: () => void;
 };
 
-const PluginItem = ({ plugin, onClick }: InputProps) => (
-  <ListItem
-    onClick={onClick}
-    key={plugin.id}
-    sx={{
-      backgroundColor: (theme) => theme.palette.background.paper,
-      borderRadius: 2,
-      marginBottom: (theme) => theme.spacing(1),
-      boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)"
-    }}
-  >
-    <ListItemAvatar>
-      <Avatar
-        src={
-          plugin.logoUrl ??
-          "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+const PluginItem = ({ plugin, onClick }: InputProps) => {
+  const [tooltipOpen, setTooltipOpen] = useState(false);
+  const [tooltipTitle, setTooltipTitle] = useState("Click to copy");
+
+  const handleCopy = async (event: React.MouseEvent) => {
+    event.stopPropagation(); // Stop event propagation
+    try {
+      await navigator.clipboard.writeText(
+        plugin.id + "." + process.env.REACT_APP_BACKEND_URL?.slice(15)
+      );
+      setTooltipTitle("Copied 🚀");
+      setTooltipOpen(true);
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+    }
+  };
+
+  const handleTooltipClose = () => {
+    setTooltipOpen(false);
+    setTooltipTitle("Click to copy"); // Reset the tooltip title
+  };
+
+  const handleTooltipOpen = () => {
+    setTooltipOpen(true);
+  };
+
+  return (
+    <ListItem
+      onClick={onClick}
+      key={plugin.id}
+      sx={{
+        backgroundColor: (theme) => theme.palette.background.paper,
+        borderRadius: 2,
+        marginBottom: (theme) => theme.spacing(1),
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)"
+      }}
+    >
+      <ListItemAvatar>
+        <Avatar
+          src={
+            plugin.logoUrl ??
+            "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          }
+        />
+      </ListItemAvatar>
+      <ListItemText
+        primary={plugin.nameForHuman}
+        secondary={
+          <Tooltip
+            title={tooltipTitle}
+            open={tooltipOpen}
+            onClose={handleTooltipClose}
+            onOpen={handleTooltipOpen}
+            placement="bottom"
+            arrow
+            enterDelay={200}
+          >
+            <Box onClick={handleCopy} display="inline">
+              {plugin.id + "." + process.env.REACT_APP_BACKEND_URL?.slice(15)}
+              <FontAwesomeIcon icon={faCopy} style={{ marginLeft: "8px" }} />
+            </Box>
+          </Tooltip>
         }
+        sx={{
+          color: "text.primary",
+          secondary: "text.secondary"
+        }}
       />
-    </ListItemAvatar>
-    <ListItemText
-      primary={plugin.nameForHuman}
-      secondary={"Plugin/" + plugin.id}
-      sx={{ color: "text.primary", secondary: "text.secondary" }}
-    />
-    <ListItemSecondaryAction>
-      {/* <Tooltip
-                open={tooltipOpenIndex === index}
-                title="URL copied to clipboard"
-                arrow
-                placement="top">
-                <IconButton
-                  // onClick={() => handleCopyClick("https://aiplugin-api.azurewebsites.net/Plugin/" + mockedUserId + "/" + plugin.id, index)}
-                  edge="end"
-                  aria-label="copy">
-                  <FontAwesomeIcon icon={faCopy} />
-                </IconButton>
-              </Tooltip> */}
-      <IconButton onClick={onClick} edge="end" aria-label="modify">
-        <FontAwesomeIcon icon={faPencilAlt} />
-      </IconButton>
-      {/* <IconButton disabled edge="end" aria-label="delete">
-                <FontAwesomeIcon icon={faTrashAlt} color='white' />
-              </IconButton> */}
-    </ListItemSecondaryAction>
-  </ListItem>
-);
+      <ListItemSecondaryAction>
+        <IconButton onClick={onClick} edge="end" aria-label="modify">
+          <FontAwesomeIcon icon={faPencilAlt} />
+        </IconButton>
+      </ListItemSecondaryAction>
+    </ListItem>
+  );
+};
 
 export default PluginItem;

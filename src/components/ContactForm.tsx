@@ -14,10 +14,12 @@ const container: SxProps<Theme> = {
   padding: (theme) => theme.spacing(2)
 };
 
+
 const ContactForm: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -35,6 +37,8 @@ const ContactForm: React.FC = () => {
       );
       // Handle success, e.g., show a success message.
       console.log("Message sent successfully.");
+      setTooltipOpen(true);
+      setTimeout(() => setTooltipOpen(false), 2000); // Hide tooltip after 2 seconds
     } catch (error) {
       // Handle error, e.g., show an error message.
       console.error("Error sending message:", error);
@@ -77,9 +81,12 @@ const ContactForm: React.FC = () => {
           </Grid>
           <Grid item xs={12}>
             <Box mt={2}>
-              <Button type="submit" variant="contained" color="primary">
-                Send Message
-              </Button>
+              {/* show tooltip on button pressed */}
+              <Tooltip title="Sent ✨" open={tooltipOpen}>
+                <Button type="submit" variant="contained" color="primary">
+                  Send Message
+                </Button>
+              </Tooltip>
             </Box>
           </Grid>
         </Grid>
