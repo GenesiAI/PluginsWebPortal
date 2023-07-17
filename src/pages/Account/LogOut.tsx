@@ -1,11 +1,11 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const LogOut: React.FC = () => {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    localStorage.removeItem('X');
+    localStorage.removeItem("X");
     navigate("/");
   });
   return (

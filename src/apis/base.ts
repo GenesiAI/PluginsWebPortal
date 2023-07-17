@@ -19,7 +19,7 @@ import type { Configuration } from './configuration';
 import type { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 
-export const BASE_PATH = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? 'http://portal.localhost:5104' : 'https://portal.genesi.ai';
+export const BASE_PATH = process.env.REACT_APP_BACKEND_URL!;
 
 /**
  *

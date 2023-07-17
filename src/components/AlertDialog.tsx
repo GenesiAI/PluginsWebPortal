@@ -1,5 +1,12 @@
-import React from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import React from "react";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+} from "@mui/material";
 
 interface AlertDialogProps {
   open: boolean;
@@ -7,7 +14,11 @@ interface AlertDialogProps {
   onConfirm: () => void;
 }
 
-const AlertDialog: React.FC<AlertDialogProps> = ({ open, setOpen, onConfirm }) => {
+const AlertDialog: React.FC<AlertDialogProps> = ({
+  open,
+  setOpen,
+  onConfirm
+}) => {
   const handleClose = () => {
     setOpen(false);
   };
@@ -21,7 +32,10 @@ const AlertDialog: React.FC<AlertDialogProps> = ({ open, setOpen, onConfirm }) =
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>Delete Plugin</DialogTitle>
       <DialogContent>
-        <DialogContentText>Are you sure you want to delete this plugin? This action cannot be undone.</DialogContentText>
+        <DialogContentText>
+          Are you sure you want to delete this plugin? This action cannot be
+          undone.
+        </DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>

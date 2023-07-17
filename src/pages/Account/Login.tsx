@@ -18,18 +18,18 @@
 //   };
 
 //   return (
-//     <div style={{ 
-//       minHeight: "100vh", 
-//       display: "flex", 
-//       flexDirection: "column", 
-//       justifyContent: "center", 
-//       alignItems: "center", 
+//     <div style={{
+//       minHeight: "100vh",
+//       display: "flex",
+//       flexDirection: "column",
+//       justifyContent: "center",
+//       alignItems: "center",
 //       padding: theme.spacing(1),
 //     }}>
 //       <h1 style={{ margin: theme.spacing(1) }}>Login</h1>
 //       <Input
-//         style={{ 
-//           margin: theme.spacing(1), 
+//         style={{
+//           margin: theme.spacing(1),
 //           padding: theme.spacing(0.25),
 //           borderRadius: theme.shape.borderRadius
 //         }}
@@ -39,8 +39,8 @@
 //         onChange={(e) => setUsername(e.target.value)} />
 
 //       <Input
-//         style={{ 
-//           margin: theme.spacing(1), 
+//         style={{
+//           margin: theme.spacing(1),
 //           padding: theme.spacing(0.25),
 //           borderRadius: theme.shape.borderRadius
 //         }}
@@ -55,10 +55,17 @@
 // };
 
 // export default LoginPage;
-import React, { useState, useEffect } from 'react';
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, User } from "firebase/auth";
-import axios from 'axios';
-import { auth } from '../../security/firebase';
+import React, { useState, useEffect } from "react";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signOut,
+  User
+} from "firebase/auth";
+import axios from "axios";
+import { auth } from "../../security/firebase";
 
 const provider = new GoogleAuthProvider();
 
@@ -66,7 +73,7 @@ const Login: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, user => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
     return unsubscribe;
@@ -79,7 +86,7 @@ const Login: React.FC = () => {
     const token = credential?.idToken;
     console.info(token);
     // You can now use this token with your axios instance:
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   };
 
   const handleLogout = async () => {
@@ -90,9 +97,9 @@ const Login: React.FC = () => {
     delete axios.defaults.headers.common["Authorization"];
   };
 
-  auth?.currentUser?.getIdToken(/* forceRefresh */ true).then(function (idToken) {
-    console.log("tokex: "+ idToken);
-  });
+  // auth?.currentUser?.getIdToken(/* forceRefresh */ true).then(function (idToken) {
+  //   console.log("tokex: "+ idToken);
+  // });
 
   return (
     <div>
