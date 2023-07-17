@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import ContactsPage from "./pages/Contacts";
-import Header from "./components/Header";
-import YourPlugins from "./pages/YourPlugins";
-import LoadingSpinner from "./components/LoadingSpinner";
-import PluginEditor from "./pages/PluginEditor";
-import Home from "./pages/Home";
 import { Container } from "@mui/material";
-import Support from "./pages/Support";
 import { onAuthStateChanged } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import LoadingSpinner from "./components/LoadingSpinner";
+import Home from "./pages/Home";
+import PluginEditor from "./pages/PluginEditor";
+import Support from "./pages/Support";
+import YourPlugins from "./pages/YourPlugins";
 import { auth } from "./security/firebase";
 
 const AppRouter: React.FC = () => {
@@ -43,14 +42,14 @@ const AppRouter: React.FC = () => {
             </Container>
           }
         />
-        <Route
+        {/* <Route
           path="/contacts"
           element={
             <Container maxWidth="md">
               <ContactsPage />
             </Container>
           }
-        />
+        /> */}
         <Route
           path="/plugin/:guid"
           element={

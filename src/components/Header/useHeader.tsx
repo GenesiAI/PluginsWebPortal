@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, login, logout } from "security/firebase";
 
-const loggedInPages = ["Your Plugins", "Support", "contacts", "Logout"];
-const loggedOutPages = ["contacts", "Support", "Login"];
+const loggedInPages = ["Your Plugins", "Support" /*"contacts"*/, "Logout"];
+const loggedOutPages = [/*"contacts"*/ "Support", "Login"];
 
 const useHeader = () => {
   const navigate = useNavigate();

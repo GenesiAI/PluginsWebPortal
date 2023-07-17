@@ -1,25 +1,19 @@
-import React, { useState } from "react";
-import { Box, Button, Container, Grid, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  TextField,
+  Tooltip
+} from "@mui/material";
 import axios from "axios";
-import { makeStyles } from "@mui/styles";
-import { Theme } from "@mui/material/styles";
-
-const useStyles = makeStyles((theme: Theme) => ({
-  container: {
-    padding: theme.spacing(3)
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
-  }
-}));
+import React, { useState } from "react";
 
 const ContactForm: React.FC = () => {
-  const classes = useStyles();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -37,6 +31,8 @@ const ContactForm: React.FC = () => {
       );
       // Handle success, e.g., show a success message.
       console.log("Message sent successfully.");
+      setTooltipOpen(true);
+      setTimeout(() => setTooltipOpen(false), 2000); // Hide tooltip after 2 seconds
     } catch (error) {
       // Handle error, e.g., show an error message.
       console.error("Error sending message:", error);
@@ -44,8 +40,8 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="md" className={classes.container}>
-      <form className={classes.form} onSubmit={handleSubmit}>
+    <Container maxWidth="md">
+      <form onSubmit={handleSubmit}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -79,9 +75,12 @@ const ContactForm: React.FC = () => {
           </Grid>
           <Grid item xs={12}>
             <Box mt={2}>
-              <Button type="submit" variant="contained" color="primary">
-                Send Message
-              </Button>
+              {/* show tooltip on button pressed */}
+              <Tooltip title="Sent ✨" open={tooltipOpen}>
+                <Button type="submit" variant="contained" color="primary">
+                  Send Message
+                </Button>
+              </Tooltip>
             </Box>
           </Grid>
         </Grid>
