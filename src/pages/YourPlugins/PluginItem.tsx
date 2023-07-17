@@ -1,7 +1,8 @@
-import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { faCopy, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Avatar,
+  Box,
   IconButton,
   ListItem,
   ListItemAvatar,
@@ -62,28 +63,29 @@ const PluginItem = ({ plugin, onClick }: InputProps) => {
           }
         />
       </ListItemAvatar>
-      <Tooltip
-        title={tooltipTitle}
-        open={tooltipOpen}
-        onClose={handleTooltipClose}
-        onOpen={handleTooltipOpen}
-        placement="bottom"
-        arrow
-        enterDelay={200}
-      >
-        <ListItemText
-          primary={plugin.nameForHuman}
-          secondary={
-            plugin.id + "." + process.env.REACT_APP_BACKEND_URL?.slice(15)
-          }
-          // todo handle copy only on MuiListItemText-secondary
-          onClick={handleCopy}
-          sx={{
-            color: "text.primary",
-            secondary: "text.secondary"
-          }}
-        />
-      </Tooltip>
+      <ListItemText
+        primary={plugin.nameForHuman}
+        secondary={
+          <Tooltip
+            title={tooltipTitle}
+            open={tooltipOpen}
+            onClose={handleTooltipClose}
+            onOpen={handleTooltipOpen}
+            placement="bottom"
+            arrow
+            enterDelay={200}
+          >
+            <Box onClick={handleCopy} display="inline">
+              {plugin.id + "." + process.env.REACT_APP_BACKEND_URL?.slice(15)}
+              <FontAwesomeIcon icon={faCopy} style={{ marginLeft: "8px" }} />
+            </Box>
+          </Tooltip>
+        }
+        sx={{
+          color: "text.primary",
+          secondary: "text.secondary"
+        }}
+      />
       <ListItemSecondaryAction>
         <IconButton onClick={onClick} edge="end" aria-label="modify">
           <FontAwesomeIcon icon={faPencilAlt} />
