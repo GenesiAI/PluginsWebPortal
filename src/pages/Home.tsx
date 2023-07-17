@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import step1 from "../img/Screen.png";
 // import step2 from "../img/Screen4.png";
-import step3 from "../img/Screen2.png";
 // import { useTheme } from "@mui/material/styles";
 // import useMediaQuery from "@mui/material/useMediaQuery";
 import Slider from "react-slick";
@@ -93,83 +92,83 @@ import HeroSection from "../components/HeroSection";
 //     alt: "Logo 3",
 //   },
 // ];
-const sliderSettings2 = {
-  dots: false,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: false
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 1, // update to show only 1 slide on mobile
-        slidesToScroll: 1,
-        initialSlide: 1
-      }
-    },
-    {
-      breakpoint: 280,
-      settings: {
-        slidesToShow: 1, // show only 1 slide on mobile
-        slidesToScroll: 1
-      }
-    }
-  ],
-  // Add height property to make the slider and images smaller in height
-  // Add css property to reduce the margin between the slides
-  cssEase: "linear",
-  variableWidth: true,
-  centerMode: true,
-  centerPadding: "100px",
-  slideMargin: "100px",
-  arrows: false // remove next and previous buttons
-};
-const logos2 = [
-  {
-    src: step3,
-    alt: "Logo 1"
-  },
-  {
-    src: step3,
-    alt: "Logo 2"
-  },
-  {
-    src: step3,
-    alt: "Logo 3"
-  },
-  {
-    src: step3,
-    alt: "Logo 3"
-  },
-  {
-    src: step3,
-    alt: "Logo 3"
-  },
-  {
-    src: step3,
-    alt: "Logo 3"
-  },
-  {
-    src: step3,
-    alt: "Logo 3"
-  },
-  {
-    src: step3,
-    alt: "Logo 3"
-  }
-];
+// const sliderSettings2 = {
+//   dots: false,
+//   infinite: true,
+//   speed: 500,
+//   slidesToShow: 1,
+//   slidesToScroll: 1,
+//   autoplay: true,
+//   autoplaySpeed: 2000,
+//   responsive: [
+//     {
+//       breakpoint: 1024,
+//       settings: {
+//         slidesToShow: 1,
+//         slidesToScroll: 1,
+//         infinite: true,
+//         dots: false
+//       }
+//     },
+//     {
+//       breakpoint: 600,
+//       settings: {
+//         slidesToShow: 1, // update to show only 1 slide on mobile
+//         slidesToScroll: 1,
+//         initialSlide: 1
+//       }
+//     },
+//     {
+//       breakpoint: 280,
+//       settings: {
+//         slidesToShow: 1, // show only 1 slide on mobile
+//         slidesToScroll: 1
+//       }
+//     }
+//   ],
+//   // Add height property to make the slider and images smaller in height
+//   // Add css property to reduce the margin between the slides
+//   cssEase: "linear",
+//   variableWidth: true,
+//   centerMode: true,
+//   centerPadding: "100px",
+//   slideMargin: "100px",
+//   arrows: false // remove next and previous buttons
+// };
+// const logos2 = [
+//   {
+//     src: step3,
+//     alt: "Logo 1"
+//   },
+//   {
+//     src: step3,
+//     alt: "Logo 2"
+//   },
+//   {
+//     src: step3,
+//     alt: "Logo 3"
+//   },
+//   {
+//     src: step3,
+//     alt: "Logo 3"
+//   },
+//   {
+//     src: step3,
+//     alt: "Logo 3"
+//   },
+//   {
+//     src: step3,
+//     alt: "Logo 3"
+//   },
+//   {
+//     src: step3,
+//     alt: "Logo 3"
+//   },
+//   {
+//     src: step3,
+//     alt: "Logo 3"
+//   }
+// ];
 
 const colors = [
   "#df66da",
