@@ -6,7 +6,7 @@ const Title = () => (
     <Icon
       component="img"
       src="/FullLogo_Transparent.png"
-      sx={{ width: 161.55, height: 45.9 }}
+      sx={{ width: 180, height: 45.9 }}
     />
   </Link>
 );
