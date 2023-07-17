@@ -1,6 +1,6 @@
+import { Box, Button, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Typography, Box } from "@mui/material";
 
 const HeroSection: React.FC = () => {
   const [, setColorIndex] = useState(0);
@@ -20,43 +20,6 @@ const HeroSection: React.FC = () => {
     navigate("/login");
   };
 
-  // const colors = [
-  //   "#df66da",
-  //   "#d773ec",
-  //   "#cf81fe",
-  //   "#c48fff",
-  //   "#b99ef0",
-  //   "#aeade1",
-  //   "#a3bcd2",
-  //   "#98cbc3",
-  //   "#8ddab4",
-  //   "#82e9a5",
-  //   "#77f896",
-  //   "#6cff87",
-  //   "#62f678",
-  //   "#58ed69",
-  //   "#67ea7a",
-  //   "#76e78b",
-  //   "#85e49c",
-  //   "#94e1ad",
-  //   "#a3debe",
-  //   "#b2dbcf",
-  //   "#c1d8e0",
-  //   "#d0d5f1",
-  //   "#dfcffc",
-  //   "#eec8fd",
-  //   "#eebaef",
-  //   "#eeacdf",
-  //   "#ee9ece",
-  //   "#ee90bd",
-  //   "#ee82ac",
-  //   "#ee749b",
-  //   "#ee668a",
-  //   "#f73da4",
-  //   "#ef4bb6",
-  //   "#e758c8",
-  // ];
-
   return (
     <>
       <Box margin={{ xs: 2, sm: 6 }}>
@@ -66,8 +29,8 @@ const HeroSection: React.FC = () => {
           sx={{
             fontSize: { xs: "2rem", sm: "5rem" },
             margin: { xs: "1rem 0", sm: "2rem 0" },
-            fontFamily: "Paytone One",
-            fontWeight: "soft"
+            fontFamily: "Tahoma",
+            fontWeight: "bold"
           }}
         >
           Think <span style={{ fontWeight: "soft" }}>Innovative</span>.<br /> Be
@@ -92,11 +55,12 @@ const HeroSection: React.FC = () => {
             fontSize: { xs: "1.2rem", sm: "1.8rem" },
             lineHeight: { xs: "1.5", sm: "1", lg: "1.5" },
             marginBottom: "1rem",
-            fontWeight: "bold",
-            fontFamily: "Neucha"
+            fontWeight: "soft",
+            fontFamily: "Tahoma"
           }}
         >
-          Build your ChatGPT custom plugin without code, in less than 2 minutes.
+          Build your ChatGPT custom plugin without code, <br />
+          in less than 2 minutes.
         </Typography>
       </Box>
       <Box my={2} textAlign="center">

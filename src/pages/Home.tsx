@@ -1,24 +1,23 @@
-import React, { useState } from "react";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import {
-  Button,
-  Typography,
-  Box,
-  Grid,
   // Paper,
   Accordion,
   AccordionDetails,
-  AccordionSummary
+  AccordionSummary,
+  Box,
+  Button,
+  Grid,
+  Typography
 } from "@mui/material";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import step1 from "../img/Screen.png";
 // import step2 from "../img/Screen4.png";
 // import { useTheme } from "@mui/material/styles";
 // import useMediaQuery from "@mui/material/useMediaQuery";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import { Link as RouterLink } from "react-router-dom";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Link as RouterLink } from "react-router-dom";
+import "slick-carousel/slick/slick.css";
 import HeroSection from "../components/HeroSection";
 
 // const sliderSettings = {
@@ -587,11 +586,9 @@ const Home: React.FC = () => {
           <Button
             variant="contained"
             sx={{
-              backgroundColor: "white",
+              backgroundColor: colors[(colorIndex + 1) % colors.length],
               color: "white",
-              "&:hover": {
-                backgroundColor: colors[(colorIndex + 1) % colors.length]
-              },
+              "&:hover": {},
               fontSize: { xs: "rem", sm: "1.5rem", md: "1.3rem" },
               fontColor: "black",
               textColor: "black",
@@ -992,7 +989,7 @@ const Home: React.FC = () => {
         {/* //fourth step */}
       </Box>
       {/* //carosoul added here */}
-      <Box margin={6} alignItems="center">
+      {/* <Box margin={6} alignItems="center">
         <Typography
           variant="h3"
           align="center"
@@ -1025,7 +1022,7 @@ const Home: React.FC = () => {
             </div>
           ))}
         </Slider>
-      </Box>
+      </Box> */}
       {/* //faq section */}
 
       {/* FAQ section */}
