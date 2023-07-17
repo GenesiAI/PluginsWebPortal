@@ -5,7 +5,7 @@ const Title = () => (
   <Link to="/">
     <Icon
       component="img"
-      src="/PartialLogo_Transparent.png"
+      src="/FullLogo_Transparent.png"
       sx={{ width: 161.55, height: 45.9 }}
     />
   </Link>
