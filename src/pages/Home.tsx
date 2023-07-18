@@ -11,7 +11,10 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import step1 from "../img/Screen.png";
+// import step1 from "../img/Screen.png";
+import PluginEditor from "../img/PluginEditor.png";
+import PluginsList from "../img/PluginsList.png";
+import TestPlugin from "../img/TestPlugin.png";
 // import step2 from "../img/Screen4.png";
 import step3 from "../img/Screen2.png";
 // import { useTheme } from "@mui/material/styles";
@@ -622,7 +625,7 @@ const Home: React.FC = () => {
               mb: { xs: 4, md: 0 }
             }}
           >
-            <img src={step1} alt="step1" />
+            <img src={PluginEditor} alt="step1" />
           </Box>
           <Box
             sx={{
@@ -744,7 +747,7 @@ const Home: React.FC = () => {
               flexDirection: { xs: "column", md: "row" }
             }}
           >
-            <img src={step1} alt="step1" />
+            <img src={PluginsList} alt="step1" />
           </Box>
           <Box
             sx={{
@@ -885,7 +888,7 @@ const Home: React.FC = () => {
               mb: { xs: 4, md: 0 }
             }}
           >
-            <img src={step1} alt="step1" />
+            <img src={TestPlugin} alt="step1" />
           </Box>
           <Box
             sx={{
