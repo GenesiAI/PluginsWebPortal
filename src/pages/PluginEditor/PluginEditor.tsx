@@ -1,6 +1,6 @@
-import { Box } from "@mui/material";
 import AlertDialog from "components/AlertDialog";
 import React, { memo } from "react";
+import { BoxContainer } from "theme";
 import FieldsContainer from "./Fields/FieldsContainer";
 import PluginSections from "./Fields/PluginSections";
 import { usePluginEditorCtxStatus } from "./PluginEditorCtx";
@@ -14,21 +14,13 @@ const PluginEditor: React.FC<{}> = () => {
   return (
     <div>
       <h1>{error}</h1>
-      <Box
-        sx={{
-          margin: "16px",
-          // backgroundColor: "#f7f7f7",
-          padding: 3,
-          borderRadius: 4,
-          marginTop: 3
-        }}
-      >
+      <BoxContainer>
         <PluginEditorTitle />
         <FieldsContainer>
           <PluginSections />
           <PluginEditorFooter />
         </FieldsContainer>
-      </Box>
+      </BoxContainer>
       <AlertDialog
         open={showDeleteDialog}
         setOpen={setShowDeleteDialog}

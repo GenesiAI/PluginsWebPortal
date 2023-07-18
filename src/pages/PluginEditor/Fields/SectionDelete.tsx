@@ -1,5 +1,5 @@
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, IconButton } from "@mui/material";
 
 type InputProps = {
   onClick: () => void;
@@ -12,12 +12,20 @@ const SectionDelete = ({ onClick }: InputProps) => (
     sm={6}
     className="!flex !justify-end order-first md:order-none"
   >
+    <IconButton
+      aria-label="delete"
+      className="!block md:!hidden"
+      color="error"
+      onClick={onClick}
+    >
+      <DeleteIcon />
+    </IconButton>
     <Button
-      variant="contained"
+      variant="outlined"
       color="error"
       startIcon={<DeleteIcon />}
       onClick={onClick}
-      className="!px-2 !py-1 scale-75 max-h-9"
+      className="!hidden md:!inline-flex !py-1 scale-75 max-h-9 "
     >
       Delete section
     </Button>
