@@ -1,5 +1,6 @@
 import { Box, Divider, Grid } from "@mui/material";
 import { Plugin } from "apis/api";
+import { Fragment } from "react";
 import { useFieldArray } from "react-hook-form";
 import Field from "./Field";
 import {
@@ -19,9 +20,9 @@ const PluginSections = () => {
   return (
     <Grid item>
       {fields?.map(({ id }, index) => (
-        <>
-          <Divider key={id} className="!my-4" />
-          <Box key={id} className="md:p-2 rounded-xl md:hover:bg-gray-200/60">
+        <Fragment key={id}>
+          <Divider className="!my-4" />
+          <Box className="md:p-2 rounded-xl md:hover:bg-gray-200/60">
             <Grid container spacing={4}>
               <LayoutItemGrid className="!pt-1 md:!pt-8">
                 <Field
@@ -49,7 +50,7 @@ const PluginSections = () => {
               </LayoutItemGrid>
             </Grid>
           </Box>
-        </>
+        </Fragment>
       ))}
       <PluginAddSections
         onClick={() =>
