@@ -4,9 +4,10 @@ import Instructions from "./Instructions";
 import PluginFooter from "./PluginFooter";
 import PluginHeader from "./PluginHeader";
 import Plugins from "./Plugins";
+import PluginsCtx from "./PluginsCtx";
 
 const YourPlugins = () => (
-  <>
+  <PluginsCtx>
     <BoxContainer>
       <PluginHeader />
       <List>
@@ -15,7 +16,7 @@ const YourPlugins = () => (
       <PluginFooter />
     </BoxContainer>
     <Instructions />
-  </>
+  </PluginsCtx>
 );
 
 export default YourPlugins;
