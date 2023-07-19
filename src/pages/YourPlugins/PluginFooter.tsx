@@ -3,9 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Box, IconButton, Tooltip } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { IconButtonTheme } from "theme";
+import { usePluginsCtx } from "./PluginsCtx";
 
 const PluginFooter = () => {
   const navigate = useNavigate();
+  const { pluginData, loading } = usePluginsCtx();
+  if (loading) return null;
+  const canCreateNewPlugin =
+    (pluginData.pluginsCount || 0) < (pluginData.maxPlugins || 0);
+
   return (
     <Box
       sx={{
@@ -14,10 +20,21 @@ const PluginFooter = () => {
         alignContent: "center"
       }}
     >
-      <Tooltip title="Create new plugin" arrow placement="top">
+      <Tooltip
+        title={
+          canCreateNewPlugin
+            ? "Create new plugin"
+            : "You have reach the max number"
+        }
+        arrow
+        placement="top"
+      >
         {/* put this on the right, using float it goes out of the div */}
         <IconButton
-          onClick={() => navigate("/plugin/new")}
+          disabled={!canCreateNewPlugin}
+          onClick={
+            canCreateNewPlugin ? () => navigate("/plugin/new") : undefined
+          }
           sx={IconButtonTheme}
         >
           <FontAwesomeIcon
