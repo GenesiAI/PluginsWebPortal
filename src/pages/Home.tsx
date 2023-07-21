@@ -8,15 +8,13 @@ import FeatureSection from "../components/FeatureSection";
 import Footer from "../components/Footer";
 import UseCases from "../components/UseCases";
 
-
 const Home: React.FC = () => {
-   const navigate = useNavigate();
-
+  const navigate = useNavigate();
 
   const GoToLogin = async () => {
     navigate("/login");
   };
- 
+
   return (
     <>
       <HeroSection />

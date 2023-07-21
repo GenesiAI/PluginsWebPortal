@@ -64,7 +64,7 @@ const HeroSection: React.FC = () => {
           in less than 2 minutes.
         </Typography>
       </Box>
-      <Box my={1} textAlign="center" sx={{paddingBottom: 7}}>
+      <Box my={1} textAlign="center" sx={{ paddingBottom: 7 }}>
         <Button
           variant="contained"
           sx={{
@@ -78,7 +78,7 @@ const HeroSection: React.FC = () => {
           }}
           onClick={GoToLogin}
         >
-          CREATE YOUR PLUGIN 
+          CREATE YOUR PLUGIN
         </Button>
         <Typography variant="body2" color="textSecondary">
           *No credit card required
@@ -100,7 +100,8 @@ const HeroSection: React.FC = () => {
               // add rounded corners
               borderRadius: "10px",
               // add glow effect
-              boxShadow: "0 0 5px #fff, 0 0 10px #fff, 0 0 10px #fff, 0 0 20px #6360FF, 0 0 30px #6360FF, 0 0 50px #6360FF, 0 0 50px #6360FF, 0 0 70px #6360FF"
+              boxShadow:
+                "0 0 5px #fff, 0 0 10px #fff, 0 0 10px #fff, 0 0 20px #6360FF, 0 0 30px #6360FF, 0 0 50px #6360FF, 0 0 50px #6360FF, 0 0 70px #6360FF"
             }}
             autoPlay
             loop
