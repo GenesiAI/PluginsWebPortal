@@ -4,6 +4,7 @@ import {
   GoogleAuthProvider,
   browserLocalPersistence,
   getAuth,
+  onAuthStateChanged,
   signInWithPopup,
   signOut
 } from "firebase/auth";
@@ -37,8 +38,14 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+let isLogged = false;
+onAuthStateChanged(auth, (user) => {
+  isLogged = !!user;
+});
 
+const isAlreadyLogged = () => isLogged;
 const login = async () => {
+  if (isLogged) return;
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
   await signInWithPopup(auth, provider);
@@ -56,4 +63,4 @@ const logout = async () => {
   await signOut(auth);
 };
 
-export { auth, login, logout };
+export { auth, isAlreadyLogged, login, logout };

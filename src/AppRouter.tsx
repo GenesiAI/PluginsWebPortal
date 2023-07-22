@@ -1,4 +1,5 @@
 import { Container } from "@mui/material";
+import ProtectedRoute from "components/ProtectedRoute";
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
@@ -37,9 +38,11 @@ const AppRouter: React.FC = () => {
         <Route
           path="/your-plugins"
           element={
-            <Container maxWidth="md" sx={someBasicStyle}>
-              <YourPlugins />
-            </Container>
+            <ProtectedRoute>
+              <Container maxWidth="md" sx={someBasicStyle}>
+                <YourPlugins />
+              </Container>
+            </ProtectedRoute>
           }
         />
         {/* <Route
@@ -53,9 +56,11 @@ const AppRouter: React.FC = () => {
         <Route
           path="/plugin/:guid"
           element={
-            <Container maxWidth="md">
-              <PluginEditor />
-            </Container>
+            <ProtectedRoute>
+              <Container maxWidth="md">
+                <PluginEditor />
+              </Container>
+            </ProtectedRoute>
           }
         />
         <Route
