@@ -22,26 +22,26 @@ const PluginFooter = () => {
     >
       <Tooltip
         title={
-          canCreateNewPlugin
-            ? "Create new plugin"
-            : "You have reach the max number"
+          canCreateNewPlugin ? "Create new plugin" : "Upgrade to create more!"
         }
         arrow
         placement="top"
       >
-        {/* put this on the right, using float it goes out of the div */}
-        <IconButton
-          disabled={!canCreateNewPlugin}
-          onClick={
-            canCreateNewPlugin ? () => navigate("/plugin/new") : undefined
-          }
-          sx={IconButtonTheme}
-        >
-          <FontAwesomeIcon
-            icon={faPlus}
-            className="motion-safe:active:animate-ping"
-          />
-        </IconButton>
+        <span>
+          {/* put this on the right, using float it goes out of the div */}
+          <IconButton
+            disabled={!canCreateNewPlugin}
+            onClick={
+              canCreateNewPlugin ? () => navigate("/plugin/new") : undefined
+            }
+            sx={IconButtonTheme}
+          >
+            <FontAwesomeIcon
+              icon={faPlus}
+              className="motion-safe:active:animate-ping"
+            />
+          </IconButton>
+        </span>
       </Tooltip>
     </Box>
   );
