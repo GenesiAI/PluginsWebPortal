@@ -19,8 +19,21 @@ const theme = createTheme({
         fontSize: "3rem"
       }
     }
+  },
+  components: {
+    MuiFilledInput: {
+      styleOverrides: {
+        root: {
+          "::before": {
+            border: "none !important"
+          },
+          borderRadius: "16px"
+        }
+      }
+    }
   }
 });
 
+export * from "./BoxContainer";
 export * from "./utils";
 export default theme;

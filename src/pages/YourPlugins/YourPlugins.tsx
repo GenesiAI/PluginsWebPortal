@@ -1,27 +1,22 @@
 import { List } from "@mui/material";
+import { BoxContainer } from "theme";
 import Instructions from "./Instructions";
 import PluginFooter from "./PluginFooter";
 import PluginHeader from "./PluginHeader";
 import Plugins from "./Plugins";
+import PluginsCtx from "./PluginsCtx";
 
-const YourPlugins = () => {
-  return (
-    <>
-      <List
-        sx={{
-          backgroundColor: "#f7f7f7",
-          marginTop: 4,
-          borderRadius: 3,
-          padding: 3
-        }}
-      >
-        <PluginHeader />
+const YourPlugins = () => (
+  <PluginsCtx>
+    <BoxContainer>
+      <PluginHeader />
+      <List>
         <Plugins />
-        <PluginFooter />
       </List>
-      <Instructions />
-    </>
-  );
-};
+      <PluginFooter />
+    </BoxContainer>
+    <Instructions />
+  </PluginsCtx>
+);
 
 export default YourPlugins;
