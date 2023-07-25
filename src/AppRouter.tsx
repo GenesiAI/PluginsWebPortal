@@ -1,11 +1,13 @@
 import { Container } from "@mui/material";
 import Flyout from "components/Flyout";
 import ProtectedRoute from "components/ProtectedRoute";
+import { Stripe } from "components/Stripe/Stripe";
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import { contacts, home, plugin, support, yourPlugins } from "const/urls";
 import Contact from "pages/Contact";
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+
 import Header from "./components/Header";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Home from "./pages/Home";
@@ -58,6 +60,11 @@ const AppRouter: React.FC = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="/prices">
+          <Route index element={<div>Price List</div>} />
+          <Route path="checkout/success" element={<div>Success</div>} />
+          <Route path="checkout/:id" element={<Stripe />} />
+        </Route>
         <Route
           path={support}
           element={
