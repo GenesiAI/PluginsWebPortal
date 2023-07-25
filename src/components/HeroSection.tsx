@@ -1,24 +1,21 @@
 import { Box, Button, Typography } from "@mui/material";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import LandingVideo from "../assets/LandingVideo.mp4";
+import useHandlerAuth from "./Header/useHandlerAuth";
 
 const HeroSection: React.FC = () => {
-  const [, setColorIndex] = useState(0);
-  const navigate = useNavigate();
+  // const [, setColorIndex] = useState(0);
 
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setColorIndex((prevIndex) => prevIndex + 1);
-    }, 150);
+  // React.useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setColorIndex((prevIndex) => prevIndex + 1);
+  //   }, 150);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
-  const GoToLogin = async () => {
-    navigate("/login");
-  };
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, []);
+  const { handleLogin } = useHandlerAuth();
 
   return (
     <>
@@ -75,7 +72,7 @@ const HeroSection: React.FC = () => {
             fontSize: "1.0rem",
             padding: "1rem 1rem"
           }}
-          onClick={GoToLogin}
+          onClick={handleLogin}
         >
           CREATE YOUR PLUGIN 🧩
         </Button>
@@ -95,11 +92,15 @@ const HeroSection: React.FC = () => {
             style={{
               width: "90%", // Set the width to 100% for mobile devices
               display: "block",
-              margin: "auto"
+              margin: "auto",
+              // add rounded corners
+              boxShadow: "5px 10px 10px rgba(0, 0, 0, 0.15)"
             }}
-            controls
+            autoPlay
+            loop
+            muted
           >
-            <source src="your_video_url_here" type="video/mp4" />
+            <source src={LandingVideo} type="video/mp4" />
           </video>
         </Box>
       </Box>

@@ -2,7 +2,6 @@ import { faCopy, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Avatar,
-  Box,
   IconButton,
   ListItem,
   ListItemAvatar,
@@ -75,10 +74,10 @@ const PluginItem = ({ plugin, onClick }: InputProps) => {
             arrow
             enterDelay={200}
           >
-            <Box onClick={handleCopy} display="inline">
+            <span onClick={handleCopy}>
               {plugin.id + "." + process.env.REACT_APP_BACKEND_URL?.slice(15)}
-              <FontAwesomeIcon icon={faCopy} style={{ marginLeft: "8px" }} />
-            </Box>
+              <FontAwesomeIcon icon={faCopy} className="ms-2" />
+            </span>
           </Tooltip>
         }
         sx={{
