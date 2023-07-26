@@ -89,7 +89,7 @@ const FAQsection: React.FC = () => {
         backgroundSize: "1% 100%", // adjust the second value to increase the height of the white background
         padding: { xs: "2rem", sm: "1rem" },
         borderRadius: 2,
-        maxWidth: { xs: "100%", sm: "80%", md: "1200px", lg: "100%" },
+        maxWidth: { xs: "100%", sm: "80%", md: "1300px", lg: "1300px" },
         justifyContent: "center",
         fontSize: { xs: "1.5rem", sm: "2rem" },
         margin: { xs: "0.5rem", sm: "0rem", md: "6rem 7rem", lg: "auto" },

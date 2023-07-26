@@ -13,7 +13,7 @@ const Home: React.FC = () => {
       <HeroSection />
       <WhatSection />
       <FeatureSection />
-      {/* <UseCases /> */}
+      <UseCases />
       <FAQsection />
       <Footer />
     </>
