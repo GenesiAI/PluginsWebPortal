@@ -10,6 +10,7 @@ import {
 import { Theme } from "@mui/material/styles";
 import axios from "axios";
 import React, { useState } from "react";
+import { debugConsole } from "./util";
 
 const container: SxProps<Theme> = {
   padding: (theme) => theme.spacing(2)
@@ -25,9 +26,9 @@ const ContactForm: React.FC = () => {
     event.preventDefault();
 
     const data = {
-      name: name,
-      email: email,
-      message: message
+      name,
+      email,
+      message
     };
 
     try {
@@ -36,12 +37,12 @@ const ContactForm: React.FC = () => {
         data
       );
       // Handle success, e.g., show a success message.
-      console.log("Message sent successfully.");
+      debugConsole("Message sent successfully.");
       setTooltipOpen(true);
       setTimeout(() => setTooltipOpen(false), 2000); // Hide tooltip after 2 seconds
     } catch (error) {
       // Handle error, e.g., show an error message.
-      console.error("Error sending message:", error);
+      debugConsole("Error sending message:", error);
     }
   };
 

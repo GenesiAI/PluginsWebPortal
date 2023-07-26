@@ -5,7 +5,7 @@ const useHandlerAuth = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => login().then(() => navigate("your-plugins"));
-  const handleLogout = async () =>
+  const handleLogout = () =>
     logout().then(() => {
       navigate("/");
     });

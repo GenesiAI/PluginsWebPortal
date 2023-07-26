@@ -1,4 +1,5 @@
 # Every package defines its prettier config
 node_modules
 specs
+assets
 src/apis

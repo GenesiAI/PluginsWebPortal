@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Paper,
+  Typography,
+  useMediaQuery
+} from "@mui/material";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Typography, Box, Grid, Paper, Container } from "@mui/material";
-import { useMediaQuery } from "@mui/material";
-import EditorPic from "../img/Editor.png";
 import AddSection from "../img/AddSection.png";
-import Store from "../img/Store.png";
+import EditorPic from "../img/Editor.png";
 import Plugin from "../img/Plugin.png";
+import Store from "../img/Store.png";
 import "../support.css";
+
 function Support() {
   const [activeSection, setActiveSection] = useState<null | string>(null);
   const isDesktop = useMediaQuery("(min-width:1200px)");
@@ -275,8 +283,8 @@ function Support() {
                 Plugins connect ChatGPT to third-party applications. These
                 plugins enable ChatGPT to interact with private data enhancing
                 ChatGPT's capabilities and allowing it to perform a wide range
-                of actions. <br /> Plugins enable ChatGPT to perform tasks such as:{" "}
-                <br /> <br />
+                of actions. <br /> Plugins enable ChatGPT to perform tasks such
+                as: <br /> <br />
                 <Typography sx={{ marginLeft: "2rem" }}>
                   <li>
                     Retrieve real-time information; e.g., sports scores, stock
@@ -414,7 +422,8 @@ function Support() {
                 <li style={{ display: "flex", alignItems: "flex-start" }}>
                   <span style={{ paddingRight: "0.5em" }}> ●</span>
                   Contact Email <br />
-                  Provide your contact email address in case of need by the users
+                  Provide your contact email address in case of need by the
+                  users
                 </li>
                 <img src={EditorPic} alt="" style={{ marginTop: "2rem" }} />
               </Typography>
@@ -470,9 +479,8 @@ function Support() {
               it in different sections providing the Name, the Description and
               the Content.
               <br />
-              To simplify things, think of your data as a book with
-              different topics as chapters. So you can organize your
-              work much better!
+              To simplify things, think of your data as a book with different
+              topics as chapters. So you can organize your work much better!
               <img src={AddSection} alt="" style={{ marginTop: "2rem" }} />
             </Box>
             <Box

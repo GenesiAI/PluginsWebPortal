@@ -1,4 +1,5 @@
 import axios from "axios";
+import { debugConsole } from "components/util";
 import { initializeApp } from "firebase/app";
 import {
   GoogleAuthProvider,
@@ -25,7 +26,7 @@ auth.setPersistence(browserLocalPersistence);
 axios.interceptors.request.use(
   async (config) => {
     const auth = getAuth();
-    // console.info("auth:", JSON.stringify(auth));
+    debugConsole("auth:", JSON.stringify(auth));
     if (auth?.currentUser) {
       const token = await auth.currentUser.getIdToken();
       config.headers.Authorization = `Bearer ${token}`;
