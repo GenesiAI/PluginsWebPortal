@@ -31,7 +31,9 @@ const PluginSections = () => {
                   validation={validationSectionName}
                 />
               </LayoutItemGrid>
-              <SectionDelete onClick={() => remove(index)} />
+              {fields.length > 1 && ( // At least one section
+                <SectionDelete onClick={() => remove(index)} />
+              )}
               <LayoutItemGrid full>
                 <Field
                   name={`sections.${index}.description`}

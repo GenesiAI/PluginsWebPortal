@@ -4,6 +4,10 @@ import { Plugin, PluginApi, PluginUpdateRequest } from "apis/api";
 import React, { useCallback, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+const defaultValue: Plugin = {
+  sections: [{}]
+};
+
 const usePluginEditor = () => {
   const navigate = useNavigate();
   const navigateRef = useRef(navigate);
@@ -11,7 +15,7 @@ const usePluginEditor = () => {
 
   const { guid } = useParams<{ guid: string }>();
   const isNewPlugin = guid === "new";
-  const [defaultData, setDefaultData] = useState<Plugin>({});
+  const [defaultData, setDefaultData] = useState<Plugin>(defaultValue);
   const [isLoadingPlugin, setIsLoadingPlugin] = useState(!isNewPlugin);
 
   const [error, setError] = useState<React.ReactNode>(null);
