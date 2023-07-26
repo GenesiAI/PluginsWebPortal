@@ -70,7 +70,7 @@ const FeatureSection: React.FC = () => {
           }}
           onClick={GoToLogin}
         >
-          <span style={{ color: "black", fontWeight: "bold" }}>
+          <span style={{ color: "#6360FF", fontWeight: "bold" }}>
             CREATE A PLUGIN
           </span>
         </Button>
@@ -142,7 +142,12 @@ const FeatureSection: React.FC = () => {
                   </Typography>
                 </Box>
                 <Box
-                  sx={{ display: "flex", alignItems: "left", mb: 2, ml: -2 }}
+                  sx={{
+                    display: "flex",
+                    alignItems: "left",
+                    mb: 2,
+                    ml: { xs: 0, md: -2 }
+                  }}
                 >
                   <CheckCircleOutlineIcon sx={{ color: "white" }} />
                   <Typography
@@ -176,12 +181,12 @@ const FeatureSection: React.FC = () => {
               variant="contained"
               sx={{
                 backgroundColor: "white",
-                color: "black",
+                color: "#6360FF",
                 "&:hover": {
                   // backgroundColor: colors[(colorIndex + 1) % colors.length]
                 },
-                fontSize: { xs: "1rem", md: "1.2rem" },
-                textColor: "black",
+                fontSize: { xs: "0.7rem", md: "1rem" },
+                textColor: "#6360FF",
                 textWeight: "strong",
 
                 padding: { xs: "1rem 2rem", md: "1rem 1.5rem" }
@@ -265,7 +270,12 @@ const FeatureSection: React.FC = () => {
                   </Typography>
                 </Box>
                 <Box
-                  sx={{ display: "flex", alignItems: "left", mb: 2, ml: -10 }}
+                  sx={{
+                    display: "flex",
+                    alignItems: "left",
+                    mb: 2,
+                    ml: { xs: -3, md: -10 }
+                  }}
                 >
                   <CheckCircleOutlineIcon sx={{ color: "white" }} />
                   <Typography
@@ -295,7 +305,8 @@ const FeatureSection: React.FC = () => {
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    ml: -7,
+                    mb: 2,
+                    ml: { xs: -1, md: -7 },
                     mt: 2
                   }}
                 >
@@ -317,11 +328,12 @@ const FeatureSection: React.FC = () => {
             <Button
               variant="contained"
               sx={{
-                color: "white",
+                backgroundColor: "white",
+                color: "#6360FF",
                 "&:hover": {
-                  // backgroundColor: colors[(colorIndex + 1) % colors.length]
+                  // backgroundColor: "#C9F0F0"
                 },
-                fontSize: { xs: "1rem", md: "1.2rem" },
+                fontSize: { xs: "0.7rem", md: "1rem" },
                 padding: { xs: "1rem 2rem", md: "1rem 1.5rem" }
               }}
               onClick={GoToLogin}
@@ -417,7 +429,7 @@ const FeatureSection: React.FC = () => {
                     display: "flex",
                     alignItems: "center",
                     mb: 2,
-                    ml: -16
+                    ml: { xs: -5, md: -16 }
                   }}
                 >
                   <CheckCircleOutlineIcon sx={{ color: "white" }} />
@@ -438,11 +450,12 @@ const FeatureSection: React.FC = () => {
             <Button
               variant="contained"
               sx={{
-                color: "white",
+                backgroundColor: "white",
+                color: "#6360FF",
                 "&:hover": {
                   backgroundColor: "blue"
                 },
-                fontSize: { xs: "1rem", md: "1.2rem" },
+                fontSize: { xs: "0.7rem", md: "1rem" },
                 padding: { xs: "1rem 2rem", md: "1rem 1.5rem" }
               }}
               onClick={GoToLogin}

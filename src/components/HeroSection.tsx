@@ -97,7 +97,7 @@ const HeroSection: React.FC = () => {
               borderRadius: "10px",
               // add glow effect
               boxShadow:
-                "0 0 5px #fff, 0 0 10px #fff, 0 0 10px #fff, 0 0 20px #6360FF, 0 0 30px #6360FF, 0 0 50px #6360FF, 0 0 50px #6360FF, 0 0 70px #6360FF"
+                "0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #6360FF, 0 0 25px #6360FF, 0 0 30px #6360FF, 0 0 35px #6360FF, 0 0 40px #6360FF"
             }}
             autoPlay
             loop
