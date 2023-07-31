@@ -1,6 +1,5 @@
 // LoadingSpinner.js
-import React from "react";
-import { Typography, Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 
 const LoadingSpinner = () => (
   <Box

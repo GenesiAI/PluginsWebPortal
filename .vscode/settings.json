@@ -1,10 +1,18 @@
 {
-  "cSpell.words": ["Genesi", "fortawesome", "fontawesome", "tailwindcss"],
+  "cSpell.words": [
+    "fontawesome",
+    "fortawesome",
+    "Genesi",
+    "paren",
+    "tailwindcss",
+    "webp"
+  ],
   "typescript.preferences.importModuleSpecifierEnding": "minimal",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
-    "source.organizeImports": true
+    "source.organizeImports": true,
+    "source.fixAll.eslint": true
   }
 }

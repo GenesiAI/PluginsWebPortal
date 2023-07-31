@@ -32,7 +32,7 @@ const Plugins = () => {
 
   const plugins = useMemo(() => {
     return pluginData.plugins?.map((plugin) => {
-      const onClick = () => navigate("/plugin/" + plugin.id);
+      const onClick = () => navigate(`/plugin/${plugin.id}`);
       return <PluginItem key={plugin.id} onClick={onClick} plugin={plugin} />;
     });
   }, [pluginData, navigate]);

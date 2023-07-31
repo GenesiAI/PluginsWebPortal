@@ -10,6 +10,7 @@ import {
   Tooltip
 } from "@mui/material";
 import { Plugin } from "apis/api";
+import { debugConsole } from "components/util";
 import { useState } from "react";
 
 type InputProps = {
@@ -30,7 +31,7 @@ const PluginItem = ({ plugin, onClick }: InputProps) => {
       setTooltipTitle("Copied 🚀");
       setTooltipOpen(true);
     } catch (err) {
-      console.error("Failed to copy text: ", err);
+      debugConsole("Failed to copy text: ", err);
     }
   };
 

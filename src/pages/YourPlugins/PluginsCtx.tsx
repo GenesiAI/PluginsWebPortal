@@ -1,4 +1,5 @@
 import { PluginApi } from "apis/api";
+import { debugConsole } from "components/util";
 import React, { memo, useContext, useState } from "react";
 
 type PluginsState = {
@@ -25,7 +26,7 @@ const PluginsCtx = ({ children }: inputProps) => {
         const response = await pluginApi.apiPluginsGet();
         setPlugin({ loading: false, pluginData: response.data });
       } catch (error) {
-        console.error("Error fetching users:", error);
+        debugConsole("Error fetching users:", error);
       }
     };
 
