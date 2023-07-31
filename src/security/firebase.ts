@@ -26,7 +26,6 @@ auth.setPersistence(browserLocalPersistence);
 axios.interceptors.request.use(
   async (config) => {
     const auth = getAuth();
-    debugConsole("auth:", JSON.stringify(auth));
     if (auth?.currentUser) {
       const token = await auth.currentUser.getIdToken();
       config.headers.Authorization = `Bearer ${token}`;
@@ -41,6 +40,7 @@ axios.interceptors.request.use(
 );
 let isLogged = false;
 onAuthStateChanged(auth, (user) => {
+  debugConsole("auth:", JSON.stringify(auth));
   isLogged = !!user;
 });
 
