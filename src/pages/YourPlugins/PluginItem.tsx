@@ -87,7 +87,12 @@ const PluginItem = ({ plugin, onClick }: InputProps) => {
         }}
       />
       <ListItemSecondaryAction>
-        <IconButton onClick={onClick} edge="end" aria-label="modify">
+        <IconButton
+          disabled={!plugin.isActive}
+          onClick={onClick}
+          edge="end"
+          aria-label="modify"
+        >
           <FontAwesomeIcon icon={faPencilAlt} />
         </IconButton>
       </ListItemSecondaryAction>

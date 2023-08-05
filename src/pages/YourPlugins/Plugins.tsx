@@ -22,12 +22,6 @@ const sxTypography: ComponentProps<typeof Typography>["sx"] = {
 
 const Plugins = () => {
   const navigate = useNavigate();
-  // const [tooltipOpenIndex, setTooltipOpenIndex] = useState(-1);
-  // const handleCopyClick = async (url: string, index: number) => {p
-  //   await navigator.clipboard.writeText(url);
-  //   setTooltipOpenIndex(index);
-  //   setTimeout(() => setTooltipOpenIndex(-1), 2000);
-  // };
   const { pluginData, loading } = usePluginsCtx();
 
   const plugins = useMemo(() => {

@@ -1,24 +1,29 @@
 import { Container } from "@mui/material";
 import Flyout from "components/Flyout";
 import ProtectedRoute from "components/ProtectedRoute";
-import { Stripe } from "components/Stripe/Stripe";
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import { contacts, home, plugin, support, yourPlugins } from "const/urls";
 import Contact from "pages/Contact";
-import React from "react";
+import React, { Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import Header from "./components/Header";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Home from "./pages/Home";
-import PluginEditor from "./pages/PluginEditor";
 import Support from "./pages/Support";
-import YourPlugins from "./pages/YourPlugins";
+
+const PluginEditorLazy = React.lazy(() => import("pages/PluginEditor"));
+const YourPluginsLazy = React.lazy(() => import("pages/YourPlugins"));
+const StripeSuccessLazy = React.lazy(
+  () => import("components/Stripe/StripeSuccess")
+);
+const StripeCancelledLazy = React.lazy(
+  () => import("components/Stripe/StripeCancelled")
+);
 
 const someBasicStyle: any = {
   backgroundColor: (theme: any) => theme.palette.background.paper
 };
-
 const AppRouter: React.FC = () => {
   const { isLoadingUser } = useUserInfoCtx();
 
@@ -27,7 +32,7 @@ const AppRouter: React.FC = () => {
   }
 
   return (
-    <>
+    <Suspense>
       <Flyout />
       <Header />
       <Routes>
@@ -37,7 +42,7 @@ const AppRouter: React.FC = () => {
           element={
             <ProtectedRoute>
               <Container maxWidth="md" sx={someBasicStyle}>
-                <YourPlugins />
+                <YourPluginsLazy />
               </Container>
             </ProtectedRoute>
           }
@@ -55,16 +60,11 @@ const AppRouter: React.FC = () => {
           element={
             <ProtectedRoute>
               <Container maxWidth="md">
-                <PluginEditor />
+                <PluginEditorLazy />
               </Container>
             </ProtectedRoute>
           }
         />
-        <Route path="/prices">
-          <Route index element={<div>Price List</div>} />
-          <Route path="checkout/success" element={<div>Success</div>} />
-          <Route path="checkout/:id" element={<Stripe />} />
-        </Route>
         <Route
           path={support}
           element={
@@ -73,9 +73,29 @@ const AppRouter: React.FC = () => {
             </Container>
           }
         />
-        <Route path="*" element={<Navigate to={home} replace />} />
+        <Route path="/checkout">
+          <Route index element={<Navigate to="/" replace />} />
+          <Route
+            path="success"
+            element={
+              <ProtectedRoute>
+                <StripeSuccessLazy />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="cancelled"
+            element={
+              <ProtectedRoute>
+                <StripeCancelledLazy />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </>
+    </Suspense>
   );
 };
 
