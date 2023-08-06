@@ -22,20 +22,22 @@ const usePluginEditor = () => {
   const [deleteInProgress, setDeleteInProgress] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
-  React.useEffect(() => {
+  const fetchData = useCallback(() => {
+    setError(null);
     const navigate = navigateRef.current;
     const fetchPlugin = async () => {
       const pluginApi = new PluginApi();
       try {
         const response = await pluginApi.apiPluginsPluginIdGet(guid!);
         if (!response.data) {
-          setError("Something went wrong.");
+          setError("Something went wrong, please retry!");
+          return;
         }
         setDefaultData(response?.data || {});
+        setIsLoadingPlugin(false);
       } catch (error) {
-        setError("Something went wrong.");
+        setError("Something went wrong, please retry!");
       }
-      setIsLoadingPlugin(false);
     };
 
     if (isNewPlugin) {
@@ -56,8 +58,13 @@ const usePluginEditor = () => {
     fetchPlugin();
   }, [isNewPlugin, setError, guid]);
 
+  React.useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
   const savePlugin = useCallback(
     async (data: Plugin) => {
+      setError(null);
       const navigate = navigateRef.current;
       const pluginApi = new PluginApi();
       try {
@@ -67,7 +74,8 @@ const usePluginEditor = () => {
           await pluginApi
             .apiPluginsPost(pluginUpdate)
             .then(({ data: { id } }) => {
-              navigate(`/plugin/${id}`);
+              // navigate(`/plugin/${id}`);
+              navigate("/your-plugins");
             });
           return;
         }
@@ -76,9 +84,7 @@ const usePluginEditor = () => {
       } catch (error) {
         setError(
           <Stack sx={{ width: "100%" }} spacing={2}>
-            <Alert severity="error">
-              This is an error alert — check it out!
-            </Alert>
+            <Alert severity="error">Something went wrong, please retry!</Alert>
           </Stack>
         );
         // Error: you can show an error message or perform any other action here
@@ -88,6 +94,7 @@ const usePluginEditor = () => {
   );
 
   const deletePlugin = useCallback(async () => {
+    setError(null);
     const navigate = navigateRef.current;
     setShowDeleteDialog(false);
     setDeleteInProgress(true);
@@ -99,7 +106,7 @@ const usePluginEditor = () => {
       // Error: you can show an error message or perform any other action here
       setError(
         <Stack sx={{ width: "100%" }} spacing={2}>
-          <Alert severity="error">This is an error alert — check it out!</Alert>
+          <Alert severity="error">Something went wrong, please retry!</Alert>
         </Stack>
       );
     } finally {
@@ -117,7 +124,8 @@ const usePluginEditor = () => {
     deleteInProgress,
     showDeleteDialog,
     isNewPlugin,
-    isLoadingPlugin
+    isLoadingPlugin,
+    fetchData
   };
 };
 

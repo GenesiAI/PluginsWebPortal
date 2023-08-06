@@ -18,7 +18,7 @@ const PluginSections = () => {
     shouldUnregister: true
   });
   return (
-    <Grid item>
+    <Grid item margin="auto">
       {fields?.map(({ id }, index) => (
         <Fragment key={id}>
           <Divider className="!my-4" />

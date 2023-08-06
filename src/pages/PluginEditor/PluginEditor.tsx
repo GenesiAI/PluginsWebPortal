@@ -13,11 +13,11 @@ const PluginEditor = () => {
 
   return (
     <div>
-      <h1>{error}</h1>
       <BoxContainer>
         <PluginEditorTitle />
         <FieldsContainer>
           <PluginSections />
+          {error && <h1 className="ml-auto">{error}</h1>}
           <PluginEditorFooter />
         </FieldsContainer>
       </BoxContainer>
