@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import useHandlerAuth from "components/Header/useHandlerAuth";
+import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import React from "react";
 import LandingVideo from "../../assets/LandingVideo.mp4";
 
@@ -15,7 +15,7 @@ const HeroSection: React.FC = () => {
   //     clearInterval(interval);
   //   };
   // }, []);
-  const { handleLogin } = useHandlerAuth();
+  const { handleLogin } = useUserInfoCtx();
 
   return (
     <>

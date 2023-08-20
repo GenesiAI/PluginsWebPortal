@@ -1,5 +1,7 @@
 import { Container } from "@mui/material";
+import Flyout from "components/Flyout";
 import ProtectedRoute from "components/ProtectedRoute";
+import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import {
   baseName,
   contacts,
@@ -8,9 +10,8 @@ import {
   support,
   yourPlugins
 } from "const/urls";
-import { onAuthStateChanged } from "firebase/auth";
 import Contact from "pages/Contact";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import LoadingSpinner from "./components/LoadingSpinner";
@@ -18,29 +19,21 @@ import Home from "./pages/Home";
 import PluginEditor from "./pages/PluginEditor";
 import Support from "./pages/Support";
 import YourPlugins from "./pages/YourPlugins";
-import { auth } from "./security/firebase";
+
+const someBasicStyle: any = {
+  backgroundColor: (theme: any) => theme.palette.background.paper
+};
 
 const AppRouter: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const { isLoadingUser } = useUserInfoCtx();
 
-  useEffect(() => {
-    // This function is called when the auth state changes
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setIsLoading(false);
-    });
-    // Cleanup subscription on unmount
-    return unsubscribe;
-  }, []);
-
-  if (isLoading) {
+  if (isLoadingUser) {
     return <LoadingSpinner />;
   }
 
-  const someBasicStyle: any = {
-    backgroundColor: (theme: any) => theme.palette.background.paper
-  };
   return (
     <Router basename={baseName}>
+      <Flyout />
       <Header />
       <Routes>
         <Route path={home} element={<Home />} />
