@@ -13,6 +13,7 @@ import useHandlerAuth from "../useHandlerAuth";
 type ctxType = {
   isLoadingUser: boolean;
   isLogged: boolean;
+  isPremiumUser: boolean;
   user: User | null;
   handleLogin: () => void;
   handleLogout: () => void;
@@ -21,6 +22,7 @@ type ctxType = {
 const Ctx = createContext<ctxType>({
   isLoadingUser: false,
   isLogged: false,
+  isPremiumUser: false,
   user: null,
   handleLogin: () => {},
   handleLogout: () => {}
@@ -32,7 +34,9 @@ type InputProps = {
 const UserInfo = ({ children }: InputProps) => {
   const [isLoadingUser, setIsLoadingUser] = useState<boolean>(true);
   const [user, setUser] = useState<User | null>(null);
+  const [isPremiumUser, setIsPremiumUser] = useState<boolean>(false);
   useEffect(() => {
+    setIsPremiumUser(false);
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setIsLoadingUser(false);
       setUser(user);
@@ -47,7 +51,8 @@ const UserInfo = ({ children }: InputProps) => {
       isLogged: user != null,
       user,
       handleLogin,
-      handleLogout
+      handleLogout,
+      isPremiumUser
     }),
     [handleLogin, handleLogout, user, isLoadingUser]
   );

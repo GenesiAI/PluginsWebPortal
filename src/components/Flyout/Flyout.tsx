@@ -1,29 +1,26 @@
-import Backdrop from "@mui/material/Backdrop";
 import SpeedDial from "@mui/material/SpeedDial";
-import SpeedDialIcon from "@mui/material/SpeedDialIcon";
-import * as React from "react";
-import Logout from "./Actions/Logout";
-import Unsubscribe from "./Actions/Unsubscribe";
-import Upgrade from "./Actions/Upgrade";
+import useActions from "./useActions";
+
+const sx = { position: "absolute", bottom: 16, right: 16 };
 
 const Flyout = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const actions = React.useMemo(
-    () => [<Logout />, <Unsubscribe />, <Upgrade />],
-    []
-  );
-
+  const { actions, photoUrl, handleClose, handleOpen, open, activeFlyout } =
+    useActions();
   return (
     <>
-      <Backdrop open={open} />
       <SpeedDial
         ariaLabel="User info tooltip"
-        sx={{ position: "absolute", bottom: 16, right: 16 }}
-        icon={<SpeedDialIcon />}
-        hidden={false}
+        sx={sx}
+        icon={
+          <img
+            className="aspect-square bg-no-repeat bg-contain w-full rounded-full"
+            src={photoUrl || ""}
+            srcSet={photoUrl || ""}
+            alt=""
+            aria-hidden="true"
+          ></img>
+        }
+        hidden={!activeFlyout}
         onClose={handleClose}
         onOpen={handleOpen}
         open={open}
