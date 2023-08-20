@@ -1,7 +1,7 @@
 import { User, onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { auth } from "security/firebase";
-import useHandlerAuth from "./useHandlerAuth";
+import useHandlerAuth from "../useHandlerAuth";
 
 const loggedInPages = ["Your Plugins", "Support", "Contacts", "Logout"];
 const loggedOutPages = ["Support", "Contacts", "Login"];
