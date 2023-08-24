@@ -11,7 +11,7 @@ const useActions = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = useCallback(() => setOpen(false), []);
-  const { handleLogout, user, isPremiumUser } = useUserInfoCtx();
+  const { handleLogout, user, userInfo } = useUserInfoCtx();
   const navigate = useNavigate();
   const match1 = !!useMatch(yourPlugins);
   const match2 = !!useMatch(plugin);
@@ -20,13 +20,13 @@ const useActions = () => {
     const onClick = (action: "UPGRADE" | "UNSUBSCRIBE" | "LOGOUT") => {
       if (action === "UPGRADE") {
         handleClose();
-        navigate("./checkout?unsub=true");
+        navigate("./checkout?unsubscribe=true");
       } else if (action === "LOGOUT") {
         handleClose();
         handleLogout();
       } else if (action === "UNSUBSCRIBE") {
         handleClose();
-        navigate("./checkout?unsub=true");
+        navigate("./checkout?unsubscribe=true");
       }
     };
 
@@ -38,7 +38,7 @@ const useActions = () => {
         tooltipOpen
         onClick={() => onClick("LOGOUT")}
       />,
-      isPremiumUser ? (
+      userInfo.isPremium ? (
         <SpeedDialAction
           key="Unsubscribe"
           icon={<UnsubscribeIcon />}

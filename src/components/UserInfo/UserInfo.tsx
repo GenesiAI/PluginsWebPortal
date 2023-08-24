@@ -1,19 +1,12 @@
-import { User, onAuthStateChanged } from "firebase/auth";
-import React, {
-  createContext,
-  memo,
-  useContext,
-  useEffect,
-  useMemo,
-  useState
-} from "react";
-import { auth } from "security/firebase";
+import { UserInfo as UserInfoType } from "apis/api";
+import { User } from "firebase/auth";
+import React, { createContext, memo, useContext, useMemo } from "react";
 import useHandlerAuth from "../useHandlerAuth";
 
 type ctxType = {
   isLoadingUser: boolean;
   isLogged: boolean;
-  isPremiumUser: boolean;
+  userInfo: UserInfoType;
   user: User | null;
   handleLogin: () => void;
   handleLogout: () => void;
@@ -22,7 +15,7 @@ type ctxType = {
 const Ctx = createContext<ctxType>({
   isLoadingUser: false,
   isLogged: false,
-  isPremiumUser: false,
+  userInfo: {},
   user: null,
   handleLogin: () => {},
   handleLogout: () => {}
@@ -32,18 +25,8 @@ type InputProps = {
   children: React.ReactNode;
 };
 const UserInfo = ({ children }: InputProps) => {
-  const [isLoadingUser, setIsLoadingUser] = useState<boolean>(true);
-  const [user, setUser] = useState<User | null>(null);
-  const [isPremiumUser, setIsPremiumUser] = useState<boolean>(false);
-  useEffect(() => {
-    setIsPremiumUser(false);
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setIsLoadingUser(false);
-      setUser(user);
-    });
-    return unsubscribe;
-  }, []);
-  const { handleLogin, handleLogout } = useHandlerAuth();
+  const { handleLogin, handleLogout, isLoadingUser, userInfo, user } =
+    useHandlerAuth();
 
   const providerValue: ctxType = useMemo(
     () => ({
@@ -52,9 +35,9 @@ const UserInfo = ({ children }: InputProps) => {
       user,
       handleLogin,
       handleLogout,
-      isPremiumUser
+      userInfo
     }),
-    [handleLogin, handleLogout, user, isLoadingUser]
+    [handleLogin, handleLogout, user, userInfo, isLoadingUser]
   );
 
   const memoChildren = useMemo(() => children, [children]); // To avoid unless rerender
