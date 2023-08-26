@@ -40,11 +40,13 @@
     "web-vitals": "2.1.4"
   },
   "scripts": {
-    "build": "echo \"Please use build:dev or build:prod \" && exit 1",
+    "build": "echo \"Please use build:dev/build:staging/build:prod \" && exit 1",
     "start": "env-cmd -f .env.development react-scripts start",
-    "generate_sitemap:dev": "env-cmd -f .env.development node generateSiteMap.js",
     "build:dev": "env-cmd -f .env.development react-scripts build",
-    "compile:dev": "npm run generate_sitemap:dev && npm run build:dev",
+    "compile:dev": "npm run build:dev",
+    "generate_sitemap:staging": "env-cmd -f .env.staging node generateSiteMap.js",
+    "build:staging": "env-cmd -f .env.staging react-scripts build",
+    "compile:staging": "npm run generate_sitemap:staging && npm run build:staging",
     "generate_sitemap:prod": "env-cmd -f .env.production node generateSiteMap.js",
     "build:prod": "env-cmd -f .env.production react-scripts build",
     "compile:prod": "npm run generate_sitemap:prod && npm run build:prod",

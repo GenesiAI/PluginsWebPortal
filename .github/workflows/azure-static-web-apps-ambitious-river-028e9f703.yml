@@ -11,9 +11,11 @@ on:
     branches:
       - main
 
+permissions: write-all
+
 jobs:
   # Build job
-  build:
+  build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     steps:
@@ -27,19 +29,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run build
+        if: github.event_name != 'pull_request'
         run: npm run compile:prod
+      - name: Run build for pull request
+        if: github.event_name == 'pull_request'
+        run: npm run compile:dev
       - name: Upload build artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v1
         with:
           path: build
-  build_and_deploy_job:
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy Job
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: true
       - name: Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -55,23 +54,6 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
-      - name: Print URL in PR
-        uses: actions/github-script@v5
-        with:
-          script: |
-            const url = steps.builddeploy.outputs.static_web_app_url; // Accessing the output from the Deploy step
-
-            const issue_number = context.issue.number;
-            const repo = context.repo.repo;
-            const owner = context.repo.owner;
-
-            const commentBody = `Website URL: ${url}`;
-            await github.rest.issues.createComment({
-              issue_number: issue_number,
-              owner: owner,
-              repo: repo,
-              body: commentBody
-            });
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
