@@ -34,6 +34,11 @@
     }
   },
   "plugins": ["react"],
+  "ignorePatterns": [
+    "generateSiteMap.js",
+    "postcss.config.js",
+    "tailwind.config.js"
+  ],
   "rules": {
     "@typescript-eslint/quotes": "off",
     "@typescript-eslint/semi": "off",

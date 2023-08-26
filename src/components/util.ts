@@ -1,5 +1,5 @@
 const debugConsole =
-  process.env.NODE_ENV !== "production"
+  process.env.REACT_APP_ACTIVE_CONSOLE_LOG === "true"
     ? (...args: any[]) => {
         // eslint-disable-next-line no-console
         console.log(...args);
