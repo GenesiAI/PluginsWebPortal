@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
+import useHandlerAuth from "components/Header/useHandlerAuth";
 import React from "react";
-import LandingVideo from "../assets/LandingVideo.mp4";
-import useHandlerAuth from "./Header/useHandlerAuth";
+import LandingVideo from "../../assets/LandingVideo.mp4";
 
 const HeroSection: React.FC = () => {
   // const [, setColorIndex] = useState(0);
@@ -60,7 +60,7 @@ const HeroSection: React.FC = () => {
           in less than 2 minutes.
         </Typography>
       </Box>
-      <Box my={2} textAlign="center">
+      <Box my={1} textAlign="center" sx={{ paddingBottom: 7 }}>
         <Button
           variant="contained"
           sx={{
@@ -74,7 +74,7 @@ const HeroSection: React.FC = () => {
           }}
           onClick={handleLogin}
         >
-          CREATE YOUR PLUGIN 🧩
+          CREATE YOUR PLUGIN
         </Button>
         <Typography variant="body2" color="textSecondary">
           *No credit card required
@@ -94,7 +94,10 @@ const HeroSection: React.FC = () => {
               display: "block",
               margin: "auto",
               // add rounded corners
-              boxShadow: "5px 10px 10px rgba(0, 0, 0, 0.15)"
+              borderRadius: "10px",
+              // add glow effect
+              boxShadow:
+                "0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #6360FF, 0 0 25px #6360FF, 0 0 30px #6360FF, 0 0 35px #6360FF, 0 0 40px #6360FF"
             }}
             autoPlay
             loop
