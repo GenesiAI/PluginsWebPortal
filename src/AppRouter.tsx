@@ -3,6 +3,7 @@ import ProtectedRoute from "components/ProtectedRoute";
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { baseName, home, plugin, support, yourPlugins } from "urls";
 import Header from "./components/Header";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Home from "./pages/Home";
@@ -31,12 +32,12 @@ const AppRouter: React.FC = () => {
     backgroundColor: (theme: any) => theme.palette.background.paper
   };
   return (
-    <Router>
+    <Router basename={baseName}>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path={home} element={<Home />} />
         <Route
-          path="/your-plugins"
+          path={yourPlugins}
           element={
             <ProtectedRoute>
               <Container maxWidth="md" sx={someBasicStyle}>
@@ -54,7 +55,7 @@ const AppRouter: React.FC = () => {
           }
         /> */}
         <Route
-          path="/plugin/:guid"
+          path={plugin}
           element={
             <ProtectedRoute>
               <Container maxWidth="md">
@@ -64,7 +65,7 @@ const AppRouter: React.FC = () => {
           }
         />
         <Route
-          path="/support"
+          path={support}
           element={
             <Container maxWidth="md" sx={someBasicStyle}>
               <Support />

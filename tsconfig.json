@@ -22,6 +22,7 @@
     ".eslintrc.js",
     "postcss.config.js",
     "tailwind.config.js",
+    "generateSiteMap.js",
     "node_modules"
   ]
 }
