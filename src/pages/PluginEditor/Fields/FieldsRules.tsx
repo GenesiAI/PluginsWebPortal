@@ -1,5 +1,5 @@
 import { ComponentProps } from "react";
-import Field from "./Field";
+import Field from "../../../components/Field";
 
 const messageName =
   "Please enter a valid name (up to 20 letters and no numbers or special characters)";
