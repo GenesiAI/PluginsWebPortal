@@ -1,6 +1,7 @@
 import { Container } from "@mui/material";
 import ProtectedRoute from "components/ProtectedRoute";
 import { onAuthStateChanged } from "firebase/auth";
+import Contact from "pages/Contact";
 import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { baseName, home, plugin, support, yourPlugins } from "urls";
@@ -46,14 +47,14 @@ const AppRouter: React.FC = () => {
             </ProtectedRoute>
           }
         />
-        {/* <Route
+        <Route
           path="/contacts"
           element={
             <Container maxWidth="md">
-              <ContactsPage />
+              <Contact />
             </Container>
           }
-        /> */}
+        />
         <Route
           path={plugin}
           element={

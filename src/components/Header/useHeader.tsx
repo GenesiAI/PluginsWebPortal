@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { auth } from "security/firebase";
 import useHandlerAuth from "./useHandlerAuth";
 
-const loggedInPages = ["Your Plugins", "Support" /*"contacts"*/, "Logout"];
-const loggedOutPages = [/*"contacts"*/ "Support", "Login"];
+const loggedInPages = ["Your Plugins", "Support", "Contacts", "Logout"];
+const loggedOutPages = ["Support", "Contacts", "Login"];
 
 const useHeader = () => {
   const [user, setUser] = useState<User | null>(null);

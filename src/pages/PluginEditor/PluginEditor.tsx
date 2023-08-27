@@ -1,6 +1,6 @@
-import AlertDialog from "components/AlertDialog";
 import { memo } from "react";
 import { BoxContainer } from "theme";
+import AlertDialog from "./AlertDialog";
 import FieldsContainer from "./Fields/FieldsContainer";
 import PluginSections from "./Fields/PluginSections";
 import { usePluginEditorCtxStatus } from "./PluginEditorCtx";
