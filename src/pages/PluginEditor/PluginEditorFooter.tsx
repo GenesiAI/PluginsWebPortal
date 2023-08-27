@@ -1,6 +1,7 @@
 import DeleteIcon from "@mui/icons-material/Delete";
 import SaveIcon from "@mui/icons-material/Save";
-import { Button, CircularProgress, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
+import ButtonLoading from "components/ButtonLoading";
 import { memo } from "react";
 import { useFormState } from "react-hook-form";
 import { usePluginEditorCtxStatus } from "./PluginEditorCtx";
@@ -12,39 +13,24 @@ const PluginEditorFooter = () => {
 
   return (
     <Grid item xs={12} sm={12} container justifyContent="space-between">
-      <Button
-        variant="contained"
+      <ButtonLoading
         color="error"
         startIcon={<DeleteIcon />}
+        type="button"
         disabled={isNewPlugin}
+        isLoading={deleteInProgress}
         onClick={() => setShowDeleteDialog(true)}
       >
-        {deleteInProgress ? (
-          <CircularProgress
-            size={24}
-            sx={{ color: (theme) => theme.palette.error.contrastText }}
-          />
-        ) : (
-          "Delete"
-        )}
-      </Button>
-      <Button
-        variant="contained"
+        Delete
+      </ButtonLoading>
+      <ButtonLoading
         color="success"
         startIcon={<SaveIcon />}
         type="submit"
+        isLoading={isSubmitting}
       >
-        {isSubmitting ? (
-          <CircularProgress
-            size={24}
-            sx={{
-              color: (theme) => theme.palette.success.contrastText
-            }}
-          />
-        ) : (
-          "Save"
-        )}
-      </Button>
+        Save
+      </ButtonLoading>
     </Grid>
   );
 };

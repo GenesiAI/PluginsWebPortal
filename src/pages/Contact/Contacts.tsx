@@ -1,6 +1,6 @@
 import { Box, Container, SxProps, Theme, Typography } from "@mui/material";
-import ContactForm from "components/ContactForm";
 import SocialsBox from "components/SocialsBox";
+import ContactForm from "pages/Contact/ContactForm";
 import React from "react";
 
 const header: SxProps<Theme> = {
