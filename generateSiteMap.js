@@ -6,7 +6,7 @@ const path = require("path");
 
 const tempDir = path.join(__dirname, "temp");
 const fileName = "urls";
-const filePathOriginal = path.join("./src", `${fileName}.ts`);
+const filePathOriginal = path.join("./src/const", `${fileName}.ts`);
 
 async function main() {
   // Create temp folder if it doesn't exist

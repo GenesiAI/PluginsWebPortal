@@ -1,12 +1,21 @@
 import { createTheme } from "@mui/material/styles";
+import { dangerStyle, primaryStyle, secondaryStyle } from "const/colors";
+import { MuiButton } from "./MuiButtonStyles";
 
 const theme = createTheme({
   palette: {
+    mode: "light",
     primary: {
-      main: "#6c47ff"
+      main: primaryStyle.bg,
+      contrastText: primaryStyle.text
     },
     secondary: {
-      main: "#f34971"
+      main: secondaryStyle.bg,
+      contrastText: secondaryStyle.text
+    },
+    error: {
+      main: dangerStyle.bg,
+      contrastText: dangerStyle.text
     }
   },
   shape: {
@@ -21,6 +30,7 @@ const theme = createTheme({
     }
   },
   components: {
+    MuiButton,
     MuiFilledInput: {
       styleOverrides: {
         root: {
