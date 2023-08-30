@@ -8,7 +8,7 @@ interface InputProps {
   endIcon?: ComponentProps<typeof ButtonCore>["endIcon"];
   onClick?: ComponentProps<typeof ButtonCore>["onClick"];
   variant?: "lightBg" | "darkBg";
-  color?: "error" | "primary" | "secondary";
+  color?: "error" | "primary" | "secondary" | "tertiary";
   type?: ComponentProps<typeof ButtonCore>["type"];
   className?: string;
 }
