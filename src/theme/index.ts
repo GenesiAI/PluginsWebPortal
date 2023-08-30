@@ -1,14 +1,10 @@
 import { createTheme } from "@mui/material/styles";
+import { MuiButton } from "./MuiButtonStyles";
+import { MuiPalette } from "./MuiPaletteStyles";
+import { MuiTypography } from "./MuiTypographyStyles";
 
 const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#6c47ff"
-    },
-    secondary: {
-      main: "#f34971"
-    }
-  },
+  palette: MuiPalette,
   shape: {
     borderRadius: 8
   },
@@ -21,6 +17,8 @@ const theme = createTheme({
     }
   },
   components: {
+    MuiTypography,
+    MuiButton,
     MuiFilledInput: {
       styleOverrides: {
         root: {
