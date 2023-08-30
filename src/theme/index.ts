@@ -1,6 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 import { dangerStyle, primaryStyle, secondaryStyle } from "const/colors";
 import { MuiButton } from "./MuiButtonStyles";
+import { MuiTypography } from "./MuiTypographyStyles";
 
 const theme = createTheme({
   palette: {
@@ -30,6 +31,7 @@ const theme = createTheme({
     }
   },
   components: {
+    MuiTypography,
     MuiButton,
     MuiFilledInput: {
       styleOverrides: {
