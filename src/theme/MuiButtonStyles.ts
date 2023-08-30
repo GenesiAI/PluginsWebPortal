@@ -5,7 +5,8 @@ import {
   WHITE,
   dangerStyle,
   primaryStyle,
-  secondaryStyle
+  secondaryStyle,
+  tertiaryStyle
 } from "const/colors";
 import { defaultTheme } from "./defaultTheme";
 
@@ -55,6 +56,17 @@ export const MuiButton: MuiButtonT = {
         ":hover": {
           background: secondaryStyle.hoverBg,
           color: secondaryStyle.hoverText
+        }
+      }
+    },
+    {
+      props: { variant: "lightBg", color: "tertiary" },
+      style: {
+        color: tertiaryStyle.text,
+        background: tertiaryStyle.bg,
+        ":hover": {
+          background: tertiaryStyle.hoverBg,
+          color: tertiaryStyle.hoverText
         }
       }
     },

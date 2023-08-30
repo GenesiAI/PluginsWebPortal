@@ -1,24 +1,10 @@
 import { createTheme } from "@mui/material/styles";
-import { dangerStyle, primaryStyle, secondaryStyle } from "const/colors";
 import { MuiButton } from "./MuiButtonStyles";
+import { MuiPalette } from "./MuiPaletteStyles";
 import { MuiTypography } from "./MuiTypographyStyles";
 
 const theme = createTheme({
-  palette: {
-    mode: "light",
-    primary: {
-      main: primaryStyle.bg,
-      contrastText: primaryStyle.text
-    },
-    secondary: {
-      main: secondaryStyle.bg,
-      contrastText: secondaryStyle.text
-    },
-    error: {
-      main: dangerStyle.bg,
-      contrastText: dangerStyle.text
-    }
-  },
+  palette: MuiPalette,
   shape: {
     borderRadius: 8
   },
