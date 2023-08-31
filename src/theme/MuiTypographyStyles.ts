@@ -25,17 +25,13 @@ export const MuiTypography: MuiTypographyT = {
       t6: "span"
     }
   },
-  styleOverrides: {
-    root: {
-      color: BLACK,
-      fontFamily: "Poppins",
-      fontStyle: "normal"
-    }
-  },
+  styleOverrides: {},
   variants: [
     {
       props: { variant: "t1" },
       style: {
+        color: BLACK,
+        fontStyle: "normal",
         fontSize: "4.25rem",
         fontWeight: "700",
         lineHeight: "4.75rem",
@@ -48,6 +44,8 @@ export const MuiTypography: MuiTypographyT = {
     {
       props: { variant: "t2" },
       style: {
+        color: BLACK,
+        fontStyle: "normal",
         fontSize: "3.125rem",
         fontWeight: "700",
         lineHeight: "3.71875rem",
@@ -60,6 +58,8 @@ export const MuiTypography: MuiTypographyT = {
     {
       props: { variant: "t3" },
       style: {
+        color: BLACK,
+        fontStyle: "normal",
         fontSize: "2.25rem",
         fontWeight: "700",
         lineHeight: "2.6875rem",
@@ -72,6 +72,8 @@ export const MuiTypography: MuiTypographyT = {
     {
       props: { variant: "t4" },
       style: {
+        color: BLACK,
+        fontStyle: "normal",
         fontSize: "1.5rem",
         fontWeight: "400",
         lineHeight: "1.71875rem",
@@ -84,6 +86,8 @@ export const MuiTypography: MuiTypographyT = {
     {
       props: { variant: "t5" },
       style: {
+        color: BLACK,
+        fontStyle: "normal",
         fontSize: "1rem",
         fontWeight: "400",
         lineHeight: "1.4375rem",
@@ -96,6 +100,8 @@ export const MuiTypography: MuiTypographyT = {
     {
       props: { variant: "t6" },
       style: {
+        color: BLACK,
+        fontStyle: "normal",
         fontSize: "0.75rem",
         fontWeight: "400",
         lineHeight: "0.875rem",
