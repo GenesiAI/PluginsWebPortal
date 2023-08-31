@@ -1,10 +1,17 @@
 import { Container } from "@mui/material";
 import ProtectedRoute from "components/ProtectedRoute";
+import {
+  baseName,
+  contacts,
+  home,
+  plugin,
+  support,
+  yourPlugins
+} from "const/urls";
 import { onAuthStateChanged } from "firebase/auth";
 import Contact from "pages/Contact";
 import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { baseName, home, plugin, support, yourPlugins } from "urls";
 import Header from "./components/Header";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Home from "./pages/Home";
@@ -48,7 +55,7 @@ const AppRouter: React.FC = () => {
           }
         />
         <Route
-          path="/contacts"
+          path={contacts}
           element={
             <Container maxWidth="md">
               <Contact />

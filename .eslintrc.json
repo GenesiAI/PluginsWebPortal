@@ -37,7 +37,8 @@
   "ignorePatterns": [
     "generateSiteMap.js",
     "postcss.config.js",
-    "tailwind.config.js"
+    "tailwind.config.js",
+    "tailwind.config.ts"
   ],
   "rules": {
     "@typescript-eslint/quotes": "off",
