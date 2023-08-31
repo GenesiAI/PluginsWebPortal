@@ -1,4 +1,4 @@
-export const baseName = process.env.PUBLIC_URL;
+export const baseName = "/";
 export const home = "/";
 export const yourPlugins = "your-plugins";
 export const plugin = "plugin/:guid";
