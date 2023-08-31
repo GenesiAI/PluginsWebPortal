@@ -1,13 +1,14 @@
-import {
+const {
   BLACK,
   DANGER,
   MAIN,
   MAIN_02_LIGHT,
   MAIN_03_LIGHT,
   WHITE
-} from "./src/const/colors";
+} = require("./src/const/colors");
 
-const config: import("tailwindcss").Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
@@ -34,5 +35,3 @@ const config: import("tailwindcss").Config = {
   },
   plugins: []
 };
-
-export default config;

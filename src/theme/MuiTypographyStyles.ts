@@ -25,7 +25,6 @@ export const MuiTypography: MuiTypographyT = {
       t6: "span"
     }
   },
-  styleOverrides: {},
   variants: [
     {
       props: { variant: "t1" },
