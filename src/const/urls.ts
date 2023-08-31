@@ -3,6 +3,7 @@ export const home = "/";
 export const yourPlugins = "your-plugins";
 export const plugin = "plugin/:guid";
 export const support = "support";
+export const contacts = "contacts";
 
 /*
 
@@ -51,6 +52,7 @@ interface sitemapUrlsT {
   priority: number;
 }
 export const sitemapUrls: sitemapUrlsT[] = [
-  { url: home, changefreq: "weekly", priority: 1 },
-  { url: support, changefreq: "weekly", priority: 0.5 }
+  { url: home, changefreq: "weekly", priority: 0.9 },
+  { url: support, changefreq: "weekly", priority: 0.5 },
+  { url: contacts, changefreq: "weekly", priority: 0.7 }
 ];

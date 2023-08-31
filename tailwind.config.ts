@@ -1,16 +1,23 @@
-import { danger, primary, secondary, tertiary } from "./src/const/colors.ts";
+import {
+  BLACK,
+  DANGER,
+  MAIN,
+  MAIN_02_LIGHT,
+  MAIN_03_LIGHT,
+  WHITE
+} from "./src/const/colors";
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+const config: import("tailwindcss").Config = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  darkMode: true,
   theme: {
     extend: {
       colors: {
-        primary,
-        secondary,
-        tertiary,
-        danger
+        primary: MAIN,
+        secondary: MAIN_02_LIGHT,
+        tertiary: MAIN_03_LIGHT,
+        danger: DANGER,
+        white: WHITE,
+        black: BLACK
       }
     },
     screens: {
@@ -27,3 +34,5 @@ module.exports = {
   },
   plugins: []
 };
+
+export default config;
