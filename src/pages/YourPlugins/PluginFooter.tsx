@@ -2,6 +2,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Box, CircularProgress, IconButton, Tooltip } from "@mui/material";
 import { useRedirectToStripe } from "components/Stripe/useRedirectToStripe";
+import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import { useNavigate } from "react-router-dom";
 import { IconButtonTheme } from "theme";
 import { usePluginsCtx } from "./PluginsCtx";
@@ -10,9 +11,12 @@ const PluginFooter = () => {
   const navigate = useNavigate();
   const { pluginData, loading } = usePluginsCtx();
   const { isLoading, redirectToStripe } = useRedirectToStripe();
+  const { userInfo } = useUserInfoCtx();
+
   if (loading) return null;
   const canCreateNewPlugin =
-    (pluginData.pluginsCount || 0) < (pluginData.maxPlugins || 0);
+    (pluginData?.pluginsCount || 0) < (pluginData?.maxPlugins || 0) &&
+    !userInfo?.isPremium;
 
   return (
     <Box
