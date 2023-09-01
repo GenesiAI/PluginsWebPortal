@@ -1,4 +1,5 @@
 import { UserApi, UserInfo } from "apis/api";
+import { home, yourPlugins } from "const/urls";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +12,7 @@ const useHandlerAuth = () => {
   const [userInfo, setUserInfo] = useState<UserInfo>({});
   const navigate = useNavigate();
 
-  const afterLogin = useCallback(async () => {
+  const afterLogin = useCallback(async (noRedirect?: boolean) => {
     const userApi = new UserApi();
     try {
       const response = await userApi.apiUserGet();
@@ -20,16 +21,16 @@ const useHandlerAuth = () => {
       debugConsole("Error fetching users:", error);
     }
     setIsLoadingUser(false);
-    navigate("your-plugins");
+    !noRedirect && navigate(`/${yourPlugins}`);
   }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       if (user != null) {
-        afterLogin();
+        afterLogin(true);
       } else {
-        navigate("/");
+        navigate(home);
         setIsLoadingUser(false);
       }
     });

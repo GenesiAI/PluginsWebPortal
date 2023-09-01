@@ -36,24 +36,14 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-let isLogged = false;
 onAuthStateChanged(auth, (user) => {
   debugConsole("auth:", JSON.stringify(auth));
-  isLogged = !!user;
 });
 
 const login = async () => {
-  if (isLogged) return;
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
   await signInWithPopup(auth, provider);
-  // const credential = GoogleAuthProvider.credentialFromResult(result);
-  // const token = credential?.idToken;
-  // auth?.currentUser?.getIdToken()
-  //   .then(function (idToken: string) {
-  //     console.info("token\n" + idToken);
-  //     axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
-  //   });
 };
 
 const logout = async () => {
