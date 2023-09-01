@@ -16,7 +16,9 @@ const Flyout = () => {
             className="aspect-square bg-no-repeat bg-contain w-full rounded-full"
             src={photoUrl || ""}
             srcSet={photoUrl || ""}
+            referrerPolicy="no-referrer"
             alt=""
+            loading="lazy"
             aria-hidden="true"
           ></img>
         }

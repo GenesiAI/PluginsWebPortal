@@ -3,7 +3,7 @@ import UnsubscribeIcon from "@mui/icons-material/Unsubscribe";
 import UpgradeIcon from "@mui/icons-material/Upgrade";
 import { SpeedDialAction } from "@mui/material";
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
-import { plugin, yourPlugins } from "const/url";
+import { plugin, yourPlugins } from "const/urls";
 import { useCallback, useMemo, useState } from "react";
 import { useMatch, useNavigate } from "react-router";
 
@@ -56,7 +56,7 @@ const useActions = () => {
         />
       )
     ];
-  }, []);
+  }, [handleClose, handleLogout]);
 
   return {
     actions,

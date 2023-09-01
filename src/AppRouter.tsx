@@ -2,17 +2,10 @@ import { Container } from "@mui/material";
 import Flyout from "components/Flyout";
 import ProtectedRoute from "components/ProtectedRoute";
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
-import {
-  baseName,
-  contacts,
-  home,
-  plugin,
-  support,
-  yourPlugins
-} from "const/urls";
+import { contacts, home, plugin, support, yourPlugins } from "const/urls";
 import Contact from "pages/Contact";
 import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Home from "./pages/Home";
@@ -32,7 +25,7 @@ const AppRouter: React.FC = () => {
   }
 
   return (
-    <Router basename={baseName}>
+    <>
       <Flyout />
       <Header />
       <Routes>
@@ -73,8 +66,9 @@ const AppRouter: React.FC = () => {
             </Container>
           }
         />
+        <Route path="*" element={<Navigate to={home} replace />} />
       </Routes>
-    </Router>
+    </>
   );
 };
 

@@ -3,7 +3,7 @@ import { User, onAuthStateChanged } from "firebase/auth";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, login, logout } from "security/firebase";
-import { debugConsole } from "./util";
+import { debugConsole } from "../util";
 
 const useHandlerAuth = () => {
   const [isLoadingUser, setIsLoadingUser] = useState<boolean>(true);

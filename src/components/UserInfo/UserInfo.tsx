@@ -1,7 +1,7 @@
 import { UserInfo as UserInfoType } from "apis/api";
 import { User } from "firebase/auth";
 import React, { createContext, memo, useContext, useMemo } from "react";
-import useHandlerAuth from "../useHandlerAuth";
+import useHandlerAuth from "./useHandlerAuth";
 
 type ctxType = {
   isLoadingUser: boolean;

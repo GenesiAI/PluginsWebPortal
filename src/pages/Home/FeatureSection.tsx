@@ -1,13 +1,13 @@
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { Box, Button, Typography } from "@mui/material";
-import useHandlerAuth from "components/Header/useHandlerAuth";
+import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import React from "react";
 import PluginEditor from "../../img/PluginEditor.png";
 import PluginsList from "../../img/PluginsList.png";
 import TestPlugin from "../../img/TestPlugin.png";
 
 const FeatureSection: React.FC = () => {
-  const { handleLogin } = useHandlerAuth();
+  const { handleLogin } = useUserInfoCtx();
 
   return (
     <Box
