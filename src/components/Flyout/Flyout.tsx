@@ -1,4 +1,5 @@
 import SpeedDial from "@mui/material/SpeedDial";
+import LogoFallback from "img/Logo.png";
 import useActions from "./useActions";
 
 const sx = { position: "absolute", bottom: 16, right: 16 };
@@ -13,9 +14,9 @@ const Flyout = () => {
         sx={sx}
         icon={
           <img
-            className="aspect-square bg-no-repeat bg-contain w-full rounded-full"
-            src={photoUrl || ""}
-            srcSet={photoUrl || ""}
+            className="aspect-square bg-no-repeat bg-contain w-full rounded-full animate-pulse"
+            src={photoUrl || LogoFallback}
+            srcSet={photoUrl || LogoFallback}
             referrerPolicy="no-referrer"
             alt=""
             loading="lazy"
