@@ -1,6 +1,7 @@
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import { Plugin, PluginApi, PluginUpdateRequest } from "apis/api";
+import { yourPlugins } from "const/urls";
 import React, { useCallback, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -52,7 +53,7 @@ const usePluginEditor = () => {
       setError(
         "What are you doing here? 👀, getting you back to your plugins."
       );
-      navigate("/your-plugins");
+      navigate(`/${yourPlugins}`);
       return;
     }
     fetchPlugin();
@@ -74,8 +75,7 @@ const usePluginEditor = () => {
           await pluginApi
             .apiPluginsPost(pluginUpdate)
             .then(({ data: { id } }) => {
-              // navigate(`/plugin/${id}`);
-              navigate("/your-plugins");
+              navigate(`/${yourPlugins}`);
             });
           return;
         }
@@ -101,7 +101,7 @@ const usePluginEditor = () => {
     const pluginApi = new PluginApi();
     try {
       await pluginApi.apiPluginsPluginIdDelete(guid!);
-      navigate("/your-plugins");
+      navigate(`/${yourPlugins}`);
     } catch (error) {
       // Error: you can show an error message or perform any other action here
       setError(

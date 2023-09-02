@@ -7,6 +7,7 @@ import {
   ListItemText,
   Typography
 } from "@mui/material";
+import { plugin as pluginUrl } from "const/urls";
 import { ComponentProps, memo, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { IconButtonTheme } from "theme";
@@ -26,7 +27,8 @@ const Plugins = () => {
 
   const plugins = useMemo(() => {
     return pluginData.plugins?.map((plugin) => {
-      const onClick = () => navigate(`/plugin/${plugin.id}`);
+      const onClick = () =>
+        navigate(`/${pluginUrl.replace(":guid", plugin.id || "")}`);
       return <PluginItem key={plugin.id} onClick={onClick} plugin={plugin} />;
     });
   }, [pluginData, navigate]);

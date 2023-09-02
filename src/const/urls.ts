@@ -4,6 +4,11 @@ export const yourPlugins = "your-plugins";
 export const plugin = "plugin/:guid";
 export const support = "support";
 export const contacts = "contacts";
+export const checkout = {
+  base: "checkout",
+  success: "success",
+  cancelled: "cancelled"
+};
 
 /*
 

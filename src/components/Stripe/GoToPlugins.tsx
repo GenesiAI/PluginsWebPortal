@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import { yourPlugins } from "const/urls";
 import { useNavigate } from "react-router-dom";
 
 const GoToPlugins = () => {
@@ -8,7 +9,7 @@ const GoToPlugins = () => {
       type="button"
       variant="contained"
       color="primary"
-      onClick={() => navigate("/your-plugins", { replace: true })}
+      onClick={() => navigate(`/${yourPlugins}`, { replace: true })}
     >
       Go to your plugins
     </Button>

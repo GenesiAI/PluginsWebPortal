@@ -1,16 +1,22 @@
 import { Container } from "@mui/material";
-import Flyout from "components/Flyout";
 import ProtectedRoute from "components/ProtectedRoute";
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
-import { contacts, home, plugin, support, yourPlugins } from "const/urls";
+import {
+  checkout,
+  contacts,
+  home,
+  plugin,
+  support,
+  yourPlugins
+} from "const/urls";
 import Contact from "pages/Contact";
 import React, { Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import Header from "./components/Header";
 import LoadingSpinner from "./components/LoadingSpinner";
+
+import Support from "pages/Support";
 import Home from "./pages/Home";
-import Support from "./pages/Support";
 
 const PluginEditorLazy = React.lazy(() => import("pages/PluginEditor"));
 const YourPluginsLazy = React.lazy(() => import("pages/YourPlugins"));
@@ -33,8 +39,6 @@ const AppRouter: React.FC = () => {
 
   return (
     <Suspense>
-      <Flyout />
-      <Header />
       <Routes>
         <Route path={home} element={<Home />} />
         <Route
@@ -73,10 +77,10 @@ const AppRouter: React.FC = () => {
             </Container>
           }
         />
-        <Route path="/checkout">
-          <Route index element={<Navigate to="/" replace />} />
+        <Route path={checkout.base}>
+          <Route index element={<Navigate to={home} replace />} />
           <Route
-            path="success"
+            path={checkout.success}
             element={
               <ProtectedRoute>
                 <StripeSuccessLazy />
@@ -84,16 +88,16 @@ const AppRouter: React.FC = () => {
             }
           />
           <Route
-            path="cancelled"
+            path={checkout.cancelled}
             element={
               <ProtectedRoute>
                 <StripeCancelledLazy />
               </ProtectedRoute>
             }
           />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to={home} replace />} />
         </Route>
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to={home} replace />} />
       </Routes>
     </Suspense>
   );
