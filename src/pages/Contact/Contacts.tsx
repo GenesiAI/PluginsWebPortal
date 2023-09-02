@@ -1,5 +1,4 @@
 import { Box, Container, SxProps, Theme, Typography } from "@mui/material";
-import SocialsBox from "components/SocialsBox";
 import ContactForm from "pages/Contact/ContactForm";
 import React from "react";
 
@@ -25,7 +24,6 @@ const Contacts: React.FC = () => (
       </Typography>
     </Box>
     <ContactForm />
-    <SocialsBox />
   </Container>
 );
 
