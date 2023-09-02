@@ -42,7 +42,6 @@ onAuthStateChanged(auth, (user) => {
   isLogged = !!user;
 });
 
-const isAlreadyLogged = () => isLogged;
 const login = async () => {
   if (isLogged) return;
   const auth = getAuth();
@@ -62,4 +61,4 @@ const logout = async () => {
   await signOut(auth);
 };
 
-export { auth, isAlreadyLogged, login, logout };
+export { auth, login, logout };

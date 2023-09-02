@@ -1,46 +1,39 @@
 import { Container } from "@mui/material";
+import Flyout from "components/Flyout";
 import ProtectedRoute from "components/ProtectedRoute";
-import {
-  baseName,
-  contacts,
-  home,
-  plugin,
-  support,
-  yourPlugins
-} from "const/urls";
-import { onAuthStateChanged } from "firebase/auth";
+import { useUserInfoCtx } from "components/UserInfo/UserInfo";
+import { contacts, home, plugin, support, yourPlugins } from "const/urls";
 import Contact from "pages/Contact";
-import React, { useEffect, useState } from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import React, { Suspense } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+
 import Header from "./components/Header";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Home from "./pages/Home";
-import PluginEditor from "./pages/PluginEditor";
 import Support from "./pages/Support";
-import YourPlugins from "./pages/YourPlugins";
-import { auth } from "./security/firebase";
 
+const PluginEditorLazy = React.lazy(() => import("pages/PluginEditor"));
+const YourPluginsLazy = React.lazy(() => import("pages/YourPlugins"));
+const StripeSuccessLazy = React.lazy(
+  () => import("components/Stripe/StripeSuccess")
+);
+const StripeCancelledLazy = React.lazy(
+  () => import("components/Stripe/StripeCancelled")
+);
+
+const someBasicStyle: any = {
+  backgroundColor: (theme: any) => theme.palette.background.paper
+};
 const AppRouter: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const { isLoadingUser } = useUserInfoCtx();
 
-  useEffect(() => {
-    // This function is called when the auth state changes
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setIsLoading(false);
-    });
-    // Cleanup subscription on unmount
-    return unsubscribe;
-  }, []);
-
-  if (isLoading) {
+  if (isLoadingUser) {
     return <LoadingSpinner />;
   }
 
-  const someBasicStyle: any = {
-    backgroundColor: (theme: any) => theme.palette.background.paper
-  };
   return (
-    <Router basename={baseName}>
+    <Suspense>
+      <Flyout />
       <Header />
       <Routes>
         <Route path={home} element={<Home />} />
@@ -49,7 +42,7 @@ const AppRouter: React.FC = () => {
           element={
             <ProtectedRoute>
               <Container maxWidth="md" sx={someBasicStyle}>
-                <YourPlugins />
+                <YourPluginsLazy />
               </Container>
             </ProtectedRoute>
           }
@@ -67,7 +60,7 @@ const AppRouter: React.FC = () => {
           element={
             <ProtectedRoute>
               <Container maxWidth="md">
-                <PluginEditor />
+                <PluginEditorLazy />
               </Container>
             </ProtectedRoute>
           }
@@ -80,8 +73,29 @@ const AppRouter: React.FC = () => {
             </Container>
           }
         />
+        <Route path="/checkout">
+          <Route index element={<Navigate to="/" replace />} />
+          <Route
+            path="success"
+            element={
+              <ProtectedRoute>
+                <StripeSuccessLazy />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="cancelled"
+            element={
+              <ProtectedRoute>
+                <StripeCancelledLazy />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </Router>
+    </Suspense>
   );
 };
 

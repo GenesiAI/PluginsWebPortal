@@ -1,12 +1,12 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { isAlreadyLogged } from "security/firebase";
+import { useUserInfoCtx } from "./UserInfo/UserInfo";
 
 type InputProps = {
   children: React.ReactNode;
 };
 const ProtectedRoute = ({ children }: InputProps) => {
-  const isLogged = isAlreadyLogged();
+  const { isLogged } = useUserInfoCtx();
   return isLogged ? <>{children}</> : <Navigate to="/" replace />;
 };
 

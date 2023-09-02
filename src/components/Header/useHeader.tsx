@@ -1,22 +1,13 @@
-import { User, onAuthStateChanged } from "firebase/auth";
-import React, { useEffect, useState } from "react";
-import { auth } from "security/firebase";
-import useHandlerAuth from "./useHandlerAuth";
+import { useUserInfoCtx } from "components/UserInfo/UserInfo";
+import React from "react";
 
 const loggedInPages = ["Your Plugins", "Support", "Contacts", "Logout"];
 const loggedOutPages = ["Support", "Contacts", "Login"];
 
 const useHeader = () => {
-  const [user, setUser] = useState<User | null>(null);
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-    });
-    return unsubscribe;
-  }, []);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -24,14 +15,14 @@ const useHeader = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-  const { handleLogin, handleLogout } = useHandlerAuth();
+  const { handleLogin, handleLogout, isLogged } = useUserInfoCtx();
   return {
     handleLogin,
     handleLogout,
     handleCloseNavMenu,
     handleOpenNavMenu,
     anchorElNav,
-    links: user ? loggedInPages : loggedOutPages
+    links: isLogged ? loggedInPages : loggedOutPages
   };
 };
 

@@ -1,15 +1,16 @@
 import { Button } from "@mui/material";
-import useHandlerAuth from "components/Header/useHandlerAuth";
 import Modal from "components/Modal";
+import { useUserInfoCtx } from "components/UserInfo/UserInfo";
+import { home } from "const/urls";
 import { memo } from "react";
 import { useFormState } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 const ModalContactSubmit = () => {
   const navigate = useNavigate();
-  const { handleLogin } = useHandlerAuth();
+  const { handleLogin } = useUserInfoCtx();
   const goToHome = () => {
-    navigate("/");
+    navigate(home);
   };
   const { isSubmitSuccessful } = useFormState();
 
