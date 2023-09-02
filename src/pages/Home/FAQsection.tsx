@@ -27,7 +27,7 @@ const FAQsection: React.FC = () => {
         maxWidth: { xs: "100%", sm: "80%", md: "1300px", lg: "1300px" },
         justifyContent: "center",
         fontSize: { xs: "1.5rem", sm: "2rem" },
-        margin: { xs: "0.5rem", sm: "0rem", md: "6rem 7rem", lg: "auto" },
+        margin: { xs: "0.5rem", sm: "auto" },
         marginBottom: "4rem"
       }}
     >
