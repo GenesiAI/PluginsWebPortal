@@ -1,5 +1,5 @@
 import { UserApi, UserInfo } from "apis/api";
-import { home, yourPlugins } from "const/urls";
+import { yourPlugins } from "const/urls";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -24,13 +24,15 @@ const useHandlerAuth = () => {
     !noRedirect && navigate(`/${yourPlugins}`);
   }, []);
 
+  const manualLogin = useCallback(() => {
+    login().then(() => afterLogin());
+  }, []);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       if (user != null) {
         afterLogin(true);
       } else {
-        navigate(home);
         setIsLoadingUser(false);
       }
     });
@@ -38,7 +40,7 @@ const useHandlerAuth = () => {
   }, []);
 
   return {
-    handleLogin: login,
+    handleLogin: manualLogin,
     handleLogout: logout,
     isLoadingUser,
     user,

@@ -21,7 +21,6 @@ const LoadingSpinner = () => (
         color: (theme) => theme.palette.primary.main
       }}
     >
-      {" "}
       Loading...
     </Typography>
   </Box>

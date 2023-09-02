@@ -42,6 +42,7 @@ onAuthStateChanged(auth, (user) => {
 
 const login = async () => {
   const auth = getAuth();
+  if (auth.currentUser) return;
   const provider = new GoogleAuthProvider();
   await signInWithPopup(auth, provider);
 };

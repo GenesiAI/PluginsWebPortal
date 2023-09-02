@@ -1,6 +1,5 @@
 import { Container } from "@mui/material";
 import ProtectedRoute from "components/ProtectedRoute";
-import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import {
   checkout,
   contacts,
@@ -31,14 +30,8 @@ const someBasicStyle: any = {
   backgroundColor: (theme: any) => theme.palette.background.paper
 };
 const AppRouter: React.FC = () => {
-  const { isLoadingUser } = useUserInfoCtx();
-
-  if (isLoadingUser) {
-    return <LoadingSpinner />;
-  }
-
   return (
-    <Suspense>
+    <Suspense fallback={<LoadingSpinner />}>
       <Routes>
         <Route path={home} element={<Home />} />
         <Route
