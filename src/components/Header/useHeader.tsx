@@ -1,15 +1,7 @@
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import React from "react";
 
-const loggedInPages = [
-  "Your Plugins",
-  "Support",
-  "Contacts",
-  "Questions",
-  "Pricing",
-  "Logout"
-];
-const loggedOutPages = ["Support", "Contacts", "Questions", "Pricing", "Login"];
+const Pages = ["Support", "Contacts", "Questions", "Pricing"];
 
 const useHeader = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -22,14 +14,14 @@ const useHeader = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-  const { handleLogin, handleLogout, isLogged } = useUserInfoCtx();
+  const { handleLogin, handleLogout } = useUserInfoCtx();
   return {
     handleLogin,
     handleLogout,
     handleCloseNavMenu,
     handleOpenNavMenu,
     anchorElNav,
-    links: isLogged ? loggedInPages : loggedOutPages
+    links: Pages
   };
 };
 
