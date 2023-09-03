@@ -1,8 +1,9 @@
 import { Icon } from "@mui/material";
+import { home } from "const/urls";
 import { Link } from "react-router-dom";
 
 const Title = () => (
-  <Link to="/">
+  <Link to={home}>
     <Icon
       component="img"
       src="/FullLogo_Transparent.png"

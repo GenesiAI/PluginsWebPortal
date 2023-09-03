@@ -1,8 +1,8 @@
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import React from "react";
 
-const loggedInPages = ["Your Plugins", "Support", "Contacts", "Logout"];
-const loggedOutPages = ["Support", "Contacts", "Login"];
+const loggedInPages = ["Your Plugins", "Support", "Contacts"];
+const loggedOutPages = ["Support", "Contacts"];
 
 const useHeader = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
