@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { memo } from "react";
 import { Link, matchPath, useLocation } from "react-router-dom";
@@ -13,7 +12,7 @@ const HeaderMd = ({
 }: InputProps) => {
   const { pathname } = useLocation();
   return (
-    <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+    <div>
       {links.map((link) => {
         if (link.toLowerCase() === "login" || link.toLowerCase() === "logout") {
           const isLogin = link.toLowerCase() === "login";
@@ -38,27 +37,19 @@ const HeaderMd = ({
         }
         const linkTo = `/${link.toLowerCase().replace(" ", "-")}`;
         return (
-          <Button
-            variant="text"
-            key={link}
-            onClick={handleCloseNavMenu}
-            component={Link}
+          <Link
             to={linkTo}
-            sx={{
-              my: 2,
-              mx: 1,
-              display: "block",
-              color: "black"
-            }}
             className={
-              matchPath(pathname, linkTo) ? "shadow-lg shadow-violet-400" : ""
+              matchPath(pathname, linkTo)
+                ? "shadow-lg shadow-violet-400"
+                : "hover:shadow-md"
             }
           >
             {link}
-          </Button>
+          </Link>
         );
       })}
-    </Box>
+    </div>
   );
 };
 
