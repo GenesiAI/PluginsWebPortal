@@ -22,7 +22,8 @@ const useHeader = () => {
     handleCloseNavMenu,
     handleOpenNavMenu,
     anchorElNav,
-    links: isLogged ? loggedInPages : loggedOutPages
+    links: isLogged ? loggedInPages : loggedOutPages,
+    isLogged
   };
 };
 

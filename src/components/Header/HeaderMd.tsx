@@ -1,51 +1,25 @@
-import Button from "@mui/material/Button";
-import { memo } from "react";
+import Typography from "components/Typography";
 import { Link, matchPath, useLocation } from "react-router-dom";
 import useHeader from "./useHeader";
 
 type InputProps = ReturnType<typeof useHeader>;
-const HeaderMd = ({
-  handleCloseNavMenu,
-  handleLogin,
-  handleLogout,
-  links
-}: InputProps) => {
+const HeaderMd = ({ links }: InputProps) => {
   const { pathname } = useLocation();
   return (
-    <div>
+    <div className="md:flex gap-4 hidden col-span-8 justify-center">
       {links.map((link) => {
-        if (link.toLowerCase() === "login" || link.toLowerCase() === "logout") {
-          const isLogin = link.toLowerCase() === "login";
-          return (
-            <Button
-              variant={isLogin ? "contained" : "outlined"}
-              key={link}
-              onClick={isLogin ? handleLogin : handleLogout}
-              className={`!shadow-lg ${
-                isLogin ? "!shadow-violet-600" : "!shadow-violet-200"
-              }`}
-              sx={{
-                my: 2,
-                // color: "white",
-                display: "block",
-                fontWeight: "bold"
-              }}
-            >
-              {link}
-            </Button>
-          );
-        }
         const linkTo = `/${link.toLowerCase().replace(" ", "-")}`;
         return (
-          <Link
-            to={linkTo}
-            className={
-              matchPath(pathname, linkTo)
-                ? "shadow-lg shadow-violet-400"
-                : "hover:shadow-md"
-            }
-          >
-            {link}
+          <Link to={linkTo} key={link}>
+            <Typography
+              variant="t4"
+              className={(matchPath(pathname, linkTo)
+                ? "text-tertiary"
+                : "text-secondary hover:text-tertiary"
+              ).concat(" font-bold")}
+            >
+              {link}
+            </Typography>
           </Link>
         );
       })}
@@ -53,4 +27,4 @@ const HeaderMd = ({
   );
 };
 
-export default memo(HeaderMd);
+export default HeaderMd;

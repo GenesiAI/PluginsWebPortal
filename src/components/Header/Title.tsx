@@ -3,7 +3,7 @@ import { home } from "const/urls";
 import { Link } from "react-router-dom";
 
 const Title = () => (
-  <Link to={home}>
+  <Link to={home} className="col-span-2">
     <Icon
       component="img"
       src="/FullLogo_Transparent.png"

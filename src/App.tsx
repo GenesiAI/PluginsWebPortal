@@ -1,7 +1,6 @@
 import Footer from "components/Footer";
 import Header from "components/Header";
 
-import Flyout from "components/Flyout";
 import { memo } from "react";
 import "./App.css";
 import AppRouter from "./AppRouter";
@@ -9,14 +8,13 @@ import "./Tailwind.css";
 
 const App = () => {
   return (
-    <div className="flex justify-between flex-col min-h-screen">
-      <div>
-        <Header />
-        <Flyout />
+    <>
+      <Header />
+      <div className="flex justify-between flex-col min-h-screen">
         <AppRouter />
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 
