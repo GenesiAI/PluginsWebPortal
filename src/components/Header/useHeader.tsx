@@ -14,14 +14,15 @@ const useHeader = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-  const { handleLogin, handleLogout } = useUserInfoCtx();
+  const { handleLogin, handleLogout, isLogged } = useUserInfoCtx();
   return {
     handleLogin,
     handleLogout,
     handleCloseNavMenu,
     handleOpenNavMenu,
     anchorElNav,
-    links: Pages
+    links: Pages,
+    isLogged
   };
 };
 
