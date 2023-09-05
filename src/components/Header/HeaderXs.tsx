@@ -1,10 +1,7 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
 import useHeader from "./useHeader";
 
 type InputProps = ReturnType<typeof useHeader>;
@@ -17,61 +14,26 @@ const HeaderXs = ({
   links
 }: InputProps) => {
   return (
-    <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+    <Box className="flex md:hidden gap-4 col-span-2 justify-center">
       <IconButton
         size="large"
         aria-label="open drawer"
         aria-controls="menu-appbar"
         aria-haspopup="true"
-        onClick={handleOpenNavMenu}
+        onClick={anchorElNav ? handleCloseNavMenu : handleOpenNavMenu}
         color="inherit"
       >
         <MenuIcon />
       </IconButton>
-      <Menu
-        id="menu-appbar"
-        anchorEl={anchorElNav}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left"
-        }}
-        keepMounted
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "left"
-        }}
+      <Drawer
+        anchor="left"
         open={Boolean(anchorElNav)}
         onClose={handleCloseNavMenu}
-        sx={{ display: { xs: "block", md: "flex" } }}
+        PaperProps={{ className: "w-screen" }}
+        disableScrollLock
       >
-        {links.map((link) => {
-          if (
-            link.toLowerCase() === "login" ||
-            link.toLowerCase() === "logout"
-          ) {
-            return (
-              <MenuItem
-                key={link}
-                onClick={
-                  link.toLowerCase() === "login" ? handleLogin : handleLogout
-                }
-              >
-                <Typography textAlign="center">{link}</Typography>
-              </MenuItem>
-            );
-          }
-          return (
-            <MenuItem
-              key={link}
-              onClick={handleCloseNavMenu}
-              component={Link}
-              to={`/${link.toLowerCase().replace(" ", "-")}`}
-            >
-              <Typography textAlign="center">{link}</Typography>
-            </MenuItem>
-          );
-        })}
-      </Menu>
+        aaaaa
+      </Drawer>
     </Box>
   );
 };

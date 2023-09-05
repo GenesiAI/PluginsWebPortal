@@ -10,7 +10,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <div className="flex justify-between flex-col min-h-screen">
+      <div className="flex justify-between flex-col min-h-screen overflow-y-auto">
         <AppRouter />
         <Footer />
       </div>

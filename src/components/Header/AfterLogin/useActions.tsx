@@ -1,25 +1,30 @@
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import { pluginBuilder, yourPlugins } from "const/urls";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import ActionItem from "./ActionItem";
 import ActionNavigate from "./ActionNavigate";
 import Subscribe from "./Subscribe";
 
 const useActions = () => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-
+  useEffect(() => {
+    if (anchorElUser) {
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = "17px";
+      return () => {
+        document.body.style.overflow = "";
+        document.body.style.paddingRight = "";
+      };
+    }
+  }, [!!anchorElUser]);
   const handleOpen = useCallback((event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
-    document.body.style.paddingRight = "17px";
-    document.body.style.overflow = "hidden";
   }, []);
   const handleClose = useCallback(() => {
     setAnchorElUser(null);
-    document.body.style.paddingRight = "";
-    document.body.style.overflow = "";
   }, []);
 
-  const { handleLogout, user, userInfo, isLoadingUser } = useUserInfoCtx();
+  const { handleLogout, user, userInfo } = useUserInfoCtx();
 
   const actions = useMemo(() => {
     return [
@@ -34,13 +39,13 @@ const useActions = () => {
         text="New Plugins"
         to={`/${pluginBuilder("new")}`}
       />,
-      <div key="sep1" className="bg-white h-px w-full"></div>,
+      <div key="sep2" className="bg-white h-px w-full"></div>,
       <ActionNavigate
         key="YourPlugins"
         text="Your Plugins"
         to={`/${yourPlugins}`}
       />,
-      <div key="sep1" className="bg-white h-px w-full"></div>,
+      <div key="sep3" className="bg-white h-px w-full"></div>,
       <ActionItem
         key="logout"
         onClick={() => {
@@ -60,8 +65,7 @@ const useActions = () => {
     displayName: user?.displayName,
     handleOpen,
     handleClose,
-    anchorElUser,
-    isLoadingUser
+    anchorElUser
   };
 };
 
