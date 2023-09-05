@@ -1,33 +1,20 @@
-import { Box, Typography } from "@mui/material";
+import { Container } from "@mui/material";
+import Button from "components/Button";
+import Typography from "components/Typography";
+import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import React from "react";
 
 const UseCases: React.FC = () => {
+  const { handleLogin } = useUserInfoCtx();
   return (
-    <Box
-      alignItems="center"
-      sx={{
-        backgroundColor: "#f0f00",
-        padding: { xs: "1rem", sm: "1rem", md: "2rem" },
-        justifyContent: "center",
-        fontSize: { xs: "1.5rem", sm: "2rem" }
-      }}
-    >
-      <Typography
-        variant="h3"
-        align="center"
-        gutterBottom
-        sx={{
-          color: "#6360FF",
-          fontWeight: "bold",
-          fontSize: { xs: "2rem", sm: "3rem", md: "3rem" },
-          margin: { xs: "1rem 0", sm: "2rem 0", md: "2rem" }
-        }}
-      >
-        <span style={{ fontWeight: "bold" }}>
-          Discover the potential for your business
-        </span>
+    <Container maxWidth="md" className="my-16">
+      <Typography variant="t1" className="text-primary mb-10 text-center">
+        Discover the potential for your business
       </Typography>
-    </Box>
+      <Button onClick={handleLogin} className="m-auto block">
+        Create Your Plugin NOW!
+      </Button>
+    </Container>
   );
 };
 

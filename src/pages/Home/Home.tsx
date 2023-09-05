@@ -1,6 +1,5 @@
 import React from "react";
 import "slick-carousel/slick/slick.css";
-import FAQsection from "./FAQsection";
 import FeatureSection from "./FeatureSection";
 import HeroSection from "./HeroSection";
 import UseCases from "./UseCases";
@@ -13,7 +12,6 @@ const Home: React.FC = () => {
       <WhatSection />
       <FeatureSection />
       <UseCases />
-      <FAQsection />
     </>
   );
 };
