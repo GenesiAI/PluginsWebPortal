@@ -9,11 +9,12 @@ type InputProps = {
 };
 
 const Subscribe = ({ handleClose, userInfo }: InputProps) => {
-  const { redirectToStripe, isLoading } = useRedirectToStripe();
+  const { redirectToStripe, isLoading, modalError } = useRedirectToStripe();
   return userInfo.isPremium ? (
     <ActionItem onClick={handleClose}>Unsubscribe</ActionItem>
   ) : (
     <ActionItem onClick={redirectToStripe}>
+      {modalError}
       <TransitionGroup>
         {isLoading && (
           <CircularProgress
