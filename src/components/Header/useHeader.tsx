@@ -15,7 +15,8 @@ const useHeader = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-  const { handleLogin, handleLogout, isLogged } = useUserInfoCtx();
+  const { handleLogin, handleLogout, isLogged, isLoadingUser } =
+    useUserInfoCtx();
   return {
     handleLogin,
     handleLogout,
@@ -23,7 +24,8 @@ const useHeader = () => {
     handleOpenNavMenu,
     anchorElNav,
     links: isLogged ? loggedInPages : loggedOutPages,
-    isLogged
+    isLogged,
+    isLoadingUser
   };
 };
 

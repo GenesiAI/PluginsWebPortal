@@ -1,4 +1,6 @@
+import { Box } from "@mui/material";
 import Button from "components/Button";
+import LoadingSpinner from "components/LoadingSpinner";
 import AfterLogin from "./AfterLogin";
 import useHeader from "./useHeader";
 
@@ -8,8 +10,17 @@ const RightSide = ({
   handleLogin,
   handleLogout,
   links,
-  isLogged
+  isLogged,
+  isLoadingUser
 }: InputProps) => {
+  if (isLoadingUser || (isLogged && isLoadingUser)) {
+    return (
+      <Box className="w-min justify-self-end col-span-2">
+        <LoadingSpinner removeText />
+      </Box>
+    );
+  }
+
   return isLogged ? (
     <AfterLogin />
   ) : (

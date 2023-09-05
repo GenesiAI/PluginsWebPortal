@@ -1,4 +1,4 @@
-const LogoX = () => (
+const LogoDiscord = () => (
   <svg
     viewBox="0 -28.5 256 256"
     version="1.1"
@@ -16,4 +16,4 @@ const LogoX = () => (
   </svg>
 );
 
-export default LogoX;
+export default LogoDiscord;
