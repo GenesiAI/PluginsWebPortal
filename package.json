@@ -25,6 +25,7 @@
     "font-awesome": "4.7.0",
     "postcss": "8.4.23",
     "react": "18.2.0",
+    "react-confetti": "6.1.0",
     "react-dom": "18.2.0",
     "react-hook-form": "7.45.2",
     "react-hook-form-mui": "6.4.2",
@@ -32,20 +33,38 @@
     "react-router-dom": "6.14.1",
     "react-scripts": "5.0.1",
     "react-slick": "0.29.0",
+    "sitemap": "7.1.1",
+    "react-use": "17.4.0",
     "slick-carousel": "1.8.1",
     "snackbar": "1.1.0",
-    "tailwindcss": "3.3.2",
-    "typescript": "4.9.5",
     "uuid": "9.0.0",
     "web-vitals": "2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "echo \"Please use build:dev/build:staging/build:prod \" && exit 1",
+    "start": "env-cmd -f .env.development react-scripts start",
+    "build:dev": "env-cmd -f .env.development react-scripts build",
+    "compile:dev": "npm run build:dev",
+    "generate_sitemap:staging": "env-cmd -f .env.staging node generateSiteMap.js",
+    "build:staging": "env-cmd -f .env.staging react-scripts build",
+    "compile:staging": "npm run generate_sitemap:staging && npm run build:staging",
+    "generate_sitemap:prod": "env-cmd -f .env.production node generateSiteMap.js",
+    "build:prod": "env-cmd -f .env.production react-scripts build",
+    "compile:prod": "npm run generate_sitemap:prod && npm run build:prod",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "staging": "env-cmd -f .env.staging npm start",
-    "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
+    "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
+    "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint"
+    ],
+    "*.{ts,tsx,json}": [
+      "prettier --write"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -69,7 +88,18 @@
     "@types/babel__core": "7.20.1",
     "@types/react-slick": "0.23.10",
     "@types/uuid": "9.0.1",
+    "@typescript-eslint/eslint-plugin": "5.62.0",
+    "eslint": "8.45.0",
+    "eslint-config-standard-with-typescript": "37.0.0",
+    "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jest": "27.2.2",
-    "prettier": "3.0.0"
+    "eslint-plugin-n": "16.0.1",
+    "eslint-plugin-promise": "6.1.1",
+    "eslint-plugin-react": "7.33.0",
+    "husky": "8.0.0",
+    "lint-staged": "13.2.3",
+    "prettier": "3.0.0",
+    "tailwindcss": "3.3.3",
+    "typescript": "4.9.5"
   }
 }

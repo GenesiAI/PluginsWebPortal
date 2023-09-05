@@ -11,16 +11,35 @@ on:
     branches:
       - main
 
+permissions: write-all
+
 jobs:
+  # Build job
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cache deps
+        uses: actions/cache@v3
         with:
-          submodules: true
-      - name: Build And Deploy
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Run build
+        if: github.event_name != 'pull_request'
+        run: npm run compile:prod
+      - name: Run build for pull request
+        if: github.event_name == 'pull_request'
+        run: npm run compile:dev
+      - name: Upload build artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: build
+      - name: Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
@@ -28,13 +47,13 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
+          ###### NB: This makes only the deploy ######
+          skip_app_build: true
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/" # App source code path
+          app_location: "/build" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
-        env: # Add environment variables here, and override the default
-          REACT_APP_BACKEND_URL: ${{ secrets.REACT_APP_BACKEND_URL_PROD }}
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest

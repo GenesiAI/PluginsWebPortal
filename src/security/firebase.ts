@@ -1,4 +1,5 @@
 import axios from "axios";
+import { debugConsole } from "components/util";
 import { initializeApp } from "firebase/app";
 import {
   GoogleAuthProvider,
@@ -25,12 +26,9 @@ auth.setPersistence(browserLocalPersistence);
 axios.interceptors.request.use(
   async (config) => {
     const auth = getAuth();
-    // console.info("auth:", JSON.stringify(auth));
     if (auth?.currentUser) {
       const token = await auth.currentUser.getIdToken();
       config.headers.Authorization = `Bearer ${token}`;
-    } else {
-      await login();
     }
     return config;
   },
@@ -38,24 +36,15 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-let isLogged = false;
 onAuthStateChanged(auth, (user) => {
-  isLogged = !!user;
+  debugConsole("auth:", JSON.stringify(auth));
 });
 
-const isAlreadyLogged = () => isLogged;
 const login = async () => {
-  if (isLogged) return;
   const auth = getAuth();
+  if (auth.currentUser) return;
   const provider = new GoogleAuthProvider();
   await signInWithPopup(auth, provider);
-  // const credential = GoogleAuthProvider.credentialFromResult(result);
-  // const token = credential?.idToken;
-  // auth?.currentUser?.getIdToken()
-  //   .then(function (idToken: string) {
-  //     console.info("token\n" + idToken);
-  //     axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
-  //   });
 };
 
 const logout = async () => {
@@ -63,4 +52,4 @@ const logout = async () => {
   await signOut(auth);
 };
 
-export { auth, isAlreadyLogged, login, logout };
+export { auth, login, logout };

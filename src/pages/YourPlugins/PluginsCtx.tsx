@@ -1,5 +1,7 @@
+import { Button, Typography } from "@mui/material";
 import { PluginApi } from "apis/api";
-import React, { memo, useContext, useState } from "react";
+import { debugConsole } from "components/util";
+import React, { memo, useCallback, useContext, useState } from "react";
 
 type PluginsState = {
   loading: boolean;
@@ -18,19 +20,34 @@ type inputProps = {
 
 const PluginsCtx = ({ children }: inputProps) => {
   const [data, setPlugin] = useState<PluginsState>(initialData);
-  React.useEffect(() => {
-    const fetchPlugins = async () => {
-      const pluginApi = new PluginApi();
-      try {
-        const response = await pluginApi.apiPluginsGet();
-        setPlugin({ loading: false, pluginData: response.data });
-      } catch (error) {
-        console.error("Error fetching users:", error);
-      }
-    };
-
-    fetchPlugins();
+  const [errorFetch, setErrorFetch] = useState<React.ReactNode>(null);
+  const fetchPlugins = useCallback(async () => {
+    const pluginApi = new PluginApi();
+    try {
+      const response = await pluginApi.apiPluginsGet();
+      setPlugin({ loading: false, pluginData: response.data });
+    } catch (error) {
+      setErrorFetch("Something went wrong, please retry!");
+      debugConsole("Error fetching users:", error);
+    }
   }, []);
+
+  React.useEffect(() => {
+    fetchPlugins();
+  }, [fetchPlugins]);
+
+  if (errorFetch) {
+    return (
+      <>
+        <Typography variant="h6" component="h2" color="error">
+          {errorFetch}
+        </Typography>
+        <Button onClick={fetchPlugins} variant="contained" color="error">
+          Retry?
+        </Button>
+      </>
+    );
+  }
 
   return <Ctx.Provider value={data}>{children}</Ctx.Provider>;
 };

@@ -1,6 +1,7 @@
 import { Grid } from "@mui/material";
 import React, { memo } from "react";
-import Field from "./Field";
+import Field from "../../../components/Field";
+import LayoutItemGrid from "../../../components/LayoutItemGrid";
 import {
   validationDescriptionForHuman,
   validationDescriptionForModel,
@@ -10,7 +11,6 @@ import {
   validationModel,
   validationName
 } from "./FieldsRules";
-import LayoutItemGrid from "./LayoutItemGrid";
 
 type inputProps = {
   children: React.ReactNode;

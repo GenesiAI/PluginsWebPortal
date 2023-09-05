@@ -1,15 +1,20 @@
-import { ThemeProvider } from "@mui/material/styles";
+import Footer from "components/Footer";
+import Header from "components/Header";
 import React from "react";
+
+import Flyout from "components/Flyout";
 import "./App.css";
 import AppRouter from "./AppRouter";
-import theme from "./theme";
 
-const App: React.FC = () => {
-  return (
-    <ThemeProvider theme={theme}>
+const App: React.FC = () => (
+  <div className="flex justify-between flex-col min-h-screen">
+    <div>
+      <Header />
+      <Flyout />
       <AppRouter />
-    </ThemeProvider>
-  );
-};
+    </div>
+    <Footer />
+  </div>
+);
 
 export default App;

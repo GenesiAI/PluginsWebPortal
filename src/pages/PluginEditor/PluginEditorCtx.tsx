@@ -1,6 +1,7 @@
-import { Skeleton } from "@mui/material";
+import { Button, Skeleton, Typography } from "@mui/material";
 import { createContext, useContext, useMemo } from "react";
 import { FormContainer } from "react-hook-form-mui";
+import { BoxContainer } from "theme";
 import PluginEditor from "./PluginEditor";
 import PluginEditorTitle from "./PluginEditorTitle";
 import usePluginEditor from "./usePluginEditor";
@@ -36,7 +37,8 @@ const PluginEditorCtx = () => {
     error,
     isNewPlugin,
     setShowDeleteDialog,
-    showDeleteDialog
+    showDeleteDialog,
+    fetchData
   } = usePluginEditor();
 
   const ctx = useMemo(
@@ -62,11 +64,26 @@ const PluginEditorCtx = () => {
     return (
       <>
         <PluginEditorTitle />
-        <Skeleton animation="wave" />
-        <Skeleton animation="wave" />
-        <Skeleton animation="wave" />
-        <Skeleton animation="wave" />
-        <Skeleton animation="wave" />
+        <BoxContainer>
+          {error ? (
+            <>
+              <Typography variant="h6" component="h2" color="error">
+                {error}
+              </Typography>
+              <Button onClick={fetchData} variant="contained" color="error">
+                Retry?
+              </Button>
+            </>
+          ) : (
+            <>
+              <Skeleton animation="wave" />
+              <Skeleton animation="wave" />
+              <Skeleton animation="wave" />
+              <Skeleton animation="wave" />
+              <Skeleton animation="wave" />
+            </>
+          )}
+        </BoxContainer>
       </>
     );
   }

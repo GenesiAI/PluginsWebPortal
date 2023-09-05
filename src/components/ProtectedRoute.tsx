@@ -1,13 +1,19 @@
+import { home } from "const/urls";
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { isAlreadyLogged } from "security/firebase";
+import LoadingSpinner from "./LoadingSpinner";
+import { useUserInfoCtx } from "./UserInfo/UserInfo";
 
 type InputProps = {
   children: React.ReactNode;
 };
 const ProtectedRoute = ({ children }: InputProps) => {
-  const isLogged = isAlreadyLogged();
-  return isLogged ? <>{children}</> : <Navigate to="/" replace />;
+  const { isLogged, isLoadingUser } = useUserInfoCtx();
+
+  if (isLoadingUser) {
+    return <LoadingSpinner />;
+  }
+  return isLogged ? <>{children}</> : <Navigate to={home} replace />;
 };
 
 export default ProtectedRoute;

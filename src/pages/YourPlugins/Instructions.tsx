@@ -1,21 +1,21 @@
 import { Box, Divider, Link, List, ListItem } from "@mui/material";
 
+const testSteps = [
+  "1. Copy the link",
+  <Link href="https://chat.openai.com/">2. Go to the plugin store</Link>,
+  "3. Press 'install unverified plugin'",
+  "4. Paste the link and press 'Find plugin'"
+];
+
+const releaseSteps = [
+  <Link href="https://platform.openai.com/docs/plugins/review/submit-a-plugin-for-review#">
+    1. Open the release plugin bot
+  </Link>,
+  "2. Insert link and your data",
+  "3. Wait to be notified by email when OpenAI accept your plugin"
+];
+
 const Instructions = () => {
-  const testSteps = [
-    "1. Copy the link",
-    <Link href="https://chat.openai.com/">2. Go to the plugin store</Link>,
-    "3. Press 'install unverified plugin'",
-    "4. Paste the link and press 'Find plugin'"
-  ];
-
-  const releaseSteps = [
-    <Link href="https://platform.openai.com/docs/plugins/review/submit-a-plugin-for-review#">
-      1. Open the release plugin bot
-    </Link>,
-    "2. Insert link and your data",
-    "3. Wait to be notified by email when OpenAI accept your plugin"
-  ];
-
   return (
     <Box
       sx={{

@@ -2,13 +2,13 @@ import { Box, Divider, Grid } from "@mui/material";
 import { Plugin } from "apis/api";
 import { Fragment } from "react";
 import { useFieldArray } from "react-hook-form";
-import Field from "./Field";
+import Field from "../../../components/Field";
+import LayoutItemGrid from "../../../components/LayoutItemGrid";
 import {
   validationSectionContent,
   validationSectionDescription,
   validationSectionName
 } from "./FieldsRules";
-import LayoutItemGrid from "./LayoutItemGrid";
 import PluginAddSections from "./PluginAddSections";
 import SectionDelete from "./SectionDelete";
 
@@ -18,7 +18,7 @@ const PluginSections = () => {
     shouldUnregister: true
   });
   return (
-    <Grid item>
+    <Grid item margin="auto">
       {fields?.map(({ id }, index) => (
         <Fragment key={id}>
           <Divider className="!my-4" />

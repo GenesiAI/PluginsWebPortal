@@ -1,23 +1,23 @@
-import AlertDialog from "components/AlertDialog";
-import React, { memo } from "react";
+import { memo } from "react";
 import { BoxContainer } from "theme";
+import AlertDialog from "./AlertDialog";
 import FieldsContainer from "./Fields/FieldsContainer";
 import PluginSections from "./Fields/PluginSections";
 import { usePluginEditorCtxStatus } from "./PluginEditorCtx";
 import PluginEditorFooter from "./PluginEditorFooter";
 import PluginEditorTitle from "./PluginEditorTitle";
 
-const PluginEditor: React.FC<{}> = () => {
+const PluginEditor = () => {
   const { deletePlugin, setShowDeleteDialog, error, showDeleteDialog } =
     usePluginEditorCtxStatus();
 
   return (
     <div>
-      <h1>{error}</h1>
       <BoxContainer>
         <PluginEditorTitle />
         <FieldsContainer>
           <PluginSections />
+          {error && <h1 className="ml-auto">{error}</h1>}
           <PluginEditorFooter />
         </FieldsContainer>
       </BoxContainer>
