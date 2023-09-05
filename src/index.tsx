@@ -11,12 +11,12 @@ const container = document.getElementById("root")!;
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename={baseName}>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter basename={baseName}>
         <UserInfo>
           <App />
         </UserInfo>
-      </ThemeProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>
 );

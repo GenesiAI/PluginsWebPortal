@@ -5,6 +5,7 @@ import React from "react";
 import Flyout from "components/Flyout";
 import "./App.css";
 import AppRouter from "./AppRouter";
+import "./Tailwind.css";
 
 const App: React.FC = () => (
   <div className="flex justify-between flex-col min-h-screen">

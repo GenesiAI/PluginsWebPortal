@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Box, CircularProgress, IconButton, Tooltip } from "@mui/material";
 import { useRedirectToStripe } from "components/Stripe/useRedirectToStripe";
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
-import { plugin } from "const/urls";
+import { pluginBuilder } from "const/urls";
 import { useNavigate } from "react-router-dom";
 import { IconButtonTheme } from "theme";
 import { usePluginsCtx } from "./PluginsCtx";
@@ -40,7 +40,7 @@ const PluginFooter = () => {
             className={!canCreateNewPlugin ? "!bg-amber-600" : ""}
             onClick={
               canCreateNewPlugin
-                ? () => navigate(`/${plugin.replace(":guid", "new")}`)
+                ? () => navigate(`/${pluginBuilder("new")}`)
                 : redirectToStripe
             }
             sx={IconButtonTheme}

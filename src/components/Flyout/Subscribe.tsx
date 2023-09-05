@@ -13,7 +13,7 @@ const Subscribe = ({ handleClose, userInfo }: InputProps) => {
   const { redirectToStripe, isLoading } = useRedirectToStripe();
 
   if (isLoading) {
-    return <LoadingSpinner />;
+    return <LoadingSpinner removeText />;
   }
 
   return userInfo.isPremium ? (
