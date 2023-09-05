@@ -2,6 +2,7 @@ export const baseName = "/";
 export const home = "/";
 export const yourPlugins = "your-plugins";
 export const plugin = "plugin/:guid";
+export const pluginBuilder = (guid: string) => plugin.replace(":guid", guid);
 export const support = "support";
 export const contacts = "contacts";
 export const checkout = {

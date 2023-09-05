@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material/styles";
+import { MuiAppBar } from "./MuiAppBar";
 import { MuiButton } from "./MuiButtonStyles";
 import { MuiPalette } from "./MuiPaletteStyles";
 import { MuiTypography } from "./MuiTypographyStyles";
@@ -17,6 +18,7 @@ const theme = createTheme({
     }
   },
   components: {
+    MuiAppBar,
     MuiTypography,
     MuiButton,
     MuiFilledInput: {
