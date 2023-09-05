@@ -26,6 +26,8 @@ const baseStyle: baseStyleT = {
   fontSize: "1.5rem",
   fontWeight: "700",
   lineHeight: "1.71875rem",
+  textTransform: "none",
+  padding: "0.5rem 1.81rem",
   [defaultTheme.breakpoints.down("md")]: {
     fontSize: "1.25rem",
     lineHeight: "1.3125rem"

@@ -30,12 +30,15 @@ const HeroSection: React.FC = () => {
             fontWeight: "bold"
           }}
         >
-          Think <span style={{ fontWeight: "soft" }}>Innovative</span>.<br /> Be
-          part of the{" "}
-          <span style={{ color: "#6360FF", fontWeight: "bold" }}>Future.</span>
+          <span style={{ fontWeight: "soft" }}>Build ChatGPT plugins</span>
+          <br></br>
+          in less than
+          <span style={{ color: "#6360FF", fontWeight: "bold" }}>
+            &nbsp;2 minutes.
+          </span>
         </Typography>
       </Box>
-      <Box
+      {/* <Box
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -59,7 +62,7 @@ const HeroSection: React.FC = () => {
           Build your ChatGPT custom plugin without code, <br />
           in less than 2 minutes.
         </Typography>
-      </Box>
+      </Box> */}
       <Box my={1} textAlign="center" sx={{ paddingBottom: 7 }}>
         <Button
           variant="contained"

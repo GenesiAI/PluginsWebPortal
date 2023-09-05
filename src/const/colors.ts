@@ -5,6 +5,7 @@ export const MAIN_03_LIGHT = "#AB5CD1";
 export const MAIN_03_DARK = "#672B83";
 export const WHITE = "#FFF";
 export const DANGER = "#C34343";
+export const DANGER_LIGHT = "#FF7C7C";
 export const BLACK = "#1E1E1E";
 
 export const primaryStyle = {
