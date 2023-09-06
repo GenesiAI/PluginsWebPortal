@@ -80,6 +80,10 @@ export const validationSectionDescription: ComponentProps<
     message:
       "Please enter a valid description (up to 50 characters with only spaces, letters and numbers)"
   }
+  // pattern: {
+  //   value: /^[a-zA-Z0-9]+$/,
+  //   message: "Please enter a valid description (up to 200 characters)"
+  // }
 };
 export const validationSectionContent: ComponentProps<
   typeof Field
