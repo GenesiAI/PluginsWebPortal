@@ -74,11 +74,11 @@ export const validationSectionDescription: ComponentProps<
   maxLength: {
     value: 200,
     message: "Please enter a valid description (up to 200 characters)"
-  },
-  pattern: {
-    value: /^[a-zA-Z0-9]+$/,
-    message: "Please enter a valid description (up to 200 characters)"
   }
+  // pattern: {
+  //   value: /^[a-zA-Z0-9]+$/,
+  //   message: "Please enter a valid description (up to 200 characters)"
+  // }
 };
 export const validationSectionContent: ComponentProps<
   typeof Field
