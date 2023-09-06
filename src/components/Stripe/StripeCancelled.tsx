@@ -1,11 +1,13 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, CircularProgress, Typography } from "@mui/material";
+import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import GoToPlugins from "./GoToPlugins";
 import { useRedirectToStripe } from "./useRedirectToStripe";
 
 const StripeCancelled = () => {
   const { error, redirectToStripe, isLoading } = useRedirectToStripe();
+  const { isLogged } = useUserInfoCtx();
   return (
     <>
       {/* <BoxContainer> */}
@@ -14,29 +16,31 @@ const StripeCancelled = () => {
       </Typography>
       {/* </BoxContainer> */}
       <div className="mt-24 flex justify-center gap-4">
-        <Button
-          variant="contained"
-          color="success"
-          startIcon={
-            <FontAwesomeIcon
-              icon={faPlus}
-              className="motion-safe:active:animate-ping"
-            />
-          }
-          type="button"
-          onClick={isLoading ? undefined : redirectToStripe}
-        >
-          {isLoading ? (
-            <CircularProgress
-              size={24}
-              sx={{
-                color: (theme) => theme.palette.success.contrastText
-              }}
-            />
-          ) : (
-            "Retry"
-          )}
-        </Button>
+        {isLogged && (
+          <Button
+            variant="contained"
+            color="success"
+            startIcon={
+              <FontAwesomeIcon
+                icon={faPlus}
+                className="motion-safe:active:animate-ping"
+              />
+            }
+            type="button"
+            onClick={isLoading ? undefined : redirectToStripe}
+          >
+            {isLoading ? (
+              <CircularProgress
+                size={24}
+                sx={{
+                  color: (theme) => theme.palette.success.contrastText
+                }}
+              />
+            ) : (
+              "Retry"
+            )}
+          </Button>
+        )}
         <GoToPlugins />
       </div>
     </>

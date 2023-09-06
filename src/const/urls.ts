@@ -6,17 +6,16 @@ export const pluginBuilder = (guid: string) => plugin.replace(":guid", guid);
 export const support = "support";
 export const contacts = "contacts";
 export const checkout = {
-  base: "checkout",
+  base: "manage-subscriptions",
   success: "success",
   cancelled: "cancelled"
 };
+export const sitemapUrls: sitemapUrlsT[] = [
+  { url: home, changefreq: "weekly", priority: 0.9 },
+  { url: support, changefreq: "weekly", priority: 0.5 },
+  { url: contacts, changefreq: "weekly", priority: 0.7 }
+];
 
-/*
-
-*/
-/**
- *
- */
 interface sitemapUrlsT {
   url: string;
   /**
@@ -57,8 +56,3 @@ interface sitemapUrlsT {
    *  */
   priority: number;
 }
-export const sitemapUrls: sitemapUrlsT[] = [
-  { url: home, changefreq: "weekly", priority: 0.9 },
-  { url: support, changefreq: "weekly", priority: 0.5 },
-  { url: contacts, changefreq: "weekly", priority: 0.7 }
-];

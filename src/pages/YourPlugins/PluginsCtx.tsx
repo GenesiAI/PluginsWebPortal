@@ -1,5 +1,6 @@
-import { Button, Typography } from "@mui/material";
 import { PluginApi } from "apis/api";
+import Button from "components/Button";
+import Modal from "components/Modal";
 import { debugConsole } from "components/util";
 import React, { memo, useCallback, useContext, useState } from "react";
 
@@ -38,14 +39,16 @@ const PluginsCtx = ({ children }: inputProps) => {
 
   if (errorFetch) {
     return (
-      <>
-        <Typography variant="h6" component="h2" color="error">
-          {errorFetch}
-        </Typography>
-        <Button onClick={fetchPlugins} variant="contained" color="error">
-          Retry?
-        </Button>
-      </>
+      <Modal
+        actions={
+          <Button onClick={fetchPlugins} color="error" variant="darkBg">
+            Retry?
+          </Button>
+        }
+        open
+        titleText="Generic error"
+        contentText={errorFetch}
+      />
     );
   }
 

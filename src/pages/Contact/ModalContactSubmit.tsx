@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import Button from "components/Button";
 import Modal from "components/Modal";
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import { home } from "const/urls";
@@ -22,8 +22,12 @@ const ModalContactSubmit = () => {
       // handleClose={goToHome}
       actions={
         <>
-          <Button onClick={handleLogin}>Go to your plugins</Button>
-          <Button onClick={goToHome}>See our homepage!</Button>
+          <Button onClick={handleLogin} color="primary" variant="darkBg">
+            Go to your plugins
+          </Button>
+          <Button onClick={goToHome} color="primary" variant="darkBg">
+            See our homepage!
+          </Button>
         </>
       }
     />

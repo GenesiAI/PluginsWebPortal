@@ -12,7 +12,7 @@ import {
 } from "./FieldsRules";
 
 const Fields = () => {
-  const { isSubmitted } = useFormState();
+  const { isSubmitting } = useFormState();
 
   return (
     <Grid container spacing={2}>
@@ -37,7 +37,7 @@ const Fields = () => {
           color="primary"
           startIcon={<SendIcon />}
           type="submit"
-          isLoading={isSubmitted}
+          isLoading={isSubmitting}
         >
           Send Message
         </ButtonLoading>
