@@ -70,24 +70,11 @@ const AppRouter: React.FC = () => {
             </Container>
           }
         />
+        <Route path={checkout.success} element={<StripeSuccessLazy />} />
         <Route path={checkout.base}>
           <Route index element={<Navigate to={home} replace />} />
-          <Route
-            path={checkout.success}
-            element={
-              <ProtectedRoute>
-                <StripeSuccessLazy />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={checkout.cancelled}
-            element={
-              <ProtectedRoute>
-                <StripeCancelledLazy />
-              </ProtectedRoute>
-            }
-          />
+          <Route path={checkout.success} element={<StripeSuccessLazy />} />
+          <Route path={checkout.cancelled} element={<StripeCancelledLazy />} />
           <Route path="*" element={<Navigate to={home} replace />} />
         </Route>
         <Route path="*" element={<Navigate to={home} replace />} />

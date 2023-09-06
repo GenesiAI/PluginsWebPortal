@@ -11,7 +11,7 @@ import { usePluginsCtx } from "./PluginsCtx";
 const PluginFooter = () => {
   const navigate = useNavigate();
   const { pluginData, loading } = usePluginsCtx();
-  const { isLoading, redirectToStripe } = useRedirectToStripe();
+  const { isLoading, redirectToStripe, modalError } = useRedirectToStripe();
   const { userInfo } = useUserInfoCtx();
 
   if (loading) return null;
@@ -27,6 +27,7 @@ const PluginFooter = () => {
         alignContent: "center"
       }}
     >
+      {modalError}
       <Tooltip
         title={
           canCreateNewPlugin ? "Create new plugin" : "Upgrade to create more!"

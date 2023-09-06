@@ -10,16 +10,22 @@ type InputProps = {
 };
 
 const Subscribe = ({ handleClose, userInfo }: InputProps) => {
-  const { redirectToStripe, isLoading } = useRedirectToStripe();
+  const { redirectToStripe, isLoading, modalError } = useRedirectToStripe();
 
   if (isLoading) {
     return <LoadingSpinner removeText />;
   }
 
   return userInfo.isPremium ? (
-    <UnsubscribeIcon onClick={handleClose} />
+    <>
+      {modalError}
+      <UnsubscribeIcon onClick={handleClose} />
+    </>
   ) : (
-    <UpgradeIcon onClick={redirectToStripe} />
+    <>
+      {modalError}
+      <UpgradeIcon onClick={redirectToStripe} />
+    </>
   );
 };
 

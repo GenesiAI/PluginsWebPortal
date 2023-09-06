@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import Button from "components/Button";
 import Modal from "components/Modal";
 import React from "react";
 
@@ -30,7 +30,9 @@ const AlertDialog: React.FC<AlertDialogProps> = ({
       handleClose={handleClose}
       actions={
         <>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose} color="primary" variant="darkBg">
+            Cancel
+          </Button>
           <Button onClick={handleConfirm} color="error">
             Delete
           </Button>
