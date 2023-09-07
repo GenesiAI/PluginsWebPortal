@@ -37,7 +37,7 @@ const AppRouter: React.FC = () => {
         <Route
           path={questions}
           element={
-            <Container maxWidth="md" sx={someBasicStyle}>
+            <Container maxWidth="lg" sx={someBasicStyle}>
               <Questions />
             </Container>
           }

@@ -29,7 +29,10 @@ const Questions = () => {
               onChange={handleChange(`panel${index}`)}
               className="border-0 shadow-none before:content-none"
             >
-              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                className="my-2"
+              >
                 <Typography className="text-primary">{faq.question}</Typography>
               </AccordionSummary>
               <AccordionDetails className="border-0 shadow-none">
