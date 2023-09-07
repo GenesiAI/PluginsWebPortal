@@ -10,6 +10,7 @@ const theme = createTheme({
     borderRadius: 8
   },
   typography: {
+    fontFamily: "",
     h2: {
       fontSize: "2rem",
       "@media (min-width:600px)": {

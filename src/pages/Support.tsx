@@ -13,7 +13,6 @@ import AddSection from "../img/AddSection.png";
 import EditorPic from "../img/Editor.png";
 import Plugin from "../img/Plugin.png";
 import Store from "../img/Store.png";
-import "../support.css";
 
 function Support() {
   const [activeSection, setActiveSection] = useState<null | string>(null);
