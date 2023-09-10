@@ -38,6 +38,7 @@ const PluginSections = () => {
                 <Field
                   name={`sections.${index}.description`}
                   label="Section Description"
+                  helperText="Explain the AI what is in the content"
                   validation={validationSectionDescription}
                 />
               </LayoutItemGrid>
@@ -45,6 +46,7 @@ const PluginSections = () => {
                 <Field
                   name={`sections.${index}.content`}
                   label="Section Content"
+                  helperText="Insert the data to share with AI"
                   validation={validationSectionContent}
                   multiline
                   rows={4}
