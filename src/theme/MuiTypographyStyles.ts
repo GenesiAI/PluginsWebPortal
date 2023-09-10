@@ -15,6 +15,11 @@ declare module "@mui/material/Typography" {
 type MuiTypographyT = NonNullable<ThemeOptions["components"]>["MuiTypography"];
 
 export const MuiTypography: MuiTypographyT = {
+  styleOverrides: {
+    root: {
+      fontFamily: "Poppins"
+    }
+  },
   defaultProps: {
     variantMapping: {
       t1: "h1",

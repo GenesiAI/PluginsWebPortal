@@ -15,6 +15,7 @@ interface InputProps {
   contentText: React.ReactNode;
   actions: React.ReactNode;
   open: boolean;
+  centerActions?: boolean;
   handleClose?: () => void;
 }
 
@@ -23,7 +24,8 @@ const Modal = ({
   handleClose,
   actions,
   titleText,
-  contentText
+  contentText,
+  centerActions
 }: InputProps) => {
   const fullScreen = useMediaQuery<Theme>((theme) =>
     theme.breakpoints.down("md")
@@ -52,7 +54,11 @@ const Modal = ({
       <DialogContent className="bg-primary pt-2 pb-10">
         <DialogContentText>{_contentText}</DialogContentText>
       </DialogContent>
-      <DialogActions className="bg-primary">{actions}</DialogActions>
+      <DialogActions
+        className={`bg-primary pb-5${centerActions ? " justify-center" : ""}`}
+      >
+        {actions}
+      </DialogActions>
     </Dialog>
   );
 };

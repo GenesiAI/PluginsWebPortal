@@ -3,22 +3,31 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Box, CircularProgress, IconButton, Tooltip } from "@mui/material";
 import { useRedirectToStripe } from "components/Stripe/useRedirectToStripe";
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
+import { debugConsole } from "components/util";
 import { pluginBuilder } from "const/urls";
 import { useNavigate } from "react-router-dom";
 import { IconButtonTheme } from "theme";
 import { usePluginsCtx } from "./PluginsCtx";
+import useModalMaxPlugins from "./useModalMaxPlugins";
 
 const PluginFooter = () => {
   const navigate = useNavigate();
   const { pluginData, loading } = usePluginsCtx();
   const { isLoading, redirectToStripe, modalError } = useRedirectToStripe();
   const { userInfo } = useUserInfoCtx();
+  const { modalMaxPlugin, openModalMaxPlugin } = useModalMaxPlugins();
 
   if (loading) return null;
   const canCreateNewPlugin =
-    (pluginData?.pluginsCount || 0) < (pluginData?.maxPlugins || 0) &&
-    !userInfo?.isPremium;
+    (pluginData?.pluginsCount || 0) < (pluginData?.maxPlugins || 0);
 
+  const toolTipTitle = canCreateNewPlugin
+    ? "Create new plugin"
+    : !userInfo?.isPremium
+    ? "Upgrade to create more!"
+    : "You reached the maximum number of plugins!";
+  const isGoldButton = !canCreateNewPlugin && !userInfo?.isPremium;
+  debugConsole(isGoldButton, canCreateNewPlugin, userInfo?.isPremium);
   return (
     <Box
       sx={{
@@ -27,22 +36,19 @@ const PluginFooter = () => {
         alignContent: "center"
       }}
     >
+      {modalMaxPlugin}
       {modalError}
-      <Tooltip
-        title={
-          canCreateNewPlugin ? "Create new plugin" : "Upgrade to create more!"
-        }
-        arrow
-        placement="top"
-      >
+      <Tooltip title={toolTipTitle} arrow placement="top">
         <span>
           {/* put this on the right, using float it goes out of the div */}
           <IconButton
-            className={!canCreateNewPlugin ? "!bg-amber-600" : ""}
+            className={isGoldButton ? "!bg-amber-600" : ""}
             onClick={
               canCreateNewPlugin
                 ? () => navigate(`/${pluginBuilder("new")}`)
-                : redirectToStripe
+                : !userInfo?.isPremium
+                ? redirectToStripe
+                : openModalMaxPlugin
             }
             sx={IconButtonTheme}
           >

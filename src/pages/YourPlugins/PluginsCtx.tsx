@@ -22,7 +22,9 @@ type inputProps = {
 const PluginsCtx = ({ children }: inputProps) => {
   const [data, setPlugin] = useState<PluginsState>(initialData);
   const [errorFetch, setErrorFetch] = useState<React.ReactNode>(null);
+  debugConsole(data);
   const fetchPlugins = useCallback(async () => {
+    setErrorFetch(null);
     const pluginApi = new PluginApi();
     try {
       const response = await pluginApi.apiPluginsGet();

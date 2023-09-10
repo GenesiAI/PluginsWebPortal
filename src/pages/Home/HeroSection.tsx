@@ -32,7 +32,7 @@ const HeroSection: React.FC = () => {
         >
           <span style={{ fontWeight: "soft" }}>Build ChatGPT plugins</span>
           <br></br>
-          in less than
+          in
           <span style={{ color: "#6360FF", fontWeight: "bold" }}>
             &nbsp;2 minutes.
           </span>
