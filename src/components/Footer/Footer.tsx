@@ -1,8 +1,8 @@
 import Typography from "components/Typography";
 import { contacts, home, support } from "const/urls";
-import LogoWithName from "img/LogoWithName";
+import LogoGenesiWithName from "img/LogoGenesiWithName";
 import { Fragment, memo } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Socials from "./Socials";
 
 const Links = [
@@ -12,11 +12,11 @@ const Links = [
 
 const renderLinks = Links.map(({ text, to }, index) => (
   <Fragment key={to}>
-    <RouterLink to={to}>
+    <Link to={to}>
       <Typography variant="t4" className="!text-white !font-bold">
         {text}
       </Typography>
-    </RouterLink>
+    </Link>
     {index !== Links.length - 1 && (
       <div className="w-px bg-white border-0 self-stretch invisible md:visible"></div>
     )}
@@ -28,9 +28,9 @@ const Footer = () => {
     <footer className="mt-12 min-h-[13.75rem] bg-primary flex flex-col justify-between">
       <div className="pt-6 md:pt-10 px-4 md:px-12">
         <div className="flex md:mx-2 justify-between align-middle">
-          <RouterLink to={home}>
-            <LogoWithName />
-          </RouterLink>
+          <Link to={home} className="fill-white scale-150">
+            <LogoGenesiWithName />
+          </Link>
           <Socials />
         </div>
         <hr className="h-px my-4 bg-white border-0" />
