@@ -16,7 +16,8 @@ export const CardsInfo: CardType[] = [
     cost: "0",
     feats: [
       "Create 1 custom ChatGPT Plugin",
-      "Access to basic functionalities"
+      "Access to basic functionalities",
+      ""
     ],
     buttonText: "Join NOW",
     action: "LOGIN"
@@ -28,7 +29,8 @@ export const CardsInfo: CardType[] = [
     cost: "19.90",
     feats: [
       "Enjoy faster response times",
-      "Develop up to 3 custom ChatGPT Plugins"
+      "Develop up to 3 custom ChatGPT Plugins",
+      ""
     ],
     buttonText: "Buy NOW",
     action: "BUY"
@@ -43,7 +45,7 @@ export const CardsInfo: CardType[] = [
       "Customizable features to suit your business",
       "Dedicated customer support"
     ],
-    buttonText: "Contact Us for Pricing",
+    buttonText: "Contact Us",
     action: "CONTACT"
   }
 ];

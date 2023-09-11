@@ -1,10 +1,15 @@
 import { PaymentsApi } from "apis/api";
 import Button from "components/Button";
 import Modal from "components/Modal";
+import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import { debugConsole } from "components/util";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 export const useRedirectToStripe = () => {
+  const userInfo = useUserInfoCtx();
+  const userInfoRef = useRef(userInfo);
+  userInfoRef.current = userInfo;
+
   const [{ isLoading, error }, setHttpState] = useState({
     isLoading: false,
     error: ""
@@ -13,10 +18,19 @@ export const useRedirectToStripe = () => {
   const resetState = useCallback(() => {
     setHttpState({ isLoading: false, error: "" });
   }, []);
+
   const redirectToStripe = useCallback(async () => {
     setHttpState({ isLoading: true, error: "" });
-    const paymentsApi = new PaymentsApi();
     try {
+      // I try login, if it's premium do redirect without call stripe
+      const { userInfo } = await userInfoRef.current.manualLogin(
+        (userInfo) => !!userInfo.isPremium
+      );
+      if (userInfo?.isPremium) {
+        return;
+      }
+
+      const paymentsApi = new PaymentsApi();
       await paymentsApi.apiPaymentsIntentGet().then((res) => {
         window.location.href = res.data as unknown as string;
       });

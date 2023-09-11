@@ -9,7 +9,7 @@ import { debugConsole } from "../util";
 const useHandlerAuth = () => {
   const [isLoadingUser, setIsLoadingUser] = useState<boolean>(true);
   const [user, setUser] = useState<User | null>(null);
-  const [userInfo, setUserInfo] = useState<UserInfo>({});
+  const [userInfo, setUserInfo] = useState<UserInfo>();
   const userInfoRef = useRef(userInfo);
   userInfoRef.current = userInfo;
 
@@ -68,7 +68,7 @@ const useHandlerAuth = () => {
     handleLogout: logout,
     isLoadingUser,
     user,
-    userInfo
+    userInfo: userInfo || {}
   };
 };
 
