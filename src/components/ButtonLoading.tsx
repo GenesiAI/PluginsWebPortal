@@ -1,22 +1,24 @@
-import { Button, CircularProgress } from "@mui/material";
+import { CircularProgress } from "@mui/material";
+import classNames from "classnames";
 import { ComponentProps } from "react";
+import Button from "./Button";
+import Typography from "./Typography";
 
 interface InputProps {
   children: React.ReactNode;
   isLoading: boolean;
   disabled?: boolean;
+  removeText?: boolean;
   startIcon?: ComponentProps<typeof Button>["startIcon"];
   onClick?: ComponentProps<typeof Button>["onClick"];
-  color?: Extract<
-    ComponentProps<typeof Button>["color"],
-    "success" | "error" | "primary" | "secondary"
-  >;
+  color?: ComponentProps<typeof Button>["color"];
   type?: ComponentProps<typeof Button>["type"];
 }
 
 const ButtonLoading = ({
   children,
-  color = "success",
+  removeText,
+  color = "primary",
   type = "button",
   isLoading,
   disabled,
@@ -25,7 +27,6 @@ const ButtonLoading = ({
 }: InputProps) => {
   return (
     <Button
-      variant="contained"
       color={color}
       startIcon={startIcon}
       disabled={disabled}
@@ -33,10 +34,19 @@ const ButtonLoading = ({
       type={type}
     >
       {isLoading ? (
-        <CircularProgress
-          size={24}
-          sx={{ color: (theme) => theme.palette[color].contrastText }}
-        />
+        <>
+          <CircularProgress
+            className={classNames(
+              "text-inherit bg-inherit md:w-6 md:h-6 w-4 h-4",
+              !removeText && "me-2"
+            )}
+          />
+          {!removeText && (
+            <Typography variant="t5" className="text-inherit font-bold">
+              Loading...
+            </Typography>
+          )}
+        </>
       ) : (
         children
       )}

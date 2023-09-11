@@ -2,6 +2,7 @@ import SendIcon from "@mui/icons-material/Send";
 import { Grid } from "@mui/material";
 import ButtonLoading from "components/ButtonLoading";
 import LayoutItemGrid from "components/LayoutItemGrid";
+import Typography from "components/Typography";
 import { memo } from "react";
 import { useFormState } from "react-hook-form";
 import Field from "../../components/Field";
@@ -35,11 +36,13 @@ const Fields = () => {
       <LayoutItemGrid full className="text-right">
         <ButtonLoading
           color="primary"
-          startIcon={<SendIcon />}
+          startIcon={!isSubmitting && <SendIcon />}
           type="submit"
           isLoading={isSubmitting}
         >
-          Send Message
+          <Typography variant="t5" className="text-inherit">
+            Send Message
+          </Typography>
         </ButtonLoading>
       </LayoutItemGrid>
     </Grid>

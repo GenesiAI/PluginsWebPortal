@@ -1,5 +1,6 @@
 import { Button as ButtonCore } from "@mui/material";
 import { ComponentProps } from "react";
+import Typography from "./Typography";
 
 interface InputProps {
   children?: React.ReactNode;
@@ -24,6 +25,15 @@ const Button = ({
   endIcon,
   className
 }: InputProps) => {
+  const _children =
+    typeof children === "string" ? (
+      <Typography variant="t5" className="text-inherit font-bold">
+        {children}
+      </Typography>
+    ) : (
+      children
+    );
+
   return (
     <ButtonCore
       variant={variant}
@@ -35,7 +45,7 @@ const Button = ({
       type={type}
       className={className}
     >
-      {children}
+      {_children}
     </ButtonCore>
   );
 };
