@@ -1,4 +1,4 @@
-import { Avatar, Box, IconButton, Menu, Tooltip } from "@mui/material";
+import { Avatar, IconButton, Menu, Tooltip } from "@mui/material";
 import LogoFallback from "img/UserWithoutImage.svg";
 import { ComponentProps } from "react";
 import useActions from "./useActions";
@@ -19,8 +19,6 @@ const MenuListPropsStyle: TyMenu["MenuListProps"] = {
   className: "px-2"
 };
 
-// const isMd = useMediaQuery<Theme>((theme) => theme.breakpoints.down("md"));
-
 const AfterLogin = () => {
   const {
     actions,
@@ -32,7 +30,7 @@ const AfterLogin = () => {
   } = useActions();
 
   return (
-    <Box className="w-min justify-self-end col-span-2">
+    <>
       <Tooltip title="Open menu">
         <IconButton onClick={handleOpen}>
           <Avatar
@@ -54,7 +52,7 @@ const AfterLogin = () => {
       >
         {actions}
       </Menu>
-    </Box>
+    </>
   );
 };
 
