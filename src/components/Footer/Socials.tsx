@@ -24,7 +24,7 @@ const Socials = () => {
         <LogoDiscord />
       </Link>
       <Link
-        to="https://twitter.com/aipluginApp"
+        to="https://twitter.com/Genesi_Ai"
         target="_blank"
         className="w-6 h-6 fill-white"
       >
