@@ -31,7 +31,7 @@ const StripeCancelledLazy = React.lazy(
 const someBasicStyle: any = {};
 const AppRouter: React.FC = () => {
   return (
-    <Suspense fallback={<LoadingSpinner />}>
+    <Suspense fallback={<LoadingSpinner fullScreen />}>
       <Routes>
         <Route path={home} element={<Home />} />
         <Route

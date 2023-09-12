@@ -11,7 +11,7 @@ const ProtectedRoute = ({ children }: InputProps) => {
   const { isLogged, isLoadingUser } = useUserInfoCtx();
 
   if (isLoadingUser) {
-    return <LoadingSpinner />;
+    return <LoadingSpinner fullScreen />;
   }
   return isLogged ? <>{children}</> : <Navigate to={home} replace />;
 };
