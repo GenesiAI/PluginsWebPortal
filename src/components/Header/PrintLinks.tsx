@@ -1,30 +1,33 @@
+import classNames from "classnames";
 import Typography from "components/Typography";
 import { Link, matchPath, useLocation } from "react-router-dom";
 import useHeader from "./useHeader";
 
 type InputProps = ReturnType<typeof useHeader>;
-const HeaderMd = ({ links }: InputProps) => {
+const PrintLinks = ({ links, handleCloseNavMenu }: InputProps) => {
   const { pathname } = useLocation();
   return (
-    <div className="md:flex gap-4 hidden col-span-8 justify-center">
+    <>
       {links.map((link) => {
         const linkTo = `/${link.toLowerCase().replace(" ", "-")}`;
         return (
-          <Link to={linkTo} key={link}>
+          <Link to={linkTo} key={link} onClick={handleCloseNavMenu}>
             <Typography
               variant="t4"
-              className={(matchPath(pathname, linkTo)
-                ? "text-tertiary"
-                : "text-secondary hover:text-tertiary"
-              ).concat(" font-bold")}
+              className={classNames(
+                matchPath(pathname, linkTo)
+                  ? "text-tertiary"
+                  : "text-secondary hover:text-tertiary",
+                "font-bold ps-4 md:ps-0"
+              )}
             >
               {link}
             </Typography>
           </Link>
         );
       })}
-    </div>
+    </>
   );
 };
 
-export default HeaderMd;
+export default PrintLinks;
