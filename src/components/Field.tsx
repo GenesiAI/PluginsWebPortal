@@ -15,6 +15,8 @@ type InputProps = {
   variant?: ComponentProps<typeof TextFieldElement>["variant"];
   helperText?: ComponentProps<typeof TextFieldElement>["helperText"];
   className?: ComponentProps<typeof TextFieldElement>["className"];
+  disabled?: ComponentProps<typeof TextFieldElement>["disabled"];
+  inputProps?: ComponentProps<typeof TextFieldElement>["inputProps"];
 } & TextArea;
 
 const isTextArea = (props: InputProps): boolean =>

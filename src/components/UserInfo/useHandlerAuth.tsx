@@ -15,14 +15,22 @@ const useHandlerAuth = () => {
 
   const navigate = useNavigate();
 
+  const getUserData = useCallback(async () => {
+    try {
+      const userApi = new UserApi();
+      const response = await userApi.apiUserGet();
+      setUserInfo(response.data);
+      return response.data;
+    } catch (error) {
+      debugConsole("Error fetching users:", error);
+    }
+  }, []);
+
   const afterLogin = useCallback(
     async (noRedirect?: boolean | ((user: UserInfo) => boolean)) => {
       try {
         if (!userInfoRef.current) {
-          const userApi = new UserApi();
-          const response = await userApi.apiUserGet();
-          setUserInfo(response.data);
-          userInfoRef.current = response.data;
+          userInfoRef.current = (await getUserData()) || {};
         }
 
         if (typeof noRedirect === "function") {
@@ -67,6 +75,7 @@ const useHandlerAuth = () => {
     manualLogin,
     handleLogout: logout,
     isLoadingUser,
+    getUserData,
     user,
     userInfo
   };

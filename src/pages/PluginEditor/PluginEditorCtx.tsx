@@ -1,8 +1,7 @@
 import { Button, Skeleton, Typography } from "@mui/material";
-import { createContext, useContext, useMemo } from "react";
-import { FormContainer } from "react-hook-form-mui";
+import { createContext, useContext, useMemo, useRef } from "react";
 import { BoxContainer } from "theme";
-import PluginEditor from "./PluginEditor";
+import PluginEditorContainer from "./PluginEditorContainer";
 import PluginEditorTitle from "./PluginEditorTitle";
 import usePluginEditor from "./usePluginEditor";
 
@@ -14,7 +13,11 @@ type ctxTStatus = Pick<
   | "isNewPlugin"
   | "setShowDeleteDialog"
   | "showDeleteDialog"
->;
+  | "defaultData"
+  | "savePlugin"
+> & {
+  htmlRefChat: React.RefObject<HTMLDivElement>;
+};
 
 const initialCtxStatus: ctxTStatus = {
   deleteInProgress: false,
@@ -22,7 +25,10 @@ const initialCtxStatus: ctxTStatus = {
   error: "",
   isNewPlugin: true,
   setShowDeleteDialog: () => {},
-  showDeleteDialog: false
+  showDeleteDialog: false,
+  defaultData: {},
+  savePlugin: async () => {},
+  htmlRefChat: { current: null }
 };
 
 const CtxStatus = createContext<ctxTStatus>(initialCtxStatus);
@@ -40,6 +46,7 @@ const PluginEditorCtx = () => {
     showDeleteDialog,
     fetchData
   } = usePluginEditor();
+  const htmlRefChat = useRef<HTMLDivElement>(null);
 
   const ctx = useMemo(
     () => ({
@@ -48,9 +55,14 @@ const PluginEditorCtx = () => {
       error,
       isNewPlugin,
       setShowDeleteDialog,
-      showDeleteDialog
+      showDeleteDialog,
+      defaultData,
+      savePlugin,
+      htmlRefChat
     }),
     [
+      defaultData,
+      savePlugin,
       deleteInProgress,
       deletePlugin,
       error,
@@ -90,14 +102,7 @@ const PluginEditorCtx = () => {
 
   return (
     <CtxStatus.Provider value={ctx}>
-      <FormContainer
-        defaultValues={defaultData}
-        onSuccess={savePlugin}
-        mode="onBlur"
-        reValidateMode="onChange"
-      >
-        <PluginEditor />
-      </FormContainer>
+      <PluginEditorContainer />
     </CtxStatus.Provider>
   );
 };

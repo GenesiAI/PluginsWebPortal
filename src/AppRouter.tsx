@@ -64,7 +64,7 @@ const AppRouter: React.FC = () => {
           path={plugin}
           element={
             <ProtectedRoute>
-              <Container maxWidth="md">
+              <Container>
                 <PluginEditorLazy />
               </Container>
             </ProtectedRoute>

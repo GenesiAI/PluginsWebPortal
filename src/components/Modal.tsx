@@ -3,7 +3,6 @@ import {
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle,
   Theme,
   useMediaQuery
 } from "@mui/material";
@@ -50,7 +49,7 @@ const Modal = ({
 
   return (
     <Dialog open={open} onClose={handleClose} fullScreen={fullScreen}>
-      <DialogTitle className="bg-primary">{_titleText}</DialogTitle>
+      <div className="bg-primary px-4 py-6">{_titleText}</div>
       <DialogContent className="bg-primary pt-2 pb-10">
         <DialogContentText>{_contentText}</DialogContentText>
       </DialogContent>
