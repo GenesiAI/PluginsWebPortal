@@ -21,10 +21,10 @@ const PluginSections = () => {
     <Grid item margin="auto">
       {fields?.map(({ id }, index) => (
         <Fragment key={id}>
-          <Divider className="!my-4" />
+          <Divider className="my-4" />
           <Box className="md:p-2 rounded-xl md:hover:bg-gray-200/60">
             <Grid container spacing={4}>
-              <LayoutItemGrid className="!pt-1 md:!pt-8">
+              <LayoutItemGrid className="pt-1 md:pt-8">
                 <Field
                   name={`sections.${index}.name`}
                   label="Section Name"
