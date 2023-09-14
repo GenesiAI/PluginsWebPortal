@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Box, CircularProgress, IconButton, Tooltip } from "@mui/material";
 import { useRedirectToStripe } from "components/Stripe/useRedirectToStripe";
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
-import { debugConsole } from "components/util";
 import { pluginBuilder } from "const/urls";
 import { useNavigate } from "react-router-dom";
 import { IconButtonTheme } from "theme";
@@ -27,7 +26,7 @@ const PluginFooter = () => {
     ? "Upgrade to create more!"
     : "You reached the maximum number of plugins!";
   const isGoldButton = !canCreateNewPlugin && !userInfo?.isPremium;
-  debugConsole(isGoldButton, canCreateNewPlugin, userInfo?.isPremium);
+
   return (
     <Box
       sx={{

@@ -1,5 +1,6 @@
 import { ComponentProps } from "react";
 import { TextFieldElement, TextareaAutosizeElement } from "react-hook-form-mui";
+import Counter from "./Counter";
 
 type TextArea = {
   multiline?: ComponentProps<typeof TextareaAutosizeElement>["multiline"];
@@ -19,15 +20,25 @@ type InputProps = {
 const isTextArea = (props: InputProps): boolean =>
   !!props.rows || !!props.multiline || !!props.resizeStyle;
 
+const getMaxCharacters = (
+  validation?: ComponentProps<typeof TextFieldElement>["validation"]
+) => (validation?.maxLength as unknown as { value?: number })?.value || 0;
+
 const Field = (props: InputProps) =>
   isTextArea(props) ? (
-    <TextareaAutosizeElement
-      required
-      variant="filled"
-      resizeStyle="vertical"
-      fullWidth
-      {...props}
-    />
+    <div className="relative">
+      <TextareaAutosizeElement
+        required
+        variant="filled"
+        resizeStyle="vertical"
+        fullWidth
+        {...props}
+      />
+      <Counter
+        name={props.name}
+        maxCharacters={getMaxCharacters(props.validation)}
+      />
+    </div>
   ) : (
     <TextFieldElement required variant="filled" fullWidth {...props} />
   );
