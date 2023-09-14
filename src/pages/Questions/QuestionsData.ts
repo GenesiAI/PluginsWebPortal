@@ -1,4 +1,4 @@
-export const faqs = [
+export const QuestionsData = [
   {
     question: "Who can use GenesiAI?      ",
     answer:
@@ -16,10 +16,10 @@ export const faqs = [
       "Nope! We've got you covered. You don't need to worry about hosting or managing any technical infrastructure for your ChatGPT plugins. We take care of all that behind the scenes, so you can focus on creating awesome plugins. "
   },
 
-  {
-    question: "How many plugins can I create with my profile?",
-    answer: ""
-  },
+  // {
+  //   question: "How many plugins can I create with my profile?",
+  //   answer: ""
+  // },
   {
     question: "Can GenesiAI support my business as it grows?  ",
     answer:

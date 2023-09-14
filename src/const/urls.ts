@@ -5,6 +5,7 @@ export const plugin = "plugin/:guid";
 export const pluginBuilder = (guid: string) => plugin.replace(":guid", guid);
 export const support = "support";
 export const contacts = "contacts";
+export const questions = "questions";
 export const checkout = {
   base: "manage-subscriptions",
   success: "success",

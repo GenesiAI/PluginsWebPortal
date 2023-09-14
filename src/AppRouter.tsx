@@ -5,6 +5,7 @@ import {
   contacts,
   home,
   plugin,
+  questions,
   support,
   yourPlugins
 } from "const/urls";
@@ -14,8 +15,9 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import LoadingSpinner from "./components/LoadingSpinner";
 
+import Home from "pages/Home";
+import Questions from "pages/Questions";
 import Support from "pages/Support";
-import Home from "./pages/Home";
 
 const PluginEditorLazy = React.lazy(() => import("pages/PluginEditor"));
 const YourPluginsLazy = React.lazy(() => import("pages/YourPlugins"));
@@ -26,14 +28,20 @@ const StripeCancelledLazy = React.lazy(
   () => import("components/Stripe/StripeCancelled")
 );
 
-const someBasicStyle: any = {
-  backgroundColor: (theme: any) => theme.palette.background.paper
-};
+const someBasicStyle: any = {};
 const AppRouter: React.FC = () => {
   return (
     <Suspense fallback={<LoadingSpinner />}>
       <Routes>
         <Route path={home} element={<Home />} />
+        <Route
+          path={questions}
+          element={
+            <Container maxWidth="lg" sx={someBasicStyle}>
+              <Questions />
+            </Container>
+          }
+        />
         <Route
           path={yourPlugins}
           element={
