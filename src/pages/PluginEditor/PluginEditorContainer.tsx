@@ -12,9 +12,9 @@ const PluginEditorContainer = () => {
   return (
     <div>
       <PluginEditorTitle />
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col items-end md:flex-row md:items-start">
         <BoxContainer
-          className="basis-2/6 sticky top-20 h-min z-10 md:mt-6"
+          className="basis-2/6 sticky top-20 h-min z-10 md:mt-6 w-fit"
           removePadding
           removeMargin
         >

@@ -28,7 +28,7 @@ const getMaxCharacters = (
 
 const Field = (props: InputProps) =>
   isTextArea(props) ? (
-    <div className="relative">
+    <div className="relative w-full">
       <TextareaAutosizeElement
         required
         variant="filled"
