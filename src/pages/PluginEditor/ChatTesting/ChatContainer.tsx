@@ -18,28 +18,28 @@ const ChatContainer = () => {
       defaultValues={defaultData}
       onSuccess={sendChat}
       mode="onBlur"
-      FormProps={{ className: "h-full" }}
+      FormProps={{ className: "h-[calc(100vh-8rem)] mt-8" }}
     >
       <div className="flex flex-col justify-between h-full">
-        <div>
-          <Typography
-            variant="t4"
-            className="font-bold text-primary px-2 md:mx-6 sm:mt-4 block"
-          >
-            Want to test your plugin? <br />
-            It's easy, try here!
-          </Typography>
-          <Typography
-            variant="t5"
-            className="text-secondaryDark block text-right px-2 me-3 shadow-xl rounded-xl pb-2"
-          >
-            {`${counter}/${maxMessagesLast24H}`}
-          </Typography>
-        </div>
-        <div className="flex flex-col justify-between pb-4">
+        <div className="max-h-[85%] overflow-y-scroll">
+          <div className="sticky top-0 md:bg-slate-50 z-10">
+            <Typography
+              variant="t4"
+              className="font-bold text-primary px-2 md:mx-6 block"
+            >
+              Want to test your plugin? <br />
+              It's easy, try here!
+            </Typography>
+            <Typography
+              variant="t5"
+              className="text-secondaryDark block text-right px-2 me-3 shadow-xl rounded-xl pb-2"
+            >
+              {`${counter}/${maxMessagesLast24H}`}
+            </Typography>
+          </div>
           <Chat messages={messages} />
-          <Footer clearChat={clearChat} />
         </div>
+        <Footer clearChat={clearChat} />
       </div>
     </FormContainer>
   );

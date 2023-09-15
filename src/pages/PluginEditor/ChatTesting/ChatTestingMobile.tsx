@@ -32,9 +32,7 @@ const ChatTestingMobile = () => {
             onClick={handleCloseNavMenu}
             className="m-0 me-1 sm:mt-4 px-0 py-1 shadow-none absolute right-0"
           />
-          <div className="h-[calc(100vh-4rem)] pt-8">
-            <ChatContainer />
-          </div>
+          <ChatContainer />
         </div>
       </Drawer>
     </>
