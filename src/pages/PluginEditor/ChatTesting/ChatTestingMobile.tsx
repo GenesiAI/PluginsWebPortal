@@ -30,9 +30,11 @@ const ChatTestingMobile = () => {
           <Button
             startIcon={<KeyboardDoubleArrowLeftIcon />}
             onClick={handleCloseNavMenu}
-            className="m-0 me-1 sm:mt-4 px-0 py-1 shadow-none float-right"
+            className="m-0 me-1 sm:mt-4 px-0 py-1 shadow-none absolute right-0"
           />
-          <ChatContainer />
+          <div className="h-[calc(100vh-4rem)] pt-8">
+            <ChatContainer />
+          </div>
         </div>
       </Drawer>
     </>

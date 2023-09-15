@@ -12,15 +12,19 @@ const PluginEditorContainer = () => {
   return (
     <div>
       <PluginEditorTitle />
-      <div className="flex flex-col items-end md:flex-row md:items-start">
+      <div className="grid grid-cols-1 auto-cols-min md:grid-cols-6 grid-flow-row-dense md:grid-rows-6 gap-x-4">
         <BoxContainer
-          className="basis-2/6 sticky top-20 h-min z-10 md:mt-6 w-fit"
+          className="md:col-span-2 md:row-span-3 sticky top-20 z-10 w-fit justify-self-end"
           removePadding
           removeMargin
         >
-          <div id="ChatTesting" ref={htmlRefChat}></div>
+          <div id="ChatTesting" className="h-full" ref={htmlRefChat}></div>
         </BoxContainer>
-        <BoxContainer className="md:order-first basis-auto md:basis-4/6">
+
+        <BoxContainer
+          className="md:order-first md:col-span-4 md:row-span-6"
+          removeMargin
+        >
           <PluginEditor />
         </BoxContainer>
       </div>
