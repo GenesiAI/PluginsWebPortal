@@ -1,7 +1,7 @@
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import { Drawer } from "@mui/material";
 import Button from "components/Button";
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import ChatContainer from "./ChatContainer";
 
 const ChatTestingMobile = () => {
@@ -9,10 +9,18 @@ const ChatTestingMobile = () => {
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
+    document.body.classList.add("overflow-y-hidden");
   };
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+    document.body.classList.remove("overflow-y-hidden");
   };
+
+  useEffect(() => {
+    if (anchorElNav) {
+      return () => document.body.classList.remove("overflow-y-hidden");
+    }
+  }, [anchorElNav]);
 
   return (
     <>
@@ -23,7 +31,7 @@ const ChatTestingMobile = () => {
         anchor="right"
         open={Boolean(anchorElNav)}
         onClose={handleCloseNavMenu}
-        PaperProps={{ className: "w-[80vw]" }}
+        PaperProps={{ className: "w-screen" }}
         disableScrollLock
       >
         <div className="mt-[4rem] overflow-y-hidden">
