@@ -18,7 +18,7 @@ const Card = ({
 }: CardType) => {
   return (
     <CardContainer isAdvised={isAdvised}>
-      <div className="flex h-full flex-col items-center gap-10">
+      <div className="mb-8 flex h-full flex-col items-center gap-10">
         <div className="flex basis-2/6 flex-col gap-10 px-4">
           <Typography variant="t3" className="text-inherit">
             {title}
@@ -49,7 +49,11 @@ const Card = ({
         </div>
       </div>
 
-      <CardActions action={action} buttonText={buttonText} />
+      <CardActions
+        isAdvised={isAdvised}
+        action={action}
+        buttonText={buttonText}
+      />
     </CardContainer>
   );
 };

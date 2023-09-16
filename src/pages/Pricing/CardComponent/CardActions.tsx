@@ -7,8 +7,9 @@ import { useNavigate } from "react-router";
 import { CardType } from "../CardsInfo";
 const CardActions = ({
   buttonText,
-  action
-}: Pick<CardType, "action" | "buttonText">) => {
+  action,
+  isAdvised
+}: Pick<CardType, "action" | "buttonText" | "isAdvised">) => {
   const navigate = useNavigate();
   const { handleLogin } = useUserInfoCtx();
   const { isLoading, modalError, redirectToStripe } = useRedirectToStripe();
@@ -25,7 +26,12 @@ const CardActions = ({
   return (
     <>
       {modalError}
-      <ButtonLoading isLoading={isLoading} onClick={onClick}>
+      <ButtonLoading
+        isLoading={isLoading}
+        onClick={onClick}
+        variant={isAdvised ? "darkBg" : "lightBg"}
+        className={isAdvised ? "-translate-y-1/4 scale-125" : ""}
+      >
         {buttonText}
       </ButtonLoading>
     </>

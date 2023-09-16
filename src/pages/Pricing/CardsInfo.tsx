@@ -15,7 +15,7 @@ export const CardsInfo: CardType[] = [
     description: "Experience the power of AI with your first plugin",
     cost: "0",
     feats: [
-      "Create 1 custom ChatGPT Plugin",
+      "Create your first custom ChatGPT Plugin",
       "Access to basic functionalities",
       ""
     ],
@@ -25,10 +25,10 @@ export const CardsInfo: CardType[] = [
   {
     isAdvised: true,
     title: "PREMIUM",
-    description: "Unleash the potential of AI and step into the future",
+    description: "Unleash the full potential of AI",
     cost: "19.90",
     feats: [
-      "Enjoy faster response times",
+      "Faster response times",
       "Develop up to 3 custom ChatGPT Plugins",
       ""
     ],
