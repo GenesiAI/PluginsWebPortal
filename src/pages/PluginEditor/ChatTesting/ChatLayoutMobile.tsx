@@ -4,7 +4,7 @@ import Button from "components/Button";
 import { memo, useEffect, useState } from "react";
 import ChatContainer from "./ChatContainer";
 
-const ChatTestingMobile = () => {
+const ChatLayoutMobile = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -47,4 +47,4 @@ const ChatTestingMobile = () => {
   );
 };
 
-export default memo(ChatTestingMobile);
+export default memo(ChatLayoutMobile);

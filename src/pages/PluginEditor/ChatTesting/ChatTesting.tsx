@@ -3,7 +3,7 @@ import { ReactPortal, memo, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { usePluginEditorCtxStatus } from "../PluginEditorCtx";
 import ChatContainer from "./ChatContainer";
-import ChatTestingMobile from "./ChatTestingMobile";
+import ChatTestingMobile from "./ChatLayoutMobile";
 const ChatTesting = () => {
   const { htmlRefChat } = usePluginEditorCtxStatus();
   const [portal, setPortal] = useState<ReactPortal | null>(null);
