@@ -18,7 +18,7 @@ const ChatContainer = () => {
       defaultValues={defaultData}
       onSuccess={sendChat}
       mode="onBlur"
-      FormProps={{ className: "h-[calc(100vh-8rem)] mt-8" }}
+      FormProps={{ className: "h-[calc(100svh-8rem)] mt-8" }}
     >
       <div className="flex flex-col justify-between h-full">
         <div className="overflow-y-hidden">
