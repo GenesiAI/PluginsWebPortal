@@ -24,7 +24,7 @@ export const useRedirectToStripe = () => {
     try {
       // I try login, if it's premium do redirect without call stripe
       const { userInfo } = await userInfoRef.current.manualLogin(
-        (userInfo) => !!userInfo.isPremium
+        (userInfo) => !userInfo.isPremium
       );
       if (userInfo?.isPremium) {
         return;
