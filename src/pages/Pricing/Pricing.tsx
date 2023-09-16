@@ -4,11 +4,11 @@ import Card from "./Card";
 import { CardsInfo } from "./CardsInfo";
 
 const Pricing = () => (
-  <Container maxWidth="lg" className="mt-10">
-    <Typography variant="t1" className="text-center mb-20">
+  <Container maxWidth="lg" className="my-10">
+    <Typography variant="t1" className="mb-20 text-center">
       Choose the right plan for you!
     </Typography>
-    <div className="grid grid-cols-8 lg:grid-cols-10 gap-x-6 grid-rows-3 md:grid-rows-2 lg:grid-rows-1">
+    <div className="grid grid-cols-1 grid-rows-3 justify-items-center gap-4 md:grid-cols-3 md:grid-rows-[4rem_minmax(0,_1fr)]">
       {CardsInfo.map(({ title, ...props }) => (
         <Card {...props} title={title} key={title} />
       ))}

@@ -18,31 +18,35 @@ const Card = ({
 }: CardType) => {
   return (
     <CardContainer isAdvised={isAdvised}>
-      <div className="flex flex-col items-center">
-        <div className="flex flex-col justify-between md:h-40">
+      <div className="flex h-full flex-col items-center gap-10">
+        <div className="flex basis-2/6 flex-col gap-10 px-4">
           <Typography variant="t3" className="text-inherit">
             {title}
           </Typography>
-          <Typography variant="t4" className="italic text-inherit mt-6 md:mt-0">
+          <Typography variant="t4" className="italic text-inherit">
             {description}
           </Typography>
         </div>
 
         <CardCost cost={cost} isAdvised={isAdvised} />
-        <List>
-          {feats.map((feat) => (
-            <ListItem key={feat} className="px-6">
-              {feat && (
-                <>
-                  <ListItemIcon className="text-inherit min-w-0 me-3">
-                    <StarIcon className="text-inherit text-xs" />
-                  </ListItemIcon>
-                  <Typography className="text-inherit">{feat}</Typography>
-                </>
-              )}
-            </ListItem>
-          ))}
-        </List>
+        <div className="basis-2/6">
+          <List>
+            {feats.map((feat) => (
+              <ListItem key={feat} className="px-6">
+                {feat && (
+                  <>
+                    <ListItemIcon className="me-3 min-w-0 text-inherit">
+                      <StarIcon className="text-xs text-inherit" />
+                    </ListItemIcon>
+                    <Typography variant="t5" className="text-inherit">
+                      {feat}
+                    </Typography>
+                  </>
+                )}
+              </ListItem>
+            ))}
+          </List>
+        </div>
       </div>
 
       <CardActions action={action} buttonText={buttonText} />
