@@ -49,12 +49,12 @@ const useChat = () => {
           const aiPlugin = getValues();
           const chatApi = new ChatApi();
           await chatApi.apiChatPost({ aiPlugin, messages }).then((res) => {
-            const { message } = res.data;
+            const { message, chatData } = res.data;
             if (!message) throw new Error("No message");
             setMessages((prevValue) => {
               return [...prevValue, message];
             });
-            setCounter(res.data.chatData!.messagesLast24H!);
+            setCounter(chatData?.messagesLast24H || 0);
             debugConsole(res);
           });
         }
