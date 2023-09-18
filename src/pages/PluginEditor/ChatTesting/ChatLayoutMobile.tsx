@@ -34,10 +34,10 @@ const ChatLayoutMobile = () => {
         PaperProps={{ className: "w-screen" }}
         disableScrollLock
       >
-        <div className="mt-[4rem] overflow-y-hidden">
+        <div className="h-[100svh] overflow-y-hidden pt-[4rem]">
           <Button
             onClick={handleCloseNavMenu}
-            className="m-0 sm:mt-4 px-0 py-1 absolute right-2"
+            className="absolute right-2 m-0 px-0 py-1 sm:mt-4"
           >
             <KeyboardDoubleArrowRightIcon className="m-0" />
           </Button>

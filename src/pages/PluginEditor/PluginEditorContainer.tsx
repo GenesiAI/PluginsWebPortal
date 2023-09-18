@@ -8,25 +8,26 @@ import PluginEditorTitle from "./PluginEditorTitle";
 const PluginEditorContainer = () => {
   const { deletePlugin, setShowDeleteDialog, showDeleteDialog, htmlRefChat } =
     usePluginEditorCtxStatus();
-
   return (
     <div>
       <PluginEditorTitle />
-      <div className="grid grid-cols-1 auto-cols-min md:grid-cols-6 grid-flow-row-dense md:grid-rows-6 gap-x-4">
+      <div className="grid auto-cols-min grid-cols-1 gap-x-4 md:grid-cols-6 md:grid-rows-1">
         <BoxContainer
-          className="md:col-span-2 md:row-span-3 sticky top-20 z-10 w-fit justify-self-end"
+          className="md:max-h-2/3 sticky top-20 z-10 w-fit justify-self-end md:col-span-2 md:max-h-[70vh]"
           removePadding
           removeMargin
         >
-          <div id="ChatTesting" className="h-full" ref={htmlRefChat}></div>
+          <div
+            id="ChatTesting"
+            className="h-full max-h-full"
+            ref={htmlRefChat}
+          ></div>
         </BoxContainer>
-
-        <BoxContainer
-          className="md:order-first md:col-span-4 md:row-span-6"
-          removeMargin
-        >
-          <PluginEditor />
-        </BoxContainer>
+        <div className="md:order-first md:col-span-4">
+          <BoxContainer removeMargin>
+            <PluginEditor />
+          </BoxContainer>
+        </div>
       </div>
       <AlertDialog
         open={showDeleteDialog}

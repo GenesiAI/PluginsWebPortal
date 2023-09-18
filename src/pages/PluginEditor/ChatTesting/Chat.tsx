@@ -8,7 +8,7 @@ type InputProps = {
 
 const Chat = ({ messages }: InputProps) => {
   return (
-    <div className="rounded-lg my-2 max-h-[88%] pb-8 md:max-h-[82%] overflow-y-auto">
+    <div className="flex-grow-1 h-full overflow-y-scroll rounded-lg">
       {messages.map((message, index) => (
         <ChatRow key={index} {...message} />
       ))}

@@ -17,7 +17,7 @@ const Footer = ({ clearChat }: InputProps) => {
   }, [isSubmitSuccessful, reset]);
 
   return (
-    <div className="flex flex-col gap-2 items-center px-2">
+    <div className="flex flex-shrink-0 flex-col items-center gap-2 px-2">
       <Field
         validation={{ min: 1, required: true }}
         name="content"
@@ -29,16 +29,16 @@ const Footer = ({ clearChat }: InputProps) => {
         resizeStyle="none"
       />
 
-      <div className="flex justify-around w-full my-2">
+      <div className="my-2 flex w-full justify-around">
         <Button
           type="button"
           onClick={() => {
             clearChat();
             reset();
           }}
-          className="px-4 py-1 m-0"
+          className="m-0 px-4 py-1"
         >
-          <Typography variant="t5" className="text-inherit text-bold">
+          <Typography variant="t5" className="text-bold text-inherit">
             CLEAR
           </Typography>
         </Button>
@@ -46,9 +46,9 @@ const Footer = ({ clearChat }: InputProps) => {
           isLoading={isSubmitting}
           type="submit"
           removeText
-          className="px-4 py-1 m-0"
+          className="m-0 px-4 py-1"
         >
-          <Typography variant="t5" className="text-inherit text-bold">
+          <Typography variant="t5" className="text-bold text-inherit">
             SEND
           </Typography>
         </ButtonLoading>
