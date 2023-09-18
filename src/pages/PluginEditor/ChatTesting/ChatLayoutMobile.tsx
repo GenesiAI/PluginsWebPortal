@@ -1,4 +1,4 @@
-import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import { Drawer } from "@mui/material";
 import Button from "components/Button";
 import { memo, useEffect, useState } from "react";
@@ -36,10 +36,11 @@ const ChatLayoutMobile = () => {
       >
         <div className="mt-[4rem] overflow-y-hidden">
           <Button
-            startIcon={<KeyboardDoubleArrowLeftIcon />}
             onClick={handleCloseNavMenu}
-            className="m-0 me-1 sm:mt-4 px-0 py-1 shadow-none absolute right-0"
-          />
+            className="m-0 sm:mt-4 px-0 py-1 absolute right-2"
+          >
+            <KeyboardDoubleArrowRightIcon className="m-0" />
+          </Button>
           <ChatContainer />
         </div>
       </Drawer>
