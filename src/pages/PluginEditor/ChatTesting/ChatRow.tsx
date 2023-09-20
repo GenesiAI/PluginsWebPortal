@@ -15,13 +15,13 @@ const ChatRow = ({ content, role }: InputProps) => {
         role === "user"
           ? " border-gray-300/50 bg-gray-800"
           : "border-gray-300/50 bg-[#444654]",
-        "border-b px-3 py-1 hover:bg-secondary flex"
+        "flex border-b px-3 py-1 hover:bg-secondary"
       )}
     >
-      <div className="basis-1/6 w-8 h-8 my-1 sticky top-4">
+      <div className="sticky top-4 my-1 h-8 w-8 basis-1/6">
         {role === "user" ? (
           <img
-            className="aspect-square bg-no-repeat bg-contain h-full rounded-full"
+            className="aspect-square h-full rounded-full bg-contain bg-no-repeat"
             src={user?.photoURL || ""}
             srcSet={user?.photoURL || ""}
             referrerPolicy="no-referrer"
@@ -31,7 +31,7 @@ const ChatRow = ({ content, role }: InputProps) => {
           ></img>
         ) : (
           <img
-            className="aspect-square bg-no-repeat bg-contain h-full rounded-full"
+            className="aspect-square h-full rounded-full bg-contain bg-no-repeat"
             src={LogoFallback}
             srcSet={LogoFallback}
             referrerPolicy="no-referrer"
@@ -43,7 +43,7 @@ const ChatRow = ({ content, role }: InputProps) => {
       </div>
       <Typography
         variant="t5"
-        className="text-white basis-5/6 break-all self-center"
+        className="basis-5/6 self-center break-words text-white"
       >
         {content}
       </Typography>
