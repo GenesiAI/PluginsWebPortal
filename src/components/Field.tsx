@@ -15,6 +15,8 @@ type InputProps = {
   variant?: ComponentProps<typeof TextFieldElement>["variant"];
   helperText?: ComponentProps<typeof TextFieldElement>["helperText"];
   className?: ComponentProps<typeof TextFieldElement>["className"];
+  disabled?: ComponentProps<typeof TextFieldElement>["disabled"];
+  inputProps?: ComponentProps<typeof TextFieldElement>["inputProps"];
 } & TextArea;
 
 const isTextArea = (props: InputProps): boolean =>
@@ -26,7 +28,7 @@ const getMaxCharacters = (
 
 const Field = (props: InputProps) =>
   isTextArea(props) ? (
-    <div className="relative">
+    <div className="relative w-full">
       <TextareaAutosizeElement
         required
         variant="filled"

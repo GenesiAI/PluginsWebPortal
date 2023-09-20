@@ -9,6 +9,7 @@ interface InputProps {
   isLoading: boolean;
   disabled?: boolean;
   removeText?: boolean;
+  className?: ComponentProps<typeof Button>["className"];
   startIcon?: ComponentProps<typeof Button>["startIcon"];
   onClick?: ComponentProps<typeof Button>["onClick"];
   color?: ComponentProps<typeof Button>["color"];
@@ -23,7 +24,8 @@ const ButtonLoading = ({
   isLoading,
   disabled,
   onClick,
-  startIcon
+  startIcon,
+  className
 }: InputProps) => {
   return (
     <Button
@@ -32,6 +34,7 @@ const ButtonLoading = ({
       disabled={disabled}
       onClick={onClick}
       type={type}
+      className={className}
     >
       {isLoading ? (
         <>

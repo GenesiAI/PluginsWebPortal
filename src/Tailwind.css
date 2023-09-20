@@ -1,2 +1,6 @@
 @tailwind components;
 @tailwind utilities;
+
+.max-h-textarea textarea {
+  max-height: 128px !important;
+}

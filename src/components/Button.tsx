@@ -15,7 +15,7 @@ interface InputProps {
 }
 
 const Button = ({
-  children = "change me",
+  children,
   color = "primary",
   type = "button",
   variant = "lightBg",
