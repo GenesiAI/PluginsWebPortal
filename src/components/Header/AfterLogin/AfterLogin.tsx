@@ -41,7 +41,10 @@ const AfterLogin = () => {
   return (
     <>
       <Tooltip title="Open menu">
-        <IconButton onClick={handleOpen}>
+        <IconButton
+          onClick={handleOpen}
+          className="-translate-y-1/2 scale-150 md:translate-y-0 md:scale-100"
+        >
           <Avatar
             className="bg-primary text-white"
             alt={displayName || "user img"}

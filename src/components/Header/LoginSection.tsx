@@ -8,7 +8,6 @@ const RightSide = ({
   handleCloseNavMenu,
   handleLogin,
   handleLogout,
-  links,
   isLogged,
   isLoadingUser
 }: InputProps) => {
@@ -22,7 +21,9 @@ const RightSide = ({
     <Button
       variant="lightBg"
       onClick={handleLogin}
-      className={"col-span-2 justify-self-end"}
+      className={
+        "col-span-2 w-fit -translate-y-1/2 scale-150 justify-self-end md:translate-y-0 md:scale-100"
+      }
     >
       Sign up
     </Button>

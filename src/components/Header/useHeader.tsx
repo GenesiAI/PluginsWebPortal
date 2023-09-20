@@ -1,13 +1,13 @@
 import { useScreenCtx } from "components/Screen/ScreenCtx";
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import React, { useCallback, useEffect } from "react";
-
-const Pages = ["Support", "Contacts", "Questions", "Pricing"];
+import { useLocation } from "react-router-dom";
 
 const useHeader = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
+  const { pathname } = useLocation();
 
   const { handleLogin, handleLogout, isLogged, isLoadingUser } =
     useUserInfoCtx();
@@ -28,6 +28,9 @@ const useHeader = () => {
       handleCloseNavMenu();
     }
   }, [isMd, anchorElNav]);
+  useEffect(() => {
+    handleCloseNavMenu();
+  }, [pathname]);
 
   return {
     handleLogin,
@@ -35,7 +38,6 @@ const useHeader = () => {
     handleCloseNavMenu,
     handleOpenNavMenu,
     anchorElNav,
-    links: Pages,
     isLogged,
     isLoadingUser
   };
