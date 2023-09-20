@@ -6,6 +6,7 @@ export const MAIN_03_DARK = "#672B83";
 export const MAIN_04 = "#5B59BF";
 export const WHITE = "#FFF";
 export const WHITE_DARK = "#f9f9ff";
+export const GRAY = "#989898";
 export const DANGER = "#C34343";
 export const DANGER_LIGHT = "#FF7C7C";
 export const BLACK = "#1E1E1E";
