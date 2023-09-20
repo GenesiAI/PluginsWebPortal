@@ -16,7 +16,7 @@ type InputProps = ReturnType<typeof useHeader>;
 const HeaderXs = (props: InputProps) => {
   const { anchorElNav, handleCloseNavMenu, handleOpenNavMenu } = props;
   return (
-    <Box className="flex md:hidden gap-4 col-span-1 justify-end">
+    <Box className="col-span-1 flex justify-end gap-4 md:hidden">
       <IconButton
         size="large"
         aria-label="open drawer"
@@ -34,7 +34,7 @@ const HeaderXs = (props: InputProps) => {
         PaperProps={PaperDrawerStyles}
         disableScrollLock
       >
-        <div className="flex gap-4 flex-col">
+        <div className="flex flex-col gap-4">
           <PrintLinks {...props} />
         </div>
         <LoginSection {...props} />

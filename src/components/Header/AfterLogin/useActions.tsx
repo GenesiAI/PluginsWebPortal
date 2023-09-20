@@ -1,28 +1,29 @@
+import { useScreenCtx } from "components/Screen/ScreenCtx";
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import { pluginBuilder, yourPlugins } from "const/urls";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ActionItem from "./ActionItem";
 import ActionNavigate from "./ActionNavigate";
 import Subscribe from "./Subscribe";
 
 const useActions = () => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-  useEffect(() => {
-    if (anchorElUser) {
-      document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = "17px";
-      return () => {
-        document.body.style.overflow = "";
-        document.body.style.paddingRight = "";
-      };
-    }
-  }, [!!anchorElUser]);
+  const { isMd } = useScreenCtx();
+  const isMdOldValueRef = useRef(isMd);
+
   const handleOpen = useCallback((event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   }, []);
   const handleClose = useCallback(() => {
     setAnchorElUser(null);
   }, []);
+
+  useEffect(() => {
+    if (isMd !== isMdOldValueRef.current && anchorElUser) {
+      isMdOldValueRef.current = isMd;
+      handleClose();
+    }
+  }, [isMd, anchorElUser]);
 
   const { handleLogout, user, userInfo } = useUserInfoCtx();
 
@@ -33,19 +34,19 @@ const useActions = () => {
         handleClose={handleClose}
         userInfo={userInfo}
       />,
-      <div key="sep1" className="bg-white h-px w-full"></div>,
+      <div key="sep1" className="h-px w-full bg-white"></div>,
       <ActionNavigate
         key="NewPlugin"
         text="New Plugins"
         to={`/${pluginBuilder("new")}`}
       />,
-      <div key="sep2" className="bg-white h-px w-full"></div>,
+      <div key="sep2" className="h-px w-full bg-white"></div>,
       <ActionNavigate
         key="YourPlugins"
         text="Your Plugins"
         to={`/${yourPlugins}`}
       />,
-      <div key="sep3" className="bg-white h-px w-full"></div>,
+      <div key="sep3" className="h-px w-full bg-white"></div>,
       <ActionItem
         key="logout"
         onClick={() => {
@@ -65,7 +66,8 @@ const useActions = () => {
     displayName: user?.displayName,
     handleOpen,
     handleClose,
-    anchorElUser
+    anchorElUser,
+    isMd
   };
 };
 

@@ -1,5 +1,4 @@
-import { useMediaQuery } from "@mui/material";
-import { Theme } from "@mui/system";
+import { useScreenCtx } from "components/Screen/ScreenCtx";
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import React, { useCallback, useEffect } from "react";
 
@@ -9,7 +8,10 @@ const useHeader = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
-  const isMd = useMediaQuery<Theme>((theme) => theme.breakpoints.up("md"));
+
+  const { handleLogin, handleLogout, isLogged, isLoadingUser } =
+    useUserInfoCtx();
+  const { isMd } = useScreenCtx();
 
   const handleOpenNavMenu = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
@@ -27,8 +29,6 @@ const useHeader = () => {
     }
   }, [isMd, anchorElNav]);
 
-  const { handleLogin, handleLogout, isLogged, isLoadingUser } =
-    useUserInfoCtx();
   return {
     handleLogin,
     handleLogout,

@@ -9,10 +9,18 @@ const PopoverClassesPaperStyle: TyMenu["PopoverClasses"] = {
 };
 const TransformOriginStyle: TyMenu["transformOrigin"] = {
   vertical: "bottom",
-  horizontal: "left"
+  horizontal: "right"
 };
 const AnchorOriginStyle: TyMenu["anchorOrigin"] = {
   vertical: "top",
+  horizontal: "right"
+};
+const TransformOriginStyleXs: TyMenu["transformOrigin"] = {
+  vertical: "top",
+  horizontal: "center"
+};
+const AnchorOriginStyleXs: TyMenu["anchorOrigin"] = {
+  vertical: "bottom",
   horizontal: "center"
 };
 const MenuListPropsStyle: TyMenu["MenuListProps"] = {
@@ -26,7 +34,8 @@ const AfterLogin = () => {
     handleClose,
     handleOpen,
     anchorElUser,
-    displayName
+    displayName,
+    isMd
   } = useActions();
 
   return (
@@ -42,8 +51,8 @@ const AfterLogin = () => {
       </Tooltip>
       <Menu
         anchorEl={anchorElUser}
-        anchorOrigin={TransformOriginStyle}
-        transformOrigin={AnchorOriginStyle}
+        anchorOrigin={isMd ? TransformOriginStyle : TransformOriginStyleXs}
+        transformOrigin={isMd ? AnchorOriginStyle : AnchorOriginStyleXs}
         open={Boolean(anchorElUser)}
         onClose={handleClose}
         disableScrollLock

@@ -1,4 +1,5 @@
 import { MenuItem } from "@mui/material";
+import classNames from "classnames";
 import Typography from "components/Typography";
 import { ComponentProps } from "react";
 
@@ -12,7 +13,10 @@ const ActionItem = ({
   ...props
 }: InputProps) => {
   return (
-    <MenuItem className={`justify-center ${className || ""}`} {...props}>
+    <MenuItem
+      className={classNames("min-h-fit justify-center", className)}
+      {...props}
+    >
       <Typography variant="t4" className={`${colorStyle} font-semibold`}>
         {children}
       </Typography>

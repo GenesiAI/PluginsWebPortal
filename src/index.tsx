@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@mui/material";
+import ScreenCtx from "components/Screen";
 import UserInfo from "components/UserInfo/UserInfo";
 import { baseName } from "const/urls";
 import React from "react";
@@ -24,9 +25,11 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <BrowserRouter basename={baseName}>
-        <UserInfo>
-          <App />
-        </UserInfo>
+        <ScreenCtx>
+          <UserInfo>
+            <App />
+          </UserInfo>
+        </ScreenCtx>
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>
