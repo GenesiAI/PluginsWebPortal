@@ -6,6 +6,7 @@ import useHeader from "./useHeader";
 type InputProps = ReturnType<typeof useHeader>;
 const PrintLinks = ({ links, handleCloseNavMenu }: InputProps) => {
   const { pathname } = useLocation();
+
   return (
     <>
       {links.map((link) => {
@@ -18,7 +19,7 @@ const PrintLinks = ({ links, handleCloseNavMenu }: InputProps) => {
                 matchPath(pathname, linkTo)
                   ? "text-tertiary"
                   : "text-secondary hover:text-tertiary",
-                "font-bold ps-4 md:ps-0"
+                "ps-4 text-2xl font-bold md:ps-0"
               )}
             >
               {link}
