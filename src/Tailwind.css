@@ -16,27 +16,31 @@ main {
   height: calc(100vh - var(--header-height));
 }
 
-/* Targeting the entire scrollbar */
-::-webkit-scrollbar {
-  width: 16px; /* You can adjust the width as needed */
-}
+/* Remove personalized scrollbar under 600px */
+/* @media (min-width: var(--screen-sm)) { <-- sing variables in media queries may not be supported in all browsers. As of my last update in January 2022, this feature had limited support.*/
+@media (min-width: 600px) {
+  /* Targeting the entire scrollbar */
+  ::-webkit-scrollbar {
+    width: 16px; /* You can adjust the width as needed */
+  }
 
-/* Targeting the scrollbar track */
-::-webkit-scrollbar-track {
-  border-radius: 0.9375rem;
-  background: var(--color-quaternary);
-}
+  /* Targeting the scrollbar track */
+  ::-webkit-scrollbar-track {
+    border-radius: 0.9375rem;
+    background: var(--color-quaternary);
+  }
 
-/* Targeting the scrollbar handle */
-::-webkit-scrollbar-thumb {
-  background: var(
-    --color-white
-  ); /* You can change this to your preferred color */
-  border-radius: 0.9375rem; /* Making the handle rounded */
-  box-shadow: inset 2px 0px 6px rgba(0, 0, 0, 0.8); /* Inset shadow */
-}
+  /* Targeting the scrollbar handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(
+      --color-white
+    ); /* You can change this to your preferred color */
+    border-radius: 0.9375rem; /* Making the handle rounded */
+    box-shadow: inset 2px 0px 6px rgba(0, 0, 0, 0.8); /* Inset shadow */
+  }
 
-/* Applying styles for the scrollbar handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-secondary); /* Change the color when hovering */
+  /* Applying styles for the scrollbar handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary); /* Change the color when hovering */
+  }
 }

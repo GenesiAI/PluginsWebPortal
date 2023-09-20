@@ -57,7 +57,8 @@ module.exports = {
           "--color-tertiary-dark": theme("colors.tertiaryDark"),
           "--color-white": theme("colors.white"),
           "--color-white-dark": theme("colors.whiteDark"),
-          "--color-quaternary": theme("colors.quaternary")
+          "--color-quaternary": theme("colors.quaternary"),
+          "--screen-sm": theme("screens.sm")
         }
       });
     }

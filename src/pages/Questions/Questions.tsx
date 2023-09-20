@@ -27,7 +27,7 @@ const Questions = () => {
             <Accordion
               expanded={expanded === `panel${index}`}
               onChange={handleChange(`panel${index}`)}
-              className="border-0 shadow-none before:content-none"
+              className="border-0 bg-transparent shadow-none before:content-none"
             >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -36,10 +36,12 @@ const Questions = () => {
                 <Typography className="text-primary">{faq.question}</Typography>
               </AccordionSummary>
               <AccordionDetails className="border-0 shadow-none">
-                <Typography variant="t5">{faq.answer}</Typography>
+                <Typography variant="t5" className="break-words">
+                  {faq.answer}
+                </Typography>
               </AccordionDetails>
             </Accordion>
-            <div className="w-100 h-px bg-[#989898]"></div>
+            <div className="w-100 h-px bg-gray"></div>
           </Fragment>
         ))}
       </Box>
