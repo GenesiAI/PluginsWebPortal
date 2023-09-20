@@ -4,7 +4,7 @@ import Card from "./Card";
 import { CardsInfo } from "./CardsInfo";
 
 const Pricing = () => (
-  <Container maxWidth="lg" className="my-10">
+  <Container maxWidth="lg" className="mb-10 mt-20">
     <Typography variant="t1" className="mb-20 text-center">
       Choose the right plan for you!
     </Typography>
