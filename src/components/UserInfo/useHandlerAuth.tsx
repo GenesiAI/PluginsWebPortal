@@ -18,7 +18,7 @@ const useHandlerAuth = () => {
   const afterLogin = useCallback(
     async (noRedirect?: boolean | ((user: UserInfo) => boolean)) => {
       try {
-        if (!userInfoRef.current) {
+        if (Object.keys(userInfoRef.current).length <= 0) {
           const userApi = new UserApi();
           const response = await userApi.apiUserGet();
           setUserInfo(response.data);
