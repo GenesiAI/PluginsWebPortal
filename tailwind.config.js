@@ -5,8 +5,10 @@ const {
   MAIN_02_LIGHT,
   MAIN_03_LIGHT,
   WHITE,
+  WHITE_DARK,
   MAIN_02_DARK,
   MAIN_03_DARK,
+  MAIN_04,
   DANGER_LIGHT
 } = require("./src/const/colors");
 
@@ -18,14 +20,15 @@ module.exports = {
     extend: {
       colors: {
         primary: MAIN,
-        primary: MAIN,
         secondary: MAIN_02_LIGHT,
         secondaryDark: MAIN_02_DARK,
         tertiary: MAIN_03_LIGHT,
         tertiaryDark: MAIN_03_DARK,
+        quaternary: MAIN_04,
         danger: DANGER,
         dangerLight: DANGER_LIGHT,
         white: WHITE,
+        whiteDark: WHITE_DARK,
         black: BLACK
       }
     },
@@ -41,5 +44,20 @@ module.exports = {
   variants: {
     extend: {}
   },
-  plugins: []
+  plugins: [
+    function ({ addBase, theme }) {
+      addBase({
+        ":root": {
+          "--color-primary": theme("colors.primary"),
+          "--color-secondary": theme("colors.secondary"),
+          "--color-secondary-dark": theme("colors.secondaryDark"),
+          "--color-tertiary": theme("colors.tertiary"),
+          "--color-tertiary-dark": theme("colors.tertiaryDark"),
+          "--color-white": theme("colors.white"),
+          "--color-white-dark": theme("colors.whiteDark"),
+          "--color-quaternary": theme("colors.quaternary")
+        }
+      });
+    }
+  ]
 };
