@@ -1,16 +1,10 @@
 import Button from "components/Button";
 import LoadingSpinner from "components/LoadingSpinner";
+import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import AfterLogin from "./AfterLogin";
-import useHeader from "./useHeader";
 
-type InputProps = ReturnType<typeof useHeader>;
-const RightSide = ({
-  handleCloseNavMenu,
-  handleLogin,
-  handleLogout,
-  isLogged,
-  isLoadingUser
-}: InputProps) => {
+const RightSide = () => {
+  const { handleLogin, isLoadingUser, isLogged } = useUserInfoCtx();
   if (isLoadingUser || (isLogged && isLoadingUser)) {
     return <LoadingSpinner removeText />;
   }

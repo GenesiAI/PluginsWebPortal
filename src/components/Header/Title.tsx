@@ -1,18 +1,20 @@
 import { home } from "const/urls";
 import LogoGenesiWithName from "img/LogoGenesiWithName";
 import { Link } from "react-router-dom";
-import useHeader from "./useHeader";
+import { useHeaderCtx } from "./HeaderCtx";
 
-type InputProps = ReturnType<typeof useHeader>;
+const Title = () => {
+  const { handleCloseNavMenu } = useHeaderCtx();
 
-const Title = ({ handleCloseNavMenu }: InputProps) => (
-  <Link
-    to={home}
-    onClick={handleCloseNavMenu}
-    className="fill-primary h-10 col-span-1 md:col-span-2"
-  >
-    <LogoGenesiWithName />
-  </Link>
-);
+  return (
+    <Link
+      to={home}
+      onClick={handleCloseNavMenu}
+      className="col-span-1 h-10 fill-primary md:col-span-2"
+    >
+      <LogoGenesiWithName />
+    </Link>
+  );
+};
 
 export default Title;

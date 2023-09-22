@@ -2,12 +2,15 @@ import { useScreenCtx } from "components/Screen/ScreenCtx";
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 import { pluginBuilder, yourPlugins } from "const/urls";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useHeaderCtx } from "../HeaderCtx";
 import ActionItem from "./ActionItem";
 import ActionNavigate from "./ActionNavigate";
 import Subscribe from "./Subscribe";
 
 const useActions = () => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const { handleCloseNavMenu } = useHeaderCtx();
+  const { handleLogout, user, userInfo } = useUserInfoCtx();
   const { isMd } = useScreenCtx();
   const isMdOldValueRef = useRef(isMd);
 
@@ -16,7 +19,8 @@ const useActions = () => {
   }, []);
   const handleClose = useCallback(() => {
     setAnchorElUser(null);
-  }, []);
+    handleCloseNavMenu();
+  }, [handleCloseNavMenu]);
 
   useEffect(() => {
     if (isMd !== isMdOldValueRef.current && anchorElUser) {
@@ -24,8 +28,6 @@ const useActions = () => {
       handleClose();
     }
   }, [isMd, anchorElUser]);
-
-  const { handleLogout, user, userInfo } = useUserInfoCtx();
 
   const actions = useMemo(() => {
     return [
@@ -58,7 +60,7 @@ const useActions = () => {
         Log Out
       </ActionItem>
     ];
-  }, [handleClose, handleLogout, userInfo]);
+  }, [handleClose, handleLogout, handleCloseNavMenu, userInfo]);
 
   return {
     actions,

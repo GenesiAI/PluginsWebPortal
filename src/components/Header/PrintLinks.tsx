@@ -1,9 +1,11 @@
 import classNames from "classnames";
 import { useScreenCtx } from "components/Screen/ScreenCtx";
 import Typography from "components/Typography";
+import { contacts, pricing, questions, support } from "const/urls";
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import { memo, useMemo } from "react";
 import { Link, matchPath, useLocation } from "react-router-dom";
+import { useHeaderCtx } from "./HeaderCtx";
 
 // Define variants as functions that take 'index' as a parameter
 const linkVariants: Variants = {
@@ -14,42 +16,43 @@ const linkVariants: Variants = {
   animate: (index) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: index * 0.4, duration: 0.6 } // use index here
+    transition: { delay: index * 0.2, duration: 0.4 } // use index here
   })
 };
-const Pages = ["Support", "Contacts", "Questions"];
-
-type InputProps = {
-  handleCloseNavMenu: () => void;
-};
-const PrintLinks = ({ handleCloseNavMenu }: InputProps) => {
+const Links = [
+  { to: support, text: "Support" },
+  { to: questions, text: "Questions" },
+  { to: pricing, text: "Pricing" },
+  { to: contacts, text: "Contact us" }
+];
+const PrintLinks = () => {
   const { pathname } = useLocation();
   const { isMd } = useScreenCtx();
+  const { handleCloseNavMenu } = useHeaderCtx();
 
   return useMemo(
     () => (
       <AnimatePresence>
-        {Pages.map((link, index) => {
-          const linkTo = `/${link.toLowerCase().replace(" ", "-")}`;
+        {Links.map(({ text, to }, index) => {
           return (
             <motion.div
-              key={link}
+              key={text}
               variants={linkVariants}
               initial={!isMd && "initial"}
               animate={!isMd && "animate"}
               custom={index}
             >
-              <Link to={linkTo} key={link} onClick={handleCloseNavMenu}>
+              <Link to={to} key={text} onClick={handleCloseNavMenu}>
                 <Typography
                   variant="t4"
                   className={classNames(
-                    matchPath(pathname, linkTo)
+                    matchPath(pathname, `/${to}`)
                       ? "text-tertiary"
                       : "text-secondary hover:text-tertiary",
-                    "ps-4 text-2xl font-bold md:ps-0"
+                    "ps-4 text-3xl font-bold md:ps-0 md:text-2xl"
                   )}
                 >
-                  {link}
+                  {text}
                 </Typography>
               </Link>
             </motion.div>

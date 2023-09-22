@@ -18,7 +18,7 @@ const useHandlerAuth = () => {
   const afterLogin = useCallback(
     async (noRedirect?: boolean | ((user: UserInfo) => boolean)) => {
       try {
-        if (Object.keys(userInfoRef.current).length <= 0) {
+        if (Object.keys(userInfoRef.current || {}).length <= 0) {
           const userApi = new UserApi();
           const response = await userApi.apiUserGet();
           setUserInfo(response.data);
@@ -26,7 +26,7 @@ const useHandlerAuth = () => {
         }
 
         if (typeof noRedirect === "function") {
-          !noRedirect(userInfoRef.current) && navigate(`/${yourPlugins}`);
+          !noRedirect(userInfoRef.current!) && navigate(`/${yourPlugins}`);
         } else !noRedirect && navigate(`/${yourPlugins}`);
       } catch (error) {
         debugConsole("Error fetching users:", error);

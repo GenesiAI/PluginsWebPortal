@@ -5,9 +5,9 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import { motion, Variants } from "framer-motion";
 import { ComponentProps } from "react";
+import { useHeaderCtx } from "./HeaderCtx";
 import LoginSection from "./LoginSection";
 import PrintLinks from "./PrintLinks";
-import useHeader from "./useHeader";
 
 const PaperDrawerStyles: ComponentProps<typeof Drawer>["PaperProps"] = {
   className:
@@ -17,12 +17,11 @@ const PaperDrawerStyles: ComponentProps<typeof Drawer>["PaperProps"] = {
 // Define your animation states
 const iconVariants: Variants = {
   open: { rotate: 0 },
-  closed: { rotate: 180 }
+  closed: { rotate: 180, translateY: 4 }
 };
 
-type InputProps = ReturnType<typeof useHeader>;
-const HeaderXs = (props: InputProps) => {
-  const { anchorElNav, handleCloseNavMenu, handleOpenNavMenu } = props;
+const HeaderXs = () => {
+  const { anchorElNav, handleCloseNavMenu, handleOpenNavMenu } = useHeaderCtx();
   return (
     <Box className="col-span-1 flex justify-end gap-4 md:hidden">
       <IconButton
@@ -48,10 +47,10 @@ const HeaderXs = (props: InputProps) => {
         disableScrollLock
       >
         <div className="flex w-full flex-col gap-4">
-          <PrintLinks handleCloseNavMenu={props.handleCloseNavMenu} />
+          <PrintLinks />
         </div>
         <div className="w-full rounded-xl text-center shadow-[0_20px_25px_0] shadow-primary">
-          <LoginSection {...props} />
+          <LoginSection />
         </div>
       </Drawer>
     </Box>
