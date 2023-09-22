@@ -13,7 +13,7 @@ body {
 }
 
 main {
-  height: calc(100vh - var(--header-height));
+  height: calc(100svh - var(--header-height));
 }
 
 /* Remove personalized scrollbar under 600px */
