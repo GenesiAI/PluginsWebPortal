@@ -6,7 +6,7 @@ import AfterLogin from "./AfterLogin";
 const RightSide = () => {
   const { handleLogin, isLoadingUser, isLogged } = useUserInfoCtx();
   if (isLoadingUser || (isLogged && isLoadingUser)) {
-    return <LoadingSpinner removeText />;
+    return <LoadingSpinner removeText className="p-2" />;
   }
 
   return isLogged ? (
