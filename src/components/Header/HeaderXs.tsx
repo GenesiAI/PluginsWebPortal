@@ -23,7 +23,7 @@ const iconVariants: Variants = {
 const HeaderXs = () => {
   const { anchorElNav, handleCloseNavMenu, handleOpenNavMenu } = useHeaderCtx();
   return (
-    <Box className="col-span-1 flex justify-end gap-4 md:hidden">
+    <Box className="col-span-1 col-start-2 flex justify-end gap-4 md:hidden">
       <IconButton
         size="large"
         aria-label="open drawer"

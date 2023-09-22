@@ -10,7 +10,7 @@ const Title = () => {
     <Link
       to={home}
       onClick={handleCloseNavMenu}
-      className="col-span-1 h-10 fill-primary md:col-span-2"
+      className="col-span-1 h-10 fill-primary"
     >
       <LogoGenesiWithName />
     </Link>
