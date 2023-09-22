@@ -6,9 +6,10 @@ const loggedInPages = [
   "Support",
   "Contacts",
   "Questions",
+  "Pricing",
   "Logout"
 ];
-const loggedOutPages = ["Support", "Contacts", "Questions", "Login"];
+const loggedOutPages = ["Support", "Contacts", "Questions", "Pricing", "Login"];
 
 const useHeader = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(

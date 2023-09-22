@@ -5,6 +5,7 @@ import {
   contacts,
   home,
   plugin,
+  pricing,
   questions,
   support,
   yourPlugins
@@ -16,6 +17,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import LoadingSpinner from "./components/LoadingSpinner";
 
 import Home from "pages/Home";
+import Pricing from "pages/Pricing";
 import Questions from "pages/Questions";
 import Support from "pages/Support";
 
@@ -78,6 +80,7 @@ const AppRouter: React.FC = () => {
             </Container>
           }
         />
+        <Route path={pricing} element={<Pricing />} />
         <Route path={checkout.success} element={<StripeSuccessLazy />} />
         <Route path={checkout.base}>
           <Route index element={<Navigate to={home} replace />} />

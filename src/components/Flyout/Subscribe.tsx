@@ -1,8 +1,8 @@
 import UnsubscribeIcon from "@mui/icons-material/Unsubscribe";
 import UpgradeIcon from "@mui/icons-material/Upgrade";
 import { UserInfo } from "apis/api";
-import LoadingSpinner from "components/LoadingSpinner";
-import { useRedirectToStripe } from "components/Stripe/useRedirectToStripe";
+import { pricing } from "const/urls";
+import { useNavigate } from "react-router-dom";
 
 type InputProps = {
   handleClose: () => void;
@@ -10,21 +10,18 @@ type InputProps = {
 };
 
 const Subscribe = ({ handleClose, userInfo }: InputProps) => {
-  const { redirectToStripe, isLoading, modalError } = useRedirectToStripe();
-
-  if (isLoading) {
-    return <LoadingSpinner removeText />;
-  }
+  // if (isLoading) {
+  //   return <LoadingSpinner removeText />;
+  // }
+  const navigate = useNavigate();
 
   return userInfo.isPremium ? (
     <>
-      {modalError}
       <UnsubscribeIcon onClick={handleClose} />
     </>
   ) : (
     <>
-      {modalError}
-      <UpgradeIcon onClick={redirectToStripe} />
+      <UpgradeIcon onClick={() => navigate(`/${pricing}`)} />
     </>
   );
 };

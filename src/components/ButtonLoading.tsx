@@ -13,6 +13,8 @@ interface InputProps {
   onClick?: ComponentProps<typeof Button>["onClick"];
   color?: ComponentProps<typeof Button>["color"];
   type?: ComponentProps<typeof Button>["type"];
+  variant?: ComponentProps<typeof Button>["variant"];
+  className?: ComponentProps<typeof Button>["className"];
 }
 
 const ButtonLoading = ({
@@ -23,7 +25,9 @@ const ButtonLoading = ({
   isLoading,
   disabled,
   onClick,
-  startIcon
+  startIcon,
+  className,
+  variant
 }: InputProps) => {
   return (
     <Button
@@ -32,17 +36,19 @@ const ButtonLoading = ({
       disabled={disabled}
       onClick={onClick}
       type={type}
+      variant={variant}
+      className={className}
     >
       {isLoading ? (
         <>
           <CircularProgress
             className={classNames(
-              "text-inherit bg-inherit md:w-6 md:h-6 w-4 h-4",
+              "h-4 w-4 bg-inherit text-inherit md:h-6 md:w-6",
               !removeText && "me-2"
             )}
           />
           {!removeText && (
-            <Typography variant="t5" className="text-inherit font-bold">
+            <Typography variant="t5" className="font-bold text-inherit">
               Loading...
             </Typography>
           )}
