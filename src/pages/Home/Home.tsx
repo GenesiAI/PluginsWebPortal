@@ -1,15 +1,14 @@
-import React from "react";
 import "slick-carousel/slick/slick.css";
 import FeatureSection from "./FeatureSection";
-import HeroSection from "./HeroSection";
+import SectionOne from "./SectionOne";
+import SectionTwo from "./SectionTwo";
 import UseCases from "./UseCases";
-import WhatSection from "./WhatSection";
 
-const Home: React.FC = () => {
+const Home = () => {
   return (
     <div>
-      <HeroSection />
-      <WhatSection />
+      <SectionOne />
+      <SectionTwo />
       <FeatureSection />
       <UseCases />
     </div>

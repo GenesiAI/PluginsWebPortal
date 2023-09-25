@@ -1,7 +1,7 @@
 export const MAIN = "#6360FF";
 export const MAIN_02_LIGHT = "#5B59BF";
 export const MAIN_02_DARK = "#3D3BA4";
-export const MAIN_03_LIGHT = "#AB5CD1";
+export const MAIN_03_LIGHT = "#977AD6";
 export const MAIN_03_DARK = "#672B83";
 export const MAIN_04 = "#5B59BF";
 export const WHITE = "#FFF";
