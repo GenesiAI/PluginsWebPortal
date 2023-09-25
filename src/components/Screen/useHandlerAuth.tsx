@@ -1,3 +1,5 @@
+import { useMediaQuery } from "@mui/material";
+import { Theme } from "@mui/system";
 import { UserApi, UserInfo } from "apis/api";
 import { yourPlugins } from "const/urls";
 import { User, onAuthStateChanged } from "firebase/auth";
@@ -9,16 +11,17 @@ import { debugConsole } from "../util";
 const useHandlerAuth = () => {
   const [isLoadingUser, setIsLoadingUser] = useState<boolean>(true);
   const [user, setUser] = useState<User | null>(null);
-  const [userInfo, setUserInfo] = useState<UserInfo>();
+  const [userInfo, setUserInfo] = useState<UserInfo>({});
   const userInfoRef = useRef(userInfo);
   userInfoRef.current = userInfo;
+  const isMd = useMediaQuery<Theme>((theme) => theme.breakpoints.up("md"));
 
   const navigate = useNavigate();
 
   const afterLogin = useCallback(
     async (noRedirect?: boolean | ((user: UserInfo) => boolean)) => {
       try {
-        if (Object.keys(userInfoRef.current || {}).length <= 0) {
+        if (!userInfoRef.current) {
           const userApi = new UserApi();
           const response = await userApi.apiUserGet();
           setUserInfo(response.data);
@@ -26,7 +29,7 @@ const useHandlerAuth = () => {
         }
 
         if (typeof noRedirect === "function") {
-          !noRedirect(userInfoRef.current!) && navigate(`/${yourPlugins}`);
+          !noRedirect(userInfoRef.current) && navigate(`/${yourPlugins}`);
         } else !noRedirect && navigate(`/${yourPlugins}`);
       } catch (error) {
         debugConsole("Error fetching users:", error);
@@ -68,7 +71,8 @@ const useHandlerAuth = () => {
     handleLogout: logout,
     isLoadingUser,
     user,
-    userInfo: userInfo || {}
+    userInfo,
+    isMd
   };
 };
 

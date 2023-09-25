@@ -1,77 +1,59 @@
+import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
-import useHeader from "./useHeader";
+import { motion, Variants } from "framer-motion";
+import { ComponentProps } from "react";
+import { useHeaderCtx } from "./HeaderCtx";
+import LoginSection from "./LoginSection";
+import PrintLinks from "./PrintLinks";
 
-type InputProps = ReturnType<typeof useHeader>;
-const HeaderXs = ({
-  anchorElNav,
-  handleCloseNavMenu,
-  handleLogin,
-  handleLogout,
-  handleOpenNavMenu,
-  links
-}: InputProps) => {
+const PaperDrawerStyles: ComponentProps<typeof Drawer>["PaperProps"] = {
+  className:
+    "w-screen h-[100svh] pt-[5rem] pb-5 px-5 flex flex-col justify-between items-center"
+};
+
+// Define your animation states
+const iconVariants: Variants = {
+  open: { rotate: 0 },
+  closed: { rotate: 180 }
+};
+
+const HeaderXs = () => {
+  const { anchorElNav, handleCloseNavMenu, handleOpenNavMenu } = useHeaderCtx();
   return (
-    <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+    <Box className="col-span-1 col-start-2 flex justify-end gap-4 md:hidden">
       <IconButton
         size="large"
         aria-label="open drawer"
         aria-controls="menu-appbar"
         aria-haspopup="true"
-        onClick={handleOpenNavMenu}
-        color="inherit"
+        onClick={anchorElNav ? handleCloseNavMenu : handleOpenNavMenu}
+        className="p-0 text-black"
       >
-        <MenuIcon />
+        <motion.div
+          animate={anchorElNav ? "open" : "closed"}
+          variants={iconVariants}
+          className="flex"
+        >
+          {anchorElNav ? <CloseIcon /> : <MenuIcon />}
+        </motion.div>
       </IconButton>
-      <Menu
-        id="menu-appbar"
-        anchorEl={anchorElNav}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left"
-        }}
-        keepMounted
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "left"
-        }}
+      <Drawer
+        anchor="left"
         open={Boolean(anchorElNav)}
         onClose={handleCloseNavMenu}
-        sx={{ display: { xs: "block", md: "flex" } }}
+        PaperProps={PaperDrawerStyles}
+        disableScrollLock
       >
-        {links.map((link) => {
-          if (
-            link.toLowerCase() === "login" ||
-            link.toLowerCase() === "logout"
-          ) {
-            return (
-              <MenuItem
-                key={link}
-                onClick={
-                  link.toLowerCase() === "login" ? handleLogin : handleLogout
-                }
-              >
-                <Typography textAlign="center">{link}</Typography>
-              </MenuItem>
-            );
-          }
-          return (
-            <MenuItem
-              key={link}
-              onClick={handleCloseNavMenu}
-              component={Link}
-              to={`/${link.toLowerCase().replace(" ", "-")}`}
-            >
-              <Typography textAlign="center">{link}</Typography>
-            </MenuItem>
-          );
-        })}
-      </Menu>
+        <div className="flex w-full flex-col gap-4">
+          <PrintLinks />
+        </div>
+        <div className="w-full rounded-xl text-center shadow-[0_20px_25px_0] shadow-primary">
+          <LoginSection />
+        </div>
+      </Drawer>
     </Box>
   );
 };
