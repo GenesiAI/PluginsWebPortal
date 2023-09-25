@@ -17,7 +17,7 @@ const PaperDrawerStyles: ComponentProps<typeof Drawer>["PaperProps"] = {
 // Define your animation states
 const iconVariants: Variants = {
   open: { rotate: 0 },
-  closed: { rotate: 180, translateY: 4 }
+  closed: { rotate: 180 }
 };
 
 const HeaderXs = () => {
@@ -30,11 +30,12 @@ const HeaderXs = () => {
         aria-controls="menu-appbar"
         aria-haspopup="true"
         onClick={anchorElNav ? handleCloseNavMenu : handleOpenNavMenu}
-        className="text-black"
+        className="p-0 text-black"
       >
         <motion.div
           animate={anchorElNav ? "open" : "closed"}
           variants={iconVariants}
+          className="flex"
         >
           {anchorElNav ? <CloseIcon /> : <MenuIcon />}
         </motion.div>
