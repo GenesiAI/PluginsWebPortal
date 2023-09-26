@@ -8,7 +8,7 @@ type InputProps = {
 };
 
 const LayoutItemGrid = ({ children, full, className }: InputProps) => (
-  <Grid item xs={12} sm={full ? 12 : 6} className={className}>
+  <Grid item xs={12} md={full ? 12 : 6} className={className}>
     {children}
   </Grid>
 );

@@ -1,15 +1,14 @@
-import { UserInfo as UserInfoType } from "apis/api";
-import { User } from "firebase/auth";
 import React, { createContext, memo, useContext, useMemo } from "react";
 import useHandlerAuth from "./useHandlerAuth";
 
 type ctxType = {
   isLoadingUser: boolean;
   isLogged: boolean;
-  userInfo: UserInfoType;
-  user: User | null;
-  handleLogin: () => void;
-  handleLogout: () => void;
+  userInfo: ReturnType<typeof useHandlerAuth>["userInfo"];
+  user: ReturnType<typeof useHandlerAuth>["user"];
+  manualLogin: ReturnType<typeof useHandlerAuth>["manualLogin"];
+  handleLogin: ReturnType<typeof useHandlerAuth>["handleLogin"];
+  handleLogout: ReturnType<typeof useHandlerAuth>["handleLogout"];
 };
 
 const Ctx = createContext<ctxType>({
@@ -17,16 +16,27 @@ const Ctx = createContext<ctxType>({
   isLogged: false,
   userInfo: {},
   user: null,
-  handleLogin: () => {},
-  handleLogout: () => {}
+  manualLogin: async () => {
+    throw new Error("Outside context");
+  },
+  handleLogin: async () => {
+    throw new Error("Outside context");
+  },
+  handleLogout: async () => {}
 });
 
 type InputProps = {
   children: React.ReactNode;
 };
 const UserInfo = ({ children }: InputProps) => {
-  const { handleLogin, handleLogout, isLoadingUser, userInfo, user } =
-    useHandlerAuth();
+  const {
+    handleLogin,
+    handleLogout,
+    manualLogin,
+    isLoadingUser,
+    userInfo,
+    user
+  } = useHandlerAuth();
 
   const providerValue: ctxType = useMemo(
     () => ({
@@ -35,9 +45,10 @@ const UserInfo = ({ children }: InputProps) => {
       user,
       handleLogin,
       handleLogout,
-      userInfo
+      userInfo,
+      manualLogin
     }),
-    [handleLogin, handleLogout, user, userInfo, isLoadingUser]
+    [handleLogin, handleLogout, manualLogin, user, userInfo, isLoadingUser]
   );
 
   const memoChildren = useMemo(() => children, [children]); // To avoid unless rerender

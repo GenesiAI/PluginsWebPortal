@@ -1,10 +1,9 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Box, CircularProgress, IconButton, Tooltip } from "@mui/material";
-import { useRedirectToStripe } from "components/Stripe/useRedirectToStripe";
+import { Box, IconButton, Tooltip } from "@mui/material";
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
-import { debugConsole } from "components/util";
-import { pluginBuilder } from "const/urls";
+import { pluginBuilder, pricing } from "const/urls";
+
 import { useNavigate } from "react-router-dom";
 import { IconButtonTheme } from "theme";
 import { usePluginsCtx } from "./PluginsCtx";
@@ -13,7 +12,6 @@ import useModalMaxPlugins from "./useModalMaxPlugins";
 const PluginFooter = () => {
   const navigate = useNavigate();
   const { pluginData, loading } = usePluginsCtx();
-  const { isLoading, redirectToStripe, modalError } = useRedirectToStripe();
   const { userInfo } = useUserInfoCtx();
   const { modalMaxPlugin, openModalMaxPlugin } = useModalMaxPlugins();
 
@@ -27,7 +25,7 @@ const PluginFooter = () => {
     ? "Upgrade to create more!"
     : "You reached the maximum number of plugins!";
   const isGoldButton = !canCreateNewPlugin && !userInfo?.isPremium;
-  debugConsole(isGoldButton, canCreateNewPlugin, userInfo?.isPremium);
+
   return (
     <Box
       sx={{
@@ -37,7 +35,6 @@ const PluginFooter = () => {
       }}
     >
       {modalMaxPlugin}
-      {modalError}
       <Tooltip title={toolTipTitle} arrow placement="top">
         <span>
           {/* put this on the right, using float it goes out of the div */}
@@ -47,24 +44,15 @@ const PluginFooter = () => {
               canCreateNewPlugin
                 ? () => navigate(`/${pluginBuilder("new")}`)
                 : !userInfo?.isPremium
-                ? redirectToStripe
+                ? () => navigate(`/${pricing}`)
                 : openModalMaxPlugin
             }
             sx={IconButtonTheme}
           >
-            {isLoading ? (
-              <CircularProgress
-                size={24}
-                sx={{
-                  color: (theme) => theme.palette.success.contrastText
-                }}
-              />
-            ) : (
-              <FontAwesomeIcon
-                icon={faPlus}
-                className="motion-safe:active:animate-ping"
-              />
-            )}
+            <FontAwesomeIcon
+              icon={faPlus}
+              className="motion-safe:active:animate-ping"
+            />
           </IconButton>
         </span>
       </Tooltip>

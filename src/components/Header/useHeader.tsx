@@ -1,28 +1,32 @@
-import { useUserInfoCtx } from "components/UserInfo/UserInfo";
-import React from "react";
-
-const loggedInPages = ["Your Plugins", "Support", "Contacts", "Logout"];
-const loggedOutPages = ["Support", "Contacts", "Login"];
+import { useScreenCtx } from "components/Screen/ScreenCtx";
+import React, { useCallback, useEffect } from "react";
 
 const useHeader = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
+  const { isMd } = useScreenCtx();
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleCloseNavMenu = () => {
+  const handleOpenNavMenu = useCallback(
+    (event: React.MouseEvent<HTMLElement>) => {
+      setAnchorElNav(event.currentTarget);
+    },
+    []
+  );
+  const handleCloseNavMenu = useCallback(() => {
     setAnchorElNav(null);
-  };
-  const { handleLogin, handleLogout, isLogged } = useUserInfoCtx();
+  }, []);
+
+  useEffect(() => {
+    if (isMd && anchorElNav) {
+      handleCloseNavMenu();
+    }
+  }, [isMd, anchorElNav]);
+
   return {
-    handleLogin,
-    handleLogout,
     handleCloseNavMenu,
     handleOpenNavMenu,
-    anchorElNav,
-    links: isLogged ? loggedInPages : loggedOutPages
+    anchorElNav
   };
 };
 

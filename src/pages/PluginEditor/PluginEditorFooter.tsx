@@ -15,7 +15,7 @@ const PluginEditorFooter = () => {
     <Grid item xs={12} sm={12} container justifyContent="space-between">
       <ButtonLoading
         color="error"
-        startIcon={<DeleteIcon />}
+        startIcon={!deleteInProgress && <DeleteIcon />}
         type="button"
         disabled={isNewPlugin}
         isLoading={deleteInProgress}
@@ -24,8 +24,8 @@ const PluginEditorFooter = () => {
         Delete
       </ButtonLoading>
       <ButtonLoading
-        color="success"
-        startIcon={<SaveIcon />}
+        color="primary"
+        startIcon={!isSubmitting && <SaveIcon />}
         type="submit"
         isLoading={isSubmitting}
       >

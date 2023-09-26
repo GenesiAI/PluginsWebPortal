@@ -21,10 +21,10 @@ const PluginSections = () => {
     <Grid item margin="auto">
       {fields?.map(({ id }, index) => (
         <Fragment key={id}>
-          <Divider className="!my-4" />
+          <Divider className="my-4" />
           <Box className="md:p-2 rounded-xl md:hover:bg-gray-200/60">
             <Grid container spacing={4}>
-              <LayoutItemGrid className="!pt-1 md:!pt-8">
+              <LayoutItemGrid className="pt-1 md:pt-8">
                 <Field
                   name={`sections.${index}.name`}
                   label="Section Name"
@@ -38,6 +38,7 @@ const PluginSections = () => {
                 <Field
                   name={`sections.${index}.description`}
                   label="Section Description"
+                  helperText="Explain to the AI what is in the content."
                   validation={validationSectionDescription}
                 />
               </LayoutItemGrid>
@@ -45,6 +46,7 @@ const PluginSections = () => {
                 <Field
                   name={`sections.${index}.content`}
                   label="Section Content"
+                  helperText="Insert the data to share with AI."
                   validation={validationSectionContent}
                   multiline
                   rows={4}

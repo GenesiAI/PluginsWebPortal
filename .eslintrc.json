@@ -63,6 +63,7 @@
     "react/display-name": "off",
     "react/no-unescaped-entities": "off",
     "react/jsx-key": "off",
+    "react/prop-types": "off",
     "quote-props": "off",
     "spaced-comment": "off",
     "multiline-ternary": "off",

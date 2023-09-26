@@ -1,13 +1,16 @@
 import Typography from "components/Typography";
-import { contacts, home, support } from "const/urls";
+import { contacts, home, pricing, questions, support } from "const/urls";
 import LogoGenesiWithName from "img/LogoGenesiWithName";
+
 import { Fragment, memo } from "react";
 import { Link } from "react-router-dom";
 import Socials from "./Socials";
 
 const Links = [
+  { to: contacts, text: "Contact us" },
   { to: support, text: "Support" },
-  { to: contacts, text: "Contact us" }
+  { to: questions, text: "Questions" },
+  { to: pricing, text: "Pricing" }
 ];
 
 const renderLinks = Links.map(({ text, to }, index) => (

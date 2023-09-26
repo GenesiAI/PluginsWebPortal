@@ -9,12 +9,12 @@ const SectionDelete = ({ onClick }: InputProps) => (
   <Grid
     item
     xs={12}
-    sm={6}
-    className="!flex !justify-end order-first md:order-none"
+    md={6}
+    className="flex justify-end order-first md:order-none"
   >
     <IconButton
       aria-label="delete"
-      className="!block md:!hidden"
+      className="block md:!hidden"
       color="error"
       onClick={onClick}
     >
@@ -25,7 +25,7 @@ const SectionDelete = ({ onClick }: InputProps) => (
       color="error"
       startIcon={<DeleteIcon />}
       onClick={onClick}
-      className="!hidden md:!inline-flex !py-1 scale-75 max-h-9 "
+      className="hidden md:inline-flex py-1 scale-75 max-h-9"
     >
       Delete section
     </Button>

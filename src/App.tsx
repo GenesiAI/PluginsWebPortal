@@ -1,21 +1,21 @@
 import Footer from "components/Footer";
 import Header from "components/Header";
-import React from "react";
 
-import Flyout from "components/Flyout";
+import { memo } from "react";
 import "./App.css";
 import AppRouter from "./AppRouter";
 import "./Tailwind.css";
 
-const App: React.FC = () => (
-  <div className="flex justify-between flex-col min-h-screen">
-    <div>
+const App = () => {
+  return (
+    <>
       <Header />
-      <Flyout />
-      <AppRouter />
-    </div>
-    <Footer />
-  </div>
-);
+      <main className="flex flex-col justify-between overflow-y-auto">
+        <AppRouter />
+        <Footer />
+      </main>
+    </>
+  );
+};
 
-export default App;
+export default memo(App);

@@ -1,31 +1,22 @@
-// LoadingSpinner.js
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
+import classNames from "classnames";
+import Typography from "./Typography";
 type InputProps = {
   removeText?: boolean;
+  fullScreen?: boolean;
+  className?: string;
 };
-const LoadingSpinner = ({ removeText }: InputProps) => (
+const LoadingSpinner = ({ removeText, fullScreen, className }: InputProps) => (
   <Box
-    sx={{
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "100vh"
-    }}
+    className={classNames(
+      "flex flex-col items-center justify-center",
+      fullScreen && "h-screen",
+      className
+    )}
   >
     <CircularProgress />
     {!removeText && (
-      <Typography
-        sx={{
-          textAlign: "center",
-          fontSize: 24,
-          marginTop: 2,
-          fontWeight: "bold",
-          color: (theme) => theme.palette.primary.main
-        }}
-      >
-        Loading...
-      </Typography>
+      <Typography className="text-primary">Loading...</Typography>
     )}
   </Box>
 );
