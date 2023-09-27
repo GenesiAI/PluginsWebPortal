@@ -7,12 +7,12 @@ import WhatSection from "./WhatSection";
 
 const Home: React.FC = () => {
   return (
-    <>
+    <div>
       <HeroSection />
       <WhatSection />
       <FeatureSection />
       <UseCases />
-    </>
+    </div>
   );
 };
 
