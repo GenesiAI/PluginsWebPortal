@@ -1,6 +1,5 @@
-import "slick-carousel/slick/slick.css";
-import FeatureSection from "./FeatureSection";
 import SectionFive from "./SectionFive";
+import SectionFour from "./SectionFour";
 import SectionOne from "./SectionOne";
 import SectionThree from "./SectionThree";
 import SectionTwo from "./SectionTwo";
@@ -11,7 +10,7 @@ const Home = () => {
       <SectionOne />
       <SectionTwo />
       <SectionThree />
-      <FeatureSection />
+      <SectionFour />
       <SectionFive />
     </div>
   );

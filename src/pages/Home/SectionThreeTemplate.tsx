@@ -1,4 +1,5 @@
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import classNames from "classnames";
 import Typography from "components/Typography";
 import { Variants, motion } from "framer-motion";
 
@@ -42,6 +43,7 @@ type InputProps = {
   title: string;
   imageClassName: string;
   skillsClassName: string;
+  dividerClassName: string;
   image: React.ReactNode;
   skills: string[];
 };
@@ -51,7 +53,8 @@ const SectionThreeTemplate = ({
   image,
   skills,
   imageClassName,
-  skillsClassName
+  skillsClassName,
+  dividerClassName
 }: InputProps) => (
   <>
     <motion.div
@@ -67,6 +70,12 @@ const SectionThreeTemplate = ({
     >
       {image}
     </motion.div>
+    <div
+      className={classNames(
+        "col-start-2 hidden h-1/2 w-px bg-primary md:inline",
+        dividerClassName
+      )}
+    ></div>
     <div className={skillsClassName}>
       <motion.div
         variants={variants}
