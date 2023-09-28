@@ -1,10 +1,8 @@
-import { Box } from "@mui/material";
-
 const youTubeVideo =
   "https://www.youtube.com/embed/_awRHFcAS2k?si=Ywk8rQa15Dle3Z9Z";
 const Video = () => {
   return (
-    <Box className="m-auto my-10 block max-w-4xl px-10">
+    <div className="m-auto my-10 block max-w-4xl px-10">
       <div
         className="relative h-0 overflow-hidden rounded-xl pb-[56.25%]"
         style={{
@@ -21,7 +19,7 @@ const Video = () => {
           allowFullScreen
         ></iframe>
       </div>
-    </Box>
+    </div>
   );
 };
 

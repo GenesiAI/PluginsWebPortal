@@ -5,10 +5,13 @@ const SectionFourSlideThree = () => {
     <>
       <div className="md:w-1/2">
         <Typography variant="t3" className="text-inherit">
-          Enter your dataaaaaaa
+          Publish you plugin and let the magic happen{" "}
         </Typography>
         <Typography variant="t5" className="block text-inherit">
-          Add everything you want to share with your plugin usersaaaaaaaaaaaaa
+          As soon as your plugin is approved it will be online
+        </Typography>
+        <Typography variant="t5" className="block text-inherit">
+          You will be able to edit details whenever you want
         </Typography>
       </div>
       <div

@@ -5,10 +5,10 @@ const SectionFourSlideOne = () => {
     <>
       <div className="md:w-1/2">
         <Typography variant="t3" className="text-inherit">
-          bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb{" "}
+          Share the link with ChatGPTto test you plugin
         </Typography>
         <Typography variant="t5" className="block text-inherit">
-          b bbbbbq qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq{" "}
+          Start to chat with your onw data{" "}
         </Typography>
       </div>
       <div
