@@ -9,24 +9,33 @@ import { debugConsole } from "../util";
 const useHandlerAuth = () => {
   const [isLoadingUser, setIsLoadingUser] = useState<boolean>(true);
   const [user, setUser] = useState<User | null>(null);
-  const [userInfo, setUserInfo] = useState<UserInfo>();
+  const [userInfo, setUserInfo] = useState<UserInfo>({});
   const userInfoRef = useRef(userInfo);
   userInfoRef.current = userInfo;
 
   const navigate = useNavigate();
 
+  const getUserData = useCallback(async () => {
+    try {
+      const userApi = new UserApi();
+      const response = await userApi.apiUserGet();
+      setUserInfo(response.data);
+      userInfoRef.current = response.data;
+      return response.data;
+    } catch (error) {
+      debugConsole("Error fetching users:", error);
+    }
+  }, []);
+
   const afterLogin = useCallback(
     async (noRedirect?: boolean | ((user: UserInfo) => boolean)) => {
       try {
         if (Object.keys(userInfoRef.current || {}).length <= 0) {
-          const userApi = new UserApi();
-          const response = await userApi.apiUserGet();
-          setUserInfo(response.data);
-          userInfoRef.current = response.data;
+          await getUserData();
         }
 
         if (typeof noRedirect === "function") {
-          !noRedirect(userInfoRef.current!) && navigate(`/${yourPlugins}`);
+          !noRedirect(userInfoRef.current) && navigate(`/${yourPlugins}`);
         } else !noRedirect && navigate(`/${yourPlugins}`);
       } catch (error) {
         debugConsole("Error fetching users:", error);
@@ -67,6 +76,7 @@ const useHandlerAuth = () => {
     manualLogin,
     handleLogout: logout,
     isLoadingUser,
+    getUserData,
     user,
     userInfo: userInfo || {}
   };
