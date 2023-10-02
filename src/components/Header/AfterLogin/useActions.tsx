@@ -41,12 +41,14 @@ const useActions = () => {
         key="NewPlugin"
         text="New Plugins"
         to={`/${pluginBuilder("new")}`}
+        onClick={handleClose}
       />,
       <div key="sep2" className="h-px w-full bg-white"></div>,
       <ActionNavigate
         key="YourPlugins"
         text="Your Plugins"
         to={`/${yourPlugins}`}
+        onClick={handleClose}
       />,
       <div key="sep3" className="h-px w-full bg-white"></div>,
       <ActionItem

@@ -5,8 +5,9 @@ import ActionItem from "./ActionItem";
 type InputProps = {
   text: string;
   to: string;
+  onClick: () => void;
 };
-const ActionNavigate = ({ text, to }: InputProps) => {
+const ActionNavigate = ({ text, to, onClick }: InputProps) => {
   const navigate = useNavigate();
   const { handleCloseNavMenu } = useHeaderCtx();
 
@@ -15,6 +16,7 @@ const ActionNavigate = ({ text, to }: InputProps) => {
       onClick={() => {
         navigate(to);
         handleCloseNavMenu();
+        onClick();
       }}
     >
       {text}

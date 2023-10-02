@@ -1,18 +1,19 @@
 import Button from "components/Button";
-import { pricing } from "const/urls";
+import { contacts } from "const/urls";
 import { useNavigate } from "react-router-dom";
 
-const GoToPricing = () => {
+const GoToContact = () => {
   const navigate = useNavigate();
   return (
     <Button
       type="button"
       color="primary"
-      onClick={() => navigate(`/${pricing}`)}
+      variant="darkBg"
+      onClick={() => navigate(`/${contacts}`)}
     >
-      Go to pricing page
+      CONTACT US
     </Button>
   );
 };
 
-export default GoToPricing;
+export default GoToContact;
