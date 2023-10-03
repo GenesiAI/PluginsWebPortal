@@ -14,12 +14,12 @@ const Contacts: React.FC = () => (
         Get in touch
       </Typography>
       <Typography variant="subtitle1" align="center">
-        At AI Plugin, we are passionate about creating a community-driven
+        At GenesiAI, we are passionate about creating a community-driven
         platform for AI-powered chatbot plugins. We appreciate your thoughts,
         feedback, and innovative ideas to help us grow and improve. Whether you
         have a plugin suggestion, need assistance, want to collaborate as a
         developer, or have any other inquiries, feel free to reach out.
-        Together, let's make AI Plugin the go-to destination to build and
+        Together, let's make GenesiAI the go-to destination to build and
         discover plugins.
       </Typography>
     </Box>
