@@ -1,15 +1,10 @@
-import { Button } from "@mui/material";
+import Button from "components/Button";
 import { useUserInfoCtx } from "components/UserInfo/UserInfo";
 
 const GoToPlugins = () => {
   const { handleLogin } = useUserInfoCtx();
   return (
-    <Button
-      type="button"
-      variant="contained"
-      color="primary"
-      onClick={handleLogin}
-    >
+    <Button type="button" color="primary" onClick={handleLogin}>
       Go to your plugins
     </Button>
   );

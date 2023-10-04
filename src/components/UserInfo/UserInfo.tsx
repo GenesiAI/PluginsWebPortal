@@ -9,6 +9,7 @@ type ctxType = {
   manualLogin: ReturnType<typeof useHandlerAuth>["manualLogin"];
   handleLogin: ReturnType<typeof useHandlerAuth>["handleLogin"];
   handleLogout: ReturnType<typeof useHandlerAuth>["handleLogout"];
+  getUserData: ReturnType<typeof useHandlerAuth>["getUserData"];
 };
 
 const Ctx = createContext<ctxType>({
@@ -22,7 +23,10 @@ const Ctx = createContext<ctxType>({
   handleLogin: async () => {
     throw new Error("Outside context");
   },
-  handleLogout: async () => {}
+  handleLogout: async () => {},
+  getUserData: async () => {
+    throw new Error("Outside context");
+  }
 });
 
 type InputProps = {
@@ -35,7 +39,8 @@ const UserInfo = ({ children }: InputProps) => {
     manualLogin,
     isLoadingUser,
     userInfo,
-    user
+    user,
+    getUserData
   } = useHandlerAuth();
 
   const providerValue: ctxType = useMemo(
@@ -46,9 +51,18 @@ const UserInfo = ({ children }: InputProps) => {
       handleLogin,
       handleLogout,
       userInfo,
-      manualLogin
+      manualLogin,
+      getUserData
     }),
-    [handleLogin, handleLogout, manualLogin, user, userInfo, isLoadingUser]
+    [
+      handleLogin,
+      handleLogout,
+      manualLogin,
+      user,
+      userInfo,
+      isLoadingUser,
+      getUserData
+    ]
   );
 
   const memoChildren = useMemo(() => children, [children]); // To avoid unless rerender
