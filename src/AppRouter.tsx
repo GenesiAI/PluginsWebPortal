@@ -30,8 +30,7 @@ const StripeCancelledLazy = React.lazy(
   () => import("components/Stripe/StripeCancelled")
 );
 
-const someBasicStyle: any = {};
-const AppRouter: React.FC = () => {
+const AppRouter = () => {
   return (
     <Suspense fallback={<LoadingSpinner fullScreen />}>
       <Routes>
@@ -39,7 +38,7 @@ const AppRouter: React.FC = () => {
         <Route
           path={questions}
           element={
-            <Container maxWidth="lg" sx={someBasicStyle}>
+            <Container maxWidth="lg">
               <Questions />
             </Container>
           }
@@ -48,7 +47,7 @@ const AppRouter: React.FC = () => {
           path={yourPlugins}
           element={
             <ProtectedRoute>
-              <Container maxWidth="md" sx={someBasicStyle}>
+              <Container maxWidth="md">
                 <YourPluginsLazy />
               </Container>
             </ProtectedRoute>
@@ -75,7 +74,7 @@ const AppRouter: React.FC = () => {
         <Route
           path={support}
           element={
-            <Container maxWidth="md" sx={someBasicStyle}>
+            <Container maxWidth="md">
               <Support />
             </Container>
           }

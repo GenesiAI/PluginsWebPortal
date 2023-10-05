@@ -20,6 +20,7 @@
     "class",
     "className",
     "ngClass",
-    ".*Styles*" // Add ".*Styles*" (or whatever matches your naming scheme)
+    ".*Styles*", // Add ".*Styles*" (or whatever matches your naming scheme)
+    ".*ClassName*" // Add ".*ClassName*" (or whatever matches your naming scheme)
   ]
 }
