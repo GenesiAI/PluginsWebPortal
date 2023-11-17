@@ -1,5 +1,8 @@
 # Genesi AI Portal
 
+# ⚠️ The project has been closed⚠️
+## Feel free to use the code as you like, but change branding if you intend to use it for commercial purposes 
+
 UI to create plugins for the Genesi AI platform
 
 Landing and styling with tailwindcss, mui, API cals with generated axios
